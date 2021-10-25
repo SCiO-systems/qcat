@@ -1,0 +1,76 @@
+{% extends 'form/base.html' %}
+
+{% load i18n %}
+{% load static %}
+{% load sekizai_tags %}
+
+{% block bodyclass %}layout-map-modal{% endblock %}
+
+{% block content %}
+
+  {% addtoblock 'js' %}
+    <script src="https://maps.googleapis.com/maps/api/js?v=3&key={{ GOOGLE_MAPS_JAVASCRIPT_API_KEY }}"></script>
+    <script src="{% static 'js/ol3gm.min.js' %}"></script>
+    <script src="{% static 'js/map.min.js' %}"></script>
+  {% endaddtoblock %}
+
+  {% addtoblock 'css' %}
+    <link rel="stylesheet" href="{% static 'css/ol3gm.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/ol.css' %}" type="text/css">
+  {% endaddtoblock %}
+
+  <div class="list-item" id="map-details-overlay">
+    <div class="map-container">
+      <div class="map-controls">
+        <div class="map-controls-group">
+          <button type="button" class="map-controls-button button small tip-right button-feature-count js-btn-feature-count" title="{% trans "Number of points on the map" %}" data-tooltip="">
+          </button>
+          <button type="button" class="map-controls-button button small tip-right map-btn-disabled map-btn-toggle js-btn-show-features" title="{% trans "Zoom to all points on the map" %}" data-tooltip="">
+            <svg class="icon-lines is-inline"><use xlink:href="#icon-shrink"></use></svg>
+          </button>
+        </div>
+      </div>
+      <div class="map-overlay hide js-map-points">
+        <a class="map-overlay-close js-btn-overlay-close"><svg class="icon-lines is-inline"><use xlink:href="#icon-cross"/></svg></a>
+        <div class="row map-overlay-content">
+          <strong class="small-12 columns">{% trans "List of all points on the map:" %}</strong>
+          <div class="small-12 columns map-points-list" data-empty-text="{% trans 'No points on the map.' %}"><!-- Points list --></div>
+        </div>
+      </div>
+      <div>
+        <div class="map-layers">
+          <div>
+            {% trans "Map layers:" %}
+          </div>
+          <div>
+            {% include 'parts/map_layers_select.html' with select_name='map-layers-0' selected='googlehybrid'%}
+          </div>
+          <div>
+            <div class="nstSlider map-layers-slider" data-range_min="0" data-range_max="100"
+                       data-cur_min="0">
+              <div class="leftGrip"></div>
+            </div>
+          </div>
+          <div>
+            {% include 'parts/map_layers_select.html' with select_name='map-layers-1' selected='osm'%}
+          </div>
+        </div>
+        <div class="map-form-container"><!-- Map --></div>
+      </div>
+    </div>
+
+    <div class="single-item">
+      <input type="hidden" name="coordinates" value="{{ geometry }}">
+    </div>
+  </div>
+{% endblock %}
+
+{% block footer %}{% endblock %}
+
+{% block bottom %}
+  <script>
+    $(document).ready(function() {
+      $('#map-details-overlay').bindMapActions({inModal: true, editable: false});
+    });
+  </script>
+{% endblock %}

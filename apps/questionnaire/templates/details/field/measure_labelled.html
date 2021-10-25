@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="small-2 columns chart-measure-col-left">
+    <span class="chart-measure-label-left">{{ additional_translations.label_left }}</span>
+  </div>
+  <div class="small-10 columns chart-measure-col-content">
+    <ul class="chart-measure-labelled">
+      {% for value in all_values %}
+        <li class="step is-level-{{ value.0|default:0 }}"></li>
+      {% endfor %}
+    </ul>
+    <span class="chart-measure-label-right">{{ additional_translations.label_right }}</span>
+  </div>
+</div>

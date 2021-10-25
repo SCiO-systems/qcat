@@ -1,0 +1,84 @@
+.accordion {
+  @include reset-list;
+
+  a[role="tab"] {
+    border-radius: $global-radius;
+  }
+  .active a[role="tab"] {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+.accordion .content {
+  background: $accordion-content-active-bg-color;
+  border-bottom-left-radius: $global-radius;
+  border-bottom-right-radius: $global-radius;
+}
+
+.accordion.is-light {
+  font-size: rem-calc(14);
+  .accordion-navigation {
+    border-bottom: 2px solid $color-brown-light;
+  }
+  .accordion-navigation:first-child {
+    border-top: 2px solid $color-brown-light;
+  }
+  .accordion-navigation > a {
+    background-color: transparent;
+    padding: rem-calc(6) 0;
+    font-size: rem-calc(14);
+  }
+
+  & > .active > .content {
+    background-color: transparent;
+    padding: rem-calc(0 24 24);
+  }
+  .icon {
+    transition: transform 300ms ease;
+    transform-origin: 50% 50%;
+  }
+  & > .active > .icon {
+    transform: rotate(90deg);
+  }
+}
+
+.accordion.is-dark {
+  font-size: rem-calc(14);
+  color: white;
+  margin-top: 0;
+  padding: rem-calc(6 0);
+
+  .accordion-navigation > a {
+    background: transparent;
+    color: white;
+    padding: rem-calc(6) 0;
+    font-size: rem-calc(14);
+    border-radius: 0;
+  }
+  & > .active > .content {
+    background-color: transparent;
+    padding: 0;
+  }
+  .icon {
+    transition: transform 300ms ease;
+    transform-origin: 50% 50%;
+  }
+  & > .active > a > .icon {
+    transform: rotate(90deg);
+  }
+  label {
+    color: white;
+  }
+  .accordion {
+    padding-left: rem-calc(12);
+  }
+  .accordion .accordion {
+    padding-left: rem-calc(24);
+  }
+  .accordion .accordion .accordion {
+    padding-left: rem-calc(36);
+  }
+  .accordion .accordion .accordion .accordion {
+    padding-left: rem-calc(48);
+  }
+}

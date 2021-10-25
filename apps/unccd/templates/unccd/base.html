@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "UNCCD" %}{% endblock %}
+
+{% block bodyclass %}layout-unccd is-unccd{% endblock %}
+{% block navclass %}is-unccd{% endblock %}
+
+{% block header %}
+  {% include "wocat/partial/top.html" with current='unccd' %}
+{% endblock %}
+
+{% block bottom %}
+{% endblock %}

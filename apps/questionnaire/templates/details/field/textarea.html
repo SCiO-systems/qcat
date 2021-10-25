@@ -1,0 +1,10 @@
+{% if value %}
+  {% if header == 'inline' %}
+    <p><strong>{{ key }}</strong>{% if key|last not in ".:!?" %}:{% endif %} {{ value|linebreaksbr }}</p>
+  {% else %}
+    {% if label_position != 'none' %}
+      <{{ label_tag|default:"h5" }}>{{ key }}{% if key|last not in ".:!?" %}:{% endif %}</{{ label_tag|default:"h5" }}>
+    {% endif %}
+    <p>{{ value|linebreaksbr }}</p>
+  {% endif %}
+{% endif %}

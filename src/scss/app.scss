@@ -1,0 +1,126 @@
+@import "settings";
+
+// Import font Open Sans
+@font-face {
+  font-family: 'Open Sans';
+  src: url('/static/assets/fonts/OpenSans-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+// Behold, here are all the Foundation components.
+@import "foundation/components/grid",
+"foundation/components/accordion",
+"foundation/components/alert-boxes",
+"foundation/components/block-grid",
+"foundation/components/breadcrumbs",
+// "foundation/components/button-groups",
+"foundation/components/buttons",
+"foundation/components/clearing",
+"foundation/components/dropdown",
+"foundation/components/dropdown-buttons",
+"foundation/components/flex-video",
+"foundation/components/forms",
+"foundation/components/icon-bar",
+"foundation/components/inline-lists",
+"foundation/components/joyride",
+"foundation/components/keystrokes",
+"foundation/components/labels",
+"foundation/components/magellan",
+"foundation/components/orbit",
+"foundation/components/pagination",
+"foundation/components/panels",
+"foundation/components/pricing-tables",
+"foundation/components/progress-bars",
+"foundation/components/range-slider",
+"foundation/components/reveal",
+"foundation/components/side-nav",
+"foundation/components/split-buttons",
+"foundation/components/sub-nav",
+"foundation/components/switches",
+"foundation/components/tables",
+"foundation/components/tabs",
+"foundation/components/thumbs",
+"foundation/components/tooltips",
+"foundation/components/top-bar",
+"foundation/components/type",
+"foundation/components/offcanvas",
+"foundation/components/visibility";
+
+// Basic HTML elements
+// ---------------------------
+@import 'base/mixin';
+@import 'base/highlight';
+@import 'base/typography';
+@import 'base/table';
+@import 'base/form';
+@import 'base/media';
+
+.browsehappy {
+  display: block;
+  font-size: 18px;
+  background-color: $color-brown;
+  padding: 60px;
+  color: white;
+
+  a,
+  a:hover {
+    color: $color-orange-light;
+  }
+}
+
+
+// Layouts
+// ---------------------------
+@import "layout/default";
+@import "layout/guideline";
+@import "layout/home";
+@import "layout/page";
+@import "layout/wizard";
+@import "layout/help";
+
+
+// Modules
+// ---------------------------
+@import 'module/accordion';
+@import 'module/alert-box';
+@import 'module/brand';
+@import 'module/card';
+@import 'module/chart';
+@import 'module/dropzone';
+@import 'module/filter';
+@import 'module/gallery';
+@import 'module/help';
+@import 'module/icon';
+@import 'module/sub-nav';
+@import 'module/button';
+@import 'module/process';
+@import 'module/label';
+@import 'module/logo';
+@import 'module/list';
+@import 'module/notification';
+@import 'module/hero';
+@import 'module/tabs';
+@import 'module/toc';
+@import 'module/offcanvas';
+@import 'module/orbit';
+@import 'module/output';
+@import 'module/top-bar';
+@import 'module/tech';
+@import 'module/search';
+@import 'module/slick';
+@import 'module/summary';
+@import 'module/slider';
+@import 'module/sticky-menu';
+@import 'module/help-tour';
+@import 'module/map';
+@import 'module/welcome-notice';
+@import 'module/user';
+@import 'module/review_panel';
+@import 'module/module';
+
+// Print styles
+@import 'base/print';
+
+// IE fixes
+@import 'base/ie';

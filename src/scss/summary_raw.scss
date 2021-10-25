@@ -1,0 +1,90 @@
+/*
+  Minimal styling for the 'raw' export.
+  Cache busting checks for changes in 'summary.css' only, so also (manually)
+  change a blank in this file.
+ */
+.range_square, .range_true {
+  height: 15px;
+  width: 15px;
+  border: 1px solid #000;
+  float: left;
+  background-color: #efefef;
+}
+.range_true {
+  background-color: #000;
+}
+.range_title {
+  float: left;
+  padding: 0 5px;
+}
+.wocat_logo {
+  position: absolute;
+  top:7px;
+  right: 20px;
+  padding:5px;
+  height: 46px;
+}
+.header-img {
+  height: 460px;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  max-width: 100%;
+}
+.img_in_text {
+  float: right;
+  margin: 0 0 20px 20px;
+  display:table;
+
+  img {
+    max-height: 400px;
+  }
+  &.flowchart img {
+    max-height: 500px;
+  }
+}
+.img-column {
+  width:auto;
+}
+.img-column-container img {
+  height: 440px;
+  width: 440px;
+}
+.rotate {
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  font-size: 10px;
+  width: 100px;
+  height: 90px;
+
+  > div {
+    height: 15px;
+  }
+}
+.rotate-container {
+  width: 100%;
+  line-height: 1rem;
+}
+.rotate.no-line-wrap {
+  margin-left: -15px !important;
+}
+.overcome {
+  .subtext {
+      margin-left: 0.8rem;
+      font-weight: normal;
+    &::before {
+      font-size: 1rem;
+      content: '\2192';
+      height: 0;
+      width: 0;
+      left: -0.5em;
+      top: 0.1rem;
+      position: relative;
+      line-height: 0.8rem;
+    }
+  }
+}
+.participation_table thead {
+  font-weight: bold;
+}

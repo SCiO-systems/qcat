@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Carbon Benefits Project (CBP) Summary" %}{% endblock %}
+
+{% block bodyclass %}layout-tech is-cbp{% endblock %}
+{% block navclass %}is-cbp{% endblock %}
+
+{% block header %}
+  {% include "wocat/partial/top.html" with current='cbp' %}
+{% endblock %}
+
+{% block bottom %}
+{% endblock %}

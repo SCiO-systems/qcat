@@ -1,0 +1,21 @@
+{% comment %}
+
+  Template to render a radio form field which can be used to indicate a
+  measure. Renders as VERTICAL button group (eg. low > medium > high)
+  with radio fields behind.
+
+{% endcomment %}
+
+<div class="button-bar row">
+  <ul class="button-switch button-switch-stacked radius measure small-12 columns"
+      {% if options.question_conditions %} data-question-conditions="{{ options.question_conditions }}"{% endif %}>
+    {% for group_name, choices in optgroups %}
+      {% for choice in choices %}
+        <li>
+          <input type="radio" id="{{ attrs.id }}_{{ forloop.counter }}" value="{{ choice.0 }}" name="{{ name }}"{% if required %} required{% endif %}{% if choice.0 in value %} checked{% endif %}{% if questiongroup_conditions %} data-questiongroup-condition="{{ questiongroup_conditions }}"{% endif %}>
+          <label class="button small secondary" for="{{ attrs.id }}_{{ forloop.counter }}"><span>{{ choice.1|safe }}</span></label>
+        </li>
+      {% endfor %}
+    {% endfor %}
+  </ul>
+</div>

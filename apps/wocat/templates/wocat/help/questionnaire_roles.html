@@ -1,0 +1,59 @@
+{% comment %}
+  List explanations of the roles of the review process. If current_role is not
+  None, only the respective role is explained.
+{% endcomment %}
+
+{% load i18n %}
+
+{% if not current_role or current_role == 'compiler' %}
+  {% if not current_role %}
+    <h5 class="help-subtitle-small">{% trans "Compiler" %}</h5>
+  {% endif %}
+  <p>
+    {% trans "The compiler is responsible for this data entry and can invite editors (WOCAT users) to help create it. Once the data entry is complete the compiler can submit it for review." %}
+  </p>
+{% endif %}
+
+{% if not current_role or current_role == 'editor' %}
+  {% if not current_role %}
+    <h5 class="help-subtitle-small">{% trans "Editor" %}</h5>
+  {% endif %}
+  <p>
+    {% blocktrans with questionnaire_type=questionnaire_type %}
+      Editors can edit the {{ questionnaire_type }}, but they cannot submit it for review or invite other editors.
+    {% endblocktrans %}
+  </p>
+{% endif %}
+
+{% if not current_role or current_role == 'reviewer' %}
+  {% if not current_role %}
+    <h5 class="help-subtitle-small">{% trans "Reviewer" %}</h5>
+  {% endif %}
+  <p>
+    {% blocktrans with questionnaire_type=questionnaire_type %}
+      The reviewer can approve or reject the {{ questionnaire_type }} and can edit it.
+    {% endblocktrans %}
+  </p>
+{% endif %}
+
+{% if not current_role or current_role == 'publisher' %}
+  {% if not current_role %}
+    <h5 class="help-subtitle-small">{% trans "Publisher" %}</h5>
+  {% endif %}
+  <p>
+    {% blocktrans with questionnaire_type=questionnaire_type %}
+      The publisher can approve or reject the {{ questionnaire_type }} and can edit it.
+    {% endblocktrans %}
+  </p>
+{% endif %}
+
+{% if not current_role or current_role == 'secretariat' %}
+  {% if not current_role %}
+    <h5 class="help-subtitle-small">{% trans "WOCAT Secretariat" %}</h5>
+  {% endif %}
+  <p>
+    {% blocktrans with questionnaire_type=questionnaire_type %}
+      The WOCAT Secretariat can review and publish the {{ questionnaire_type }}. The secretariat can also assign reviewers and publishers.
+    {% endblocktrans %}
+  </p>
+{% endif %}

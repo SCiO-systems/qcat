@@ -1,0 +1,119 @@
+{% load i18n %}
+{% load static %}
+{% load questionnaire_tags %}
+
+
+<article role="article" class="tech-item is-{{ item.configuration }}">
+  <figure class="tech-thumbnail">
+    <a href="{{ item.url }}" title="">
+      {% if item.image %}
+        <img src="{{ item.image }}" alt="{{ item.name }}" />
+      {% else %}
+        <img src="{% static "assets/img/picture.svg" %}" alt="{{ item.name }}">
+      {% endif %}
+    </a>
+    <figcaption class="tech-type is-{{ item.configuration }}">
+      <span>{{ item.configuration }}</span>
+    </figcaption>
+  </figure>
+
+  <div class="tech-item-content">
+    {% for flag in item.flags %}
+      <span class="label tech-flag is-{{ flag.flag }}"{% if flag.helptext %} data-tooltip="" title="{{ flag.helptext }}"{% endif %}>
+        {{ flag.name }}
+      </span>
+    {% endfor %}
+    {% if item.status.0 and item.status.0 != 'public' %}
+      <span class="tech-status label is-{{ item.status.0 }}">{{ item.status.1 }}</span>
+    {% endif %}
+    <header>
+      <h2 class="tech-item-title">
+        <a href="{{ item.url }}">
+          {{ item.name|default:""|truncatewords:8 }} <span class="is-light">{% if item.country %}[{{ item.country }}]{% endif %}</span>
+        </a>
+      </h2>
+    </header>
+    <main class="tech-item-description">
+      {% trans "No description available." as no_description %}
+      <p>{{ item.definition|truncatewords:50|default:no_description }}</p>
+      <ul class="tech-infos is-light is-muted">
+        <li>{% if item.compilers|length > 1 %}{% trans "Compilers:" %}{% else %}{% trans "Compiler:" %}{% endif %} {% for compiler in item.compilers %}{{ compiler.name }}{% if not forloop.last %}, {% endif %}{% empty %}&ndash;{% endfor %}</li>
+        <li><time datetime="{{ item.created|date:"c" }}" pubdate="pubdate">{{ item.created|date:"SHORT_DATETIME_FORMAT"|default:"&ndash;" }}</time></li>
+      </ul>
+    </main>
+    <footer class="tech-item-footer">
+
+      {# New configuration edition #}
+      {% if item.status.0 and item.status.0 == 'public' and item.has_new_configuration_edition and request.user|is_in_compilers_list:item.compilers %}
+        <ul class="left sub-nav-square">
+          <li>
+            <a href="{% url 'configuration:release_notes' %}" class="is-alert" title="{% trans "New edition of the questionnaire is available. Please edit your data to create an updated version." %}" data-tooltip="">
+              <svg class="icon-lines is-inline"><use xlink:href="#icon-alert"></use></svg>
+            </a>
+          </li>
+        </ul>
+      {% endif %}
+
+      {# Translations #}
+      {% if item.translations %}
+        <ul class="left tech-lang-list sub-nav-square">
+          {% for translation in item.translations %}
+            <li>
+              {% language translation.0 %}
+                <a href="{{ item.url }}" class="is-{{ configuration_name }}" title="{% trans "This SLM practice is also available in:" %} {% trans translation.1 %}" data-tooltip="">{{ translation.0 }}</a>
+              {% endlanguage %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      {# Links and modules #}
+      {% if item.links %}
+        <ul class="right tech-attached sub-nav-square">
+          {% for link_configuration, links in item.links.items %}
+            <li>
+              {% if link_configuration == 'approaches' %}
+                <a href="{{ item.url }}#links" class="is-approach" title="{% trans "This case is linked to SLM Approaches" %}" data-tooltip=""><svg class="icon"><use xlink:href="#icon-approach"></use></svg>
+                  {% if links|length > 1 %}
+                    <span class="number">{{ links|length }}</span>
+                  {% endif %}
+                </a>
+              {% elif link_configuration == 'technologies' %}
+                <a href="{{ item.url }}#links" class="is-tech" title="{% trans "This case is linked to SLM Technologies" %}" data-tooltip=""><svg class="icon"><use xlink:href="#icon-technology"></use></svg>
+                  {% if links|length > 1 %}
+                    <span class="number">{{ links|length }}</span>
+                  {% endif %}
+                </a>
+              {% elif link_configuration == 'cca' %}
+                <a href="{{ item.url }}#modules" class="is-cca" title="{% trans "This case has a CCA module" %}" data-tooltip=""><svg class="icon"><use xlink:href="#icon-climate"></use></svg>
+                  {% if links|length > 1 %}
+                    <span class="number">{{ links|length }}</span>
+                  {% endif %}
+                </a>
+              {% elif link_configuration == 'cbp' %}
+                <a href="{{ item.url }}#modules" class="is-cbp" title="{% trans "This case has a CBP module" %}" data-tooltip=""><svg class="icon"><use xlink:href="#icon-cbp"></use></svg>
+                  {% if links|length > 1 %}
+                    <span class="number">{{ links|length }}</span>
+                  {% endif %}
+                </a>
+              {% elif link_configuration == 'samplemulti' %}
+                <a href="{{ item.url }}" class="is-samplemulti" title="{% trans "This case is linked to SLM Approaches" %}" data-tooltip=""><svg class="icon"><use xlink:href="#icon-approach"></use></svg>
+                {% if item.links|length > 1 %}
+                  <span class="number">{{ item.links|length }}</span>
+                {% endif %}
+                </a>
+              {% elif link_configuration == 'sample' %}
+                <a href="{{ item.url }}" class="is-sample" title="{% trans "This case is linked to SLM Approaches" %}" data-tooltip=""><svg class="icon"><use xlink:href="#icon-approach"></use></svg>
+                  {% if item.links|length > 1 %}
+                    <span class="number">{{ item.links|length }}</span>
+                  {% endif %}
+                </a>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+    </footer>
+  </div>
+</article>

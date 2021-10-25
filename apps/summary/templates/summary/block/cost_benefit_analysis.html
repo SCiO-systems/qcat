@@ -1,0 +1,22 @@
+<div class="row compact">
+  <div class="small-12 columns">
+    {% include 'summary/partial/title_bar.html' with title=title %}
+  </div>
+</div>
+<div class="row">
+  <div class="small-12 columns">
+    <h5>{{ content.establishment.title }}</h5>
+    {% include 'summary/partial/range_inline_comment.html' with class="highlights_list" list_items=content.establishment.items %}
+  </div>
+</div>
+<div class="row">
+  <div class="small-12 columns">
+    <h5>{{ content.maintenance.title }}</h5>
+    {% include 'summary/partial/range_inline_comment.html' with class="highlights_list" list_items=content.maintenance.items %}
+  </div>
+</div>
+<div class="row">
+  <div class="small-12 columns adaptation-comments">
+    {{ content.comment }}
+  </div>
+</div>

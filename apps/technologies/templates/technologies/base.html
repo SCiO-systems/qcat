@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "WOCAT SLM Technologies" %}{% endblock %}
+
+{% block bodyclass %}layout-tech is-technologies{% endblock %}
+{% block navclass %}is-technologies{% endblock %}
+
+{% block header %}
+  {% include "wocat/partial/top.html" with current='technologies' %}
+{% endblock %}
+
+{% block bottom %}
+{% endblock %}

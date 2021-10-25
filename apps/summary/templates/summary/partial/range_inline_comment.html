@@ -1,0 +1,26 @@
+{% for range_item in list_items %}
+  <div class="row range">
+    <div class="small-3 columns">
+      {{ range_item.label }}
+    </div>
+    <div class="small-4 columns no-wrap-container">
+      <div>
+        <div class="range_title range_min">
+          {{ range_item.min }}
+        </div>
+      </div>
+      <div>
+        {% for i in range_item.range %}
+          <div class="{% if i == range_item.selected %}range_true {% endif %}range_square range_scale scale-{% widthratio i range_item.range|length|add:-1 100 %}"></div>
+        {% endfor %}
+      </div>
+        <div class="range_title range_max">
+          {{ range_item.max }}
+        </div>
+    </div>
+    <div class="small-5 columns">
+      <p>{{ range_item.comment|linebreaksbr }}</p>
+    </div>
+  </div>
+{% endfor %}
+<hr>

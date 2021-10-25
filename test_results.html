@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Test Results</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+  <style>
+    #overview {
+      word-wrap: break-word;
+      white-space: pre-wrap;
+      margin-bottom: 2rem;
+    }
+
+    .message {
+    }
+
+    .message:not(:last-child) {
+      margin-bottom: 0.25rem;
+    }
+
+    .error-header {
+      font-family: monospace;
+    }
+
+    .error-header p {
+      margin-left: 2.5rem;
+    }
+
+    .message a:not(.button):not(.tag).error-header-toggle {
+      text-decoration: none;
+      position: absolute;
+    }
+
+    #tests-running, #test-results, #error, #help {
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<body>
+<section class="section">
+  <div class="container">
+    <div class="level">
+      <div class="level-left">
+        <h1 class="title">Test Results</h1>
+      </div>
+      <div class="level-right">
+        <a class="button toggle-help">?</a>
+      </div>
+    </div>
+
+    <article class="message is-info" id="help" style="display: none;">
+      <div class="message-header">
+        <p>How to use</p>
+      </div>
+      <div class="message-body">
+        <p>Redirect output of the tests to a file <code>text_output.txt</code> in the same directory as this HTML file.</p><br>
+        <pre>python manage.py test &> test_output.txt</pre>
+      </div>
+    </article>
+
+    <pre id="overview"></pre>
+
+    <article class="message is-warning" id="tests-running" style="display: none;">
+      <div class="message-body">
+        Tests are probably still running ... Page is refreshed automatically.
+      </div>
+    </article>
+
+    <div id="test-results"></div>
+
+    <article class="message is-danger" id="error" style="display: none;">
+      <div class="message-header">
+        <p>Error</p>
+      </div>
+      <div class="message-body">
+        Error loading the file. Does it exist? For help, click "?" above.
+      </div>
+    </article>
+  </div>
+</section>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    // https://stackoverflow.com/a/13538245/841644
+    String.prototype.escapeHtml = function() {
+        var tagsToReplace = {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;'
+        };
+        return this.replace(/[&<>]/g, function(tag) {
+            return tagsToReplace[tag] || tag;
+        });
+    };
+
+    var dataSplit = [];
+    var doReload = true;
+
+    var testResults = $.get('test_output.txt', function(data) {
+        dataSplit = data.split(/={4,}/);
+
+        $('#overview').html(dataSplit[0]);
+
+        if (dataSplit.length === 1) {
+            $('#tests-running').show();
+            doReload = true;
+        } else {
+            doReload = false;
+        }
+
+        dataSplit.map(function(d, i) {
+            if (i === 0) {
+                // Overview
+                var parts = d.split(/-{4,}/);
+                var regex = new RegExp("^[.\.S]+$").test($.trim(parts[0]));
+                if (parts.length === 2 && regex) {
+                    $('#tests-running').hide();
+                    doReload = false;
+                }
+            } else {
+                var dParts = d.split(/-{4,}/);
+                $('#test-results').append(
+                    '<article class="message">' +
+                      '<div class="message-header error-header">' +
+                        '<a class="error-header-toggle">[+]</a> <p>' + dParts[0].escapeHtml() + '</p>' +
+                        '<button class="delete" aria-label="delete"></button>' +
+                      '</div>' +
+                      '<div class="message-body" style="display: none;"><pre>' +
+                        $.trim(dParts[1]).escapeHtml() +
+                      '</pre></div>' +
+                    '</article>');
+            }
+
+            if (i === dataSplit.length - 1 && dataSplit.length > 1) {
+                $('#overview').append(dParts[2]);
+            }
+        });
+    }).fail(function() {
+        $('#overview').hide();
+        $('#error').show();
+        doReload = false;
+    });
+
+    $('body')
+        .on('click', '.error-header-toggle', function() {
+            var messageBody = $(this).closest('.message-header').next('.message-body');
+            if (messageBody.is(":visible")) {
+                $(this).html('[+]');
+            } else {
+                $(this).html('[-]');
+            }
+            messageBody.toggle();
+        })
+        .on('click', '.delete', function() {
+            $(this).closest('article').remove();
+        })
+        .on('click', '.toggle-help', function() {
+            $('#help').toggle();
+        });
+
+    setTimeout(function() {
+        if (doReload) {
+            location.reload(true);
+        }
+    }, 2000);
+</script>
+</body>
+</html>

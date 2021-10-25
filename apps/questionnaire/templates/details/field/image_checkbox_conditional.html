@@ -1,0 +1,12 @@
+{% load static %}
+{% if values|length > 0 %}
+  {% if label_position != 'none' %}
+    ({{ key }}:
+  {% endif %}
+  {% for value in values %}
+    <img src="{% static value.1 %}" alt="{{ value.0 }}" onload="this.width/=2;this.onload=null;" >
+    {% if value.2 %}
+      {{ value.2 }}
+    {% endif %}
+  {% endfor %})
+{% endif %}

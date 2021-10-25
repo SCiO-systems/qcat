@@ -1,0 +1,76 @@
+.card {
+  background-color: white;
+  display:flex;
+  flex-direction:column;
+}
+
+.home-main .card {
+  background-color: #f5f4ef;
+  height: 100%;
+}
+
+.card-image-holder {
+  position:relative;
+}
+
+.card-image {
+  width:100%;
+}
+
+.card-image-overlay-container {
+  position:absolute;
+  width:auto;
+  height:auto;
+  left:0;
+  bottom:0;
+}
+
+.card-image-overlay {
+  float:left;
+  width: rem-calc(72);
+  height: rem-calc(72);
+  padding: rem-calc(12);
+  color: white;
+  background-color: rgba($color-brown, 0.8);
+  &.is-tech {
+    background-color: rgba($color-tech, 0.8);
+  }
+  &.is-approach {
+    background-color: rgba($color-approach, 0.8);
+  }
+  &.is-map {
+    background-color: rgba($color-map, 0.8);
+  }
+  &.is-watershed {
+    background-color: rgba($color-watershed, 0.8);
+  }
+  &.is-cbp {
+    background-color: rgba($color-cbp, 0.8);
+  }
+  &.is-climate {
+    background-color: rgba($color-cca, 0.8);
+  }
+  & > .icon {
+    width: rem-calc(48);
+    height: rem-calc(48);
+  }
+}
+
+.card-well {
+  padding:rem-calc(24);
+}
+
+.card-title {}
+
+.card-desc {}
+
+  .is-flex {
+    display:flex;
+    flex-direction:row;
+    align-items:stretch;
+    flex-wrap:wrap;
+  }
+
+.card-row>div {
+  padding-top: rem-calc(24);
+}

@@ -1,0 +1,47 @@
+{% load i18n %}
+
+{% comment %}
+  filter_configuration
+  active_advanced_filters
+  active_filters
+  request
+{% endcomment %}
+
+<div class="top-bar-search">
+
+  {% include 'wocat/questionnaire/partial/basic_filter_fields.html' with is_type_disabled=True %}
+
+  <div id="js-selected-advanced-filters" class="selected-advanced-filters {% if active_advanced_filters %}hide{% endif %}">
+    {% for filter in active_advanced_filters %}
+      {% include 'search/partial/filter_key.html' with filter_select=advanced_filter_select initial_filter=filter %}
+    {% empty %}
+      {% include 'search/partial/filter_key.html' with filter_select=advanced_filter_select %}
+    {% endfor %}
+
+    <div class="row large-no-gutters is-rhythmed">
+      <div class="medium-12 columns">
+        <a href="#" class="button secondary" id="filter-add-new" data-value-url="{% url 'search:filter_value' %}"><svg class="icon-lines is-inline"><use xlink:href="#icon-plus"></use></svg> {% trans "Add Filter" %}</a>
+      </div>
+    </div>
+
+    <div class="hide" id="filter-additional-template">
+      {% include 'search/partial/filter_key.html' with filter_select=advanced_filter_select %}
+    </div>
+  </div>
+
+  <div class="row large-no-gutters is-rhythmed" id="js-advanced-filter-submit-button">
+    <div class="medium-10 columns">
+      <div class="search-option">
+        <a href="#" class="link js-toggle-advanced-filters" data-toggle="js-selected-advanced-filters">{% trans "Add or edit filters" %}</a>
+      </div>
+    </div>
+    <div class="medium-2 columns text-right">
+      <input type="submit" class="search-submit button" value="{% trans "Search" %}">
+    </div>
+  </div>
+
+</div>
+<div id="active-filters" class="search-filters">
+  {% include "active_filters.html" %}
+</div>
+<div class="loading-indicator hide"><div class="spinner"></div></div>

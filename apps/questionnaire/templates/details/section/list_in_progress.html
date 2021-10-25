@@ -1,0 +1,10 @@
+{% load i18n %}
+
+{% if questionnaires_in_progress.exists  %}
+  <p>{% trans "Please make sure that it's not a duplicate of another questionnaire that you are currently working on:" %}</p>
+  <ul>
+  {% for questionnaire in questionnaires_in_progress %}
+    <li><a href="{{ questionnaire.get_absolute_url }}">{{ questionnaire.code }}</a></li>
+  {% endfor %}
+  </ul>
+{% endif %}

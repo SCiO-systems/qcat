@@ -1,0 +1,21 @@
+{% load static %}
+{% load i18n %}
+
+{% comment %}
+  Partially rendering the radio selection of this module.
+{% endcomment %}
+
+<div class="module-gallery-item">
+  <label class="module-gallery-label">
+    <svg class="icon-lines module-gallery-icon{% if existing %} is-unavailable{% endif %}"><use xlink:href="#icon-cbp"></use></svg>
+    {% if existing %}
+      <svg class="icon-lines module-gallery-unavailable" data-tooltip="" title="{% trans 'This module exists already.' %}"><use xlink:href="#icon-information"></use></svg>
+    {% else %}
+      <input type="radio" id="module_cbp" name="module" value="cbp">
+    {% endif %}
+  </label>
+  <div class="module-gallery-description">
+    <span class="module-gallery-title">{% trans "Carbon Benefits Project (CBP) Summary Module" %}</span>
+    <p>{% trans "Summary PDF from the Carbon Benefits Project (CBP) Assessment" %}</p>
+  </div>
+</div>

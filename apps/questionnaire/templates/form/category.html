@@ -1,0 +1,273 @@
+{% extends 'form/base.html' %}
+
+{% comment %}
+
+  config: {  # The configuration of the category
+    has_changes: True/False
+    helptext: text or None
+    label: text
+    numbering: text or none
+  }
+
+  configuration_name: string,
+
+  content_subcategories_count: int
+
+  edit_mode: 'edit' # or 'view'
+
+  overview_url: string (link to go back to overview)
+
+  subcategories: [  # Passed to the template of the subcategory
+    (
+      {}, # configuration dictionary, namely containing the template name of the subcategory form, passed on as "config" to the next template
+      []  list of subcategory formsets
+    ),
+    ...
+  ]
+
+  title: text
+
+  valid: bool
+
+  view_url: string (link to view the old version if there is one)
+
+{% endcomment %}
+
+{% load i18n %}
+{% load floppyforms %}
+{% load static %}
+{% load sekizai_tags %}
+{% load compress %}
+{% load change_language %}
+
+
+{% block content %}
+  <form id="wizard-form" class="wizard" action="" method="POST">
+    {% csrf_token %}
+
+    <header class="wizard-header-outer" role="banner">
+      <div class="wizard-header">
+        <div class="row" data-equalizer>
+          <div class="columns small-12 medium-6" data-equalizer-watch>
+            {% if edit_mode == 'edit' %}
+              <a class="wizard-header-back" href="{{ overview_url }}">{% trans "Go Back without saving" %}</a>
+            {% elif edit_mode == 'view' %}
+              <a class="wizard-header-back">&nbsp;</a>
+            {% endif %}
+            <h2 class="wizard-header-title">{{ config.numbering|default:'' }} {{ config.label }} <i>(<span class="progress-completed">0</span> / <span class="progress-total">{{ content_subcategories_count }}</span>)</i></h2>
+            <div class="progress">
+              <span class="meter" style="width:0%"></span>
+            </div>
+          </div>
+          {% if edit_mode == 'edit' %}
+            <div class="columns small-12 medium-3 panel" data-equalizer-watch>
+              <a id="button-submit" class="button nobr expand is-{{ configuration_name }}" onclick="submitWizardForm();">
+                <svg class="icon-lines is-small"><use xlink:href="#icon-chevron-thin-left"></use></svg>
+                {% trans "Save and back" %}
+              </a>
+            </div>
+            <div class="columns small-12 medium-3 panel" data-equalizer-watch>
+              <a class="button nbr expand is-{{ configuration_name }} button-submit-goto-next-section">
+                {% trans "Save and next" %}
+                <svg class="icon-lines is-small"><use xlink:href="#icon-chevron-thin-right"></use></svg>
+              </a>
+              <input type="hidden" name="goto-next-section" id="goto-next-section" value="false">
+            </div>
+          {% elif edit_mode == 'view' %}
+            <div class="columns small-12 medium-4">
+              <a id="" class="button expand is-{{ configuration_name }}" onclick="window.close()"><strong>{% trans "Close" %}</strong></a>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% include 'details/sticky_menu.html' with toc_content=toc_content view_mode='edit' %}
+    </header>
+
+    <main class="main inner-wrap">
+
+      {% if not valid %}
+        <div data-alert class="alert-box alert row">
+          <p>{% trans "There was a problem with your submission. Errors have been highlighted below." %}</p>
+        </div>
+      {% endif %}
+      {% if config.has_changes %}
+        <div class="alert-box text-center row">
+          <p>{% trans "There is an old version with changes in this section." %} <a href="{{ view_url }}" target="_blank">{% trans "View old version" %}</a></p>
+        </div>
+      {% endif %}
+
+      <div class="row">
+        {% include "form/helptext.html" with helptext=config.helptext helptext_length=config.helptext_length %}
+      </div>
+
+      {% for subcategory_config, subcategory_formsets in subcategories %}
+        <a name="question{{ forloop.counter }}" data-magellan-destination="question{{ forloop.counter }}" class="{% if forloop.counter == 1 %}active{% endif %}"></a>
+        {% form form using subcategory_config.form_template with config=subcategory_config formsets=subcategory_formsets %}
+      {% endfor %}
+
+      {% if edit_mode == 'edit' %}
+        <div class="submit-buttons-bottom row">
+          <a id="button-submit" class="button is-{{ configuration_name }}" onclick="submitWizardForm();">
+            <svg class="icon-lines is-small"><use xlink:href="#icon-chevron-thin-left"></use></svg>
+            {% trans "Save and go to overview" %}
+          </a>
+          <a class="button nbr is-{{ configuration_name }} button-submit-goto-next-section">
+            {% trans "Save and go to next section" %}
+            <svg class="icon-lines is-small"><use xlink:href="#icon-chevron-thin-right"></use></svg>
+            </a>
+        </div>
+      {% endif %}
+    </main>
+  </form>
+
+  {# Show a warning if a new translation is about to be added. #}
+  {% if show_translation_warning %}
+    <div id="modal-translation-warning" class="reveal-modal" data-reveal aria-hidden="true" role="dialog">
+      <h3 class="alert-box-title">
+        <svg class="icon-lines is-inline"><use xlink:href="#icon-alert"></use></svg>{% trans "You are about to add a new translation." %}
+      </h3>
+      <p>{% trans "This questionnaire is not yet translated to" context "This questionnaire is not yet translated to [language]" %} {{ LANGUAGE_CODE|get_full_language_name }}.</p>
+      <p>{% trans "If you continue to edit this questionnaire, a new translation will be added. The content of the original language will be copied once into the text fields, allowing you to translate the content. From there on, text changes have to be done in all language versions. The checkboxes are linked across all translations, meaning they always change in all language versions." %}</p>
+      <p>{% trans "If you do not want to create a new translation, please go back and select a language in which this questionnaire is already translated." %}</p>
+      <div class="clearfix">
+        <br>
+        <a class="button left" id="modal-translation-warning-back" href="{{ overview_url }}">{% trans "Go back" %}</a>
+        <a class="close-modal-translation-warning button right">{% trans "Add a new translation" %}</a>
+      </div>
+    </div>
+    <div id="modal-translation-confirm-create" class="reveal-modal" data-reveal aria-hidden="true" role="dialog">
+      <h3 class="alert-box-title">
+        <svg class="icon-lines is-inline"><use xlink:href="#icon-alert"></use></svg>{% trans "You are about to add a new translation." %}
+      </h3>
+      <p>{% trans "Do you really want to create a new translation of this questionnaire in" context "Do you really want to create a new translation of this questionnaire in " %} {{ LANGUAGE_CODE|get_full_language_name }}?</p>
+      <div class="clearfix">
+        <br>
+        <a class="button left" id="modal-translation-confirm-create-back" href="{{ overview_url }}">{% trans "Cancel" %}</a>
+        <a class="close-modal-translation-confirm-create button right" onclick="submitWizardForm();">{% trans "Create a new translation" %}</a>
+      </div>
+    </div>
+    {% addtoblock 'js' %}
+      <script>
+          $(document).ready(function(){$('#modal-translation-warning').foundation('reveal', 'open', {
+              close_on_background_click: false
+          })});
+          $('a.close-modal-translation-warning').on('click', function() {$('#modal-translation-warning').foundation('reveal', 'close')});
+      </script>
+    {% endaddtoblock %}
+  {% endif %}
+{% endblock %}
+
+{% block bottom %}
+  <script src="{% static 'js/dropzone.min.js' %}"></script>
+  <link href="{% static 'css/chosen.min.css' %}" rel="stylesheet">
+  <script type="text/javascript">
+    Dropzone.autoDiscover = false;
+
+    // If a warning about adding a new translation is shown, prevent the first
+    // submit. Instead, show another warning.
+    var preventFirstSubmission = {{ show_translation_warning|yesno:"true,false" }};
+
+    function submitWizardForm() {
+      if (preventFirstSubmission) {
+        // Show another warning about adding a new translation.
+        $('#modal-translation-confirm-create').foundation('reveal', 'open', {
+          close_on_background_click: false
+        });
+
+        // Do not show the warning again next time.
+        preventFirstSubmission = false;
+
+        // Return early.
+        return;
+      }
+      
+      // Enable all disabled form elements before submitting.
+      var form = document.getElementById('wizard-form');
+      var elements = form.elements;
+      for (var i = 0, len = elements.length; i < len; ++i) {
+          elements[i].disabled = false;
+      }
+      form.submit();
+    }
+
+    // Helper for 'save and to next section
+    (function($) {
+      $('.button-submit-goto-next-section').click(function() {
+        $('#goto-next-section').val('true');
+        submitWizardForm();
+      });
+
+      // lock questionnaire while window is open
+      {% if view.object %}
+        setInterval(function(){
+          $.ajax({
+            url: '{% url 'lock_questionnaire' view.object.code %}',
+            type: 'POST',
+            beforeSend: function (xhr, settings) {
+              xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
+            }
+          });
+        }, {{ lock_interval }});
+      {% endif %}
+
+    })(jQuery);
+  </script>
+  {% compress js %}
+    <script src="{% static 'js/focusPoint.js' %}"></script>
+  {% endcompress %}
+{% endblock %}
+
+{% block help_tour %}
+  {% addtoblock 'css' %}
+    <link rel="stylesheet" href="{% static 'css/introjs.min.css' %}" />
+  {% endaddtoblock %}
+  <script src="{% static 'js/intro.min.js' %}"></script>
+  <script>
+    function startIntro() {
+      introJs().setOptions({
+          skipLabel: '{% trans "Close"|escapejs %}',
+          nextLabel: '{% trans 'Next'|escapejs %}' + ' &#8594;',
+          prevLabel: '{% trans 'Back'|escapejs %}' + ' &#8592;',
+          doneLabel: '{% trans 'Done'|escapejs %}',
+          showStepNumbers: false,
+          highlightClass: 'intro-dark-background',
+          steps: [
+            {
+              intro: '{% trans '<p>Welcome to the help section of the form!</p><p>Click "Next" to take a tour explaining the functions on this page.</p>'|escapejs %}',
+              element: document.querySelector('#show_help')
+            },
+            {
+              intro: '{% trans "<p>The bar indicates the name of the section you are currently editing.</p>"|escapejs %}',
+              element: document.querySelector('h2.wizard-header-title')
+            },
+            {
+              intro: '{% trans '<p>Click "Save and back" to save your changes and go back to the overview to view them in the output.</p>'|escapejs %}',
+              element: document.querySelector('a#button-submit')
+            },
+            {
+              intro: '{% trans '<p>Click "Save and next" to save the current section and directly continue to the next section.</p>'|escapejs %}',
+              element: document.querySelector('a.button-submit-goto-next-section')
+            },
+            {
+              intro: '{% trans '<p>Both options "save and back to overview" and "save and next section" are also available on the bottom of the page.</p>'|escapejs %}',
+{#              element: document.querySelector('div.submit-buttons-bottom'),  - doesn't seem to work #}
+              position: 'top'
+            },
+            {
+              intro: '{% trans "<p>Use this link if you want to go back to the output without saving any changes.</p>"|escapejs %}',
+              element: document.querySelector('a.wizard-header-back')
+            },
+            {
+              intro: '{% trans "<p>The progress bar indicates how many questions are already filled out.</p>"|escapejs %}',
+              element: document.querySelector('div.progress')
+            }
+          ]
+        }).start();
+      window.scrollTo(0,0);
+      return false;
+    }
+    $(function() {
+      $('.main').css({'padding-top': $('.wizard-header-outer').height()});
+    });
+  </script>
+{% endblock %}

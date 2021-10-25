@@ -1,0 +1,13 @@
+// IE specific hacks
+
+html.ie {
+    main {
+        display: block;
+    }
+
+    .card {
+        // No display: flex supported
+        display: block;
+        height: auto;
+    }
+}

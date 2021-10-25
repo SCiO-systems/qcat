@@ -1,0 +1,53 @@
+---
+section: home
+---
+
+{{!-- Header --}}
+<header class="page-header inner-wrap" role="banner">
+  {{> header_home}}
+
+  <section class="hero-home">
+    <div class="row">
+      <div class="small-10 small-centered medium-8 columns">
+        <h1>SLM Practices knowledge database</h1>
+        <p><strong>Sustainable Land Management</strong> is simply about people <br> looking after land - for the present and for the future.</p>
+      </div>
+    </div>
+  </section>
+</header>
+
+{{!-- Search --}}
+<section class="home-search">
+  <div class="row">
+    <div class="small-10 small-centered medium-6 columns">
+      <form action="" role="search">
+        <div class="search-input radius">
+          <input type="search" placeholder="Search pratice: e.g Soil degradation...">
+          <div class="search-btn postfix light">
+            <a href="#">
+              <svg class="icon"><use xlink:href="#icon-search"></use></svg>
+            </a>
+          </div>
+        </div>
+        <div class="search-option text-center">
+          <a href="#" data-toggle="search-advanced">Advanced filter</a> | <a href="practices.html">Show all practices</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+{{!-- Body --}}
+<main class="row" role="main">
+  <div class="hero-big medium-6 large-4 large-offset-1 columns">
+    <h2 class="is-wocat">WOCAT</h2>
+    <p>WOCAT (World Overview of Conservation Approaches and Technologies) is an established global network of Soil and Water Conservation (SWC) specialists, dedicated to sustainable land management (SLM).</p>
+    <a href="wocat.html" class="button is-wocat">WOCAT SLM Practices</a>
+  </div>
+
+  <div class="hero-big medium-6 large-4 large-offset-2 columns end">
+    <h2 class="is-unccd">UNCCD</h2>
+    <p>Desertification, along with climate change and the loss of biodiversity, were identified as the greatest challenges to sustainable development during the 1992 Rio Earth Summit. </p>
+    <a href="unccd.html" class="button is-unccd">UNCCD SLM Practices</a>
+  </div>
+</main>

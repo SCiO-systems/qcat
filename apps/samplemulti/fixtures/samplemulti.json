@@ -1,0 +1,214 @@
+[
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "samplemulti": {
+          "label": {
+            "en": "MKey 1",
+            "es": "MClave 1"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 13001
+  },
+  {
+    "fields": {
+      "translation_type": "category",
+      "data": {
+        "samplemulti": {
+          "label": {
+            "en": "MSubcategory 1_1",
+            "es": "MSubcategoría 1_1"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 14701
+  },
+  {
+    "fields": {
+      "translation_type": "category",
+      "data": {
+        "samplemulti": {
+          "label": {
+            "en": "MSubcategory 1_2 (links)",
+            "es": "MSubcategoría 1_2 (links)"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 14702
+  },
+  {
+    "fields": {
+      "translation_type": "category",
+      "data": {
+        "samplemulti": {
+          "label": {
+            "en": "MCategory 1",
+            "es": "MCategoría 1"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 14901
+  },
+  {
+    "fields": {
+      "translation_type": "category",
+      "data": {
+        "samplemulti": {
+          "label": {
+            "en": "MSection 1",
+            "es": "MSection 1"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 14991
+  },
+  {
+    "fields": {
+      "keyword": "mkey_01",
+      "translation": 13001,
+      "configuration": {
+        "type": "char"
+      }
+    },
+    "model": "configuration.key",
+    "pk": 12001
+  },
+  {
+    "fields": {
+      "keyword": "mqg_01",
+      "translation": null,
+      "configuration": {}
+    },
+    "model": "configuration.questiongroup",
+    "pk": 12001
+  },
+  {
+    "fields": {
+      "keyword": "mqg_02__sample",
+      "translation": null,
+      "configuration": {}
+    },
+    "model": "configuration.questiongroup",
+    "pk": 12002
+  },
+  {
+    "fields": {
+      "keyword": "msubcat_1_1",
+      "translation": 14701
+    },
+    "model": "configuration.category",
+    "pk": 12001
+  },
+  {
+    "fields": {
+      "keyword": "msubcat_1_2",
+      "translation": 14702
+    },
+    "model": "configuration.category",
+    "pk": 12002
+  },
+  {
+    "fields": {
+      "keyword": "mcat_1",
+      "translation": 14901
+    },
+    "model": "configuration.category",
+    "pk": 12701
+  },
+  {
+    "fields": {
+      "keyword": "msection_1",
+      "translation": 14991
+    },
+    "model": "configuration.category",
+    "pk": 12791
+  },
+  {
+    "pk": 12001,
+    "fields": {
+      "code": "samplemulti",
+      "edition": "2015",
+      "data": {
+        "sections": [
+          {
+            "keyword": "msection_1",
+            "categories": [
+              {
+                "keyword": "mcat_1",
+                "view_options": {
+                  "template": "with_metadata",
+                  "with_metadata": true
+                },
+                "subcategories": [
+                  {
+                    "keyword": "msubcat_1_1",
+                    "questiongroups": [
+                      {
+                        "keyword": "mqg_01",
+                        "questions": [
+                          {
+                            "keyword": "mkey_01",
+                            "view_options": {
+                              "in_list": true,
+                              "is_name": true
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "keyword": "qg_location",
+                        "questions": [
+                          {
+                            "keyword": "country"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "keyword": "msubcat_1_2",
+                    "form_options": {
+                      "has_links": true
+                    },
+                    "questiongroups": [
+                      {
+                        "keyword": "mqg_02__sample",
+                        "form_options": {
+                          "template": "select_link",
+                          "link": "sample",
+                          "max_num": 3
+                        },
+                        "view_options": {
+                          "template": "links"
+                        },
+                        "questions": [
+                          {
+                            "keyword": "link_id"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "created": "2015-01-09T10:12:59.337Z"
+    },
+    "model": "configuration.configuration"
+  }
+]

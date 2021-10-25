@@ -1,0 +1,14 @@
+{% load i18n %}
+{% load list_to_columns %}
+{% load questionnaire_tags %}
+
+
+{% if links|length > 0 %}
+  <em>{% trans "Linked Questionnaires:" %}
+    {% for link in links %}
+      {% with link|get_by_keyword:request.LANGUAGE_CODE as item %}
+        {% if item %}{% link_display item.configuration item.name item.code %}{% endif %}
+      {% endwith %}
+    {% endfor %}
+  </em><br>
+{% endif %}

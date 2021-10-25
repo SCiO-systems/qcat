@@ -1,0 +1,16 @@
+{% load i18n %}
+{% load sekizai_tags %}
+{% load static %}
+{% load compress %}
+
+{% addtoblock 'css' %}
+  {% compress css %}
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}" />
+  {% endcompress %}
+{% endaddtoblock %}
+
+{% addtoblock 'js' %}
+  <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+{% endaddtoblock %}
+
+<input type="text" name="{{ name }}" class="date-input" data-date-format="{{ date_format }}" {% if value %} value="{{ value }}"{% endif %}{% include "floppyforms/attrs.html" %}{% if options.label != 'placeholder' %} placeholder="{% trans 'Pick a date' %}"{% endif %}>

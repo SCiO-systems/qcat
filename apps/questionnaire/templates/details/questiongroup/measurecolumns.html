@@ -1,0 +1,26 @@
+{% if config.numbered %}<div class="questiongroup-numbered-{{ config.numbered }}">{% endif %}
+  {% for questiongroup in questiongroups %}
+    <div class="row tech-output-columns">
+      {% if config.numbered == 'prefix' %}
+          <div class="questiongroup-numbered-left">
+            <p class="questiongroup-numbered-number"></p>
+          </div>
+        <div class="questiongroup-numbered-right">
+      {% endif %}
+      {% for question in questiongroup %}
+        <div class="columns medium-6">
+          {% if forloop.counter == 1 %}
+            <ul class="chart-horizontal-bars">
+              {{ question }}
+            </ul>
+          {% else %}
+            {{ question }}
+          {% endif %}
+        </div>
+      {% endfor %}
+      {% if config.numbered == 'prefix' %}
+          </div>
+      {% endif %}
+    </div>
+  {% endfor %}
+{% if config.numbered %}</div>{% endif %}

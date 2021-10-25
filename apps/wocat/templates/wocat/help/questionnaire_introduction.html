@@ -1,0 +1,108 @@
+{% extends 'wocat/base.html' %}
+
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans "Introduction to the questionnaire" %}{% endblock %}
+
+{% block content %}
+
+  <main class="row" role="main">
+    <section class="small-12 columns">
+
+      <h1 class="help-title">
+        {% trans "About the WOCAT documentation of SLM practices" %}
+      </h1>
+
+      <h2 class="is-group">
+        {% trans "Welcome to WOCAT!" %}
+      </h2>
+
+      <p class="is-rhythmed-2">
+        {% trans "WOCAT provides standardized, user-driven, open-access, globally-used tools and methods for the documentation and assessment of sustainable land management (SLM) practices. <strong>SLM</strong> in the context of WOCAT is defined as the sustainable use of land resources – including soils, water, vegetation, and animals. WOCAT focuses on efforts to prevent and reduce land degradation and restore degraded land through improved <strong>land management technologies</strong> and <strong>approaches to implement these</strong>. All practices may be considered, whether they are indigenous, newly introduced through projects, or recent innovations by land users. All information documented through WOCAT questionnaires is made available in the Global SLM Database and can be used to disseminate SLM knowledge and improve decision-making for further implementation and spreading of SLM practices." %}
+      </p>
+
+      <h2 class="is-group">
+        {% trans "Process of documentation and review of WOCAT data" %}
+      </h2>
+
+      <p class="is-rhythmed-2">
+        {% trans "Are you going to document an SLM Technology or an SLM Approach – or both? And what is the difference between the two?" %}
+      </p>
+
+      <div class="row help-definitions" data-equalizer>
+        <div class="columns small-6">
+          <div class="card">
+            <div class="card-well" data-equalizer-watch>
+              <p>
+                {% trans "An <strong>SLM Technology</strong> is a physical practice in the field that controls land degradation and/ or enhances productivity. A Technology consists of one or several measures, such as agronomic, vegetative, structural, and management measures." %}
+              </p>
+              <p>
+                {% trans "Example:" %} <a href="https://qcat.wocat.net/en/wocat/technologies/view/technologies_3359/" class="link">https://qcat.wocat.net/en/wocat/technologies/view/technologies_3359/</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="columns small-6">
+          <div class="card">
+            <div class="card-well" data-equalizer-watch>
+              <p>
+                {% trans "An <strong>SLM Approach</strong> defines the ways and means used to implement one or several SLM Technologies. It includes technical and material support, involvement and roles of different stakeholders, etc. An Approach can refer to a project/ programme or to activities initiated by land users themselves." %}
+              </p>
+              <p>
+                {% trans "Example:" %} <a href="https://qcat.wocat.net/en/wocat/approaches/view/approaches_3173/" class="link">https://qcat.wocat.net/en/wocat/approaches/view/approaches_3173/</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="is-rhythmed-2">
+        {% trans "The two questionnaires together provide the full picture of an SLM practice. Ideally, you first fill in the questionnaires on SLM Technologies followed by the questionnaire on SLM Approaches. An Approach should always be linked to one or several Technologies. Optional thematic modules provide in-depth information on specific topics (such as <strong>Climate Change Adaptation, Carbon Benefits / Climate Change Mitigation, Watershed and Runoff, and Mapping Land Degradation and Conservation</strong>)." %}
+        <a href="https://qcat.wocat.net" class="link">{% trans "See" context "See [link]" %} qcat.wocat.net</a>
+      </p>
+
+      <h2 class="is-group">
+        {% trans "How to document and review WOCAT data" %}
+      </h2>
+
+      <div class="is-rhythmed-2">
+        <ol>
+          <li>{% trans 'Familiarize yourself with the paper questionnaire (download it at <a href="https://www.wocat.net/en/global-slm-database/slm-practices-technologies-and-approaches" class="link" target="_blank">https://www.wocat.net/en/global-slm-database/slm-practices-technologies-and-approaches</a>). Go through the questions and read the instructions below. Contact the WOCAT Secretariat if you have questions.' %}</li>
+          <li>{% trans 'Start filling in the questionnaire based on your knowledge and existing documents. Please write clearly and legibly.' %}</li>
+          <li>{% trans 'Identify land users and other key resource persons with in-depth knowledge of the SLM Technology/ Approach (ideally a team of specialists with different backgrounds and experience).' %}</li>
+          <li>{% trans 'Collect data in the field. Gather information through interviews with land user(s) and key resource persons. Take measurements and photos, and make technical drawings.' %}</li>
+          <li>{% trans 'Enter the compiled information in the Global SLM Database. Go to <a href="https://qcat.wocat.net" class="link">qcat.wocat.net</a> and create a new SLM Technology/ Approach data entry form. Type the data collected – section by section, and upload images and other digital files.' %}</li>
+          <li>{% trans 'The Global SLM Database will guide you on how to edit and submit your data for review, making sure it is complete, clear, and comprehensible. You can invite editors (registered WOCAT users) to help you.' %}</li>
+        </ol>
+        <p>
+          {% trans "Note 1: fill in a separate questionnaire for each Technology and for each Approach." %}
+        </p>
+        <p>
+          {% trans "Note 2: When creating translations, the content of the original language will be copied once into the text fields, allowing you to translate the content. From there on, text changes have to be done in all language versions. The checkboxes are linked across all translations, meaning they always change in all language versions." %}</p>
+        <br>
+        {% with small_url='assets/img/infographics/review_process_'|add:request.LANGUAGE_CODE|add:'_small.png' large_url='assets/img/infographics/review_process_'|add:request.LANGUAGE_CODE|add:'.png' %}
+          <a class="th" role="button" aria-label="{% trans "Process of documentation and review of WOCAT data" %}" href="{% static large_url %}">
+            <img data-interchange="[{% static small_url %}, (default)], [{% static large_url %}, (large)]">
+          </a>
+        {% endwith %}
+      </div>
+
+      <h2 class="is-group">
+        {% trans "Review roles" %}
+      </h2>
+      {% trans 'SLM Technology / Approach' as questionnaire_type %}
+      {% include 'wocat/help/questionnaire_roles.html' with questionnaire_type=questionnaire_type %}
+
+      <h2 class="is-group">
+        {% trans "Help us to improve WOCAT" %}
+      </h2>
+
+      <p class="is-rhythmed-2">
+        {% trans 'Thank you for contributing to the Global SLM Database with good quality data on SLM! WOCAT provides flexible and user-driven tools. Help us to improve the existing questionnaires and contribute to the development of new questionnaire modules on specific topics related to SLM. Send your inputs or feedback to: <a href="mailto:wocat@cde.unibe.ch" class="link">wocat@cde.unibe.ch</a>' %}
+      </p>
+    </section>
+  </main>
+
+
+{% endblock %}

@@ -1,0 +1,71 @@
+<section class="row">
+  <a name="list"></a>
+
+  <h2 data-magellan-destination="list">List</h2>
+
+  <h3>Simple list</h3>
+
+  <dl class="tabs" data-tab>
+    <dd class="active"><a href="#panel06-01">Result</a></dd>
+    <dd><a href="#panel06-02">HTML</a></dd>
+  </dl>
+  <div class="tabs-content panel">
+    <div class="content active" id="panel06-01">
+      {{> list_simple}}
+    </div>
+    <div class="content" id="panel06-02">
+      {{#markdown}}{{ embed 'src/partial/form_element/list_simple.hbs' 'xml' }}{{/markdown}}
+    </div>
+  </div>
+
+
+  <h3>Gallery list</h3>
+
+  <dl class="tabs" data-tab>
+    <dd class="active"><a href="#panel06-03">Result</a></dd>
+    <dd><a href="#panel06-04">HTML</a></dd>
+  </dl>
+  <div class="tabs-content panel">
+    <div class="content active" id="panel06-03">
+      {{> list_gallery}}
+    </div>
+    <div class="content" id="panel06-04">
+      {{#markdown}}{{ embed 'src/partial/form_element/list_gallery.hbs' 'xml' }}{{/markdown}}
+    </div>
+  </div>
+
+
+  <h3>Complex list</h3>
+
+  <dl class="tabs" data-tab>
+    <dd class="active"><a href="#panel06-03">Result</a></dd>
+    <dd><a href="#panel06-04">HTML</a></dd>
+  </dl>
+  <div class="tabs-content panel">
+    <div class="content active" id="panel06-03">
+      {{> list_complex}}
+    </div>
+    <div class="content" id="panel06-04">
+      {{#markdown}}{{ embed 'src/partial/form_element/list_complex.hbs' 'xml' }}{{/markdown}}
+    </div>
+  </div>
+
+
+  <h3>Related list</h3>
+  <p>Related items are listed with the <a href="http://www.w3.org/html/wg/drafts/html/master/semantics.html#the-datalist-element" class="link">datalist system</a>: you can type or show the whole list</p>
+
+  <dl class="tabs" data-tab>
+    <dd class="active"><a href="#panel06-05">Result</a></dd>
+    <dd><a href="#panel06-06">HTML</a></dd>
+  </dl>
+  <div class="tabs-content panel">
+    <div class="content active" id="panel06-05">
+      {{> list_related}}
+    </div>
+    <div class="content" id="panel06-06">
+      {{#markdown}}{{ embed 'src/partial/form_element/list_related.hbs' 'xml' }}{{/markdown}}
+    </div>
+  </div>
+
+
+</section>

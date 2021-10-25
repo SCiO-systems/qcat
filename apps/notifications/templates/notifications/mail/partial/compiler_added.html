@@ -1,0 +1,9 @@
+{% extends 'notifications/mail/partial/editor_added.html' %}
+
+{% load i18n %}
+
+{% block role %}{% trans "a compiler" context "You have been added as a compiler of [questionnaire]." %}{% endblock %}
+
+{% block additional %}
+  <p>{% trans "As a compiler, you can invite editors to work on the SLM practice and you can submit the practice for review." %}</p>
+{% endblock %}

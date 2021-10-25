@@ -1,0 +1,376 @@
+{% comment %}
+  The very base template.
+
+  Blocks:
+    title: The title of the page.
+      Default: "QCAT"
+    bodyclass: The CSS class of the body element (e.g. body.layout-home)
+      Defaults to "layout-wocat"
+    navclass: The CSS class of the nav element
+      Default: "is-wocat"
+    logo: A block for the logo (and link).
+      Default: WOCAT image and link to /.
+    header: A block inside the header's nav element.
+      Default: Empty
+    hero: A block inside the header element.
+      Default: Empty
+    content: A block for the main content.
+      Default: Empty
+    filter: A block for the filters, right after <header>
+    bottom: A block at the bottom of the body to add additional JS files.
+{% endcomment %}
+
+{% load change_language %}
+{% load clean_language_url %}
+{% load compress %}
+{% load i18n %}
+{% load static %}
+{% load sekizai_tags %}
+{% load cookielaw_tags %}
+
+<!DOCTYPE html>
+  <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+  <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+  <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+  <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %}QCAT{% endblock %}</title>
+    <meta name="description" content="WOCAT is an established global network which supports innovation and decision-making processes in Sustainable Land Management.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="content-language" content="{{ request.LANGUAGE_CODE }}" />
+    {% if GOOGLE_WEBMASTER_TOOLS_KEY %}
+      <meta name="google-site-verification" content="{{ GOOGLE_WEBMASTER_TOOLS_KEY }}" />
+    {% endif %}
+
+    <!-- Theme styles -->
+    {% compress css %}
+        <link rel="stylesheet" href="{% static 'css/app.css' %}" />
+    {% endcompress %}
+    {% if request.LANGUAGE_CODE in WORD_WRAP_LANGUAGES %}
+      <style type="text/css">
+        body {
+          word-wrap: break-word;
+        }
+      </style>
+    {% endif %}
+    {% if request.LANGUAGE_CODE == 'lo' %}
+      <style type="text/css">
+        @font-face {
+          font-family: "Phetsarath_OT";
+          src: url("{% static 'assets/fonts/phetsarath_ot.ttf' %}");
+        }
+      </style>
+    {% endif %}
+
+    {% compress js %}
+      <!-- todo: measure if cdns are benefitial for rural areas -->
+      <script src="{% static 'js/modernizr.js' %}"></script>
+    {% endcompress %}
+
+    {% render_block "css" %}
+    {% render_block "js_head" %}
+
+    {% block social_meta_tags %}
+      <meta property="og:image" content="{{ request.get_host }}{% static 'assets/img/wocat_logo.svg' %}"/>
+      <meta property="og:title" content="wocat.net"/>
+      <meta property="og:url" content="{{ request.build_absolute_uri }}"/>
+      <meta property="og:site_name" content="wocat.net"/>
+      <meta property="og:description" content="WOCAT is an established global network which supports innovation and decision-making processes in Sustainable Land Management."/>
+    {% endblock %}
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/favicons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" href="{% static 'assets/favicons/favicon-32x32.png' %}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{% static 'assets/favicons/favicon-16x16.png' %}" sizes="16x16">
+    <link rel="manifest" href="{% static 'assets/favicons/manifest.json' %}">
+    <link rel="mask-icon" href="{% static 'assets/favicons/safari-pinned-tab.svg' %}" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+
+  </head>
+  <body class="{% block bodyclass %}layout-wocat{% endblock %}">
+
+    {# Startfix #}
+    {% comment %}
+      After improving performance of foundation's tooltips
+      (https://github.com/CDE-UNIBE/qcat/commit/35b208c), the first tooltip of
+      each page was buggy and had a black box drawn over it. The quick and dirty
+      solution to this: Add a hidden empty tooltip at the top of each page.
+    {% endcomment %}
+    <div style="display:none;">
+      <span data-tooltip="" title=""></span>
+    </div>
+    {# Endfix #}
+
+    <!--[if lt IE 9]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    {% include "svg.html" %}
+
+    {% comment %}
+      TODO: COP12
+    {% endcomment %}
+    {% block temporary %}
+        <div class="notice alert-box demo-version ie-warning text-center" style="display:none;">
+          {% blocktrans with chrome='<a href="https://www.google.com/chrome/" target="_blank">Chrome</a>' firefox='<a href="https://www.mozilla.org/firefox" target="_blank">Firefox</a>' %}Optimized for {{ chrome }} and {{ firefox }}.{% endblocktrans %}
+        </div>
+        {% if WARN_HEADER %}
+          <div class="notice alert-box demo-version text-center">
+            <span class="large">{{ WARN_HEADER }}</span>Optimized for <a href="https://www.google.com/chrome/" target="_blank">Chrome</a> and <a href="https://www.mozilla.org/firefox" target="_blank">Firefox</a>.
+          </div>
+        {% endif %}
+    {% endblock %}
+
+    {% block banner %}
+    <header class="page-header inner-wrap" role="banner">
+
+      {% block logo %}
+        <div class="row">
+          <h1 class="logo">
+            <a href="{% url 'home' %}">
+              <img src="{% static 'assets/img/wocat_logo.svg' %}" alt="{% trans "WOCAT" %}" class="hide-on-print logo-img">
+              <img src="{% static 'assets/img/wocat_logo_print.svg' %}" alt="{% trans "WOCAT" %}" class="print-only logo-img">
+              <span class="logo-title">SLM Database</span>
+            </a>
+          </h1>
+        </div>
+      {% endblock %}
+
+      <nav class="top-bar {% block navclass %}is-wocat{% endblock %} row" role="navigation" data-topbar="" data-options="is_hover: false">
+        <ul class="title-area">
+          <li class="name show-for-small-only"></li>
+          <li class="toggle-topbar menu-icon"><a href="#"><span>{% trans "Menu" %}</span></a></li>
+        </ul>
+        <section class="top-bar-section">
+          <ul class="right">
+            {% if user.is_authenticated %}
+              <li>
+                <a href="{% url 'notification_list' %}?is_unread" class="notification-indicator" title ="{% trans "See your messages." %}">
+                  <svg class="icon"><use xlink:href="#icon-mail" xmlns:xlink="http://www.w3.org/1999/xlink"/></svg>
+                </a>
+              </li>
+              <li class="has-dropdown user-menu">
+                <a href="#">{{ user }}</a>
+                <ul class="dropdown">
+                  <li><a href="{% url 'accounts:account_questionnaires' %}">{% trans "My SLM Data" %}</a></li>
+                  <li><a href="{% url 'notification_list' %}">{% trans "Notifications" %}</a></li>
+                  <li><a href="{% url 'accounts:user_details' user.id %}">{% trans "User Details" %}</a></li>
+                  {% if user.is_staff %}
+                    <li>
+                      <a href="{% url 'admin:index' %}">{% trans "Administration" %}</a>
+                    </li>
+                    {% if user.is_superuser %}
+                      <li>
+                        <a href="{% url 'search:admin' %}">Search Index Administration</a>
+                      </li>
+                    {% endif %}
+                  {% endif %}
+                  <li><a href="{% url 'accounts:logout' %}">{% trans "Logout" %}</a></li>
+                </ul>
+              </li>
+            {% else %}
+              <li>
+                <a href="{% url 'accounts:login' %}">{% trans "Login" %}</a>
+              </li>
+            {% endif %}
+            <li class="has-dropdown top-bar-lang">
+              <a href="#">{% for lang in LANGUAGES %}{% if lang.0 == LANGUAGE_CODE %}{{ lang.1 }}{% endif %}{% endfor %}</a>
+              <ul class="dropdown">
+                {% for lang in LANGUAGES %}
+                  <li {% if lang.0 == LANGUAGE_CODE %} class="active"{% endif %}>
+                    <a href="{% change_lang lang.0 %}" data-language="{{ lang.0 }}">{% language lang.0 %}{{ lang.1 }}{% endlanguage %}</a>
+                  </li>
+                {% endfor %}
+                <li class="lang-switcher-info"><a href="{{ WOCAT_CONTACT_PAGE }}" target="_blank" data-tooltip="" title="{% trans "Would you like to help us translate the SLM Database? Please contact the WOCAT Secretariat for more information." %}"><svg class="icon-lines is-inline"><use xlink:href="#icon-info"></use></svg></a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="left">
+            <li{% if request.resolver_match.view_name == 'wocat:home' %} class="active"{% endif %}><a href="{% url 'wocat:home' %}">{% trans "Home" %}</a></li>
+            <li{% if request.resolver_match.view_name == 'wocat:questionnaire_list' %} class="active"{% endif %}><a href="{% url 'wocat:questionnaire_list' %}">{% trans "Search SLM Data" %}</a></li>
+            <li{% if request.resolver_match.view_name == 'wocat:add' or request.resolver_match.view_name == 'technologies:add_module' or request.resolver_match.view_name == 'technologies:questionnaire_new' or request.resolver_match.view_name == 'approaches:questionnaire_new' %} class="active"{% endif %}><a href="{% url 'wocat:add' %}">{% trans "Add SLM data" %}</a></li>
+            <li{% if request.resolver_match.view_name == 'accounts:account_questionnaires' %} class="active"{% endif %}><a href="{% if user.is_authenticated %}{% url 'accounts:account_questionnaires' %}{% else %}{% url 'accounts:login' %}{% endif %}">{% trans "My SLM Data" %}</a></li>
+          </ul>
+
+          {% comment %}
+            {% block header %}
+            {% endblock %}
+          {% endcomment %}
+        </section>
+      </nav>
+
+      {% block hero %}
+      {% endblock %}
+
+    </header>
+    {% endblock %}
+
+    {% block filter %}
+    {% endblock %}
+
+    {% block messages %}
+      {% if messages %}
+        <div class="notification-group">
+          {% for message in messages %}
+          <div class="notification alert-box{% if message.level_tag %} {{ message.level_tag }}{% endif %}">{% if 'safe' in message.tags %}{{ message|safe }}{% else %}{{ message }}{% endif %}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+
+    {% compress js %}
+      <script src="{% static 'js/jquery.min.js' %}"></script>
+      <script src="{% static 'js/foundation.min.js' %}"></script>
+      <script src="{% static 'js/jquery.nstSlider.min.js' %}"></script>
+      <script src="{% static 'js/app.min.js' %}"></script>
+      <script>
+      $(function() {
+        // load indicator for new pending tasks - if any (not zero) are available.
+        var notificationIndicator = $('.notification-indicator');
+        if (notificationIndicator.length !== 0) {
+          $.ajax({
+            url: '{% url 'notification_new_count' %}',
+            method: 'GET'
+          }).done(function(data) {
+            if (data != 0) {
+              notificationIndicator.prepend('<strong>' + data + '</strong>');
+              notificationIndicator.addClass('has-unread-messages')
+            }
+          });
+        }
+      });
+      </script>
+    {% endcompress %}
+    <!-- Block for js within specific templates. Add compress in the template.  -->
+    {% render_block "js" %}
+
+    {% block footer %}
+      {% if maintenance_warn_overlay %}
+        <div class="reveal-modal" id="deploy-modal" data-reveal aria-labelledby="deploy-title" aria-hidden="true" role="dialog">
+          <h2 id="deploy-title">{% trans "Maintenance announcement" %}</h2>
+          {{ maintenance_warn_overlay|safe }}
+          <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+        </div>
+        <script>
+          $(document).ready(function(){$('#deploy-modal').foundation('reveal', 'open')});
+        </script>
+      {% endif %}
+      <footer class="row page-footer large-collapse" role="contentinfo">
+        <div class="medium-4 columns text-left">
+          <a href="https://www.wocat.net/en/global-slm-database/unccd-recognition" target="_blank" class="link">{% trans "Primary recommended database" %}</a><br>
+          <a href="https://www.unccd.int/" target="_blank"><img src="{% static 'assets/img/unccd_logo.svg' %}" alt="{% trans "UNCCD" %}" class="logo-unccd-footer"></a>
+        </div>
+        <div class="medium-8 columns supported-by-carousel-container">
+          <div class="supported-by-carousel">
+            <div>
+              <a href="https://ciat.cgiar.org/" target="_blank">
+                <img data-lazy="{% static "assets/img/supporter-organizations/ciat.png" %}" alt="CIAT" class="slick-loading">
+              </a>
+            </div>
+            <div>
+              <a href="http://www.fao.org/" target="_blank">
+                <img data-lazy="{% static "assets/img/supporter-organizations/fao.png" %}" alt="FAO" class="slick-loading">
+              </a>
+            </div>
+            <div>
+              <a href="https://www.giz.de/" target="_blank">
+                <img data-lazy="{% static "assets/img/supporter-organizations/giz.png" %}" alt="GIZ" class="slick-loading">
+              </a>
+            </div>
+            <div>
+              <a href="http://www.icarda.org/" target="_blank">
+                <img data-lazy="{% static "assets/img/supporter-organizations/icarda.png" %}" alt="ICARDA" class="slick-loading">
+              </a></div>
+            <div>
+              <a href="http://www.icimod.org/" target="_blank">
+                <img data-lazy="{% static "assets/img/supporter-organizations/icimod.png" %}" alt="ICIMOD" class="slick-loading">
+              </a>
+            </div>
+            <div>
+             <a href="https://www.ifad.org/" target="_blank">
+                <img data-lazy="{% static "assets/img/supporter-organizations/ifad.png" %}" alt="IFAD" class="slick-loading">
+              </a>
+            </div>
+            <div>
+              <a href="http://www.isric.org/" target="_blank">
+                <img data-lazy="{% static "assets/img/supporter-organizations/isric.png" %}" alt="ISRIC" class="slick-loading">
+              </a>
+            </div>
+            <div>
+              <a href="https://www.eda.admin.ch/sdc" target="_blank">
+                <img data-lazy="{% static "assets/img/supporter-organizations/sdc.png" %}" alt="SDC" class="slick-loading">
+              </a>
+            </div>
+            <div>
+              <a>
+                <img data-lazy="{% static "assets/img/supporter-organizations/fons-margarita.png" %}" alt="SDC" class="slick-loading">
+              </a>
+            </div>
+            <div>
+              <a href="http://www.cde.unibe.ch/" target="_blank">
+                <img data-lazy="{% static "assets/img/supporter-organizations/unibe.png" %}" alt="{% trans "University of Berne" %}" class="slick-loading">
+              </a>
+            </div>
+          </div>
+          <div class="right">
+            <a href="{% url "imprint" %}" class="link">{% trans "Imprint" %}</a> |
+            <a href="{% url "privacy-policy" %}" class="link">{% trans "Privacy Policy" %}</a> |
+            <a href="{% url "terms-of-agreement" %}" class="link">{% trans "Terms of Agreement" %}</a> |
+            <a href="https://www.wocat.net/global-slm-database" target="_blank" class="link">{% trans "About" %}</a> |
+            <a href="{{ WOCAT_CONTACT_PAGE }}" target="_blank" class="link">{% trans "Contact" %}</a> |
+            &copy; {% now "Y" %} - <a href="https://www.wocat.net/" target="_blank" class="link">{% trans "WOCAT" %}</a>
+          </div>
+        </div>
+      </footer>
+      {% addtoblock "js" %}
+        {% compress js %}
+          <script type="text/javascript" src="{% static "js/slick.js" %}"></script>
+          <script>
+              $(document).ready(function () {
+                  $('.supported-by-carousel').slick({
+                      infinite: true,
+                      slidesToShow: 3,
+                      slidesToScroll: 2,
+                      lazyLoad: 'progressive',
+                      variableWidth: true,
+                      autoplay: true,
+                      autoplaySpeed: 3000,
+                      nextArrow: '<span class="slick-next"></span>',
+                      prevArrow: '<span class="slick-prev"></span>',
+                      responsive: [
+                          {
+                              breakpoint: 1024,
+                              settings: {
+                                  slidesToShow: 2,
+                                  slidesToScroll: 2
+                              }
+                          },
+                          {
+                              breakpoint: 480,
+                              settings: {
+                                  slidesToShow: 1,
+                                  slidesToScroll: 1
+                              }
+                          }]
+                  });
+                  $('#CookielawBanner').foundation('reveal', 'open');
+              });
+          </script>
+          <script src="{% static 'cookielaw/js/cookielaw.js' %}"></script>
+        {% endcompress %}
+      {% endaddtoblock %}
+    {% endblock %}
+
+    {% cookielaw_banner %}
+
+    {% block help_tour %}{% endblock %}
+    {% block bottom %}
+    {% endblock %}
+    {% include 'parts/tracking.html' %}
+  </body>
+</html>

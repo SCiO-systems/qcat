@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "WOCAT" %}{% endblock %}
+
+{% block bodyclass %}layout-wocat{% endblock %}
+{% block navclass %}is-wocat{% endblock %}
+
+{% block header %}
+  {% include "wocat/partial/top.html" with current="wocat" %}
+{% endblock %}
+
+{% block bottom %}
+{% endblock %}

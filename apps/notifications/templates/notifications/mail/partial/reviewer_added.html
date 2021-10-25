@@ -1,0 +1,9 @@
+{% extends 'notifications/mail/partial/editor_added.html' %}
+
+{% load i18n %}
+
+{% block role %}{% trans "a reviewer" context "You have been added as a reviewer of [questionnaire] compiled by [user]." %}{% endblock %}
+
+{% block additional %}
+  <p>{% trans "Please review the SLM practice as soon as possible and send your written feedback to the compiler and all the editors of the SLM practice. If the quality of the SLM practice is good, please approve it for final review before publishing." %}</p>
+{% endblock %}

@@ -1,0 +1,73 @@
+<div class="row compact">
+  <div class="small-12 columns">
+    {% include 'summary/partial/title_bar.html' with title=title %}
+  </div>
+</div>
+<div class="row">
+  <div class="small-12 columns">
+    <h5>{{ content.stakeholders.title }}</h5>
+  </div>
+</div>
+{% if content.stakeholders.items %}
+  <div class="row">
+    <div class="small-12 columns">
+      <table class="participation_table">
+        {% for list_item in content.stakeholders.items %}
+          {% if forloop.first %}<thead>{% endif %}
+          <tr>
+            <td width="33%">{{ list_item.0 }}</td>
+            <td width="33%">{{ list_item.1 }}</td>
+            <td width="33%">{{ list_item.2 }}</td>
+          </tr>
+          {% if forloop.first %}</thead>{% endif %}
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+{% endif %}
+{% if content.stakeholders.addendum.text %}
+  <div class="row">
+    <div class="small-12 columns">
+      <h5>{{ content.stakeholders.addendum.title }}</h5>
+      {{ content.stakeholders.addendum.text }}
+    </div>
+  </div>
+{% endif %}
+<div class="row avoidbreak">
+<hr>
+  <div class="small-12 columns">
+      <h5>{{ content.involvement.title }}</h5>
+      {% include 'summary/partial/range_vertical_title.html' with class="highlights_list" list_items=content.involvement.partials %}
+  </div>
+</div>
+<div class="row avoidbreak">
+<hr>
+  <div class="small-12 columns approach-flow-chart">
+    <div class="img_in_text">
+      <img src="{{ content.flow_chart.url }}">
+      {% if content.flow_chart.author %}
+        <div class="img-caption">{{ content.flow_chart.author }}</div>
+      {% endif %}
+    </div>
+    <p><strong>{{ content.flow_chart.title }}</strong></p>
+    <p>{{ content.flow_chart.text|linebreaksbr }}</p>
+  </div>
+</div>
+<div class="row avoidbreak">
+<hr>
+  <div class="small-12 columns">
+    <div class="row">
+      <div class="small-12 columns">
+        <h5>{{ content.decision_making.title }}</h5>
+      </div>
+    </div>
+    <div class="row">
+      {% for item in content.decision_making.elements %}
+      <div class="small-6 columns">
+          <p>{{ item.title }}</p>
+          {% include 'summary/partial/unordered_list.html' with class="highlights_list" list_items=item.items %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+{% comment %}
+  field: The field.
+  options: The field options.
+{% endcomment %}
+
+{% load floppyforms %}
+
+{% with classes=field.css_classes label=label|default:field.label help_text=help_text|default:field.help_text %}
+  {% block errors %}
+    {% include "form/errors.html" with errors=field.errors %}
+  {% endblock %}
+  <div class="row single-item">
+    <div class="small-8 columns">
+      <label for="{{ field|id }}">{{ label }}</label>
+    </div>
+    <div class="small-4 columns">
+      <div class="form-currency-exchange-field">
+         {% widget field %}
+      </div>
+      <span class="js-form-currency form-currency-exchange-currency"></span>
+    </div>
+  </div>
+{% endwith %}

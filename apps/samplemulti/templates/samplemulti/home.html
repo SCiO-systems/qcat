@@ -1,0 +1,33 @@
+{% extends 'samplemulti/base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+
+<section class="hero" data-equalizer>
+  <div class="row large-collapse" data-equalizer-watch>
+    <div class="medium-4 large-5 columns">
+      <h1 class="is-sample">SAMPLEMULTI</h1>
+      <p class="is-large">World Overview of Conservation Approaches and Technologies</p>
+      <p class="is-light">SAMPLEMULTI is an established global network of Soil and Water Conservation (SWC) specialists, dedicated to sustainable land management (SLM). </p>
+      <a href="{% url 'samplemulti:questionnaire_new' %}" class="button is-sample">Add a new Technology</a>
+    </div>
+  </div>
+  <div class="hero-media" data-equalizer-watch>
+    <div class="media-container is-16_9">
+      <iframe src="https://player.vimeo.com/video/30426479?color=ff9933&portrait=0" width="560" height="315" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<main class="row large-collapse" role="main">
+  {% include "wocat/partial/search.html" with current="samplemulti" %}
+  <section class="tech-list small-12 columns">
+    <div class="tech-group">
+      <h2 class="is-group">Last updates</h2>
+      {% include "samplemulti/questionnaire/partial/list.html" %}
+    </div>
+  </section>
+</main>
+
+{% endblock %}

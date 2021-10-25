@@ -1,0 +1,18 @@
+{% comment %}
+
+  This partial template can be included to display a list of WOCAT
+  questionnaires.
+
+  Required attributes:
+
+  - list_values
+
+{% endcomment %}
+
+{% load i18n %}
+
+{% for list_entry in list_values %}
+  {% include "questionnaire/partial/list_item.html" with item=list_entry %}
+{% empty %}
+  <p class="questionnaire-list-empty">{% trans "No results found." %}</p>
+{% endfor %}

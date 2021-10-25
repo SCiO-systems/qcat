@@ -1,0 +1,88 @@
+{% comment %}
+
+  Basically the same as table_4 but without the <fieldset>.
+
+  Table where each questiongroup occupies one row. The first column is filled with the label of the questiongroup.
+
+  If there are more than XY questions, the first two are rendered in the first td
+
+  Further questions are rendered either before the table (questiongroup_config.layout == 'before_table') or after the table.
+{% endcomment %}
+
+{% load floppyforms %}
+{% load list_to_columns %}
+
+<a id="{{ config.keyword }}"></a>
+
+{% if config.next_level == 'subcategories' %}
+  <p>{{ config.label }}</p>
+  {% for sub_config, sub_formsets in formsets %}
+    {% form form using sub_config.form_template with config=sub_config formsets=sub_formsets %}
+  {% endfor %}
+{% else %}
+  <div class="small-12 columns">
+    <h4 class="form-subcategory">{{ config.label }}</h4>
+  </div>
+
+  {% for questiongroup_config, questiongroup_formset in formsets %}
+    {% if questiongroup_config.keyword not in config.table_grouping.0 and questiongroup_config.layout == 'before_table' %}
+      {% include "form/helptext.html" with helptext=questiongroup_config.helptext helptext_length=questiongroup_config.helptext_length %}
+      {% form form using "form/questiongroup/default.html" with config=questiongroup_config formset=questiongroup_formset %}
+    {% endif %}
+  {% endfor %}
+  <table>
+    <thead>
+      <tr>
+        {% if config.layout != 'no_label_row' %}
+          <th></th>
+        {% endif %}
+        {% for header in config.table_headers %}
+          <th>
+            {% with helptext=config.table_helptexts|get_by_index:forloop.counter0 %}
+              {% if helptext %}
+                <span class="has-tip left" title="{{ helptext }}" aria-haspopup="true" data-tooltip="">{{ header }}<svg class="icon-information is-inline right"><use xlink:href="#icon-information"></svg></span>
+              {% else %}
+                {{ header }}
+              {% endif %}
+            {% endwith %}
+          </th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for questiongroup_config, questiongroup_formset in formsets %}
+        {% if questiongroup_config.keyword in config.table_grouping.0 %}
+          {{ questiongroup_formset.management_form }}
+          {% for qg_form in questiongroup_formset.forms %}
+            <tr>
+              {% if questiongroup_config.layout != 'no_label_row' %}
+                <td>
+                  {% if questiongroup_config.helptext %}
+                    <span class="has-tip left" title="{{ questiongroup_config.helptext }}" aria-haspopup="true" data-tooltip="">{{ questiongroup_config.label }}<svg class="icon-information is-inline right"><use xlink:href="#icon-information"></svg></span>
+                  {% else %}
+                    {{ questiongroup_config.label }}
+                  {% endif %}
+                  {% if qg_form.visible_fields|length == 3 %}
+                    </td><td>
+                  {% endif %}
+                </td>
+              {% endif %}
+              {% for field in qg_form.visible_fields %}
+                <td>
+                  {% formrow field using "form/question/no_label.html" %}
+                </td>
+              {% endfor %}
+              {% for field in qg_form.hidden_fields %}{% formfield field %}{% endfor %}
+            </tr>
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+  {% for questiongroup_config, questiongroup_formset in formsets %}
+    {% if questiongroup_config.keyword not in config.table_grouping.0 and questiongroup_config.layout != 'before_table' %}
+      {% include "form/helptext.html" with helptext=questiongroup_config.helptext helptext_length=questiongroup_config.helptext_length %}
+      {% form form using "form/questiongroup/default.html" with config=questiongroup_config formset=questiongroup_formset %}
+    {% endif %}
+  {% endfor %}
+{% endif %}

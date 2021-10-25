@@ -1,0 +1,45 @@
+<h3>{{ label }}</h3>
+{% if subcategories %}
+  {% for subcategory in subcategories %}
+    {{ subcategory }}
+  {% endfor %}
+{% else %}
+  <table class="columns small-12 output-table">
+    <thead>
+      <tr>
+        {% for header in table_headers %}
+          <th>{{ header }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for questiongroup in raw_questiongroups %}
+        {% if questiongroup.qg_keyword in table_grouping.0 %}
+          <tr>
+            {% for qg in questiongroup.data %}
+              {% for k, v in qg %}
+              <td>
+                {{ v }}
+              </td>
+              {% endfor %}
+            {% endfor %}
+        {% elif questiongroup.qg_keyword in table_grouping.1 %}
+            <td colspan="42" class="form-table-contains-inline">
+              <table class="columns small-12 output-table">
+                {% for qg in questiongroup.data %}
+                  <tr>
+                    {% for k, v in qg %}
+                      <td>
+                        {{ v }}
+                      </td>
+                    {% endfor %}
+                  </tr>
+                {% endfor %}
+              </table>
+            </td>
+          </tr>
+        {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+{% endif %}

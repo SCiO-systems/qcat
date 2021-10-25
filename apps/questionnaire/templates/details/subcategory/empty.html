@@ -1,0 +1,9 @@
+{% if subcategories %}
+  {% for subcategory in subcategories %}
+    {{ subcategory }}
+  {% endfor %}
+{% else %}
+  {% for qg_config, qg_rendered in questiongroups %}
+    {{ qg_rendered }}
+  {% endfor %}
+{% endif %}

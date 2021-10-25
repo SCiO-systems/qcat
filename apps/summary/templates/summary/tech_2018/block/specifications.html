@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="small-12 columns">
+    {% include 'summary/partial/title_bar.html' with title=title %}
+    <h5>{{ content.title }}</h5>
+    {% for drawing in content.drawings %}
+      <div class="row">
+        <div class="small-12 columns">
+          <div class="img_in_text flowchart">
+            <img src="{{ drawing.url }}">
+            {% if drawing.author %}
+              <div class="img-caption">{{ drawing.author }}</div>
+            {% endif %}
+          </div>
+          <div>{{ drawing.text|linebreaksbr }}</div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

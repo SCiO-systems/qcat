@@ -1,0 +1,21 @@
+{% load static %}
+{% load list_to_columns %}
+
+{% if not values|is_empty %}
+  {% if view_label != 'none' %}
+    {{ key }}:<br/>
+  {% endif %}
+  {% if extra == 'row' %}
+    <div class="row">
+      <div class="medium-2 columns">
+        <img src="{% static 'assets/img/landuse_empty.png' %}" alt="{{ value }}">
+      </div>
+      <div class="medium-10 columns"><strong>{{ value }}</strong></div>
+    </div>
+  {% else %}
+    <img src="{% static 'assets/img/landuse_empty.png' %}" alt="{{ value }}">
+    </div>
+    <div class="medium-10 columns">
+    <strong>{{ value }}</strong>
+  {% endif %}
+{% endif %}

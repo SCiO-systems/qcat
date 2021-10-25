@@ -1,0 +1,12 @@
+{% if review_config %}
+  {% include 'details/review_panel.html' %}
+{% endif %}
+
+{% if media_content %}
+  {% include 'details/media_gallery.html' %}
+{% endif %}
+
+<a name="{{ keyword }}"></a>
+{% for category in categories %}
+  {{ category }}
+{% endfor %}

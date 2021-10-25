@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="small-12 columns">
+    {% include 'summary/partial/title_bar.html' with title=title %}
+    <h5>{{ content.title }}</h5>
+    {% if content.main_drawing %}
+      <div class="img_in_text flowchart">
+        <img src="{{ content.main_drawing.url }}">
+        {% if content.main_drawing.author %}
+          <div class="img-caption">{{ content.main_drawing.author }}</div>
+        {% endif %}
+      </div>
+    {% endif %}
+    {% if content.text %}
+      <div>{{ content.text|linebreaksbr }}</div>
+    {% endif %}
+  </div>
+</div>
+{% if content.images %}
+  <div class="row">
+    <div class="small-12 columns">
+    {% include 'summary/block/two_images_with_caption.html' with content=content %}
+    </div>
+  </div>
+{% endif %}

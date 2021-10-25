@@ -1,0 +1,45 @@
+.logo {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  padding: rem-calc(3 0 0);
+
+  @media #{$small-only} {
+    padding-top: 0;
+    line-height: rem-calc(44);
+  }
+
+  @media #{$medium-up} {
+    position: relative;
+    padding-top: rem-calc(6);
+  }
+}
+.logo-title {
+  font-size: rem-calc(24);
+  line-height: rem-calc(24);
+  font-weight: 500;
+  text-transform: uppercase;
+  color: white;
+  @media #{$small-only} {
+    font-size: rem-calc(16);
+    float: right;
+    margin-top: rem-calc(12);
+    margin-left: rem-calc(8);
+  }
+  @media #{$medium-up} {
+    font-size: rem-calc(33);
+  }
+}
+.logo-img {
+  max-height: rem-calc(20);
+  margin-top: rem-calc(-3);
+  @media #{$medium-up} {
+    max-height: rem-calc(28);
+  }
+}
+
+.logo-unccd-footer {
+  margin-top: -0.25rem;
+}

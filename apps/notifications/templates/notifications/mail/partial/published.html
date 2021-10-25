@@ -1,0 +1,28 @@
+{% load i18n %}
+
+{% spaceless %}
+  <p>
+    {% trans "Congratulations, the SLM practice" context "Congratulations, the SLM practice [questionnaire] compiled by [user] has been published in the Global SLM Database by [user] and can now be viewed by all WOCAT members in the Network and visitors of the database. Thank you for sharing the SLM practice." %}
+    <a href="{{ base_url|add:questionnaire.get_absolute_url }}">{{ questionnaire_name }}</a>
+    {% if compiler %}
+      {% trans "compiled by" context "Congratulations, the SLM practice [questionnaire] compiled by [user] has been published in the Global SLM Database by [user] and can now be viewed by all WOCAT members in the Network and visitors of the database. Thank you for sharing the SLM practice." %}
+      <a href="{{ base_url|add:compiler.get_absolute_url }}">{{ compiler }}</a>
+    {% endif %}
+    {% trans "has been published in the Global SLM Database by" context "Congratulations, the SLM practice [questionnaire] compiled by [user] has been published in the Global SLM Database by [user] and can now be viewed by all WOCAT members in the Network and visitors of the database. Thank you for sharing the SLM practice." %}
+    <a href="{{ base_url|add:catalyst.get_absolute_url }}">{{ catalyst }}</a>
+    {% trans "and can now be viewed by all WOCAT members in the Network and visitors of the database. Thank you for sharing the SLM practice." context "Congratulations, the SLM practice [questionnaire] compiled by [user] has been published in the Global SLM Database by [user] and can now be viewed by all WOCAT members in the Network and visitors of the database. Thank you for sharing the SLM practice." %}
+  </p>
+
+  <p>
+    {% trans "You can find your SLM practice published under the following link:" %}
+    <a href="{{ base_url|add:questionnaire.get_absolute_url }}">{{ base_url|add:questionnaire.get_absolute_url }}</a>
+  </p>
+
+  {% if message %}
+    <p>
+      <a href="{{ base_url|add:catalyst.get_absolute_url }}">{{ catalyst }}</a>
+      {% trans "left you a message related to the publication of this SLM practice:" context "[user] left you a message related to the publication of this SLM practice: [message]" %}
+      {{ message }}
+    </p>
+  {% endif %}
+{% endspaceless %}

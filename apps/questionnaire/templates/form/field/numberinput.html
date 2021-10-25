@@ -1,0 +1,8 @@
+{% load i18n %}
+
+<input type="number"
+       name="{{ name }}"
+        {% if value %} value="{{ value }}"{% endif %}
+        data-number-input="{{ options.field_type }}"
+        {% include "floppyforms/attrs.html" %}
+        {% if options.label != 'placeholder' %} placeholder="{% if options.field_type == 'int' %}{% trans 'Enter full number' %}{% else %}{% trans 'Enter a number' %}{% endif %}"{% endif %}>

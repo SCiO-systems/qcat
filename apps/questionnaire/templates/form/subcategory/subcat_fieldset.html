@@ -1,0 +1,16 @@
+{% comment %}
+  Render a fieldset with more subcategories in it.
+{% endcomment %}
+
+{% load floppyforms %}
+
+<fieldset id="{{ config.keyword }}" class="row{% if config.has_changes %} has-changes{% endif %}">
+  <legend>{{ config.numbering|default:'' }} {{ config.label }}</legend>
+
+  {% include "form/helptext.html" with helptext=config.helptext helptext_length=config.helptext_length %}
+
+  {% for sub_config, sub_formsets in formsets %}
+    {% form form using sub_config.form_template with config=sub_config formsets=sub_formsets %}
+  {% endfor %}
+
+</fieldset>

@@ -1,0 +1,10 @@
+#################################################################
+# Requirements specific for the production environment
+#################################################################
+
+-r base.txt
+
+django-redis==5.0.0
+hiredis==0.2.0
+redis==2.10.6
+raven==6.8.0

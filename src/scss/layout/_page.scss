@@ -1,0 +1,24 @@
+.page-header {
+  background: $color-brown;
+  padding: rem-calc(0 12);
+
+  & > .row {
+    position: relative;
+  }
+}
+
+.page-footer {
+  margin-top: rem-calc(48);
+  margin-bottom: rem-calc(48);
+  padding: rem-calc(12) 0 0;
+  border-top: 2px solid $color-beige;
+  font-size: rem-calc(12);
+}
+.page-footer-copy {
+  @media #{$medium-up} {
+    text-align: right;
+  }
+}
+.notice {
+    margin-bottom: 0;
+}

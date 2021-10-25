@@ -1,0 +1,54 @@
+{% load floppyforms %}
+{% load list_to_columns %}
+
+{% if config.next_level == 'subcategories' %}
+  <p>{{ config.label }}</p>
+  {% for sub_config, sub_formsets in formsets %}
+    {% form form using sub_config.form_template with config=sub_config formsets=sub_formsets %}
+  {% endfor %}
+{% else %}
+  <fieldset id="{{ config.keyword }}" class="row{% if config.has_changes %} has-changes{% endif %}">
+    <legend>{{ config.numbering|default:'' }} {{ config.label }}</legend>
+    <table>
+      <thead>
+        <tr>
+          {% for header in config.table_headers %}
+            <th>{{ header }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+      {% for questiongroup_config, questiongroup_formset in formsets %}
+        {{ questiongroup_formset.management_form }}
+        {% if questiongroup_config.keyword in config.table_grouping.0 %}
+          <tr>
+            {% for f in questiongroup_formset.forms %}
+              {% for field in f.visible_fields %}
+                <td>
+                  {% formrow field using "form/question/no_label.html" %}
+                </td>
+              {% endfor %}
+              {% for field in f.hidden_fields %}{% formfield field %}{% endfor %}
+            {% endfor %}
+        {% elif questiongroup_config.keyword in config.table_grouping.1 %}
+            <td colspan="42" class="form-table-contains-inline">
+              <table>
+                {% for f in questiongroup_formset.forms %}
+                  <tr>
+                  {% for field in f.visible_fields %}
+                    <td>
+                      {% formrow field using "form/question/no_label.html" %}
+                    </td>
+                  {% endfor %}
+                  {% for field in f.hidden_fields %}{% formfield field %}{% endfor %}
+                  </tr>
+                {% endfor %}
+              </table>
+            </td>
+          </tr>
+        {% endif %}
+      {% endfor %}
+      </tbody>
+    </table>
+  </fieldset>
+{% endif %}

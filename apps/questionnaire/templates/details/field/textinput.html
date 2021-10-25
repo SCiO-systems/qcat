@@ -1,0 +1,6 @@
+{% if value %}
+{% if label_position != 'none' %}
+  <{{ label_tag|default:"h5" }}>{{ key }}{% if key|last not in ".:!?" %}:{% endif %}</{{ label_tag|default:"h5" }}>
+{% endif %}
+<p>{{ value }}</p>
+{% endif %}

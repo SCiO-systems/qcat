@@ -1,0 +1,32 @@
+[
+  {
+    "fields": {
+      "active": true,
+      "abbreviation": "CDE",
+      "name": "Centre for Development and Environment",
+      "country": 215
+    },
+    "pk": 1,
+    "model": "configuration.institution"
+  },
+  {
+    "fields": {
+      "active": true,
+      "abbreviation": "GI",
+      "name": "Global Institution",
+      "country": null
+    },
+    "pk": 2,
+    "model": "configuration.institution"
+  },
+  {
+    "fields": {
+      "active": false,
+      "abbreviation": "II",
+      "name": "Inactive Institution",
+      "country": null
+    },
+    "pk": 3,
+    "model": "configuration.institution"
+  }
+]

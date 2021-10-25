@@ -1,0 +1,47 @@
+---
+section: practices
+---
+
+{{!-- Header --}}
+<header class="page-header inner-wrap" role="banner">
+  {{> header_wocat}}
+</header>
+
+{{!-- Advanced search --}}
+<aside class="search-advanced">
+  {{> search_advanced}}
+  <div class="filter">
+    <div class="row">
+      <div class="medium-10 columns">
+        <ul class="filter-list">
+          <li class="filter-item">
+            <a href="">Land use: <span class="filter-value">Cropland</span> <svg class="icon is-inline right"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-cross"></use></svg></a>
+          </li>
+          <li class="filter-item">
+            <a href="">Language: <span class="filter-value">English</span> <svg class="icon is-inline right"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-cross"></use></svg></a>
+          </li>
+          <li class="filter-item">
+            <a href="">Creation date: <span class="filter-value">1999 - 2002</span> <svg class="icon is-inline right"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-cross"></use></svg></a>
+          </li>
+        </ul>
+      </div>
+      <div class="medium-2 columns">
+        <div class="filter-action text-right">
+          <a href="" class="filter-reset">Reset all</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+{{!-- Body --}}
+<main class="row large-collapse" role="main">
+  <section class="tech-list small-12 columns">
+    <div class="tech-group">
+      <h2 class="is-group">All technologies</h2>
+      {{#each technology}}
+        {{> tech_item}}
+      {{/each}}
+    </div>
+  </section>
+</main>

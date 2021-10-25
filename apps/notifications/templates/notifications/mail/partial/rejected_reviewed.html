@@ -1,0 +1,9 @@
+{% extends 'notifications/mail/partial/rejected_submitted.html' %}
+
+{% load i18n %}
+
+{% block additional %}
+<p>
+  {% trans "If you are a reviewer, please review the revised SLM practice to enable the publisher to access the SLM practice as soon as it has been resubmitted. You will receive an e-mail informing you that the SLM practice has been submitted." %}
+</p>
+{% endblock %}

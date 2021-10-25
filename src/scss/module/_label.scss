@@ -1,0 +1,54 @@
+.label {
+  text-transform: uppercase;
+  &.is-technologies,
+  &.is-tech {
+    background-color: rgba($color-tech, 0.8);
+  }
+  &.is-approaches,
+  &.is-approach {
+    background-color: rgba($color-approach, 0.8);
+  }
+  &.is-cca {
+    background-color: rgba($color-cca, 0.8);
+  }
+  &.is-cbp {
+    background-color: rgba($color-cbp, 0.8);
+  }
+  &.is-unccd,
+  &.is-unccd_bp {
+    background-color: rgba($color-unccd, 0.8);
+    color: #ffffff;
+  }
+  &.is-watershed {
+    background-color: rgba($color-watershed, 0.8);
+  }
+  &.is-draft {
+    background-color: rgba($draft-color, 0.8);
+  }
+  &.is-submitted {
+    background-color: rgba($submitted-color, 0.8);
+  }
+  &.is-reviewed {
+    background-color: rgba($reviewed-color, 0.8);
+  }
+}
+
+h1 .label.is-unccd {
+  margin-right: 0.5rem;
+}
+
+.label-as-title {
+  font-size: 18px;
+  margin-top: 15px;
+}
+
+.display-none {
+  display: none;
+}
+
+.tech-flag {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}

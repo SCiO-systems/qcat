@@ -1,0 +1,75 @@
+<div class="row compact">
+  <div class="small-12 columns">
+    {% include 'summary/partial/title_bar.html' with title=title %}
+  </div>
+</div>
+<div class="row compact">
+  <div class="small-12 columns">
+    <div class="calculation_costs_section">
+      <div class="row compact">
+        <div class="small-6 columns">
+          <h5>{{ content.introduction.title }}</h5>
+          <ul class="bullets">
+            {% for list_item in content.introduction.items  %}
+              <li>{{ list_item|safe }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="small-6 columns">
+          <h5>{{ content.introduction.main_factors_title }}</h5>
+          {{ content.introduction.main_factors }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="small-12 columns">
+    <h5>{{ content.establishment.title }}</h5>
+    {% if content.establishment.list %}
+      {% include 'summary/partial/ordered_list.html' with class="numbers" list_items=content.establishment.list %}
+    {% else %}
+      n.a.
+    {% endif %}
+    {{ content.establishment.comment }}
+  </div>
+</div>
+{% if content.establishment.table.partials %}
+  <div class="row">
+    <div class="small-12 columns">
+      {% include 'summary/partial/table_six_columns.html' with class="technology_table" list_items=content.establishment.table %}
+    </div>
+  </div>
+{% elif content.establishment.table.total_cost_estimate %}
+  <div class="row">
+    <div class="small-12 columns">
+      <h5>{{ content.establishment.table.total_cost_estimate_title }}</h5>
+      {{ content.establishment.table.total_cost_estimate }}
+    </div>
+  </div>
+{% endif %}
+<div class="row">
+  <div class="small-12 columns">
+    <h5>{{ content.maintenance.title }}</h5>
+    {% if content.maintenance.list %}
+      {% include 'summary/partial/ordered_list.html' with class="numbers" list_items=content.maintenance.list %}
+    {% else %}
+      n.a.
+    {% endif %}
+    {{ content.maintenance.comment }}
+  </div>
+</div>
+{% if content.maintenance.table.partials %}
+  <div class="row">
+    <div class="small-12 columns">
+      {% include 'summary/partial/table_six_columns.html' with class="technology_table" list_items=content.maintenance.table %}
+    </div>
+  </div>
+{% elif content.maintenance.table.total_cost_estimate %}
+  <div class="row">
+    <div class="small-12 columns">
+      <h5>{{ content.maintenance.table.total_cost_estimate_title }}</h5>
+      {{ content.maintenance.table.total_cost_estimate }}
+    </div>
+  </div>
+{% endif %}

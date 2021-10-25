@@ -1,0 +1,16 @@
+{% load static %}
+{% load list_to_columns %}
+
+{% if not values|is_empty %}
+  {% for value in values %}
+    <img class="output-image-cb" src="{% static value.1 %}" alt="{{ value.0 }}">
+    {% if extra == 'text_values' %}
+      </div>
+      <div class="medium-10 columns">
+      <strong>{{ value.0 }}</strong>
+    {% endif %}
+    {% if value.2 %}
+      {{ value.2 }}
+    {% endif %}
+  {% endfor %}
+{% endif %}

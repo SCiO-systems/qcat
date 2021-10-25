@@ -1,0 +1,78 @@
+.top-bar.is-home {
+  background: transparent;
+}
+.top-bar.expanded {
+  background: $color-brown-dark;
+}
+
+.top-bar-section {
+  clear: both;
+}
+
+.top-bar-section > ul > li {
+  margin-left: rem-calc(24);
+  &:first-child{
+    margin-left: 0;
+  }
+}
+.top-bar-section > ul > li:not(.has-form) > a:not(.button) {
+  border-bottom: 4px solid transparent;
+  transition: border-color 300ms ease;
+}
+.top-bar-section > ul > li.active:not(.has-form) > a:not(.button),
+.top-bar-section > ul > li:hover:not(.has-form) > a:not(.button) {
+  border-color: $color-orange;
+}
+
+.top-bar-search {
+  background-color: $color-beige;
+  padding: rem-calc(24 0);
+}
+
+.top-bar-section .dropdown {
+  border: 1px solid #5f594f;
+  border-top: none;
+}
+
+.top-bar-section .dropdown li:not(.has-form)>a:not(.button) {
+  font-size: rem-calc(14);
+  padding: 0 rem-calc(12);
+}
+.top-bar-section .dropdown li:not(.has-form).active>a:not(.button) {
+  background-color: $primary-color;
+  color: white;
+}
+
+.top-bar-section .lang-switcher-info {
+
+  text-align: center;
+
+  a {
+    color: $color-orange !important;
+  }
+
+  svg {
+    float: none;
+  }
+}
+
+/**
+ * TODO: COP12
+ * Temporary flag to mark the demo version
+ */
+div.notice.demo-version {
+  background-color: #a94442;
+  border: 1px solid $body-font-color;
+  color: $body-font-color;
+
+  a {
+    color: $body-font-color;
+    text-decoration: underline;
+  }
+
+  .large {
+    font-size: 1.25rem;
+    line-height: 0.8125rem;
+    margin-right: 0.75rem;
+  }
+}

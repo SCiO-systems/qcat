@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load static %}
+{% load compress %}
+{% load sekizai_tags %}
+
+{% block bodyclass %}layout-wocat{% endblock %}
+{% block navclass %}is-wocat{% endblock %}
+
+{% block content %}
+  <main class="row" role="main">
+    <div class="small-12 columns">
+      <h1 class="is-title">{% trans "User Details" %}</h1>
+    </div>
+    <section class="tech-list small-12 columns">
+      <div class="tech-group">
+        <h2 class="is-group">{% trans "Information" %}</h2>
+        <div class="row">
+          <div class="small-4 medium-3 large-2 columns"><p>{% trans "First name:" %}</p></div>
+          <div class="small-8 medium-9 large-10 columns"><p>{{ detail_user.firstname }}</p></div>
+        </div>
+        <div class="row">
+          <div class="small-4 medium-3 large-2 columns"><p>{% trans "Last name:" %}</p></div>
+          <div class="small-8 medium-9 large-10 columns"><p>{{ detail_user.lastname }}</p></div>
+        </div>
+        {% if request.user.is_authenticated %}
+          <div class="row">
+            <div class="small-4 medium-3 large-2 columns"><p>{% trans "Email:" %}</p></div>
+            <div class="small-8 medium-9 large-10 columns">
+              <p>
+                {{ detail_user.email }}
+                {% if request.user == detail_user %}
+                  (<a href="{% url 'notification_preferences' %}">{% trans "Notification preferences" %}</a>)
+                {% endif %}
+              </p>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </section>
+    {% if unccd_countries %}
+      <section class="tech-list small-12 columns">
+        <div class="tech-group">
+          <h2 class="is-group">{% trans "UNCCD national focal point" %}</h2>
+          <div class="row">
+            <div class="small-12 columns user-unccd-focal-point">
+              <img src="{% static 'assets/img/unccd_logo.svg' %}" alt="{% trans "UNCCD" %}">
+              <span>{% trans "UNCCD focal point for country:" %} <strong>
+              {% for country in unccd_countries %}
+                <a href="{{ country.1 }}" class="link">{{ country.0 }}</a>
+              {% endfor %}
+            </strong></span>
+            </div>
+          </div>
+        </div>
+      </section>
+    {% endif %}
+    <section class="tech-list small-12 columns">
+      <div class="tech-group">
+        <h2 class="is-group">{% trans "Public questionnaires" %}</h2>
+        <div class="row">
+          <div class="small-12 columns" id="public-questionnaires" data-url="{% url 'questionnaires_public_list' user_id=detail_user.id %}">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  {% addtoblock 'js' %}
+    {% compress js %}
+      <script>
+      $(function() {
+
+        const questionnairesContainer = $('#public-questionnaires');
+        const url = questionnairesContainer.data('url');
+        const spinner = '<img src="{% static 'assets/img/ajax-loader.gif' %}">';
+
+        var loadQuestionnaires = function(page) {
+          questionnairesContainer.html(spinner);
+          $.ajax({
+            url: url + '?status=4&page=' + page
+          }).done(function(data) {
+            questionnairesContainer.html(data);
+          });
+        };
+
+        loadQuestionnaires(1);
+
+        questionnairesContainer.on('click', 'ul.pagination li a', function() {
+          var page = getURLParameter($(this).attr('href'), 'page');
+          loadQuestionnaires(page);
+          return false;
+        });
+
+        function getURLParameter(url, name) {
+          return (RegExp(name + '=' + '(.+?)(&|$)').exec(url)||[,null])[1];
+        }
+      });
+      </script>
+    {% endcompress %}
+  {% endaddtoblock %}
+{% endblock %}

@@ -1,0 +1,214 @@
+.button,
+button,
+.button-download {
+
+  @include rhythm;
+  box-shadow: 0 0 0 0 $button-bg-color;
+  transition: all 200ms ease-out;
+  border-radius:$button-radius;
+
+  &:not(.dropdown) {
+    text-shadow: 0px 1px 1px rgba(0,0,0,0.20);
+  }
+
+  &.secondary {
+    box-shadow: 0 0 0 0 $secondary-color;
+  }
+  &.light {
+    @include button-style($bg:#fff, $bg-hover:$color-beige-light, $border-color:$color-beige-light);
+  }
+  &.success {
+    box-shadow: 0 0 0 0 $success-button-bg-hover;
+  }
+  &.alert {
+    box-shadow: 0 0 0 0 $alert-button-bg-hover;
+  }
+  &.is-wizard-next {
+    margin-top: rem-calc(5);
+    margin-left: 0;
+  }
+
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 0 $button-shadow-effect $button-bg-hover;
+  }
+  &:hover.light,
+  &:focus.light {
+    box-shadow: 0 0 0 $button-shadow-effect $color-beige-light;
+  }
+  &:hover.secondary,
+  &:focus.secondary {
+    box-shadow: 0 0 0 $button-shadow-effect $secondary-button-bg-hover;
+  }
+  &:hover.success,
+  &:focus.success {
+    box-shadow: 0 0 0 $button-shadow-effect $success-button-bg-hover;
+  }
+  &:hover.alert,
+  &:focus.alert {
+    box-shadow: 0 0 0 $button-shadow-effect $alert-button-bg-hover;
+  }
+}
+.button-switch {
+  list-style: none;
+  margin-left: 0;
+
+  &:after {
+    content: " ";
+    display: table;
+    clear: both;
+  }
+  & > li {
+    display: inline-block;
+    float: left;
+    border: 0;
+    margin: 0 0 0 1px;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+  & > li > .button {
+    margin: 0;
+  }
+  &.radius > li:first-child > .button{
+    border-top-left-radius: $global-radius;
+    border-bottom-left-radius: $global-radius;
+  }
+  &.radius > li:last-child > .button {
+    border-top-right-radius: $global-radius;
+    border-bottom-right-radius: $global-radius;
+  }
+  .button {
+    position: relative;
+    margin: 0;
+    //font-size: rem-calc(16);
+    z-index: 1;
+  }
+  .button:focus,
+  .button:hover {
+    z-index: 3;
+  }
+  input[type="radio"], input[type="checkbox"] {
+    display: none;
+  }
+  &.measure input[type="radio"]+.button {
+    background: $color-beige-dark;
+  }
+  input[type="radio"]:checked+.button, input[type="checkbox"]:checked+.button {
+    background: $color-brown-dark;
+    color: white;
+    &:focus,
+    &:hover {
+      box-shadow: 0 0 0 $button-shadow-effect $color-brown-dark;
+    }
+  }
+  input[type="radio"]:checked+.light{
+    background: $primary-bg-color;
+    &:focus,
+    &:hover {
+      box-shadow: 0 0 0 $button-shadow-effect $primary-bg-color;
+    }
+  }
+  .is-selected &.big-comment input[type="radio"]:checked+label:after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    margin-left: -8px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 8px 8px 0 8px;
+    border-color: $color-brown-dark transparent transparent transparent;
+  }
+}
+.button-switch-stacked {
+  & > li {
+    float: none;
+    display: block;
+    margin-left: 0;
+    margin-bottom: 1px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  & > li > label {
+    display: block;
+  }
+  &.radius > li:first-child > .button{
+    border-top-left-radius: $global-radius;
+    border-top-right-radius: $global-radius;
+    border-bottom-left-radius: 0;
+  }
+  &.radius > li:last-child > .button {
+    border-bottom-right-radius: $global-radius;
+    border-bottom-left-radius: $global-radius;
+    border-top-right-radius: 0;
+  }
+}
+.button-icon {
+  padding: 0.6rem 0 0.45rem;
+}
+.button-icon .icon {
+  width: 2em;
+  height: 2em;
+}
+.button-download {
+  position: relative;
+  display: block;
+  color: white;
+  background-color: $color-beige;
+  font-weight: 300;
+  padding-left: rem-calc(48);
+  &:hover,
+  &:hover .tech-icon {
+    color: white;
+  }
+  .button-download-title {
+    display: inline-block;
+    padding: rem-calc(12);
+  }
+  em {
+    color: $color-beige-light;
+  }
+  .tech-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: $color-beige-dark;
+    color: white;
+  }
+  &.is-wocat .tech-icon {
+    background-color: $color-orange-dark;
+  }
+  &.is-unccd .tech-icon {
+    background-color: $color-blue-dark;
+  }
+}
+
+.button-back {
+  display: inline-block;
+  float: left;
+  background: $color-brown;
+  color: white;
+  opacity: 0.5;
+  width: rem-calc(48);
+  line-height: rem-calc(48);
+  text-align: center;
+  transition: opacity 200ms ease;
+
+  .icon {
+    width: rem-calc(24);
+    height: rem-calc(24);
+  }
+
+  &:hover,
+  &:focus {
+    color: white;
+    opacity: 0.8;
+  }
+}
+h1 > .button-back {
+  margin: rem-calc(3 24 3 0);
+}

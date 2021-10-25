@@ -1,0 +1,64 @@
+html,
+body {
+  height: 100%;
+}
+
+.row.small-no-gutters {
+  @media #{$small-up} {
+    & > .columns:first-child {
+      padding-left: 0;
+    }
+    & > .columns:last-child {
+      padding-right: 0;
+    }
+  }
+}
+.row.medium-no-gutters {
+  @media #{$medium-up} {
+    & > .columns:first-child {
+      padding-left: 0;
+    }
+    & > .columns:last-child {
+      padding-right: 0;
+    }
+  }
+}
+.row.large-no-gutters {
+  @media #{$large-up} {
+    & > .columns:first-child {
+      padding-left: 0;
+    }
+    & > .columns:last-child {
+      padding-right: 0;
+    }
+  }
+}
+
+
+.is-rhythmed {
+  @include rhythm;
+}
+@for $i from 1 to 4 {
+  .is-rhythmed-#{$i} {
+    @include rhythm($i);
+  }
+}
+
+.is-padded {
+  padding-top: lineHeight(1);
+  padding-bottom: lineHeight(1);
+}
+@for $i from 1 to 4 {
+  .is-padded-#{$i} {
+    padding-top: lineHeight($i);
+    padding-bottom: lineHeight($i);
+  }
+}
+.is-padded-top {
+  padding-top: lineHeight(1);
+}
+@for $i from 1 to 4 {
+  .is-padded-top-#{$i} {
+    padding-top: lineHeight($i);
+  }
+}

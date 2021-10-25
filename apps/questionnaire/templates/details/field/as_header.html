@@ -1,0 +1,3 @@
+{% if value %}
+  <{{ label_tag|default:"h5" }}>{{ value }}{% if value|last not in ".:!?" %}:{% endif %}</{{ label_tag|default:"h5" }}>
+{% endif %}

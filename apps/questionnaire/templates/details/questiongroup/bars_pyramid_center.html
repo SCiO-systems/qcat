@@ -1,0 +1,7 @@
+<ul class="chart-pyramidal-bars is-sided text-center">
+  {% for questiongroup in questiongroups %}
+    {% for question in questiongroup %}
+      {{ question }}
+    {% endfor %}
+  {% endfor %}
+</ul>

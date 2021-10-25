@@ -1,0 +1,32 @@
+.alert-box:not(.notification) {
+  color: $body-font-color;
+  background: transparent !important;
+  .alert-box-title {
+    color: scale-color($primary-color, $lightness: $alert-function-factor);
+  }
+  &.secondary {
+    .alert-box-title {
+      color: scale-color($secondary-color, $lightness: $alert-function-factor);
+    }
+  }
+  &.alert {
+    .alert-box-title {
+      color: scale-color($alert-color, $lightness: $alert-function-factor);
+    }
+  }
+  &.success {
+    .alert-box-title {
+      color: scale-color($success-color, $lightness: $alert-function-factor);
+    }
+  }
+  &.warning {
+    .alert-box-title {
+      color: scale-color($warning-color, $lightness: $alert-function-factor);
+    }
+  }
+  &.info {
+    .alert-box-title {
+      color: scale-color($info-color, $lightness: $alert-function-factor);
+    }
+  }
+}

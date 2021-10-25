@@ -1,0 +1,6 @@
+{% if value|length > 0 %}
+  {% if label_position != 'none' %}<{{ label_tag|default:"h5" }}>{{ key }}{% if key|last not in ".:!?" %}:{% endif %}</{{ label_tag|default:"h5" }}>{% endif %}
+  <ul class="checkbox-other-output">
+    <li>{{ value }}</li>
+  </ul>
+{% endif %}

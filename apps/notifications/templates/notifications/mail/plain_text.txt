@@ -1,0 +1,13 @@
+{% load i18n %}
+{% trans "Dear" %} {{ recipient_name }}
+
+{% spaceless %}{{ content|linebreaksbr|striptags }}{% endspaceless %}
+
+{% trans "See questionnaire in full" %}: {{ questionnaire_url }}
+
+{% trans "This is an automated message, please don't reply. If you have any questions, please contact the WOCAT secretariat." %}
+
+--
+{% trans "You're getting this message because your account on qcat.wocat.net is linked to this address." %}
+{% trans "Change subscription settings" %}: {{ subscription_url }}
+{% trans "Visit qcat.wocat.net" %}: {{ base_url }}

@@ -1,0 +1,61 @@
+// Vertical rhythm
+h1, h2, h3, h4, h5, h6 {
+  @include rhythm(2);
+}
+p, dl, ol, ul {
+  @include rhythm(0.5);
+}
+h1, h2, h3, h4, h5, h6 {
+  &.is-group {
+    border-bottom: 2px solid $color-beige;
+    font-size: rem-calc(18);
+    color: $color-brown;
+  }
+  &.is-small {
+    font-size: $paragraph-font-size;
+    line-height: $paragraph-line-height;
+    font-weight: 400;
+  }
+  &.is-title {
+    font-weight: 100;
+    padding-top: 1.5rem;
+  }
+}
+p.is-large {
+  font-size: rem-calc(16);
+}
+.is-light {
+  font-weight: 300;
+}
+.is-muted {
+  color: $color-beige-dark;
+}
+.is-unvisible { // For screen readers only
+  position:absolute;
+  left:-10000px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
+sup {
+  line-height: 1rem;
+}
+
+a.link {
+  text-decoration: underline;
+}
+
+pre code {
+  line-height: rem-calc(18);
+}
+
+.text-warning {
+  color: $alert-color;
+}
+.text-ok {
+  color: $success-color;
+}
+.nobr {
+  white-space: nowrap;
+}

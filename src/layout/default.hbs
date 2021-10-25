@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>WOCAT Form {{section}}</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+  <!-- Theme styles -->
+  <link rel="stylesheet" href="css/app.css">
+
+  <!-- ModernizR -->
+  <script src="js/modernizr.js"></script>
+
+</head>
+<body class="layout-{{section}}">
+  {{!-- old IE --}}
+  <!--[if lt IE 9]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  {{!-- SVG Icons --}}
+  {{> svg_icons}}
+
+  {{!-- Content --}}
+  {{> body}}
+
+  {{!-- Footer --}}
+  {{> footer}}
+
+  {{!-- Scripts --}}
+  <script src="js/jquery.min.js"></script>
+  <script src="js/foundation.js"></script>
+
+  {{#is section 'wizard'}}
+  <script src="js/wocat.magellan.js"></script>
+  {{else}}
+  <script src="js/foundation/foundation.magellan.js"></script>
+  {{/is}}
+  <script src="js/jquery.nstSlider.min.js"></script>
+
+  {{#is section 'input'}}
+  <script src="js/dropzone.min.js"></script>
+  {{/is}}
+  {{#is section 'wizard'}}
+  <script src="js/wizard.js"></script>
+  {{/is}}
+
+  <script src="js/app.js"></script>
+</body>
+</html>

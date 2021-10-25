@@ -1,0 +1,23 @@
+{% if config.label and config.layout == 'label' %}
+  <h5>{{ config.label }}</h5>
+{% endif %}
+{% if config.numbered %}
+  <div class="questiongroup-numbered-{{ config.numbered }}">
+{% endif %}
+{% for questiongroup in questiongroups %}
+  {% if config.numbered == 'prefix' %}
+      <div class="questiongroup-numbered-left">
+        <p class="questiongroup-numbered-number"></p>
+      </div>
+    <div class="output questiongroup-numbered-right">
+  {% endif %}
+  {% for question in questiongroup %}
+    {{ question }}
+  {% endfor %}
+  {% if config.numbered == 'prefix' %}
+      </div>
+  {% endif %}
+{% endfor %}
+{% if config.numbered %}
+  </div>
+{% endif %}

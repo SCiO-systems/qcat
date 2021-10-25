@@ -1,0 +1,53 @@
+<section class="row">
+  <a name="qualify"></a>
+
+  <h2 data-magellan-destination="qualify">Qualifying</h2>
+
+  <h3>Measuring the importance</h3>
+  <p class="help-bloc">Rows that have a meaningful value are highlighted. Additional Comments and choices are only available, if a meaningful value is selected.</p>
+
+  <dl class="tabs" data-tab>
+    <dd class="active"><a href="#panel05-01">Result</a></dd>
+    <dd><a href="#panel05-02">HTML</a></dd>
+  </dl>
+  <div class="tabs-content panel">
+    <div class="content active" id="panel05-01">
+      {{> qualify_importance}}
+    </div>
+    <div class="content" id="panel05-02">
+      {{#markdown}}{{ embed 'src/partial/form_element/qualify_importance.hbs' 'xml' }}{{/markdown}}
+    </div>
+  </div>
+
+
+  <h3>Measuring with comment</h3>
+
+  <dl class="tabs" data-tab>
+    <dd class="active"><a href="#panel05-03">Result</a></dd>
+    <dd><a href="#panel05-04">HTML</a></dd>
+  </dl>
+  <div class="tabs-content panel">
+    <div class="content active" id="panel05-03">
+      {{> qualify_comment}}
+    </div>
+    <div class="content" id="panel05-04">
+      {{#markdown}}{{ embed 'src/partial/form_element/qualify_comment.hbs' 'xml' }}{{/markdown}}
+    </div>
+  </div>
+
+  <h3>Importance in Charts</h3>
+  <p class="help-bloc">We use chart-bars with five levels of colors ".is-level-n", corresponding to the importance of each element.</p>
+
+  <dl class="tabs" data-tab>
+    <dd class="active"><a href="#panel05-05">Result</a></dd>
+    <dd><a href="#panel05-06">HTML</a></dd>
+  </dl>
+  <div class="tabs-content panel">
+    <div class="content active" id="panel05-05">
+      {{> qualify_chart}}
+    </div>
+    <div class="content" id="panel05-06">
+      {{#markdown}}{{ embed 'src/partial/form_element/qualify_chart.hbs' 'xml' }}{{/markdown}}
+    </div>
+  </div>
+</section>

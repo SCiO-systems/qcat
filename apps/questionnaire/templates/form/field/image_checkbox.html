@@ -1,0 +1,55 @@
+{% comment %}
+
+  Template to render a checkbox form field with images. Renders the
+  checkboxes vertically with a prominent image.
+
+  If {{ conditions }} are provided, further image checkboxes are
+  rendered with template ``image_checkbox_conditional.html``.
+
+  Image checkboxes with {{ conditional }} are not rendered as they are
+  supposed to be rendered using {{ conditions }} of their parent image
+  checkbox.
+
+{% endcomment %}
+
+{% load static %}
+{% load floppyforms %}
+{% load list_to_columns %}
+
+{% if not conditional %}
+  {% if options.label != 'none' %}
+    <label for="{{ field.id }}">{{ label }}{% if label|last not in ".:!?" %}:{% endif %}</label>
+  {% endif %}
+  <ul class="list-gallery small-block-grid-1"
+          {% if options.question_conditions %} data-question-conditions="{{ options.question_conditions }}"{% endif %}>
+    {% for group_name, choices in optgroups %}
+      {% for choice in choices %}
+        <li>
+          <div class="list-gallery-item without-label">
+            <input {% if choice.0 in value %}checked="checked" {% endif %}
+                   type="checkbox" id="{{ attrs.id }}_{{ forloop.counter }}"
+                   name="{{ name }}"
+                   value="{{ choice.0 }}"
+                   data-toggle="{{ attrs.id }}_{{ forloop.counter }}_sub"
+                    {% include "floppyforms/attrs.html" %}>
+            {% if options.helptext_choices %}
+              {% with ttip=options.helptext_choices|get_by_index:forloop.counter0 %}
+                {% if ttip %}
+                  <label for="{{ attrs.id }}_{{ forloop.counter }}" class="has-tip" title="{{ ttip }}" data-tooltip="">{{ choice.1 }}<svg class="icon-information is-inline right"><use xlink:href="#icon-information"></svg>
+                {% else %}
+                  <label for="{{ attrs.id }}_{{ forloop.counter }}">{{ choice.1 }}
+                {% endif %}
+              {% endwith %}
+            {% else %}
+              <label for="{{ attrs.id }}_{{ forloop.counter }}">{{ choice.1 }}
+            {% endif %}
+              <figure class="list-gallery-icon">
+                <img src="{% static images|get_by_index:forloop.counter0 %}" alt="{{ choice.1 }}">
+              </figure>
+            </label>
+          </div>
+        </li>
+      {% endfor %}
+    {% endfor %}
+  </ul>
+{% endif %}

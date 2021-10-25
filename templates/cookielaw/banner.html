@@ -1,0 +1,12 @@
+{% load i18n %}
+
+{% if not IS_TEST_RUN %}
+<div class="reveal-modal" id="CookielawBanner" data-reveal>
+    <h2>{% trans "COOKIE_INFO_HEADER" %}</h2>
+    <p>
+      {% trans "COOKIE_INFO_PARA" %}
+      <br>
+      <button class="button right large is-wocat" onclick="javascript:Cookielaw.createCookielawCookie();$('#CookielawBanner').foundation('reveal', 'close');">{% trans "COOKIE_INFO_OK" %}</button>
+    </p>
+</div>
+{% endif %}

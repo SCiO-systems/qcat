@@ -1,0 +1,23 @@
+{% comment %}
+  Two columns (6 / 6). The first two questions are rendered in the first column,
+  all others in the second column.
+{% endcomment %}
+
+{% for questiongroup in questiongroups %}
+  <div class="row tech-output-columns top-margin">
+    {% if config.label %}
+      <div class="columns small-12">
+        <h5>{{ config.label }}</h5>
+      </div>
+    {% endif %}
+    <div class="columns medium-6">
+      {% for question in questiongroup %}
+        {% if forloop.counter == 3 %}
+          </div>
+          <div class="columns medium-6">
+        {% endif %}
+        {{ question }}
+      {% endfor %}
+    </div>
+  </div>
+{% endfor %}

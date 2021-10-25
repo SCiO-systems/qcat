@@ -1,0 +1,13 @@
+{% for questiongroup in questiongroups %}
+  <div class="row tech-output-columns measure-bar">
+    {% for question in questiongroup %}
+      {% if forloop.counter <= 2 %}
+        <div class="columns medium-6">
+      {% else %}
+        <div class="columns medium-12">
+      {% endif %}
+        {{ question }}
+      </div>
+    {% endfor %}
+  </div>
+{% endfor %}

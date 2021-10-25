@@ -1,0 +1,7 @@
+.tabs-content {
+  background-color: white;
+
+  & > .content {
+     padding: rem-calc(24);
+  }
+}

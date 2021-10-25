@@ -1,0 +1,10 @@
+.thumbnail {
+  margin-top: rem-calc(12);
+  figure {
+    position: relative;
+    margin: 0;
+    float: left;
+    width: rem-calc(240);
+    max-width: 100%;
+  }
+}

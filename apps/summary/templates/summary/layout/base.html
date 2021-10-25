@@ -1,0 +1,26 @@
+{% load static %}
+{% load i18n %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% trans "Summary" %}</title>
+    <link rel="stylesheet" href="{{ request.scheme }}://{{ request.get_host }}{% static 'css/summary.css' %}?version={{ css_file_hash }}" />
+    {% if break_words %}
+      <style type="text/css">
+        body {
+          word-wrap: break-word;
+        }
+      </style>
+    {% endif %}
+  </head>
+  <body class="summary {{ css_class }}">
+    {% for section in sections %}
+      {{ section }}
+    {% endfor %}
+  </body>
+</html>

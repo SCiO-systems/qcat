@@ -1,0 +1,44 @@
+{% load static %}
+{% load list_to_columns %}
+
+<h3>{{ numbering|default:'' }} {{ label }}</h3>
+{% if subcategories %}
+  {% for subcategory in subcategories %}
+    {{ subcategory }}
+  {% endfor %}
+{% else %}
+  {% for questiongroup in questions %}
+    {% if questiongroup.qg == 'tech_qg_9' or questiongroup.qg == 'tech_qg_239' %}
+      {% for qg_questions in questiongroup.questions %}
+        {% for question in qg_questions %}
+          {% for value in question.values %}
+            <div class="output-has-images">
+              <img class="output-image-cb" src="{% static value.1 %}" alt="{{ value.0 }}">
+              <div class="aside-questiongroup">
+                <h4>{{ value.0 }}</h4>
+                {% for questiongroup_sub in questions %}
+                  {% if questiongroup_sub.conditional_question == value.3 %}
+                    {% for qg_questions_sub in questiongroup_sub.questions %}
+                      {% for question_sub in qg_questions_sub %}
+                        {{ question_sub }}
+                      {% endfor %}
+                    {% endfor %}
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+        {% endfor %}
+      {% endfor %}
+    {% elif questiongroup.qg == 'tech_qg_235' or questiongroup.qg == 'tech_qg_7' or questiongroup.qg == 'tech_qg_237' or questiongroup.qg == 'tech_qg_238' or questiongroup.qg == 'tech_qg_249' %}
+      {% for qg_questions in questiongroup.questions %}
+        {% for question in qg_questions %}
+          {{ question }}
+        {% endfor %}
+      {% endfor %}
+      {% if questiongroup.qg == 'tech_qg_235' %}
+        <br>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endif %}

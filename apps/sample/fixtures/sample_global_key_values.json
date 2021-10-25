@@ -1,0 +1,226 @@
+[
+  {
+    "fields": {
+      "keyword": "country_AFG",
+      "translation": 5501
+    },
+    "model": "configuration.value",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "keyword": "country_KHM",
+      "translation": 5537
+    },
+    "model": "configuration.value",
+    "pk": 37
+  },
+  {
+    "fields": {
+      "keyword": "country_DEU",
+      "translation": 5582
+    },
+    "model": "configuration.value",
+    "pk": 82
+  },
+  {
+    "fields": {
+      "keyword": "country_CHE",
+      "translation": 5715
+    },
+    "model": "configuration.value",
+    "pk": 215
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "Country"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "Country"
+          }
+        },
+        "unccd": {
+          "label": {
+            "en": "Country"
+          }
+        },
+        "wocat": {
+          "label": {
+            "en": "Country"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5002
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "Name of project which facilitated the documentation/ evaluation of the Technology (if relevant)"
+          },
+          "helptext": {
+            "en": "If your project is not listed in the dropdown, please contact the WOCAT secretariat (wocat@cde.unibe.ch)."
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "Name of project which facilitated the documentation/ evaluation of the Technology (if relevant)"
+          },
+          "helptext": {
+            "en": "If your project is not listed in the dropdown, please contact the WOCAT secretariat (wocat@cde.unibe.ch)."
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5053
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": ""
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": ""
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5045
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Afghanistan"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5501
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Cambodia"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5537
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Germany"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5582
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Switzerland"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5715
+  },
+  {
+    "fields": {
+      "keyword": "country",
+      "translation": 5002,
+      "configuration": {
+        "type": "select_type"
+      },
+      "values": [
+        1,
+        37,
+        82,
+        215
+      ]
+    },
+    "model": "configuration.key",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "keyword": "funding_project",
+      "translation": 5053,
+      "configuration": {
+        "type": "select_model",
+        "form_options": {
+          "model": "Project"
+        }
+      }
+    },
+    "model": "configuration.key",
+    "pk": 12
+  },
+  {
+    "fields": {
+      "keyword": "link_id",
+      "translation": 5045,
+      "configuration": {
+        "type": "link_id",
+        "form_options": {
+          "template": "no_label"
+        }
+      }
+    },
+    "model": "configuration.key",
+    "pk": 47
+  },
+  {
+    "fields": {
+      "keyword": "qg_location",
+      "translation": null,
+      "configuration": {}
+    },
+    "model": "configuration.questiongroup",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "keyword": "qg_funding_project",
+      "translation": null,
+      "configuration": {}
+    },
+    "model": "configuration.questiongroup",
+    "pk": 5
+  }
+]

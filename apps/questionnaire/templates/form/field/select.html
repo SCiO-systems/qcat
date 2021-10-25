@@ -1,0 +1,38 @@
+{% comment %}
+
+  Template to render a select list. If the options are searchable, the
+  select input is rendered using Chosen.
+
+    searchable (boolean): Whether to render the field with Chosen
+      (allows typing) or not.
+
+{% endcomment %}
+
+{% load sekizai_tags %}
+{% load static %}
+{% load compress %}
+
+{% addtoblock 'css' %}
+  {% compress css %}
+    <link href="{% static 'css/chosen.min.css' %}" rel="stylesheet">
+  {% endcompress %}
+{% endaddtoblock %}
+
+{% addtoblock 'js' %}
+  {% compress js %}
+    <script src="{% static 'js/chosen.jquery.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+  {% endcompress %}
+{% endaddtoblock %}
+
+<select name="{{ name }}" data-placeholder=""{% if searchable %} class="chosen-select"{% endif %}{% if options_order %} data-options-order="{{ options_order|join:"," }}"{% endif %} {% include "floppyforms/attrs.html" %}
+    {% if options.question_conditions %} data-question-conditions="{{ options.question_conditions }}"{% endif %}
+    {% if options.custom_to_options %} data-custom-to-options="{{ options.custom_to_options|safe }}"{% endif %}
+    {% if options.field_options.keyword %} data-key-keyword="{{ options.field_options.keyword }}"{% endif %}
+    {% if options.field_options.readonly == 'readonly' %}disabled{% endif %}>
+  {% for group_name, choices in optgroups %}
+    {% for choice in choices %}
+      <option value="{{ choice.0 }}"{% if choice.0 in value %}selected="selected"{% endif %}>{{ choice.1 }}</option>
+    {% endfor %}
+  {% endfor %}
+</select>

@@ -1,0 +1,5 @@
+{% comment %}
+  If "other_textfield" is set and there is no initial value, the field is
+  rendered as readonly
+{% endcomment %}
+<input type="text" name="{{ name }}" {% if value %} value="{{ value }}"{% elif other_textfield %} readonly="readonly"{% endif %}{% include "floppyforms/attrs.html" %}{% if options.label != 'placeholder' %} placeholder=""{% endif %}{% if options.helptext_position == 'field' %} class="has-tip" title="{{ options.helptext }}" data-tooltip="" aria-haspopup="true"{% endif %}>

@@ -1,0 +1,37 @@
+<section class="row">
+  <a name="help"></a>
+
+  <h2 data-magellan-destination="help">Help instructions</h2>
+
+  <h3>Instructions blocs</h3>
+
+  <dl class="tabs" data-tab>
+    <dd class="active"><a href="#panel02-01">Result</a></dd>
+    <dd><a href="#panel02-02">HTML</a></dd>
+  </dl>
+  <div class="tabs-content panel">
+    <div class="content active" id="panel02-01">
+      {{> help_bloc}}
+    </div>
+    <div class="content" id="panel02-02">
+      {{#markdown}}{{ embed 'src/partial/form_element/help_bloc.hbs' 'xml' }}{{/markdown}}
+    </div>
+  </div> 
+
+
+  <h3>Tooltips</h3>
+
+  <dl class="tabs" data-tab>
+    <dd class="active"><a href="#panel02-03">Result</a></dd>
+    <dd><a href="#panel02-04">HTML</a></dd>
+  </dl>
+  <div class="tabs-content panel">
+    <div class="content active" id="panel02-03">
+      {{> help_tooltip}}
+    </div>
+    <div class="content" id="panel02-04">
+      {{#markdown}}{{ embed 'src/partial/form_element/help_tooltip.hbs' 'xml' }}{{/markdown}}
+    </div>
+  </div> 
+  
+</section>

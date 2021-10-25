@@ -1,0 +1,6 @@
+0000000000000000000000000000000000000000 2b1621484ff4cc8eaa848f1833f4c229581306fd Kostas Christopoulos <kostas@withplum.com> 1632604998 +0300	branch: Created from HEAD
+2b1621484ff4cc8eaa848f1833f4c229581306fd 2198a277d47e0d254460db8d835c2ecf3e9c423a Kostas Christopoulos <kostas@withplum.com> 1632605166 +0300	commit: save changes
+2198a277d47e0d254460db8d835c2ecf3e9c423a 662a3c1a7bbc44aa6a8ca932e3bdea74210b49aa Kostas Christopoulos <kostas@withplum.com> 1633168932 +0300	commit: make it run locally
+662a3c1a7bbc44aa6a8ca932e3bdea74210b49aa cd6941c4f3a83ebdb91ce278c67c0e45c6fb20f1 Kostas Christopoulos <kostas@withplum.com> 1634028557 +0300	commit: fix all unit tests
+cd6941c4f3a83ebdb91ce278c67c0e45c6fb20f1 cd6941c4f3a83ebdb91ce278c67c0e45c6fb20f1 Kostas Christopoulos <kostas@withplum.com> 1635149267 +0300	Branch: renamed refs/heads/run-locally-v1 to refs/heads/main
+cd6941c4f3a83ebdb91ce278c67c0e45c6fb20f1 1ed19b1844644b5a8e886aab0a3079bc456c62eb Kostas Christopoulos <kostas@withplum.com> 1635153739 +0300	commit: Dockerize

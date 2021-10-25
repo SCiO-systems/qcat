@@ -1,0 +1,97 @@
+<ul role="tablist" data-accordion="" class="accordion is-dark">
+
+  {# Category 4 #}
+  {% with section=filter_configuration.sample.cat_4 %}
+    <li class="accordion-navigation">
+      <a aria-controls="{{ section.keyword }}" id="{{ section.keyword }}-heading" role="tab" href="#{{ section.keyword }}-filter">
+        <svg class="icon is-inline"><use xlink:href="#icon-chevron-thin-right" xmlns:xlink="http://www.w3.org/1999/xlink"/></svg>
+        {{ section.label }}
+      </a>
+      <div aria-labelledby="{{ section.keyword }}-heading" role="tabpanel" class="content" id="{{ section.keyword }}-filter">
+
+        {# 4.1: Key 14 #}
+        {% with filter=section.filters.key_14 %}
+          <ul role="tablist" data-accordion="" class="accordion is-dark">
+            <li class="accordion-navigation">
+              <a aria-controls="{{ filter.keyword }}-heading" id="{{ filter.keyword }}-heading" role="tab" href="#{{ filter.keyword }}-filter">
+                <svg class="icon is-inline"><use xlink:href="#icon-chevron-thin-right" xmlns:xlink="http://www.w3.org/1999/xlink"/></svg>
+                {{ filter.label }}
+              </a>
+              <div aria-labelledby="{{ filter.keyword }}-heading" role="tabpanel" class="content" id="{{ filter.keyword }}-filter">
+                <ul class="list-gallery small-block-grid-1 large-block-grid-2">
+                  {% for value in filter.values %}
+                    <li>
+                      <label class="input-multiline" for="{{ filter.keyword }}_{{ value.0 }}">
+                        <input type="checkbox" id="{{ filter.keyword }}_{{ value.0 }}" data-questiongroup="{{ filter.questiongroup }}" data-key="{{ filter.keyword }}" data-value="{{ value.0 }}">
+                        <span>{{ value.1 }}</span>
+                      </label>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </li>
+          </ul>
+        {% endwith %}
+
+      </div>
+    </li>
+  {% endwith %}
+
+  {# Flags #}
+  <li class="accordion-navigation">
+    <a aria-controls="filter-flags" id="filter-flags-heading" role="tab" href="#filter-flags-filter">
+      <svg class="icon is-inline"><use xlink:href="#icon-chevron-thin-right" xmlns:xlink="http://www.w3.org/1999/xlink"/></svg>
+      Flags
+    </a>
+    <div aria-labelledby="filter-flags-heading" role="tabpanel" class="content" id="filter-flags-filter">
+      {% for flag in filter_configuration.flags %}
+        <label class="filter-checkbox-only">
+          <input type="checkbox" id="flag_{{ flag.0 }}" data-value="{{ flag.0 }}" data-key="flag" data-questiongroup> {{ flag.1 }}
+        </label>
+        <option value="Georges R.R.Martin"></option>
+      {% endfor %}
+    </div>
+  </li>
+
+  {# Dates #}
+  <li class="accordion-navigation">
+    <a aria-controls="filter-dates" id="filter-dates-heading" role="tab" href="#filter-dates-filter">
+      <svg class="icon is-inline"><use xlink:href="#icon-chevron-thin-right" xmlns:xlink="http://www.w3.org/1999/xlink"/></svg>
+      Dates
+    </a>
+    <div aria-labelledby="filter-dates-heading" role="tabpanel" class="content" id="filter-dates-filter">
+      <div class="row">
+        <div class="small-6 columns">
+          <label for="date-created">Creation Date</label>
+          <div class="slider-container">
+            <div data-cur_max="2016" data-cur_min="2000" data-range_max="2016" data-range_min="2000" data-keyword="created" class="nstSlider filter-created">
+                <div class="bar filter-created"></div>
+                <div class="leftGrip filter-created" tabindex="0"></div>
+                <div class="rightGrip filter-created" tabindex="0"></div>
+            </div>
+            <span class="leftLabel filter-created"></span>
+            <input type="hidden" data-query-key="created" class="min filter-created" value="0">
+            <span class="rightLabel filter-created"></span>
+            <input type="hidden" data-query-key="created" class="max filter-created" value="0">
+          </div>
+        </div>
+        <div class="small-6 columns">
+          <label for="date-updated">Update Date</label>
+          <div class="slider-container">
+            <div data-cur_max="2016" data-cur_min="2000" data-range_max="2016" data-range_min="2000" data-keyword="updated" class="nstSlider filter-updated">
+                <div class="bar filter-updated"></div>
+                <div class="leftGrip filter-updated" tabindex="0"></div>
+                <div class="rightGrip filter-updated" tabindex="0"></div>
+            </div>
+            <span class="leftLabel filter-updated"></span>
+            <input type="hidden" data-query-key="updated" class="min filter-updated" value="0">
+            <span class="rightLabel filter-updated"></span>
+            <input type="hidden" data-query-key="updated" class="max filter-updated" value="0">
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
+
+
+</ul>

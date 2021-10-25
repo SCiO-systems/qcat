@@ -1,0 +1,43 @@
+{% comment %}
+  Two columns (4 / 8). The first two questions (assumed to be type of user
+  involvement) are rendered in the first column, all others in the second
+  column.
+{% endcomment %}
+
+{% load list_to_columns %}
+
+{% for questiongroup in questiongroups %}
+  <div class="row tech-output-columns">
+    {% if config.label and forloop.first %}
+      <div class="columns small-12">
+        <{{ config.label_tag|default:"h4" }}>{{ config.label }}</{{ config.label_tag|default:"h4" }}>
+      </div>
+    {% endif %}
+  <div class="columns medium-4">
+    {% for question in questiongroup %}
+      {% if forloop.counter <= 2 %}
+        {{ question }}
+      {% endif %}
+    {% endfor %}
+  </div>
+  <div class="columns medium-8 user-details">
+    {% with data=raw_questions|get_by_index:forloop.counter0 %}
+      {% if data.user_id %}
+        {# User link (with ID)#}
+        {{ questiongroup.2 }}
+      {% else %}
+        {# Address details of a non-registered user #}
+        <div class="row">
+          <div class="columns medium-6">
+            <p>{{ data.person_lastname|default:'' }} {{ data.person_firstname|default:'' }}</p>
+          </div>
+          <div class="columns medium-6">
+            {% if data.person_institution_name %}<p>{{ data.person_institution_name }}</p>{% endif %}
+            <p>{{ data.country.0 }}</p>
+          </div>
+        </div>
+      {% endif %}
+    {% endwith %}
+  </div>
+  </div>
+{% endfor %}

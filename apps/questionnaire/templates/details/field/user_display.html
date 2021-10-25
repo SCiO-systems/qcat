@@ -1,0 +1,6 @@
+{% if value %}
+  {% if label_position != 'none' %}<{{ label_tag|default:"h5" }}>{{ key }}{% if key|last not in ".:!?" %}:{% endif %}</{{ label_tag|default:"h5" }}>{% endif %}
+  <p>
+    <a href="{% if unknown_user %}#{% else %}{% url 'accounts:user_details' user_id %}{% endif %}" class="link">{{ value }}</a>
+  </p>
+{% endif %}

@@ -1,0 +1,24 @@
+{% comment %}
+
+  - current: the current configuration (wocat / technologies / approaches)
+
+{% endcomment %}
+
+{% load i18n %}
+
+<form action="{% if current == 'technologies' %}{% url 'technologies:questionnaire_list' %}{% elif current == 'approaches' %}{% url 'approaches:questionnaire_list' %}{% elif current == 'sample' %}{% url 'sample:questionnaire_list' %}{% else %}{% url 'wocat:questionnaire_list' %}{% endif %}" method="GET" role="search" class="search">
+  <div class="search-field">
+    <input type="search" tabindex="1" placeholder="{% trans "Search SLM Data" %}" name="q">
+    <div class="search-category">
+      <a href="#" id="search-type-display" data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="button no-radius dropdown secondary light search-type-dropdown">{% trans "All SLM Data" %}</a>
+      <ul id="drop1" data-dropdown-content class="f-dropdown search-type-select" aria-hidden="true">
+        <li><a href="#" data-type="wocat">{% trans "All SLM Data" %}</a></li>
+        <li><a href="#" data-type="technologies">{% trans "SLM Technologies" %}</a></li>
+        <li><a href="#" data-type="approaches">{% trans "SLM Approaches" %}</a></li>
+        <li><a href="#" data-type="unccd">{% trans "UNCCD PRAIS Practices" %}</a></li>
+      </ul>
+      <input type="hidden" name="type" id="search-type" value="wocat">
+    </div>
+    <input type="submit" class="search-submit button" id="submit-search" value="{% trans "Search" %}">
+  </div>
+</form>

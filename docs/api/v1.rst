@@ -1,0 +1,7 @@
+QCAT API v1
+===========
+
+Version 1 is not the current version of the QCAT API anymore. Currently, there
+is no documentation of version 1 available.
+
+Please use the current version of the API and refer to its documentation.

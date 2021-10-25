@@ -1,0 +1,17 @@
+<h3>{{ numbering|default:'' }} {{ label }}</h3>
+<div class="row">
+  <div class="medium-8 columns">
+    {% for qg_config, qg_rendered in questiongroups %}
+      {% if qg_config.keyword != 'qg_location_map' %}
+        {{ qg_rendered }}
+      {% endif %}
+    {% endfor %}
+  </div>
+  <div class="medium-4 columns">
+    {% for qg_config, qg_rendered in questiongroups %}
+      {% if qg_config.keyword == 'qg_location_map' %}
+        {{ qg_rendered }}
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>

@@ -1,0 +1,50 @@
+{% comment %}
+
+  Use this template for subcategories which themselves have subcategories again
+  and for these sub-subcategories as well.
+
+  The top subcategory renders the <fieldset> and then renders its children
+  inside of it.
+
+  Useful configurations in "form_options" are:
+
+  - "label_tag": The HTML tag for the label, the default is <h3>.
+    This does not affect the top subcategory as its label is rendered as the
+    legend of the <fieldset>).
+
+  - "label_class": A CSS class for the HTML tag of the label. An additional CSS
+    class "form-subcategory" is added for each label.
+
+{% endcomment %}
+
+{% load floppyforms %}
+
+{% if not fieldset_rendered %}
+  {# The first subcategory is rendered with a <fieldset>, the label as legend #}
+  <fieldset id="{{ config.keyword }}" class="row{% if config.has_changes %} has-changes{% endif %}">
+    <legend>{{ config.numbering|default:'' }} {{ config.label }}</legend>
+{% else %}
+  {# The label of other subcategories #}
+  <div class="small-12 columns">
+    <{{ config.label_tag|default:"h3" }} class="form-subcategory {{ config.label_class }}">{{ config.label }}</{{ config.label_tag|default:"h3" }}>
+  </div>
+{% endif %}
+
+{% include "form/helptext.html" with helptext=config.helptext helptext_length=config.helptext_length %}
+
+{% if config.next_level == 'subcategories' %}
+  {# Children are subcategories #}
+  {% for sub_config, sub_formsets in formsets %}
+    {% form form using sub_config.form_template with config=sub_config formsets=sub_formsets fieldset_rendered=True %}
+  {% endfor %}
+{% else %}
+  {# Children are questiongroups #}
+  {% for questiongroup_config, questiongroup_formset in formsets %}
+    {% form form using questiongroup_config.template with config=questiongroup_config formset=questiongroup_formset %}
+  {% endfor %}
+{% endif %}
+
+{% if not fieldset_rendered %}
+  {# Closing the <fieldset> #}
+  </fieldset>
+{% endif %}

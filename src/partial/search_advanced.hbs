@@ -1,0 +1,106 @@
+<form id="search-advanced" action="">
+  <a data-toggle="search-advanced" class="search-close"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-cross"></use></svg></a>
+  <div class="row">
+    <div class="medium-4 columns">
+      <label for="location">Location</label>
+      <input id="location" type="text" list="locations" placeholder="Select or type a Country name">
+      <datalist id="locations">
+        <option value="Afghanistan"></option>
+        <option value="Albania"></option>
+        <option value="Algeria"></option>
+        <option value="Andorra"></option>
+        <option value="Angola"></option>
+        <option value="Antigua &amp; Deps"></option>
+        <option value="Argentina"></option>
+        <option value="Armenia"></option>
+        <option value="Australia"></option>
+        <option value="Austria"></option>
+        <option value="Azerbaijan"></option>
+      </datalist>
+    </div>
+    <div class="medium-4 columns">
+      <label for="language">Language</label>
+      <select id="language">
+        <option value="en">English</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+      </select>
+    </div>
+    <div class="medium-4 columns">
+      <label for="author">Author</label>
+      <input id="author" type="text" list="authors" placeholder="Select or type the name of the author">
+      <datalist id="authors">
+        <option value="Georges R.R.Martin"></option>
+        <option value="Philipp K. Dick"></option>
+        <option value="Isaac Asimov"></option>
+      </datalist>
+    </div>
+  </div>
+
+  <div class="is-rhythmed">
+    <div class="row">
+      <div class="small-6 columns">
+        <label for="date-creation">Creation Date</label>
+        <div class="slider-container">
+          <div class="nstSlider" data-range_min="2000" data-range_max="2015"
+                                 data-cur_min="2014"   data-cur_max="2015">
+              <div class="bar"></div>
+              <div class="leftGrip"></div>
+              <div class="rightGrip"></div>
+          </div>
+          <span class="leftLabel">2014</span>
+          <span class="rightLabel">2015</span>
+        </div>
+      </div>
+      <div class="small-6 columns">
+        <label for="date-review">Review Date</label>
+        <div class="slider-container">
+          <div class="nstSlider" data-range_min="2000" data-range_max="2015"
+                                 data-cur_min="2014"   data-cur_max="2015">
+              <div class="bar"></div>
+              <div class="leftGrip"></div>
+              <div class="rightGrip"></div>
+          </div>
+          <span class="leftLabel">2014</span>
+          <span class="rightLabel">2015</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="is-rhythmed">
+    <div class="row">
+      <div class="small-12 columns">
+        <ul class="accordion is-light" data-accordion role="tablist">
+          <li class="accordion-navigation">
+            <a href="#panel1d" role="tab" id="panel1d-heading" aria-controls="panel1d">
+              <svg class="icon is-inline"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-chevron-thin-right"></use></svg>
+              Land use
+            </a>
+            <div id="panel1d" class="content" role="tabpanel" aria-labelledby="panel1d-heading">
+              {{> list_gallery}}
+            </div>
+          </li>
+          <li class="accordion-navigation">
+            <a href="#panel2d"  role="tab" id="panel2d-heading" aria-controls="panel2d">
+              <svg class="icon is-inline"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-chevron-thin-right"></use></svg>
+              Degradation addressed
+            </a>
+            <div id="panel2d" class="content" role="tabpanel" aria-labelledby="panel2d-heading">
+              Panel 2. Lorem ipsum dolor
+            </div>
+          </li>
+          <li class="accordion-navigation">
+            <a href="#panel3d" role="tab" id="panel3d-heading" aria-controls="panel3d">
+              <svg class="icon is-inline"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-chevron-thin-right"></use></svg>
+              SLM measures
+            </a>
+            <div id="panel3d" class="content" role="tabpanel" aria-labelledby="panel3d-heading">
+              Panel 3. Lorem ipsum dolor
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</form>

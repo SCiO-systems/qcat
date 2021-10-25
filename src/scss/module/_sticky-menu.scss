@@ -1,0 +1,77 @@
+.sticky-content {
+  background-color: $color-beige-dark;
+  line-height: 2;
+}
+
+.sticky-entry {
+  padding: 0 20px;
+  display: inline-block;
+  border-right: 1px solid $color-beige;
+
+  &:hover {
+    background: white;
+  }
+}
+
+.sticky-entry-link, .sticky-entry-link:focus {
+  color: #2b261a;
+  font-size: .875rem;
+  line-height: 1.6rem;
+
+  svg.icon-lines.is-inline {
+    margin-top: 0.6rem;
+  }
+}
+
+.sticky-menu {
+  position: absolute;
+  top: 100%;
+  background: white;
+  border: 1px solid $color-beige;
+  border-radius: 2px;
+  border-bottom-left-radius: 0;
+  border-bottom: none;
+  margin-left: -21px;
+  color: #2b261a;
+  padding: 1rem;
+
+  ul {
+    list-style: none;
+    margin-left: 0;
+  }
+}
+
+.sticky-entry-active .sticky-entry-link, .sticky-entry-link:hover {
+  color: $color-beige-dark;
+}
+
+.sticky-entry-active {
+  background: white;
+}
+
+.sticky-toc-content {
+  ul {
+    margin-top: 0.5rem;
+  }
+}
+
+.sticky-help-content {
+  ul {
+    margin-top: 0.5rem;
+  }
+}
+
+.sticky-toc-title {
+  font-weight: bold;
+}
+.sticky-help-title {
+  font-weight: bold;
+}
+
+.sticky-menu-outer {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 8;
+}

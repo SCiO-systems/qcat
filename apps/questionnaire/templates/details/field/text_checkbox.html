@@ -1,0 +1,10 @@
+{% comment %}
+  Render a text value as a checkbox (in a list).
+{% endcomment %}
+
+{% if value %}
+  {% if label_position != 'none' %}<{{ label_tag|default:"h5" }}>{{ key }}{% if key|last not in ".:!?" %}:{% endif %}</{{ label_tag|default:"h5" }}>{% endif %}
+  <ul class="no-top-margin">
+    <li>{{ value }}</li>
+  </ul>
+{% endif %}

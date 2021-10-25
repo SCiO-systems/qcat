@@ -1,0 +1,30 @@
+{% comment %}
+  Two columns (4 / 8). The first question is rendered in the first column, all others in the second column.
+{% endcomment %}
+
+{% for questiongroup in questiongroups %}
+  <div class="row tech-output-columns top-margin">
+    {% if config.label %}
+      <div class="columns small-12">
+        <h5>{{ config.label }}</h5>
+      </div>
+    {% endif %}
+    <div class="columns small-12">
+      {% for question in questiongroup %}
+        {% if not forloop.counter|divisibleby:2 %}
+          <div class="row">
+            <div class="columns medium-4">
+        {% else %}
+            <div class="columns medium-8">
+        {% endif %}
+
+          {{ question }}
+        </div>
+
+        {% if forloop.counter|divisibleby:2 or forloop.last %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+{% endfor %}

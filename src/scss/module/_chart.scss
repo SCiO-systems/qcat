@@ -1,0 +1,196 @@
+§.chart-horizontal-bars,
+.chart-pyramidal-bars {
+  @include reset-list;
+}
+.chart-horizontal-bars, .chart-horizontal-bars:first-child {
+  margin-top: rem-calc(8);
+}
+.chart-horizontal-bars .chart-bar,
+.chart-pyramidal-bars .chart-bar {
+  display: block;
+  padding: rem-calc(6 12 5);
+  background-color: $color-brown;
+  border-radius: rem-calc(2);
+  color: white;
+  // Different importance level (max 5)
+  @for $i from 1 through 5 {
+    &.is-level-#{$i} {
+      background-color: rgba($color-brown, 0.2 * $i );
+    }
+  }
+
+  & + .chart-bar {
+    margin-top: rem-calc(1);
+  }
+}
+
+.chart-horizontal-bars-other {
+   margin-top: rem-calc(1);
+}
+
+$bars-max-number: 20;
+$bars-factor: 4;
+
+.chart-horizontal-bars .chart-bar.is-level-0 {
+  background-color: inherit;
+  color: inherit;
+}
+
+.chart-pyramidal-bars {
+  @for $i from 1 through $bars-max-number {
+    .chart-bar:nth-child(#{$i}) {
+      margin-right: rem-calc($bars-max-number - ($i * $bars-factor));
+    }
+  }
+  &.text-right {
+    @for $i from 1 through $bars-max-number {
+      .chart-bar:nth-child(#{$i}) {
+        margin-right: 0;
+        margin-left: rem-calc($bars-max-number - ($i * $bars-factor));
+      }
+    }
+  }
+}
+.chart-pyramidal-bars.is-desc {
+  @for $i from 1 through $bars-max-number {
+    .chart-bar:nth-child(#{$i}) {
+      margin-right: rem-calc($i * $bars-factor);
+    }
+  }
+  &.text-right {
+    @for $i from 1 through $bars-max-number {
+      .chart-bar:nth-child(#{$i}) {
+        margin-right: 0;
+        margin-left: rem-calc($i * $bars-factor);
+      }
+    }
+  }
+}
+.chart-pyramidal-bars.is-sided {
+  @for $i from 1 through $bars-max-number {
+    .chart-bar:nth-child(#{$i}) {
+      margin-right: rem-calc($bars-max-number - ($i * $bars-factor));
+      margin-left: rem-calc($bars-max-number - ($i * $bars-factor));
+    }
+  }
+
+  &.is-desc {
+    @for $i from 1 through $bars-max-number {
+      .chart-bar:nth-child(#{$i}) {
+        margin-right: rem-calc($i * $bars-factor);
+        margin-left: rem-calc($i * $bars-factor);
+      }
+    }
+  }
+}
+
+.chart-label {
+  display: inline-block;
+  max-width: 75%;
+}
+.chart-value {
+  display: inline-block;
+  float: right;
+  text-align: right;
+  min-width: 15%;
+  margin-left: 1rem;
+}
+
+.chart-measure-labelled {
+  list-style: none;
+  padding: 0;
+  float: left;
+  margin-left: 0;
+  margin-top: 0;
+}
+.chart-measure-labelled .step {
+  background-color: rgba($color-brown, 0.2 * 1 );
+  display: inline-block;
+  color: white;
+  padding: rem-calc(12);
+  margin: 0 0 0 1px;
+  float: left;
+  border-radius: rem-calc(2);
+  @for $i from 1 through 5 {
+    &.is-level-#{$i} {
+      background-color: rgba($color-brown, 0.2 * $i );
+    }
+  }
+}
+.chart-measure-label-left {
+  margin-right: rem-calc(8);
+  font-size: rem-calc(14);
+  line-height: 1.5rem;
+  float: right;
+}
+.chart-measure-label-right {
+  margin-left: rem-calc(8);
+  font-size: rem-calc(14);
+  line-height: 1.5rem;
+}
+.chart-measure-col-left {
+  padding-right: 0;
+}
+.chart-measure-col-content {
+  padding-left: 0;
+}
+.chart-year-bar {
+  line-height: 0.5rem;
+
+  li.step {
+    padding: 0.5rem;
+  }
+}
+
+
+body.summary
+{
+  .highlights_list {
+    margin: 1px 0 0 0;
+    padding: 0;
+    li {
+      padding-left: 1.2rem;
+      margin-top: 0rem;
+      position: relative;
+      color: #999;
+      &::before {
+        font-size: 1rem;
+        content: ' ';
+        display: block;
+        height: 15px;
+        width: 15px;
+        background-color: rgba(85, 116, 49, 0.15);
+        left: 0;
+        top: 0.05rem;
+        position: absolute;
+      }
+      &.true {
+        color: #3E3B34;
+        &::before {
+          color: white;
+          line-height: 1em;
+          font-size: 1.2em;
+          content: '\2713 ';
+          background-color: rgba(85,116,49,.8);
+          padding-left: 2px;
+        }
+      }
+    }
+  }
+}
+
+body.summary.is-approaches
+{
+  .highlights_list {
+    li {
+      &::before {
+        background-color: rgba($color-approach, 0.15);
+      }
+      &.true {
+        &::before {
+          background-color: #e86b28;
+        }
+      }
+    }
+  }
+}

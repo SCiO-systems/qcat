@@ -1,0 +1,76 @@
+.sub-nav-fixed {
+  background: $color-brown-light;
+}
+
+ul.sub-nav-square {
+  @include reset-list;
+  @include clearfix;
+  margin-top: 0;
+  & > li {
+    float: left;
+    display: inline-block;
+    margin-left: rem-calc(1);
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+  a {
+    display: block;
+    padding: rem-calc(6);
+    min-width: rem-calc(36);
+    height: rem-calc(36);
+    font-size: rem-calc(12);
+    font-weight: 600;
+    color: #FFFFFF;
+    line-height: rem-calc(24);
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 0px 1px 1px rgba(0,0,0,0.10);
+    background-color: rgba($color-brown, 0.8);
+    opacity: 0.8;
+    transition: opacity 300ms ease;
+  }
+  a:hover,
+  a:focus {
+    opacity: 1;
+  }
+  a.is-tech {
+    background-color: rgba($color-tech, 0.8);
+  }
+  a.is-approach {
+    background-color: rgba($color-approach, 0.8);
+  }
+  a.is-unccd {
+    background-color: rgba($color-unccd, 0.8);
+  }
+  a.is-watershed {
+    background-color: rgba($color-watershed, 0.8);
+  }
+  a.is-cca {
+    background-color: rgba($color-cca, 0.8);
+  }
+  a.is-cbp {
+    background-color: rgba($color-cbp, 0.8);
+  }
+  a.is-alert {
+    background-color: rgba($alert-color, 0.8);
+    margin-right: 5px;
+
+    .is-inline {
+      float: none;
+      margin: 0;
+      height: rem-calc(24);
+    }
+
+  }
+  a > .icon {
+    float: left;
+    width: rem-calc(24);
+    height: rem-calc(24);
+  }
+  a > .number {
+    display: inline-block;
+    float: left;
+    padding: rem-calc(0 6);
+  }
+}

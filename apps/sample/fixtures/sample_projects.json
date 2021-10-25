@@ -1,0 +1,29 @@
+[
+  {
+    "fields": {
+      "name": "The first Project",
+      "abbreviation": "TFP",
+      "active": true
+    },
+    "pk": 1,
+    "model": "configuration.project"
+  },
+  {
+    "fields": {
+      "name": "International Project for Collecting Technologies",
+      "abbreviation": "IPCT",
+      "active": true
+    },
+    "pk": 2,
+    "model": "configuration.project"
+  },
+  {
+    "fields": {
+      "name": "Old Inactive Project",
+      "abbreviation": "OIP",
+      "active": false
+    },
+    "pk": 3,
+    "model": "configuration.project"
+  }
+]

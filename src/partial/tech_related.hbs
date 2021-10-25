@@ -1,0 +1,78 @@
+<article role="article" class="row tech-item">
+  <div class="tech-thumbnail medium-4 columns">
+    <figure>
+      <a href="technology_output.html" title="">
+        <img src="assets/img/{{technology.3.figure}}" alt=""/>
+      </a>
+      <figcaption class="tech-status">
+        <span class="label is-{{technology.3.type}}">
+          {{#is technology.3.type "tech"}}Technology{{else}}{{technology.3.type}}{{/is}}
+        </span>
+        {{#isnt technology.3.status "completed"}}
+          <span class="label is-{{technology.3.status}}">{{technology.3.status}}</span>
+        {{/isnt}}
+      </figcaption>
+    </figure>
+    <ul class="tech-icons">
+      <li>
+        <a href="">
+          <span class="tech-icon">
+            <svg class="icon"><use xlink:href="#icon-pdf"></use></svg>
+            <br>
+            PDF
+          </span>
+        </a>
+      </li>
+      {{#if technology.3.have_a_video}}
+      <li>
+        <a href="">
+          <span class="tech-icon">
+            <svg class="icon"><use xlink:href="#icon-video"></use></svg>
+            Video
+          </span>
+        </a>
+      </li>
+      {{/if}}
+    </ul>
+  </div>
+  <div class="content medium-8 columns">
+    <header>
+       <h1><a href="technology_output.html" title="" class="link">{{technology.3.title}}</a> <small>{{technology.3.location}}</small></h1>
+    </header>
+    <aside class="tech-infos row collapse">
+      <dl class="medium-6 columns">
+        <dt>ID:</dt>
+        <dd>{{technology.3.id}}</dd>
+      </dl>
+      <dl class="medium-6 columns">
+        <dt>Creation:</dt>
+        <dd><time datetime="{{technology.3.date_creation}}" pubdate="pubdate">{{technology.3.date_creation}}</time></dd>
+      </dl>
+      <dl class="medium-6 columns">
+        <dt>Update:</dt>
+        <dd><time datetime="{{technology.3.date_review}}">{{technology.3.date_review}}</time></dd>
+      </dl>
+      <dl class="medium-6 columns">
+        <dt>Author:</dt>
+        <dd>{{technology.3.author}}</dd>
+      </dl>
+    </aside>
+    <main>
+      <p>{{technology.3.short_description}}</p>
+    </main>
+    <footer>
+      <p class="is-light">
+        {{#if technology.3.related}}
+          <em>
+            Related approaches: 
+            {{#each technology.3.related}}
+              <a href="" class="link">{{title}}</a>{{#unless @last}},{{/unless}}
+            {{/each}}
+          </em>
+          <br>
+        {{/if}}
+        <em>This article is also avalable in: <a href="" class="link">deutsch</a>, <a href="" class="link">español</a>, <a href="" class="link">français</a></em>
+      </p>
+    </footer>
+  </div>
+</article>

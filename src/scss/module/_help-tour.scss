@@ -1,0 +1,27 @@
+.introjs-fixedTooltip {
+  position: absolute !important;
+}
+
+body.layout-wizard .introjs-fixedTooltip {
+  position: fixed !important;
+}
+
+.wizard-header.introjs-fixParent, .wizard-header-outer.introjs-fixParent {
+  position: fixed !important;
+  z-index: 999 !important;
+
+  .introjs-showElement {
+    background: white;
+    color: #2b261a;
+  }
+}
+
+span.introjs-helperNumberLayer {
+    -webkit-box-sizing: initial !important;
+    box-sizing: initial !important;
+    -moz-box-sizing: initial !important;
+}
+
+.introjs-helperLayer.intro-dark-background {
+  background: rgba(255,255,255,0.1);
+}

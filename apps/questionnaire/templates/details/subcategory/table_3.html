@@ -1,0 +1,50 @@
+{% comment %}
+  List output of questiongroups with one questiongroup per row. The
+  values of the questiongroups are checkbox values. The first column is
+  labelled by the helptext of the subcategories' helptext. No numbering.
+{% endcomment %}
+
+<h3>{{ numbering|default:'' }} {{ label }}</h3>
+{% if subcategories %}
+  {% for subcategory in subcategories %}
+    {{ subcategory }}
+  {% endfor %}
+{% else %}
+  {% if raw_questiongroups %}
+    <table class="columns small-12 output-table">
+      <thead>
+        <tr>
+          {% for header in table_headers %}
+            {% if forloop.counter == 1 %}
+              <th>{{ helptext }}</th>
+            {% else %}
+              <th>{{ header }}</th>
+            {% endif %}
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for questiongroup in raw_questiongroups %}
+          {% if questiongroup.qg_keyword in table_grouping.0 %}
+            {% for qg in questiongroup.data_labelled %}
+              <tr>
+                {% for k, values in qg %}
+                <td>
+                  <ul>
+                    {% for v in values %}
+                      <li>{{ v }}</li>
+                    {% endfor %}
+                  </ul>
+                </td>
+                {% endfor %}
+              </tr>
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+  {% for qg_config, qg_rendered in questiongroups %}
+    {{ qg_rendered }}
+  {% endfor %}
+{% endif %}

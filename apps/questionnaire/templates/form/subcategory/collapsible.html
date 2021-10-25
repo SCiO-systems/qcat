@@ -1,0 +1,25 @@
+{% comment %}
+
+  The subcategory has a checkbox next to its label, which toggles the content of
+  the subcategory.
+
+{% endcomment %}
+
+{% load floppyforms %}
+
+<a id="{{ config.keyword }}"></a>
+
+<div class="small-12 columns">
+  <label for="{{ config.keyword }}" class="input-multiline big">
+    <{{ config.label_tag|default:"h3" }} class="form-subcategory {{ config.label_class }}">
+      {{ config.label }}
+    </{{ config.label_tag|default:"h3" }}>
+    <input type="checkbox" id="{{ config.keyword }}" data-checkbox-toggle="{{ config.keyword }}">
+  </label>
+  <div id="{{ config.keyword }}" class="row content hide">
+    {% include "form/helptext.html" with helptext=config.helptext helptext_length=config.helptext_length %}
+    {% for questiongroup_config, questiongroup_formset in formsets %}
+      {% form form using questiongroup_config.template with config=questiongroup_config formset=questiongroup_formset %}
+    {% endfor %}
+  </div>
+</div>

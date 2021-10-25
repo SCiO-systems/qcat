@@ -1,0 +1,99 @@
+$slider-width: 100%;
+$slider-height: rem-calc(4);
+
+$grip-height: rem-calc(20);
+$color-darkblue: #113344;
+$color-white: white;
+$color-orange: #E87722;
+
+//
+// slider styles
+//
+.slider-container {
+  @include clearfix;
+  padding-top: rem-calc(20);
+}
+.nstSlider {
+  cursor: hand;
+  cursor: pointer;
+  border-radius: 1px;
+  position: relative;
+  width: $slider-width;
+  height: $slider-height;
+  background: $color-beige;
+
+  .leftGrip.gripHighlighted {
+    background: black;
+  }
+  .rightGrip.gripHighlighted {
+    background: black;
+  }
+
+  .rightGrip,
+  .leftGrip {
+    position: absolute;
+    top: - ($grip-height / 2) + ($slider-height / 2);
+    border-radius: 10px;
+    width: $grip-height;
+    height: $grip-height;
+    background: $color-brown-light;
+    box-shadow: 0 0 0 0 $color-brown-light;
+    transition: box-shadow 300ms ease-out, background 300ms ease-out;
+
+    &:hover,
+    &:focus {
+      box-shadow: 0 0 0 $button-shadow-effect $color-brown;
+      background: $color-brown;
+    }
+  }
+
+  .bar {
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    background: rgba($color-brown-light, 0.5);
+    height: $slider-height;
+  }
+
+  .highlightPanel {
+    transition: all 300ms ease-in-out;
+    border-radius: 10px;
+    position: absolute;
+    background: $color-orange;
+    height: $slider-height;
+    top: 0;
+  }
+}
+.leftLabel,
+.rightLabel {
+  font-size: rem-calc(14);
+}
+.leftLabel  {
+  float: left;
+  margin-top: rem-calc(12);
+}
+.rightLabel {
+  margin-top: rem-calc(12);
+  float: right;
+}
+
+.search-advanced .nstSlider {
+  background: $color-brown-light;
+  .rightGrip,
+  .leftGrip {
+    background: $color-beige-light;
+    box-shadow: 0 0 0 0 $color-beige-light;
+    &:hover,
+    &:focus {
+      box-shadow: 0 0 0 $button-shadow-effect white;
+      background: white;
+    }
+  }
+  .bar {
+    background: $color-beige;
+  }
+}
+.search-advanced .leftLabel,
+.search-advanced .rightLabel {
+  color: $color-beige;
+}

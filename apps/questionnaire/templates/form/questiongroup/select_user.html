@@ -1,0 +1,184 @@
+{% comment %}
+  The template to render a questiongroup.
+
+  Adds buttons to add or remove additional questiongroups
+
+  config: The configuration of the questiongroup
+    -
+
+  formset (??)
+
+{% endcomment %}
+
+{% load i18n %}
+{% load floppyforms %}
+{% load list_to_columns %}
+{% load sekizai_tags %}
+{% load static %}
+
+{% addtoblock 'js' %}
+  <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+{% endaddtoblock %}
+
+<div{% if config.questiongroup_condition %} id="{{ config.questiongroup_condition }}"{% endif %} class="questiongroup{% if config.numbered %} questiongroup-numbered-{{ config.numbered }}{% endif %}{% if config.numbered == 'prefix' %} sortable{% endif %}">
+
+  {% if config.detail_level %}
+    <ul class="accordion plus-questiongroup" role="tablist" data-accordion="">
+      <li class="accordion-navigation">
+        <a data-toggle="{{ config.keyword }}" href="#{{ config.keyword }}">{% trans "+ [TODO] Advanced Questions" %}</a>
+        <div id="{{ config.keyword }}" class="content active">
+  {% endif %}
+
+  {% if config.label %}
+    <{{ config.label_tag|default:"h4" }} class="{% if config.label_class %}{{ config.label_class }}{% endif %}">{{ config.label }}</{{ config.label_tag|default:"h4" }}>
+  {% endif %}
+
+  {% include "form/helptext.html" with helptext=config.helptext helptext_length=config.helptext_length %}
+
+  {{ formset.management_form }}
+
+  {% include "form/errors.html" with errors=formset.non_form_errors %}
+
+  {% block rows %}
+    {% form form using %}
+      {% for f in formset.forms %}
+
+        <div class="row list-item{% if config.row_class %} {{ config.row_class }}{% endif %}{% if formset.max_num > formset.min_num %} is-removable" data-questiongroup-keyword="{{ config.keyword }}{% endif %}">
+
+          <div class="small-12 columns">
+
+            {# The first 3 questions (type and other + hidden id) are rendered before the tabs #}
+            {% for field in f.visible_fields %}
+              {% if forloop.counter <= 3 %}
+                {% with template=config.templates|get_by_keyword:field.name options=config.options|get_by_keyword:field.name %}
+                  {% if template %}
+                    {% formrow field using template %}
+                  {% else %}
+                    {% formrow field using "form/question/default.html" %}
+                  {% endif %}
+                {% endwith %}
+              {% endif %}
+            {% endfor %}
+
+            <label class="top-margin">{% trans "Is the key resource person a registered or a non-registered WOCAT user?" %}</label>
+
+            {% trans 'WOCAT recommends that important key resource persons of this dataset should be <a href="https://www.wocat.net/accounts/signup/" target="_blank">registered</a> in the WOCAT database/ website. That way they remain contactable for inquiries. Their contact data will only be accessible to registered WOCAT users.' as msg %}
+            {% include "form/helptext.html" with helptext=msg %}
+
+            <label class="input-multiline">
+              <input type="radio" name="form-user-radio" class="form-user-radio" value="search">
+              <span class="has-tip" title="{% trans "Search a registered WOCAT user by typing the name of the person." %}" aria-haspopup="true" data-tooltip="">{% trans "Registered User" %}<svg class="icon-information is-inline right"><use xlink:href="#icon-information"></svg></span>
+            </label>
+            <label class="input-multiline">
+              <input type="radio" name="form-user-radio" class="form-user-radio" value="create">
+              <span class="has-tip" title="{% trans "Enter the details of a person not registered in the WOCAT database." %}" aria-haspopup="true" data-tooltip="">{% trans "Non-registered User" %}<svg class="icon-information is-inline right"><use xlink:href="#icon-information"></svg></span>
+            </label>
+
+            <div class="tabs-content form-user-tabs-content">
+              <div class="form-user-tab-search hide">
+                {% trans '<ul><li>You can search a registered WOCAT user by typing the name of the person.</li><li>If the person is not a registered WOCAT user, select the option "Non-registered Person" above.</li></ul>' as msg %}
+                {% include "form/helptext.html" with helptext=msg helptext_length=config.helptext_length %}
+                <div class="form-user-search-loading">{% trans "Loading ..." %}</div>
+                <div class="form-user-search">
+                  <label>{% trans "Search a registered WOCAT user" %}</label>
+                  <input type="search" class="user-search-field" placeholder="{% trans 'Search' %}" data-translation-no-results="{% trans 'No results found' %}" data-translation-too-many-results="{% trans 'Too many results found, please narrow the search' %}" data-search-url="{% url 'user_search' %}" data-update-url="{% url 'user_update' %}">
+                </div>
+                <div class="form-user-selected"></div>
+                <p class="form-user-search-error text-warning hide"></p>
+              </div>
+              <div class="form-user-tab-create hide">
+                {% for field in f.visible_fields %}
+
+                  {% if forloop.counter >= 4 %}
+
+                    {% with 'original_person_lastname translation_person_lastname original_person_institution_name translation_person_institution_name original_person_address translation_person_address original_person_phone_1 translation_person_phone_1 original_person_email_1 translation_person_email_1' as new_line %}
+                      {% if field.name in new_line.split %}
+                        <div class="row single-item">
+                      {% endif %}
+                    {% endwith %}
+
+                    {% with 'original_person_institution_name translation_person_institution_name original_person_address translation_person_address' as full_line %}
+                      {% if field.name in full_line.split %}
+                        <div class="small-12 columns">
+                      {% endif %}
+                    {% endwith %}
+
+                    {% with 'original_person_lastname translation_person_lastname original_person_firstname translation_person_firstname person_gender' as cols %}
+                      {% if field.name in cols.split %}
+                        <div class="small-4 columns">
+                      {% endif %}
+                    {% endwith %}
+
+                    {% with 'original_person_phone_1 translation_person_phone_1 original_person_phone_2 translation_person_phone_2 original_person_email_1 translation_person_email_1 original_person_email_2 translation_person_email_2' as cols %}
+                      {% if field.name in cols.split %}
+                        <div class="small-6 columns">
+                      {% endif %}
+                    {% endwith %}
+
+                    {% if forloop.last %}{% formconfig row with hidden_fields=f.hidden_fields %}{% endif %}
+
+                    {% with template=config.templates|get_by_keyword:field.name options=config.options|get_by_keyword:field.name %}
+                      {% if template %}
+                        {% formrow field using template %}
+                      {% else %}
+                        {% formrow field using "form/question/default.html" %}
+                      {% endif %}
+                    {% endwith %}
+
+                    {% with 'original_person_lastname translation_person_lastname original_person_firstname translation_person_firstname person_gender' as cols %}
+                      {% if field.name in cols.split %}
+                        </div>
+                      {% endif %}
+                    {% endwith %}
+
+                    {% with 'original_person_phone_1 translation_person_phone_1 original_person_phone_2 translation_person_phone_2 original_person_email_1 translation_person_email_1 original_person_email_2 translation_person_email_2' as cols %}
+                      {% if field.name in cols.split %}
+                        </div>
+                      {% endif %}
+                    {% endwith %}
+
+                    {% with 'original_person_institution_name translation_person_institution_name original_person_address translation_person_address' as full_line %}
+                      {% if field.name in full_line.split %}
+                        </div>
+                      {% endif %}
+                    {% endwith %}
+
+                    {% with 'person_gender original_person_institution_name translation_person_institution_name original_person_address translation_person_address original_person_phone_2 translation_person_phone_2 original_person_email_2 translation_person_email_2' as new_line %}
+                      {% if field.name in new_line.split %}
+                        </div>
+                      {% endif %}
+                    {% endwith %}
+
+                  {% endif %}
+                {% endfor %}
+                {% for field in f.hidden_fields %}{% formfield field %}{% endfor %}
+              </div>
+            </div>
+            <div class="columns right">
+              <a class="right list-item-action link is-{{ configuration_name }}" data-remove-this="" {% if forloop.counter <= formset.min_num and formset|length <= formset.min_num %}
+              style="display: none;"{% endif %}>{% trans "Remove" %}</a>
+            </div>
+          </div>
+
+        </div>
+
+      {% endfor %}
+      {% if formset.max_num > formset.min_num %}
+        <div class="row list-action">
+          <div class="small-12 columns">
+            <p><a data-add-item="" data-questiongroup-keyword="{{ config.keyword }}" class="link is-{{ configuration_name }}" {% if formset.total_form_count >= formset.max_num %} style="display:none;"{% endif %}>{% trans 'Add More' %}</a></p>
+          </div>
+        </div>
+      {% endif %}
+    {% endform %}
+    {% if not form.visible_fields %}{% for field in form.hidden_fields %}{% formfield field %}{% endfor %}{% endif %}
+
+  {% endblock %}
+
+  {% if config.detail_level %}
+        </div>
+      </li>
+    </ul>
+  {% endif %}
+
+</div>

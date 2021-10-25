@@ -1,0 +1,25 @@
+{% load i18n %}
+
+{% spaceless %}
+  <p>
+    {% trans "The SLM practice" context "The SLM practice [questionnaire] compiled by [user] has been approved by the reviewer of the SLM practice [user] and needs a final review before it can be published." %}
+    <a href="{{ base_url|add:questionnaire.get_absolute_url }}">{{ questionnaire_name }}</a>
+    {% if compiler %}
+      {% trans "compiled by" context "The SLM practice [questionnaire] compiled by [user] has been approved by the reviewer of the SLM practice [user] and needs a final review before it can be published." %}
+      <a href="{{ base_url|add:compiler.get_absolute_url }}">{{ compiler }}</a>
+    {% endif %}
+    {% trans "has been approved by the reviewer of the SLM practice" context "The SLM practice [questionnaire] compiled by [user] has been approved by the reviewer of the SLM practice [user] and needs a final review before it can be published." %}
+    <a href="{{ base_url|add:catalyst.get_absolute_url }}">{{ catalyst }}</a>
+    {% trans "and needs a final review before it can be published." context "The SLM practice [questionnaire] compiled by [user] has been approved by the reviewer of the SLM practice [user] and needs a final review before it can be published." %}
+  </p>
+
+  <p>{% trans "If you are a publisher, please review the SLM practice as soon as possible and send your written feedback to the compiler, editors, and reviewers of the SLM practice. If the quality of the SLM practice is good, please publish the SLM practice." %}</p>
+
+  {% if message %}
+    <p>
+      <a href="{{ base_url|add:catalyst.get_absolute_url }}">{{ catalyst }}</a>
+      {% trans "left you a message related to the review of this SLM practice:" context "[user] left you a message related to the review of this SLM practice: [message]" %}
+      {{ message }}
+    </p>
+  {% endif %}
+{% endspaceless %}

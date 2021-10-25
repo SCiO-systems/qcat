@@ -1,0 +1,22 @@
+[
+{
+    "pk": 2365,
+    "model": "accounts.user",
+    "fields": {
+        "groups": [
+            1,
+            2,
+            3,
+            4
+        ],
+        "date_joined": "2015-01-13T08:24:26.031Z",
+        "is_superuser": true,
+        "last_login": "2015-01-13T08:24:26.047Z",
+        "user_permissions": [],
+        "password": "",
+        "email": "lukas.vonlanthen@cde.unibe.ch",
+        "firstname": "Lukas",
+        "lastname": "Vonlanthen"
+    }
+}
+]

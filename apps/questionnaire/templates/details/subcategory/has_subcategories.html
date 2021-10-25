@@ -1,0 +1,12 @@
+{% if label_position != 'none' %}
+  <{{ label_tag|default:"h5" }} class="output-subcategory">{{ numbering|default:'' }} {{ label }}</{{ label_tag|default:"h5" }}>
+{% endif %}
+{% if subcategories %}
+  {% for subcategory in subcategories %}
+    {{ subcategory }}
+  {% endfor %}
+{% else %}
+  {% for qg_config, qg_rendered in questiongroups %}
+    {{ qg_rendered }}
+  {% endfor %}
+{% endif %}

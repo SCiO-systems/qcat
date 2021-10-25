@@ -1,0 +1,61 @@
+{% comment %}
+  Table where each questiongroup is occupying a table row. The first
+  column is labelled by the helptext of the subcategories' helptext. No
+  numbering.
+
+  Further questions are added at the bottom of the table.
+{% endcomment %}
+
+{% load floppyforms %}
+{% load list_to_columns %}
+
+{% if config.next_level == 'subcategories' %}
+  <p>{{ config.label }}</p>
+  {% for sub_config, sub_formsets in formsets %}
+    {% form form using sub_config.form_template with config=sub_config formsets=sub_formsets %}
+  {% endfor %}
+{% else %}
+  <fieldset id="{{ config.keyword }}" class="row{% if config.has_changes %} has-changes{% endif %}">
+    <legend>{{ config.numbering|default:'' }} {{ config.label }}</legend>
+    {% for questiongroup_config, questiongroup_formset in formsets %}
+      {% include "form/helptext.html" with helptext=questiongroup_config.helptext helptext_length=questiongroup_config.helptext_length %}
+    {% endfor %}
+    <table>
+      <thead>
+        <tr>
+          {% for header in config.table_headers %}
+            {% if forloop.counter == 1 %}
+              <th>{{ config.helptext }}</th>
+            {% else %}
+              <th>{{ header }}</th>
+            {% endif %}
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for questiongroup_config, questiongroup_formset in formsets %}
+          {% if questiongroup_config.keyword in config.table_grouping.0 %}
+            {{ questiongroup_formset.management_form }}
+            {% for f in questiongroup_formset.forms %}
+              <tr>
+                {% for field in f.visible_fields %}
+                  <td>
+                    {% with options=questiongroup_config.options|get_by_keyword:field.name %}
+                      {% formrow field using "form/question/no_label.html" %}
+                    {% endwith %}
+                  </td>
+                {% endfor %}
+                {% for field in f.hidden_fields %}{% formfield field %}{% endfor %}
+              </tr>
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+    {% for questiongroup_config, questiongroup_formset in formsets %}
+      {% if questiongroup_config.keyword not in config.table_grouping.0 %}
+        {% form form using "form/questiongroup/default.html" with config=questiongroup_config formset=questiongroup_formset %}
+      {% endif %}
+    {% endfor %}
+  </fieldset>
+{% endif %}

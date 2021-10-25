@@ -1,0 +1,50 @@
+---
+layout: wizard.hbs
+section: wizard
+---
+
+<form class="wizard" action="">
+
+  {{!-- QUESTION 1 --}}
+  <a name="question1" data-magellan-destination="question1" class="active"></a>
+  <fieldset class="row">
+    <legend>1. Description</legend>
+    <p class="form-help">Make sure that the description contains the key characteristics / distinct features of the Technology, purpose, establishment / maintenance activities and inputs, most important conditions regarding natural / human environment) this summary has to provide a comprehensive / concise picture of the Technology to outsiders. After having gone through the whole questionnaire come back and revise / complement this section. Try to fill the grey shaded space but do not exceed.</p>
+    <textarea class="big" id="description" name="description" placeholder="Description of the SLM Technology" row="6"></textarea>
+  </fieldset>
+
+  {{!-- QUESTION 2 --}}
+  <a name="question2" data-magellan-destination="question2"></a>
+  <fieldset class="row">
+    <legend>2. Objectives / purpose of the Technology</legend>
+    <p class="form-help">A single SLM Technology should cover a homogeneous set of natural (bio-physical) and human (socio-economic) conditions, hence should not be applied for instance to very dissimilar climatic or altitudinal zones or slope categories or to very dissimilar conditions of land tenure.</p>
+    {{> list_simple}}
+  </fieldset>
+
+  {{!-- QUESTION 3 --}}
+  <a name="question3" data-magellan-destination="question3"></a>
+  <fieldset class="row">
+    <legend>3. Land Use</legend>
+    {{> help_bloc}}
+    {{> list_gallery}}
+  </fieldset>
+
+  {{!-- QUESTION 4 --}}
+  <a name="question4" data-magellan-destination="question4"></a>
+  <fieldset class="row">
+    <legend>4. Conservation measures</legend>
+    {{> list_complex}}
+  </fieldset>
+
+  {{!-- QUESTION 5 --}}
+  <a name="question5" data-magellan-destination="question5"></a>
+  <fieldset class="row">
+    <legend>5. Related approaches</legend>
+    <p class="help-bloc">
+      To attach an approach to this technology, it must already exists in the system.
+      <a href="form_input.html" class="link is-wocat" target="_blank">Create a new Approach</a>
+    </p>
+    {{> list_related}}
+  </fieldset>
+
+</form>

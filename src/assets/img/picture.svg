@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="240px" height="180px" viewBox="0 0 240 180" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>picture</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="240" height="180"></rect>
+    </defs>
+    <g id="Search-SLM-Data" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-24.000000, -1086.000000)" id="tech-item-copy-2">
+            <g transform="translate(24.000000, 1086.000000)">
+                <g id="picture">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use fill="#CAC5BA" xlink:href="#path-1"></use>
+                    <path d="M164.4,50 L75.6,50 C73.6,50 72,51.6 72,53.6 L72,126.4 C72,128.4 73.6,130 75.6,130 L164.4,130 C166.4,130 168,128.4 168,126.4 L168,53.6 C168,51.6 166.4,50 164.4,50 L164.4,50 Z M160,96.4 L146,82 C146,82 142,78 138.4,78 C134.4,78 130.8,82 130.8,82 C130.8,82 120.4,94 116.4,98 C122.8,100.8 132.4,116.4 125.2,112 C117.6,107.2 104.8,102 104.8,102 L80.4,118 L80.4,58 L160.4,58 L160.4,96.4 L160,96.4 Z M87.2,74 C87.2,69.2 91.2,65.2 96,65.2 C100.8,65.2 104.8,69.2 104.8,74 C104.8,78.8 100.8,82.8 96,82.8 C91.2,82.8 87.2,78.8 87.2,74 L87.2,74 Z" id="Shape" fill-opacity="0.600000024" fill="#5F594F" mask="url(#mask-2)"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

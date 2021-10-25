@@ -1,0 +1,109 @@
+.layout-home .page-header {
+  position: relative;
+  background: url("/static/assets/img/home_header_wocat.jpg") $color-brown no-repeat top center;
+  background-size: cover;
+
+  @media #{$medium-up} {
+    min-height: rem-calc(600);
+  }
+}
+.home-search {
+  background: #f5f4ef;
+  padding: rem-calc(24);
+
+  @media #{$small-only} {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+.home-slider,
+.home-main {
+  margin-top: rem-calc(24);
+}
+
+.home-main {
+  .tab-title:focus, a:focus {
+    outline: none;
+  }
+}
+
+//.home-slider-img {
+//  background: url("/static/assets/img/wocat_hero.jpg") $color-brown no-repeat top center;
+//  background-size: cover;
+//  min-width: 100%;
+//  height: 576px;
+//}
+.home-keynumbers-container {
+  padding: rem-calc(12);
+  background-color: #f5f4ef;
+}
+
+.keynumbers-heading {
+  color:#4c3d28;
+}
+
+.keynumber, .keynumber-text {
+  color: $color-brown;
+}
+
+.home-keynumbers-content strong {
+  color: $color-orange;
+}
+
+.keynumber {
+  font-size:rem-calc(24);
+  line-height: rem-calc(28);
+  color: $color-orange;
+}
+
+.keynumbers-text {
+  font-size:rem-calc(14);
+}
+
+.link-unccd-learning-material {
+  background: white;
+  padding: 1rem 1.5rem;
+
+  a {
+    color: $color-brown-dark;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+.accordion .accordion-about-wocat {
+  >a, >a:hover {
+    background: white;
+    color: $color-brown-dark;
+    padding: 1rem 1.5rem;
+  }
+  >a:hover {
+    text-decoration: underline;
+  }
+  &.active>a {
+    background: white;
+    color: $color-brown-dark;
+    border-bottom: 1px solid $color-beige;
+  }
+  &:not(.active) svg.accordion-icon-opened {
+    display: none;
+  }
+  &.active svg.accordion-icon-closed {
+    display: none;
+  }
+  .content {
+    padding-bottom: 1.5rem;
+  }
+}
+
+.home-main .card-well {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-main .card-desc {
+  flex-grow: 1;
+}

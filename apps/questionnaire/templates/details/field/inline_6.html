@@ -1,0 +1,6 @@
+{% if value or values %}
+  <div class="row tech-item-inline">
+    <div class="medium-6 columns">{% if label_position != 'none' %}<{{ label_tag|default:"h5" }}>{{ key }}{% if key|last not in ".:!?" %}:{% endif %}</{{ label_tag|default:"h5" }}>{% endif %}</div>
+    <div class="medium-6 columns"><p>{{ value }}{{ values|join:", " }}</p></div>
+  </div>
+{% endif %}

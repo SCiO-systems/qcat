@@ -1,0 +1,74 @@
+{% load floppyforms %}
+{% load list_to_columns %}
+{% load i18n %}
+{% load sekizai_tags %}
+{% load static %}
+
+{% addtoblock 'js' %}
+  <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+{% endaddtoblock %}
+
+<div class="questiongroup">
+
+  {% if config.label %}
+    <{{ config.label_tag|default:"h4" }} class="{% if config.label_class %}{{ config.label_class }}{% endif %}">
+      {{ config.label }}
+    </{{ config.label_tag|default:"h4" }}>
+  {% endif %}
+
+  {% include "form/helptext.html" with helptext=config.helptext helptext_length=config.helptext_length %}
+
+  {{ formset.management_form }}
+
+  {% include "form/errors.html" with errors=formset.non_form_errors %}
+
+  {% form form using %}
+
+    {% for qg_form in formset.forms %}
+
+      {% with initial_link_data=config.initial_links|get_by_index:forloop.counter0 %}
+
+        <div class="row list-item{% if config.row_class %} {{ config.row_class }}{% endif %}{% if formset.max_num > formset.min_num %} is-removable" data-questiongroup-keyword="{{ config.keyword }}{% endif %}">
+
+          <div class="link-preview">{# Placeholder #}</div>
+          <span class="link-name"{% if initial_link_data %} data-link-name="{{ initial_link_data.name }}"{% endif %}></span>
+
+          {% for field in qg_form.visible_fields %}
+            {% with template=config.templates|get_by_keyword:field.name options=config.options|get_by_keyword:field.name %}
+              {% if template %}
+                {% formrow field using template %}
+              {% else %}
+                {% formrow field using "form/question/default.html" %}
+              {% endif %}
+            {% endwith %}
+          {% endfor %}
+
+          <div class="link-search">
+            <input type="search" class="link-search-field" placeholder="{% trans 'Search' %}"
+                   data-translation-no-results="{% trans 'No results found' %}"
+                   data-translation-too-many-results="{% trans 'Too many results found, please narrow the search' %}"
+                   data-search-url="{{ config.search_url }}">
+          </div>
+
+          {% for field in qg_form.hidden_fields %}{% formfield field %}{% endfor %}
+          <div class="columns right">
+            <a class="right list-item-action link is-{{ configuration_name }}" data-remove-this="" {% if forloop.counter <= formset.min_num and formset|length <= formset.min_num %}
+            style="display: none;"{% endif %}>{% trans "Remove" %}</a>
+          </div>
+
+        </div>
+      {% endwith %}
+
+    {% endfor %}
+
+    {% if formset.max_num > formset.min_num %}
+      <div class="row list-action">
+        <div class="small-12 columns">
+          <p><a data-add-item="" data-questiongroup-keyword="{{ config.keyword }}" class="link is-{{ configuration_name }}" {% if formset.total_form_count >= formset.max_num %} style="display:none;"{% endif %}>{% trans 'Add More' %}</a></p>
+        </div>
+      </div>
+    {% endif %}
+
+  {% endform %}
+
+</div>

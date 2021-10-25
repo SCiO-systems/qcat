@@ -1,0 +1,8 @@
+<div data-key-path="{{ key_path }}">
+  {% for choice in choices %}
+    <label{% if not choice.2 %} class="advanced-filter-empty-result"{% endif %}>
+      <input type="checkbox" name="filter-value-select" value="{{ choice.0 }}"{% if choice.0 in selected %} checked="checked"{% endif %}>
+      <span>{{ choice.1 }} <span class="advanced-filter-result-count">({{ choice.2 }})</span>
+    </label>
+  {% endfor %}
+</div>

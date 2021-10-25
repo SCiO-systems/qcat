@@ -1,0 +1,8845 @@
+[
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "Name"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "Name"
+          }
+        },
+        "unccd": {
+          "label": {
+            "en": "Title of best practice"
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "Name"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "Name of the watershed"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5001
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "Country"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "Country"
+          }
+        },
+        "wocat": {
+          "label": {
+            "en": "Country"
+          }
+        },
+        "unccd": {
+          "label": {
+            "en": "Country"
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "Country"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "Country"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5002
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "Comments"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "Comments"
+          }
+        },
+        "unccd": {
+          "label": {
+            "en": "Comments"
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "Comments"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5004
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "Region/ State/ Province"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "Region/ State/ Province"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "Region/ State/ Province"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5005
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "Further specification of location (e.g. municipality, town, etc.), if relevant"
+          },
+          "label_view": {
+            "en": "Further specification of location"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "Further specification of location (e.g. municipality, town, etc.), if relevant"
+          },
+          "label_view": {
+            "en": "Further specification of location"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "Further specification of location (e.g. municipality, town, etc.), if relevant"
+          },
+          "label_view": {
+            "en": "Further specification of location"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5006
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "technologies": {
+          "label": {
+            "en": "Image"
+          }
+        },
+        "approaches": {
+          "label": {
+            "en": "Image"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "Image"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5007
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "technologies": {
+          "label": {
+            "en": "Caption, explanation of photo"
+          },
+          "helptext": {
+            "en": "Write one sentence."
+          }
+        },
+        "approaches": {
+          "label": {
+            "en": "Caption, explanation of photo"
+          },
+          "helptext": {
+            "en": "Write one sentence."
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "Caption, explanation of photo"
+          },
+          "helptext": {
+            "en": "Write one sentence."
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5008
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "technologies": {
+          "label": {
+            "en": "Date"
+          }
+        },
+        "approaches": {
+          "label": {
+            "en": "Date"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "Date"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5009
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "technologies": {
+          "label": {
+            "en": "Name of photographer"
+          }
+        },
+        "approaches": {
+          "label": {
+            "en": "Name of photographer"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "Name of photographer"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5010
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "User ID"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "User ID"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "User ID"
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "User ID"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5014
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "Location"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "Location"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "Location"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5015
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "Last name"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "Lastname / surname"
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "Lastname"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "Lastname / surname"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5016
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "First name(s)"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "First name(s)"
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "First name(s)"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "First name(s)"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5017
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "Gender"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "Gender"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "Gender"
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "Gender"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5018
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "Name of institution"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "Name of institution"
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "Name of institution"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "Name of institution"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5019
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "Phone no. 1"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "Phone no. 1"
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "Phone no. 1"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "Phone no. 1"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5024
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "Phone no. 2 (mobile)"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "Phone no. 2 (mobile)"
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "Phone no. 2 (mobile)"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "Phone no. 2 (mobile)"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5025
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "E-mail 1"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "E-mail 1"
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "E-mail 1"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "E-mail 1"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5026
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "E-mail 2"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "E-mail 2"
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "E-mail 2"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "E-mail 2"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5027
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "Other (specify)"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "Other (specify)"
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "Other (specify)"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "Other (specify)"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5029
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "Strengths/ advantages/ opportunities in the land user’s view"
+          },
+          "helptext": {
+            "en": "<strong>Land user</strong>: the person/ entity who implements/ maintains the Technology, including individual small/large scale farmers, groups (gender, age, status, interest), cooperatives, industrial companies (e.g. mining), government institutions (e.g. state forest), etc."
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "Strengths/ advantages/ opportunities in the land user’s view"
+          },
+          "helptext": {
+            "en": "<strong>Land user</strong>: the person/ entity who implements/ maintains the Technology, including individual small/large scale farmers, groups (gender, age, status, interest), cooperatives, industrial companies (e.g. mining), government institutions (e.g. state forest), etc."
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "Strengths/ advantages/ opportunities of the technology"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "Strengths/ advantages/ opportunities in the land user’s / watershed user’s view"
+          },
+          "helptext": {
+            "en": "<p><strong>Land user</strong>: the person/ entity who implements/ maintains the Technology. The term land user may refer to individual small- or large-scale farmers, groups (gender, age, status, interest), cooperatives, industrial companies (e.g. mining), government institutions (e.g. state forest), etc.</p><p><strong>Watershed user</strong>: the person/ entity who implements/ maintains the watershed management activities, including individual small-  or large-scale farmers, groups (gender, age, status, interest), cooperatives, industrial companies (e.g. mining), government institutions (e.g. state forest), etc.</p>"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5030
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "Strengths/ advantages/ opportunities in the compiler’s or other key resource person’s view"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "Strengths/ advantages/ opportunities in the compiler’s or other key resource person’s view"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "Strengths/ advantages/ opportunities in the compiler’s or other key resource person’s view"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5031
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "Weaknesses/ disadvantages/ risks in the land user’s view"
+          },
+          "helptext": {
+            "en": "<strong>Land user</strong>: the person/ entity who implements/ maintains the Technology, including individual small/large scale farmers, groups (gender, age, status, interest), cooperatives, industrial companies (e.g. mining), government institutions (e.g. state forest), etc."
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "Weaknesses/ disadvantages/ risks in the land user’s view"
+          },
+          "helptext": {
+            "en": "<strong>Land user</strong>: the person/ entity who implements/ maintains the Technology, including individual small/large scale farmers, groups (gender, age, status, interest), cooperatives, industrial companies (e.g. mining), government institutions (e.g. state forest), etc."
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "Weaknesses/ disadvantages/ risks"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "Weaknesses/ disadvantages/ risks in the land user’s / watershed user’s view"
+          },
+          "helptext": {
+            "en": "<p><strong>Land user</strong>: the person/ entity who implements/ maintains the Technology. The term land user may refer to individual small- or large-scale farmers, groups (gender, age, status, interest), cooperatives, industrial companies (e.g. mining), government institutions (e.g. state forest), etc.</p><p><strong>Watershed user</strong>: the person/ entity who implements/ maintains the watershed management activities, including individual small-  or large-scale farmers, groups (gender, age, status, interest), cooperatives, industrial companies (e.g. mining), government institutions (e.g. state forest), etc.</p>"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5032
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "Weaknesses/ disadvantages/ risks in the compiler’s or other key resource person’s view"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "Weaknesses/ disadvantages/ risks in the compiler’s or other key resource person’s view"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "Weaknesses/ disadvantages/ risks in the compiler’s or other key resource person’s view"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5033
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "How can they be overcome?"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "How can they be overcome?"
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "How can they be overcome?"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "How can they be overcome?"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5034
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "Comments, short description"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "Comments, short description"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5038
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "Date"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "Date"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5039
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "Name of videographer"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "Name of videographer"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5040
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "Which of the following methods/ sources of information were used?"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "Which of the following methods/ sources of information were used?"
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "Which of the following methods/ sources of information were used?"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5041
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "other (specify)"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "other (specify)"
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "other (specify)"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5043
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "Location"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "Location"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5044
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": ""
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": ""
+          }
+        },
+        "cca": {
+          "label": {
+            "en": ""
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5045
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "Locally used name"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "Locally used name"
+          }
+        },
+        "unccd": {
+          "label": {
+            "en": "Local name"
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "Locally used name"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "Locally used name"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5046
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "General remarks regarding photos"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "General remarks regarding photos"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "General remarks regarding photos"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5049
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "Specify the key resource person"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "Specify the key resource person"
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "Specify the key resource person"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "Specify the key resource person"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5052
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "Name of project which facilitated the documentation/ evaluation of the Approach (if relevant)"
+          },
+          "helptext": {
+            "en": "If your project is not listed in the dropdown, please contact the WOCAT secretariat (wocat@cde.unibe.ch)."
+          },
+          "label_filter": {
+            "en": "Project"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "Name of project which facilitated the documentation/ evaluation of the Technology (if relevant)"
+          },
+          "helptext": {
+            "en": "If your project is not listed in the dropdown, please contact the WOCAT secretariat (wocat@cde.unibe.ch)."
+          },
+          "label_filter": {
+            "en": "Project"
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "Name of project which facilitated the documentation/ evaluation of the adaptation of the Technology to climate change (if relevant)"
+          },
+          "helptext": {
+            "en": "If your project is not listed in the dropdown, please contact the WOCAT secretariat (wocat@cde.unibe.ch)."
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "Name of project which facilitated the documentation/ evaluation of the watershed (if relevant)"
+          },
+          "helptext": {
+            "en": "If your project is not listed in the dropdown, please contact the WOCAT secretariat (wocat@cde.unibe.ch)."
+          }
+        },
+        "wocat": {
+          "label": {
+            "en": "Name of project which facilitated the documentation/ evaluation"
+          },
+          "label_filter": {
+            "en": "Project"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5053
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "Name of the institution(s) which facilitated the documentation/ evaluation of the Approach (if relevant)"
+          },
+          "helptext": {
+            "en": "If your institution is not listed in the dropdown, please contact the WOCAT secretariat (wocat@cde.unibe.ch)."
+          },
+          "label_filter": {
+            "en": "Institution"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "Name of the institution(s) which facilitated the documentation/ evaluation of the Technology (if relevant)"
+          },
+          "helptext": {
+            "en": "If your institution is not listed in the dropdown, please contact the WOCAT secretariat (wocat@cde.unibe.ch)."
+          },
+          "label_filter": {
+            "en": "Institution"
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "Name of the institution(s) which facilitated the documentation/ evaluation of the adaptation of the Technology to climate change (if relevant)"
+          },
+          "helptext": {
+            "en": "If your institution is not listed in the dropdown, please contact the WOCAT secretariat (wocat@cde.unibe.ch)."
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "Name of the institution(s) which facilitated the documentation/ evaluation of the watershed (if relevant)"
+          },
+          "helptext": {
+            "en": "If your institution is not listed in the dropdown, please contact the WOCAT secretariat (wocat@cde.unibe.ch)."
+          }
+        },
+        "wocat": {
+          "label": {
+            "en": "Name of the institution which facilitated the documentation/ evaluation"
+          },
+          "label_filter": {
+            "en": "Institution"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5054
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "Specify (e.g. number of informants)"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "Specify (e.g. number of informants)"
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "Specify (e.g. number of informants)"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5056
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "Title, author, year, ISBN"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "Title, author, year, ISBN"
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "Title, author, year, ISBN"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "Title, author, year, ISBN"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5057
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "Available from where? Costs?"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "Available from where? Costs?"
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "Available from where? Costs?"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "Available from where? Costs?"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5058
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "Title/ description"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "Title/ description"
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "Title/ description"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "Title/ description"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5059
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "URL"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "URL"
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "URL"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "URL"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5060
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "When were the data compiled (in the field)?"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "When were the data compiled (in the field)?"
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "When were the data compiled (in the field)?"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "When were the data compiled (in the field)?"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5061
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "The compiler and key resource person(s) accept the conditions regarding the use of data documented through WOCAT"
+          },
+          "helptext": {
+            "en": "<strong>Note</strong>: If you do not accept the conditions regarding the use of data documented through WOCAT your data will not be accepted by the WOCAT secretariat and it will not be published."
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "The compiler and key resource person(s) accept the conditions regarding the use of data documented through WOCAT"
+          },
+          "helptext": {
+            "en": "<strong>Note</strong>: If you do not accept the conditions regarding the use of data documented through WOCAT your data will not be accepted by the WOCAT secretariat and it will not be published."
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "The compiler and key resource person(s) accept the conditions regarding the use of data documented through WOCAT"
+          },
+          "helptext": {
+            "en": "<strong>Note</strong>: If you do not accept the conditions regarding the use of data documented through WOCAT your data will not be accepted by the WOCAT secretariat and it will not be published."
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "The compiler and key resource person(s) accept the conditions regarding the use of data documented through WOCAT"
+          },
+          "helptext": {
+            "en": "<strong>Note</strong>: If you do not accept the conditions regarding the use of data documented through WOCAT your data will not be accepted by the WOCAT secretariat and it will not be published."
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5062
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "Address"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "Address"
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "Address"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "Address"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5063
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "Map"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "Map"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "Center of the watershed"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5064
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "Vimeo ID"
+          },
+          "helptext": {
+            "en": "Indicate only the ID of the Vimeo video. The ID contains only numbers and can be found in the URL of the video, e.g. https://vimeo.com/<strong><u>97415985</u></strong>."
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "Vimeo ID"
+          },
+          "helptext": {
+            "en": "Indicate only the ID of the Vimeo video. The ID contains only numbers and can be found in the URL of the video, e.g. https://vimeo.com/<strong><u>97415985</u></strong>."
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5065
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "Further comments"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "Further comments"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "Further comments"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5066
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Afghanistan"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5501
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Albania"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5502
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Algeria"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5503
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "American Samoa"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5504
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Andorra"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5505
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Angola"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5506
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Anguilla"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5507
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Antarctica"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5508
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Antigua and Barbuda"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5509
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Argentina"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5510
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Armenia"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5511
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Aruba"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5512
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Australia"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5513
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Austria"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5514
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Azerbaijan"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5515
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Bahamas"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5516
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Bahrain"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5517
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Bangladesh"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5518
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Barbados"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5519
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Belarus"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5520
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Belgium"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5521
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Belize"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5522
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Benin"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5523
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Bermuda"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5524
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Bhutan"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5525
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Bolivia, Plurinational State of"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5526
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Bonaire, Sint Eustatius and Saba"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5527
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Bosnia and Herzegovina"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5528
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Botswana"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5529
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Bouvet Island"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5530
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Brazil"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5531
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "British Indian Ocean Territory"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5532
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Brunei Darussalam"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5533
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Bulgaria"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5534
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Burkina Faso"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5535
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Burundi"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5536
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Cambodia"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5537
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Cameroon"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5538
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Canada"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5539
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Cape Verde"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5540
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Cayman Islands"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5541
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Central African Republic"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5542
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Chad"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5543
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Chile"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5544
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "China"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5545
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Christmas Island"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5546
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Cocos (Keeling) Islands"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5547
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Colombia"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5548
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Comoros"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5549
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Congo"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5550
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Congo, the Democratic Republic of the"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5551
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Cook Islands"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5552
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Costa Rica"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5553
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Croatia"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5554
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Cuba"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5555
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Curaçao"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5556
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Cyprus"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5557
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Czech Republic"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5558
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Côte d'Ivoire"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5559
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Denmark"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5560
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Djibouti"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5561
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Dominica"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5562
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Dominican Republic"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5563
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Ecuador"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5564
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Egypt"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5565
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "El Salvador"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5566
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Equatorial Guinea"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5567
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Eritrea"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5568
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Estonia"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5569
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Ethiopia"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5570
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Falkland Islands (Malvinas)"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5571
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Faroe Islands"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5572
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Fiji"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5573
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Finland"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5574
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "France"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5575
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "French Guiana"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5576
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "French Polynesia"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5577
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "French Southern Territories"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5578
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Gabon"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5579
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Gambia"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5580
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Georgia"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5581
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Germany"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5582
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Ghana"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5583
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Gibraltar"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5584
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Greece"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5585
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Greenland"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5586
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Grenada"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5587
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Guadeloupe"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5588
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Guam"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5589
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Guatemala"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5590
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Guernsey"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5591
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Guinea"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5592
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Guinea-Bissau"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5593
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Guyana"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5594
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Haiti"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5595
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Heard Island and McDonald Mcdonald Islands"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5596
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Holy See (Vatican City State)"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5597
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Honduras"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5598
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Hong Kong"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5599
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Hungary"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5600
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Iceland"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5601
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "India"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5602
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Indonesia"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5603
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Iran, Islamic Republic of"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5604
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Iraq"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5605
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Ireland"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5606
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Isle of Man"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5607
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Israel"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5608
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Italy"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5609
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Jamaica"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5610
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Japan"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5611
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Jersey"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5612
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Jordan"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5613
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Kazakhstan"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5614
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Kenya"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5615
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Kiribati"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5616
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Korea, Democratic People's Republic of"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5617
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Korea, Republic of"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5618
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Kuwait"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5619
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Kyrgyzstan"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5620
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Lao People's Democratic Republic"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5621
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Latvia"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5622
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Lebanon"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5623
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Lesotho"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5624
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Liberia"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5625
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Libya"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5626
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Liechtenstein"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5627
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Lithuania"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5628
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Luxembourg"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5629
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Macao"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5630
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Macedonia, the Former Yugoslav Republic of"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5631
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Madagascar"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5632
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Malawi"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5633
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Malaysia"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5634
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Maldives"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5635
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Mali"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5636
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Malta"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5637
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Marshall Islands"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5638
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Martinique"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5639
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Mauritania"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5640
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Mauritius"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5641
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Mayotte"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5642
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Mexico"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5643
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Micronesia, Federated States of"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5644
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Moldova, Republic of"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5645
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Monaco"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5646
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Mongolia"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5647
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Montenegro"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5648
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Montserrat"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5649
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Morocco"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5650
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Mozambique"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5651
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Myanmar"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5652
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Namibia"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5653
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Nauru"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5654
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Nepal"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5655
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Netherlands"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5656
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "New Caledonia"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5657
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "New Zealand"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5658
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Nicaragua"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5659
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Niger"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5660
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Nigeria"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5661
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Niue"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5662
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Norfolk Island"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5663
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Northern Mariana Islands"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5664
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Norway"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5665
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Oman"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5666
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Pakistan"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5667
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Palau"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5668
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Palestine, State of"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5669
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Panama"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5670
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Papua New Guinea"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5671
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Paraguay"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5672
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Peru"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5673
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Philippines"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5674
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Pitcairn"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5675
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Poland"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5676
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Portugal"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5677
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Puerto"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5678
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Qatar"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5679
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Romania"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5680
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Russian Federation"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5681
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Rwanda"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5682
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Réunion"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5683
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Saint Barthélemy"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5684
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Saint Helena, Ascension and Tristan da Cunha"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5685
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Saint Kitts and Nevis"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5686
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Saint Lucia"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5687
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Saint Martin (French part)"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5688
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Saint Pierre and Miquelon"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5689
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Saint Vincent and the Grenadines"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5690
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Samoa"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5691
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "San Marino"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5692
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Sao Tome and Principe"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5693
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Saudi Arabia"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5694
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Senegal"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5695
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Serbia"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5696
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Seychelles"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5697
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Sierra Leone"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5698
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Singapore"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5699
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Sint Maarten (Dutch part)"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5700
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Slovakia"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5701
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Slovenia"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5702
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Solomon Islands"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5703
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Somalia"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5704
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "South Africa"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5705
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "South Georgia and the South Sandwich Islands"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5706
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "South Sudan"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5707
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Spain"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5708
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Sri Lanka"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5709
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Sudan"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5710
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Suriname"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5711
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Svalbard and Jan Mayen"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5712
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Swaziland"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5713
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Sweden"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5714
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Switzerland"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5715
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Syrian Arab Republic"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5716
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Taiwan, Province of China"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5717
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Tajikistan"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5718
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Tanzania, United Republic of"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5719
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Thailand"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5720
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Timor-Leste"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5721
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Togo"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5722
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Tokelau"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5723
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Tonga"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5724
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Trinidad and Tobago"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5725
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Tunisia"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5726
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Turkey"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5727
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Turkmenistan"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5728
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Turks and Caicos Islands"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5729
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Tuvalu"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5730
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Uganda"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5731
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Ukraine"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5732
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "United Arab Emirates"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5733
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "United Kingdom"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5734
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "United States"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5735
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "United States Minor Outlying Islands"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5736
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Uruguay"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5737
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Uzbekistan"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5738
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Vanuatu"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5739
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Venezuela, Bolivarian Republic of"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5740
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Viet Nam"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5741
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Virgin Islands, British"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5742
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Virgin Islands, U.S."
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5743
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Wallis and Futuna"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5744
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Western Sahara"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5745
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Yemen"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5746
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Zambia"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5747
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Zimbabwe"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5748
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "wocat": {
+          "label": {
+            "en": "Åland Islands"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5749
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "technologies": {
+          "label": {
+            "en": "low"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5750
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "technologies": {
+          "label": {
+            "en": "medium"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5751
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "technologies": {
+          "label": {
+            "en": "high"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5752
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "technologies": {
+          "label": {
+            "en": "more than 50 years ago (traditional)"
+          }
+        },
+        "approaches": {
+          "label": {
+            "en": "more than 50 years ago (traditional)"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5759
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "technologies": {
+          "label": {
+            "en": "10-50 years ago"
+          }
+        },
+        "approaches": {
+          "label": {
+            "en": "10-50 years ago"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5760
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "technologies": {
+          "label": {
+            "en": "less than 10 years ago (recently)"
+          }
+        },
+        "approaches": {
+          "label": {
+            "en": "less than 10 years ago (recently)"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5761
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "technologies": {
+          "label": {
+            "en": "female"
+          }
+        },
+        "approaches": {
+          "label": {
+            "en": "female"
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "female"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "female"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5762
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "technologies": {
+          "label": {
+            "en": "male"
+          }
+        },
+        "approaches": {
+          "label": {
+            "en": "male"
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "male"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "male"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5763
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "technologies": {
+          "label": {
+            "en": "increase"
+          }
+        },
+        "approaches": {
+          "label": {
+            "en": "increase"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5766
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "technologies": {
+          "label": {
+            "en": "decrease"
+          }
+        },
+        "approaches": {
+          "label": {
+            "en": "decrease"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5767
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "technologies": {
+          "label": {
+            "en": "field visits, field surveys"
+          }
+        },
+        "approaches": {
+          "label": {
+            "en": "field visits, field surveys"
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "field visits, field surveys"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5768
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "technologies": {
+          "label": {
+            "en": "interviews with land users"
+          }
+        },
+        "approaches": {
+          "label": {
+            "en": "interviews with land users"
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "interviews with land users"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5769
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "technologies": {
+          "label": {
+            "en": "interviews with SLM specialists/ experts"
+          }
+        },
+        "approaches": {
+          "label": {
+            "en": "interviews with SLM specialists/ experts"
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "interviews with SLM specialists/ experts"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5770
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "technologies": {
+          "label": {
+            "en": "compilation from reports and other existing documentation"
+          }
+        },
+        "approaches": {
+          "label": {
+            "en": "compilation from reports and other existing documentation"
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "compilation from reports and other existing documentation"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5771
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "technologies": {
+          "label": {
+            "en": "SLM specialist"
+          }
+        },
+        "approaches": {
+          "label": {
+            "en": "SLM specialist"
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "SLM specialist"
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "SLM specialist"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5772
+  },
+  {
+    "fields": {
+      "translation_type": "value",
+      "data": {
+        "technologies": {
+          "label": {
+            "en": "land user"
+          },
+          "helptext": {
+            "en": "the person/ entity who implements/ maintains the Technology. The term land user may refer to individual small- or large-scale farmers, groups (gender, age, status, interest), cooperatives, industrial companies (e.g. mining), government institutions (e.g. state forest), etc."
+          }
+        },
+        "approaches": {
+          "label": {
+            "en": "land user"
+          },
+          "helptext": {
+            "en": "the person/ entity who implements/ maintains the Technology/ Technologies associated with this Approach. The term land user may refer to individual small- or large-scale farmers, groups (gender, age, status, interest), cooperatives, industrial companies (e.g. mining), government institutions (e.g. state forest), etc."
+          }
+        },
+        "cca": {
+          "label": {
+            "en": "land user"
+          },
+          "helptext": {
+            "en": "the person/ entity who implements/ maintains the Technology. The term land user may refer to individual small- or large-scale farmers, groups (gender, age, status, interest), cooperatives, industrial companies (e.g. mining), government institutions (e.g. state forest), etc."
+          }
+        },
+        "watershed": {
+          "label": {
+            "en": "land user"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5773
+  },
+  {
+    "fields": {
+      "translation_type": "questiongroup",
+      "data": {
+        "technologies": {
+          "label": {
+            "en": "Add geo-referenced information on the map below"
+          },
+          "helptext": {
+            "en": "Add a point for each technology site that was considered/ analysed in the documentation of this technology. If more than 10 sites were considered, select and add a point for those that are most representative."
+          }
+        },
+        "approaches": {
+          "helptext": {
+            "en": "Specify the centre of the area in which the Approach has been applied."
+          }
+        },
+        "watershed": {
+          "helptext": {
+            "en": "Specify the centre of the watershed."
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5902
+  },
+  {
+    "fields": {
+      "translation_type": "questiongroup",
+      "data": {
+        "approaches": {
+          "helptext": {
+            "en": "<p><strong>Conditions regarding the use of data documented through WOCAT</strong></p><ul><li>Data captured through WOCAT questionnaires will be entered, edited, and stored in the WOCAT online database by the compiler or a data entry person assigned by the compiler. Overall responsibility for compilation and data quality lies with the compiler. The compiler, resource persons, and data entry person will be recorded and given credit for the data in the database as well as in any compilation or publication of the documented data.</li><li>Data stored in the WOCAT database are open access.</li><li>Data are made available for users under the <a href=\"http://creativecommons.org/licenses/by-nc-sa/3.0/\" target=\"_blank\" class=\"link\">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.</a></li></ul><p>You are free to:</p><ul><li><strong>Share</strong> — copy and redistribute the material in any medium or format</li><li><strong>Adapt</strong> — remix, transform, and build upon the material</li></ul><p>The licensor cannot revoke these freedoms as long as you follow the following license terms:</p><ul><li><strong>Attribution</strong> — You must give appropriate credit, provide a link to the license, and indicate if changes were made.</li><li><strong>NonCommercial</strong> — You may not use the material for commercial purposes.</li><li><strong>ShareAlike</strong> — If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.</li><li><strong>No additional restrictions</strong> — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.</li></ul><p><strong>Full license terms</strong>: <a href=\"http://creativecommons.org/licenses/by-nc-sa/3.0/legalcode\" target=\"_blank\" class=\"link\">http://creativecommons.org/licenses/by-nc-sa/3.0/legalcode</a></p>"
+          }
+        },
+        "technologies": {
+          "helptext": {
+            "en": "<p><strong>Conditions regarding the use of data documented through WOCAT</strong></p><ul><li>Data captured through WOCAT questionnaires will be entered, edited, and stored in the WOCAT online database by the compiler or a data entry person assigned by the compiler. Overall responsibility for compilation and data quality lies with the compiler. The compiler, resource persons, and data entry person will be recorded and given credit for the data in the database as well as in any compilation or publication of the documented data.</li><li>Data stored in the WOCAT database are open access.</li><li>Data are made available for users under the <a href=\"http://creativecommons.org/licenses/by-nc-sa/3.0/\" target=\"_blank\" class=\"link\">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.</a></li></ul><p>You are free to:</p><ul><li><strong>Share</strong> — copy and redistribute the material in any medium or format</li><li><strong>Adapt</strong> — remix, transform, and build upon the material</li></ul><p>The licensor cannot revoke these freedoms as long as you follow the following license terms:</p><ul><li><strong>Attribution</strong> — You must give appropriate credit, provide a link to the license, and indicate if changes were made.</li><li><strong>NonCommercial</strong> — You may not use the material for commercial purposes.</li><li><strong>ShareAlike</strong> — If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.</li><li><strong>No additional restrictions</strong> — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.</li></ul><p><strong>Full license terms</strong>: <a href=\"http://creativecommons.org/licenses/by-nc-sa/3.0/legalcode\" target=\"_blank\" class=\"link\">http://creativecommons.org/licenses/by-nc-sa/3.0/legalcode</a></p>"
+          }
+        },
+        "watershed": {
+          "helptext": {
+            "en": "<p><strong>Conditions regarding the use of data documented through WOCAT</strong></p><ul><li>Data captured through WOCAT questionnaires will be entered, edited, and stored in the WOCAT online database by the compiler or a data entry person assigned by the compiler. Overall responsibility for compilation and data quality lies with the compiler. The compiler, resource persons, and data entry person will be recorded and given credit for the data in the database as well as in any compilation or publication of the documented data.</li><li>Data stored in the WOCAT database are open access.</li><li>Data are made available for users under the <a href=\"http://creativecommons.org/licenses/by-nc-sa/3.0/\" target=\"_blank\" class=\"link\">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.</a></li></ul><p>You are free to:</p><ul><li><strong>Share</strong> — copy and redistribute the material in any medium or format</li><li><strong>Adapt</strong> — remix, transform, and build upon the material</li></ul><p>The licensor cannot revoke these freedoms as long as you follow the following license terms:</p><ul><li><strong>Attribution</strong> — You must give appropriate credit, provide a link to the license, and indicate if changes were made.</li><li><strong>NonCommercial</strong> — You may not use the material for commercial purposes.</li><li><strong>ShareAlike</strong> — If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.</li><li><strong>No additional restrictions</strong> — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.</li></ul><p><strong>Full license terms</strong>: <a href=\"http://creativecommons.org/licenses/by-nc-sa/3.0/legalcode\" target=\"_blank\" class=\"link\">http://creativecommons.org/licenses/by-nc-sa/3.0/legalcode</a></p>"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5903
+  },
+  {
+    "fields": {
+      "translation_type": "category",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "General Information"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "General Information"
+          }
+        },
+        "unccd": {
+          "label": {
+            "en": "General Information"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5981
+  },
+  {
+    "fields": {
+      "translation_type": "category",
+      "data": {
+        "approaches": {
+          "label": {
+            "en": "Specifications"
+          }
+        },
+        "technologies": {
+          "label": {
+            "en": "Specifications"
+          }
+        },
+        "unccd": {
+          "label": {
+            "en": "Specifications"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5982
+  },
+  {
+    "fields": {
+      "translation_type": "category",
+      "data": {
+        "technologies": {
+          "label": {
+            "en": "Analysis"
+          }
+        },
+        "unccd": {
+          "label": {
+            "en": "Analysis"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 5983
+  },
+  {
+    "fields": {
+      "keyword": "name",
+      "translation": 5001,
+      "configuration": {
+        "type": "char",
+        "summary": {
+          "types": ["full"],
+          "default": {
+            "field_name": "title_name"
+          }
+        }
+      }
+    },
+    "model": "configuration.key",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "keyword": "country",
+      "translation": 5002,
+      "configuration": {
+        "type": "select_type",
+        "summary": {
+          "types": ["full"],
+          "default": {
+            "field_name": "country"
+          }
+        }
+      },
+      "values": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209,
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219,
+        220,
+        221,
+        222,
+        223,
+        224,
+        225,
+        226,
+        227,
+        228,
+        229,
+        230,
+        231,
+        232,
+        233,
+        234,
+        235,
+        236,
+        237,
+        238,
+        239,
+        240,
+        241,
+        242,
+        243,
+        244,
+        245,
+        246,
+        247,
+        248,
+        249
+      ]
+    },
+    "model": "configuration.key",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "keyword": "name_local",
+      "translation": 5046,
+      "configuration": {
+        "type": "char",
+        "form_options": {
+          "helptext_position": "tooltip"
+        },
+        "summary": {
+          "types": ["full"],
+          "default": {
+            "field_name": "title_name_local"
+          }
+        }
+      }
+    },
+    "model": "configuration.key",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "keyword": "state_province",
+      "translation": 5005,
+      "configuration": {
+        "type": "char",
+        "summary": {
+          "types": ["full"],
+          "default": {
+            "field_name": "location_state_province"
+          }
+        }
+      }
+    },
+    "model": "configuration.key",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "keyword": "further_location",
+      "translation": 5006,
+      "configuration": {
+        "type": "char",
+        "summary": {
+          "types": ["full"],
+          "default": {
+            "field_name": "location_further"
+          }
+        }
+      }
+    },
+    "model": "configuration.key",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "keyword": "location_comments",
+      "translation": 5004,
+      "configuration": {
+        "type": "text"
+      }
+    },
+    "model": "configuration.key",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "keyword": "image",
+      "translation": 5007,
+      "configuration": {
+        "type": "image",
+        "summary": {
+          "types": ["full"],
+          "default": {
+            "field_name": {
+              "qg_photos.image": "images_image",
+              "qg_image.image": "header_image_image"
+            }
+          }
+        }
+      }
+    },
+    "model": "configuration.key",
+    "pk": 7
+  },
+  {
+    "fields": {
+      "keyword": "image_caption",
+      "translation": 5008,
+      "configuration": {
+        "type": "char",
+        "form_options": {
+          "helptext_position": "tooltip"
+        },
+        "summary": {
+          "types": ["full"],
+          "default": {
+            "field_name": {
+              "qg_photos.image_caption": "images_caption",
+              "qg_image.image_caption": "header_image_caption"
+            }
+          }
+        }
+      }
+    },
+    "model": "configuration.key",
+    "pk": 8
+  },
+  {
+    "fields": {
+      "keyword": "image_date",
+      "translation": 5009,
+      "configuration": {
+        "type": "date"
+      }
+    },
+    "model": "configuration.key",
+    "pk": 9
+  },
+  {
+    "fields": {
+      "keyword": "image_photographer",
+      "translation": 5010,
+      "configuration": {
+        "type": "char",
+        "summary": {
+          "types": ["full"],
+          "default": {
+            "field_name": {
+              "qg_photos.image_photographer": "images_photographer",
+              "qg_image.image_photographer": "header_image_photographer"
+            }
+          }
+        }
+      }
+    },
+    "model": "configuration.key",
+    "pk": 10
+  },
+  {
+    "fields": {
+      "keyword": "image_target",
+      "translation": 5010,
+      "configuration": {
+        "type": "hidden"
+      }
+    },
+    "model": "configuration.key",
+    "pk": 44
+  },
+  {
+    "fields": {
+      "keyword": "image_remarks",
+      "translation": 5049,
+      "configuration": {
+        "type": "text",
+        "summary": {
+          "types": ["full"],
+          "default": {
+            "field_name": "header_image_remarks"
+          }
+        }
+      }
+    },
+    "model": "configuration.key",
+    "pk": 11
+  },
+  {
+    "fields": {
+      "keyword": "funding_project",
+      "translation": 5053,
+      "configuration": {
+        "type": "select_model",
+        "form_options": {
+          "model": "Project"
+        },
+        "summary": {
+          "types": ["full"],
+          "default": {
+            "field_name": "project_institution_project"
+          }
+        }
+      }
+    },
+    "model": "configuration.key",
+    "pk": 12
+  },
+  {
+    "fields": {
+      "keyword": "accept_conditions",
+      "translation": 5062,
+      "configuration": {
+        "type": "bool",
+        "form_options": {
+          "helptext_position": "field"
+        }
+      }
+    },
+    "model": "configuration.key",
+    "pk": 13
+  },
+  {
+    "fields": {
+      "keyword": "user_id",
+      "translation": 5014,
+      "configuration": {
+        "type": "user_id",
+        "summary": {
+          "types": ["full"],
+          "default": {
+            "field_name": "references_resourceperson_user_id"
+          }
+        }
+      }
+    },
+    "model": "configuration.key",
+    "pk": 14
+  },
+  {
+    "fields": {
+      "keyword": "image_location",
+      "translation": 5015,
+      "configuration": {
+        "type": "char"
+      }
+    },
+    "model": "configuration.key",
+    "pk": 15
+  },
+  {
+    "fields": {
+      "keyword": "person_lastname",
+      "translation": 5016,
+      "configuration": {
+        "type": "char",
+        "summary": {
+          "types": ["full"],
+          "default": {
+            "field_name": "references_resourceperson_lastname"
+          }
+        }
+      }
+    },
+    "model": "configuration.key",
+    "pk": 16
+  },
+  {
+    "fields": {
+      "keyword": "person_firstname",
+      "translation": 5017,
+      "configuration": {
+        "type": "char",
+        "summary": {
+          "types": ["full"],
+          "default": {
+            "field_name": "references_person_firstname"
+          }
+        }
+      }
+    },
+    "model": "configuration.key",
+    "pk": 17
+  },
+  {
+    "fields": {
+      "keyword": "person_gender",
+      "translation": 5018,
+      "configuration": {
+        "type": "radio"
+      },
+      "values": [
+        262,
+        263
+      ]
+    },
+    "model": "configuration.key",
+    "pk": 18
+  },
+  {
+    "fields": {
+      "keyword": "person_institution_name",
+      "translation": 5019,
+      "configuration": {
+        "type": "char"
+      }
+    },
+    "model": "configuration.key",
+    "pk": 19
+  },
+  {
+    "fields": {
+      "keyword": "person_phone_1",
+      "translation": 5024,
+      "configuration": {
+        "type": "char"
+      }
+    },
+    "model": "configuration.key",
+    "pk": 24
+  },
+  {
+    "fields": {
+      "keyword": "person_phone_2",
+      "translation": 5025,
+      "configuration": {
+        "type": "char"
+      }
+    },
+    "model": "configuration.key",
+    "pk": 25
+  },
+  {
+    "fields": {
+      "keyword": "person_email_1",
+      "translation": 5026,
+      "configuration": {
+        "type": "char",
+        "summary": {
+          "types": ["full"],
+          "default": {
+            "field_name": "references_person_email"
+          }
+        }
+      }
+    },
+    "model": "configuration.key",
+    "pk": 26
+  },
+  {
+    "fields": {
+      "keyword": "person_email_2",
+      "translation": 5027,
+      "configuration": {
+        "type": "char"
+      }
+    },
+    "model": "configuration.key",
+    "pk": 27
+  },
+  {
+    "fields": {
+      "keyword": "user_resourceperson_type",
+      "translation": 5052,
+      "configuration": {
+        "type": "radio",
+        "summary": {
+          "types": ["full"],
+          "default": {
+            "field_name": "references_resourceperson_type"
+          }
+        }
+      },
+      "values": [
+        264,
+        265
+      ]
+    },
+    "model": "configuration.key",
+    "pk": 28
+  },
+  {
+    "fields": {
+      "keyword": "user_resourceperson_other",
+      "translation": 5029,
+      "configuration": {
+        "type": "char",
+        "summary": {
+          "types": ["full"],
+          "default": {
+            "field_name": "references_person_type_other"
+          }
+        }
+      }
+    },
+    "model": "configuration.key",
+    "pk": 29
+  },
+  {
+    "fields": {
+      "keyword": "strengths_landuser",
+      "translation": 5030,
+      "configuration": {
+        "type": "text",
+        "view_options": {
+          "template": "value_only"
+        },
+        "summary": {
+          "types": ["full"],
+          "default": {
+            "field_name": "strengths_landuser"
+          }
+        }
+      }
+    },
+    "model": "configuration.key",
+    "pk": 30
+  },
+  {
+    "fields": {
+      "keyword": "strengths_compiler",
+      "translation": 5031,
+      "configuration": {
+        "type": "text",
+        "view_options": {
+          "template": "value_only"
+        },
+        "summary": {
+          "types": ["full"],
+          "default": {
+            "field_name": "strengths_compiler"
+          }
+        }
+      }
+    },
+    "model": "configuration.key",
+    "pk": 31
+  },
+  {
+    "fields": {
+      "keyword": "weaknesses_landuser",
+      "translation": 5032,
+      "configuration": {
+        "type": "text",
+        "view_options": {
+          "template": "value_only"
+        },
+        "summary": {
+          "types": ["full"],
+          "default": {
+            "field_name": "weaknesses_landuser"
+          }
+        }
+      }
+    },
+    "model": "configuration.key",
+    "pk": 32
+  },
+  {
+    "fields": {
+      "keyword": "weaknesses_compiler",
+      "translation": 5033,
+      "configuration": {
+        "type": "text",
+        "view_options": {
+          "template": "value_only"
+        },
+        "summary": {
+          "types": ["full"],
+          "default": {
+            "field_name": "weaknesses_compiler"
+          }
+        }
+      }
+    },
+    "model": "configuration.key",
+    "pk": 33
+  },
+  {
+    "fields": {
+      "keyword": "weaknesses_overcome",
+      "translation": 5034,
+      "configuration": {
+        "type": "text",
+        "view_options": {
+          "template": "value_only"
+        },
+        "summary": {
+          "types": ["full"],
+          "default": {
+            "field_name": {
+              "qg_weaknesses_landusers.weaknesses_overcome": "weaknesses_landuser_overcome",
+              "qg_weaknesses_compiler.weaknesses_overcome": "weaknesses_compiler_overcome"
+            }
+          }
+        }
+      }
+    },
+    "model": "configuration.key",
+    "pk": 34
+  },
+  {
+    "fields": {
+      "keyword": "date_documentation",
+      "translation": 5061,
+      "configuration": {
+        "type": "date"
+      }
+    },
+    "model": "configuration.key",
+    "pk": 35
+  },
+  {
+    "fields": {
+      "keyword": "video_description",
+      "translation": 5038,
+      "configuration": {
+        "type": "text"
+      }
+    },
+    "model": "configuration.key",
+    "pk": 38
+  },
+  {
+    "fields": {
+      "keyword": "video_date",
+      "translation": 5039,
+      "configuration": {
+        "type": "date"
+      }
+    },
+    "model": "configuration.key",
+    "pk": 39
+  },
+  {
+    "fields": {
+      "keyword": "video_videographer",
+      "translation": 5040,
+      "configuration": {
+        "type": "char"
+      }
+    },
+    "model": "configuration.key",
+    "pk": 40
+  },
+  {
+    "fields": {
+      "keyword": "sources_used",
+      "translation": 5041,
+      "configuration": {
+        "type": "checkbox"
+      },
+      "values": [
+        268,
+        269,
+        270,
+        271
+      ]
+    },
+    "model": "configuration.key",
+    "pk": 41
+  },
+  {
+    "fields": {
+      "keyword": "sources_specify",
+      "translation": 5056,
+      "configuration": {
+        "type": "text",
+        "view_options": {
+          "label_position": "none"
+        }
+      }
+    },
+    "model": "configuration.key",
+    "pk": 42
+  },
+  {
+    "fields": {
+      "keyword": "sources_other",
+      "translation": 5043,
+      "configuration": {
+        "type": "char"
+      }
+    },
+    "model": "configuration.key",
+    "pk": 43
+  },
+  {
+    "fields": {
+      "keyword": "video_location",
+      "translation": 5044,
+      "configuration": {
+        "type": "char"
+      }
+    },
+    "model": "configuration.key",
+    "pk": 45
+  },
+  {
+    "fields": {
+      "keyword": "import_old_code",
+      "translation": 5045,
+      "configuration": {
+        "type": "hidden",
+        "form_options": {
+          "template": "no_label"
+        }
+      }
+    },
+    "model": "configuration.key",
+    "pk": 46
+  },
+  {
+    "fields": {
+      "keyword": "link_id",
+      "translation": 5045,
+      "configuration": {
+        "type": "link_id",
+        "form_options": {
+          "template": "no_label"
+        }
+      }
+    },
+    "model": "configuration.key",
+    "pk": 47
+  },
+  {
+    "fields": {
+      "keyword": "empty",
+      "translation": 5045,
+      "configuration": {
+        "type": "char",
+        "form_options": {
+          "template": "no_label"
+        }
+      }
+    },
+    "model": "configuration.key",
+    "pk": 48
+  },
+  {
+    "fields": {
+      "keyword": "funding_institution",
+      "translation": 5054,
+      "configuration": {
+        "type": "select_model",
+        "form_options": {
+          "model": "Institution"
+        },
+        "summary": {
+          "types": ["full"],
+          "default": {
+            "field_name": "project_institution_institution"
+          }
+        }
+      }
+    },
+    "model": "configuration.key",
+    "pk": 49
+  },
+  {
+    "fields": {
+      "keyword": "references_title",
+      "translation": 5057,
+      "configuration": {
+        "type": "char",
+        "summary": {
+          "types": ["full"],
+          "default": {
+            "field_name": "references_title"
+          }
+        }
+      }
+    },
+    "model": "configuration.key",
+    "pk": 52
+  },
+  {
+    "fields": {
+      "keyword": "references_source",
+      "translation": 5058,
+      "configuration": {
+        "type": "char",
+        "summary": {
+          "types": ["full"],
+          "default": {
+            "field_name": "references_source"
+          }
+        }
+      }
+    },
+    "model": "configuration.key",
+    "pk": 53
+  },
+  {
+    "fields": {
+      "keyword": "links_title",
+      "translation": 5059,
+      "configuration": {
+        "type": "char",
+        "summary": {
+          "types": ["full"],
+          "default": {
+            "field_name": "references_links_title"
+          }
+        }
+      }
+    },
+    "model": "configuration.key",
+    "pk": 54
+  },
+  {
+    "fields": {
+      "keyword": "links_url",
+      "translation": 5060,
+      "configuration": {
+        "type": "char",
+        "summary": {
+          "types": ["full"],
+          "default": {
+            "field_name": "references_links_url"
+          }
+        }
+      }
+    },
+    "model": "configuration.key",
+    "pk": 55
+  },
+  {
+    "fields": {
+      "keyword": "person_address",
+      "translation": 5063,
+      "configuration": {
+        "type": "text"
+      }
+    },
+    "model": "configuration.key",
+    "pk": 56
+  },
+  {
+    "fields": {
+      "keyword": "location_map",
+      "translation": 5064,
+      "configuration": {
+        "type": "map",
+        "summary": {
+          "types": ["full"],
+          "default": {
+            "field_name": "location_map_data",
+            "get_value": {
+              "name": "get_map_values"
+            }
+          }
+        }
+      }
+    },
+    "model": "configuration.key",
+    "pk": 57
+  },
+  {
+    "fields": {
+      "keyword": "video_vimeo_id",
+      "translation": 5065,
+      "configuration": {
+        "type": "int",
+        "summary": {
+          "types": ["full"],
+          "default": {
+            "field_name": "references_vimeo_id"
+          }
+        },
+        "view_options": {
+          "template": "vimeo_video"
+        }
+      }
+    },
+    "model": "configuration.key",
+    "pk": 58
+  },
+  {
+    "fields": {
+      "keyword": "image_comments",
+      "translation": 5066,
+      "configuration": {
+        "type": "text"
+      }
+    },
+    "model": "configuration.key",
+    "pk": 59
+  },
+  {
+    "fields": {
+      "keyword": "country_AFG",
+      "translation": 5501
+    },
+    "model": "configuration.value",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "keyword": "country_ALB",
+      "translation": 5502
+    },
+    "model": "configuration.value",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "keyword": "country_DZA",
+      "translation": 5503
+    },
+    "model": "configuration.value",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "keyword": "country_ASM",
+      "translation": 5504
+    },
+    "model": "configuration.value",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "keyword": "country_AND",
+      "translation": 5505
+    },
+    "model": "configuration.value",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "keyword": "country_AGO",
+      "translation": 5506
+    },
+    "model": "configuration.value",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "keyword": "country_AIA",
+      "translation": 5507
+    },
+    "model": "configuration.value",
+    "pk": 7
+  },
+  {
+    "fields": {
+      "keyword": "country_ATA",
+      "translation": 5508
+    },
+    "model": "configuration.value",
+    "pk": 8
+  },
+  {
+    "fields": {
+      "keyword": "country_ATG",
+      "translation": 5509
+    },
+    "model": "configuration.value",
+    "pk": 9
+  },
+  {
+    "fields": {
+      "keyword": "country_ARG",
+      "translation": 5510
+    },
+    "model": "configuration.value",
+    "pk": 10
+  },
+  {
+    "fields": {
+      "keyword": "country_ARM",
+      "translation": 5511
+    },
+    "model": "configuration.value",
+    "pk": 11
+  },
+  {
+    "fields": {
+      "keyword": "country_ABW",
+      "translation": 5512
+    },
+    "model": "configuration.value",
+    "pk": 12
+  },
+  {
+    "fields": {
+      "keyword": "country_AUS",
+      "translation": 5513
+    },
+    "model": "configuration.value",
+    "pk": 13
+  },
+  {
+    "fields": {
+      "keyword": "country_AUT",
+      "translation": 5514
+    },
+    "model": "configuration.value",
+    "pk": 14
+  },
+  {
+    "fields": {
+      "keyword": "country_AZE",
+      "translation": 5515
+    },
+    "model": "configuration.value",
+    "pk": 15
+  },
+  {
+    "fields": {
+      "keyword": "country_BHS",
+      "translation": 5516
+    },
+    "model": "configuration.value",
+    "pk": 16
+  },
+  {
+    "fields": {
+      "keyword": "country_BHR",
+      "translation": 5517
+    },
+    "model": "configuration.value",
+    "pk": 17
+  },
+  {
+    "fields": {
+      "keyword": "country_BGD",
+      "translation": 5518
+    },
+    "model": "configuration.value",
+    "pk": 18
+  },
+  {
+    "fields": {
+      "keyword": "country_BRB",
+      "translation": 5519
+    },
+    "model": "configuration.value",
+    "pk": 19
+  },
+  {
+    "fields": {
+      "keyword": "country_BLR",
+      "translation": 5520
+    },
+    "model": "configuration.value",
+    "pk": 20
+  },
+  {
+    "fields": {
+      "keyword": "country_BEL",
+      "translation": 5521
+    },
+    "model": "configuration.value",
+    "pk": 21
+  },
+  {
+    "fields": {
+      "keyword": "country_BLZ",
+      "translation": 5522
+    },
+    "model": "configuration.value",
+    "pk": 22
+  },
+  {
+    "fields": {
+      "keyword": "country_BEN",
+      "translation": 5523
+    },
+    "model": "configuration.value",
+    "pk": 23
+  },
+  {
+    "fields": {
+      "keyword": "country_BMU",
+      "translation": 5524
+    },
+    "model": "configuration.value",
+    "pk": 24
+  },
+  {
+    "fields": {
+      "keyword": "country_BTN",
+      "translation": 5525
+    },
+    "model": "configuration.value",
+    "pk": 25
+  },
+  {
+    "fields": {
+      "keyword": "country_BOL",
+      "translation": 5526
+    },
+    "model": "configuration.value",
+    "pk": 26
+  },
+  {
+    "fields": {
+      "keyword": "country_BES",
+      "translation": 5527
+    },
+    "model": "configuration.value",
+    "pk": 27
+  },
+  {
+    "fields": {
+      "keyword": "country_BIH",
+      "translation": 5528
+    },
+    "model": "configuration.value",
+    "pk": 28
+  },
+  {
+    "fields": {
+      "keyword": "country_BWA",
+      "translation": 5529
+    },
+    "model": "configuration.value",
+    "pk": 29
+  },
+  {
+    "fields": {
+      "keyword": "country_BVT",
+      "translation": 5530
+    },
+    "model": "configuration.value",
+    "pk": 30
+  },
+  {
+    "fields": {
+      "keyword": "country_BRA",
+      "translation": 5531
+    },
+    "model": "configuration.value",
+    "pk": 31
+  },
+  {
+    "fields": {
+      "keyword": "country_IOT",
+      "translation": 5532
+    },
+    "model": "configuration.value",
+    "pk": 32
+  },
+  {
+    "fields": {
+      "keyword": "country_BRN",
+      "translation": 5533
+    },
+    "model": "configuration.value",
+    "pk": 33
+  },
+  {
+    "fields": {
+      "keyword": "country_BGR",
+      "translation": 5534
+    },
+    "model": "configuration.value",
+    "pk": 34
+  },
+  {
+    "fields": {
+      "keyword": "country_BFA",
+      "translation": 5535
+    },
+    "model": "configuration.value",
+    "pk": 35
+  },
+  {
+    "fields": {
+      "keyword": "country_BDI",
+      "translation": 5536
+    },
+    "model": "configuration.value",
+    "pk": 36
+  },
+  {
+    "fields": {
+      "keyword": "country_KHM",
+      "translation": 5537
+    },
+    "model": "configuration.value",
+    "pk": 37
+  },
+  {
+    "fields": {
+      "keyword": "country_CMR",
+      "translation": 5538
+    },
+    "model": "configuration.value",
+    "pk": 38
+  },
+  {
+    "fields": {
+      "keyword": "country_CAN",
+      "translation": 5539
+    },
+    "model": "configuration.value",
+    "pk": 39
+  },
+  {
+    "fields": {
+      "keyword": "country_CPV",
+      "translation": 5540
+    },
+    "model": "configuration.value",
+    "pk": 40
+  },
+  {
+    "fields": {
+      "keyword": "country_CYM",
+      "translation": 5541
+    },
+    "model": "configuration.value",
+    "pk": 41
+  },
+  {
+    "fields": {
+      "keyword": "country_CAF",
+      "translation": 5542
+    },
+    "model": "configuration.value",
+    "pk": 42
+  },
+  {
+    "fields": {
+      "keyword": "country_TCD",
+      "translation": 5543
+    },
+    "model": "configuration.value",
+    "pk": 43
+  },
+  {
+    "fields": {
+      "keyword": "country_CHL",
+      "translation": 5544
+    },
+    "model": "configuration.value",
+    "pk": 44
+  },
+  {
+    "fields": {
+      "keyword": "country_CHN",
+      "translation": 5545
+    },
+    "model": "configuration.value",
+    "pk": 45
+  },
+  {
+    "fields": {
+      "keyword": "country_CXR",
+      "translation": 5546
+    },
+    "model": "configuration.value",
+    "pk": 46
+  },
+  {
+    "fields": {
+      "keyword": "country_CCK",
+      "translation": 5547
+    },
+    "model": "configuration.value",
+    "pk": 47
+  },
+  {
+    "fields": {
+      "keyword": "country_COL",
+      "translation": 5548
+    },
+    "model": "configuration.value",
+    "pk": 48
+  },
+  {
+    "fields": {
+      "keyword": "country_COM",
+      "translation": 5549
+    },
+    "model": "configuration.value",
+    "pk": 49
+  },
+  {
+    "fields": {
+      "keyword": "country_COG",
+      "translation": 5550
+    },
+    "model": "configuration.value",
+    "pk": 50
+  },
+  {
+    "fields": {
+      "keyword": "country_COD",
+      "translation": 5551
+    },
+    "model": "configuration.value",
+    "pk": 51
+  },
+  {
+    "fields": {
+      "keyword": "country_COK",
+      "translation": 5552
+    },
+    "model": "configuration.value",
+    "pk": 52
+  },
+  {
+    "fields": {
+      "keyword": "country_CRI",
+      "translation": 5553
+    },
+    "model": "configuration.value",
+    "pk": 53
+  },
+  {
+    "fields": {
+      "keyword": "country_HRV",
+      "translation": 5554
+    },
+    "model": "configuration.value",
+    "pk": 54
+  },
+  {
+    "fields": {
+      "keyword": "country_CUB",
+      "translation": 5555
+    },
+    "model": "configuration.value",
+    "pk": 55
+  },
+  {
+    "fields": {
+      "keyword": "country_CUW",
+      "translation": 5556
+    },
+    "model": "configuration.value",
+    "pk": 56
+  },
+  {
+    "fields": {
+      "keyword": "country_CYP",
+      "translation": 5557
+    },
+    "model": "configuration.value",
+    "pk": 57
+  },
+  {
+    "fields": {
+      "keyword": "country_CZE",
+      "translation": 5558
+    },
+    "model": "configuration.value",
+    "pk": 58
+  },
+  {
+    "fields": {
+      "keyword": "country_CIV",
+      "translation": 5559
+    },
+    "model": "configuration.value",
+    "pk": 59
+  },
+  {
+    "fields": {
+      "keyword": "country_DNK",
+      "translation": 5560
+    },
+    "model": "configuration.value",
+    "pk": 60
+  },
+  {
+    "fields": {
+      "keyword": "country_DJI",
+      "translation": 5561
+    },
+    "model": "configuration.value",
+    "pk": 61
+  },
+  {
+    "fields": {
+      "keyword": "country_DMA",
+      "translation": 5562
+    },
+    "model": "configuration.value",
+    "pk": 62
+  },
+  {
+    "fields": {
+      "keyword": "country_DOM",
+      "translation": 5563
+    },
+    "model": "configuration.value",
+    "pk": 63
+  },
+  {
+    "fields": {
+      "keyword": "country_ECU",
+      "translation": 5564
+    },
+    "model": "configuration.value",
+    "pk": 64
+  },
+  {
+    "fields": {
+      "keyword": "country_EGY",
+      "translation": 5565
+    },
+    "model": "configuration.value",
+    "pk": 65
+  },
+  {
+    "fields": {
+      "keyword": "country_SLV",
+      "translation": 5566
+    },
+    "model": "configuration.value",
+    "pk": 66
+  },
+  {
+    "fields": {
+      "keyword": "country_GNQ",
+      "translation": 5567
+    },
+    "model": "configuration.value",
+    "pk": 67
+  },
+  {
+    "fields": {
+      "keyword": "country_ERI",
+      "translation": 5568
+    },
+    "model": "configuration.value",
+    "pk": 68
+  },
+  {
+    "fields": {
+      "keyword": "country_EST",
+      "translation": 5569
+    },
+    "model": "configuration.value",
+    "pk": 69
+  },
+  {
+    "fields": {
+      "keyword": "country_ETH",
+      "translation": 5570
+    },
+    "model": "configuration.value",
+    "pk": 70
+  },
+  {
+    "fields": {
+      "keyword": "country_FLK",
+      "translation": 5571
+    },
+    "model": "configuration.value",
+    "pk": 71
+  },
+  {
+    "fields": {
+      "keyword": "country_FRO",
+      "translation": 5572
+    },
+    "model": "configuration.value",
+    "pk": 72
+  },
+  {
+    "fields": {
+      "keyword": "country_FJI",
+      "translation": 5573
+    },
+    "model": "configuration.value",
+    "pk": 73
+  },
+  {
+    "fields": {
+      "keyword": "country_FIN",
+      "translation": 5574
+    },
+    "model": "configuration.value",
+    "pk": 74
+  },
+  {
+    "fields": {
+      "keyword": "country_FRA",
+      "translation": 5575
+    },
+    "model": "configuration.value",
+    "pk": 75
+  },
+  {
+    "fields": {
+      "keyword": "country_GUF",
+      "translation": 5576
+    },
+    "model": "configuration.value",
+    "pk": 76
+  },
+  {
+    "fields": {
+      "keyword": "country_PYF",
+      "translation": 5577
+    },
+    "model": "configuration.value",
+    "pk": 77
+  },
+  {
+    "fields": {
+      "keyword": "country_ATF",
+      "translation": 5578
+    },
+    "model": "configuration.value",
+    "pk": 78
+  },
+  {
+    "fields": {
+      "keyword": "country_GAB",
+      "translation": 5579
+    },
+    "model": "configuration.value",
+    "pk": 79
+  },
+  {
+    "fields": {
+      "keyword": "country_GMB",
+      "translation": 5580
+    },
+    "model": "configuration.value",
+    "pk": 80
+  },
+  {
+    "fields": {
+      "keyword": "country_GEO",
+      "translation": 5581
+    },
+    "model": "configuration.value",
+    "pk": 81
+  },
+  {
+    "fields": {
+      "keyword": "country_DEU",
+      "translation": 5582
+    },
+    "model": "configuration.value",
+    "pk": 82
+  },
+  {
+    "fields": {
+      "keyword": "country_GHA",
+      "translation": 5583
+    },
+    "model": "configuration.value",
+    "pk": 83
+  },
+  {
+    "fields": {
+      "keyword": "country_GIB",
+      "translation": 5584
+    },
+    "model": "configuration.value",
+    "pk": 84
+  },
+  {
+    "fields": {
+      "keyword": "country_GRC",
+      "translation": 5585
+    },
+    "model": "configuration.value",
+    "pk": 85
+  },
+  {
+    "fields": {
+      "keyword": "country_GRL",
+      "translation": 5586
+    },
+    "model": "configuration.value",
+    "pk": 86
+  },
+  {
+    "fields": {
+      "keyword": "country_GRD",
+      "translation": 5587
+    },
+    "model": "configuration.value",
+    "pk": 87
+  },
+  {
+    "fields": {
+      "keyword": "country_GLP",
+      "translation": 5588
+    },
+    "model": "configuration.value",
+    "pk": 88
+  },
+  {
+    "fields": {
+      "keyword": "country_GUM",
+      "translation": 5589
+    },
+    "model": "configuration.value",
+    "pk": 89
+  },
+  {
+    "fields": {
+      "keyword": "country_GTM",
+      "translation": 5590
+    },
+    "model": "configuration.value",
+    "pk": 90
+  },
+  {
+    "fields": {
+      "keyword": "country_GGY",
+      "translation": 5591
+    },
+    "model": "configuration.value",
+    "pk": 91
+  },
+  {
+    "fields": {
+      "keyword": "country_GIN",
+      "translation": 5592
+    },
+    "model": "configuration.value",
+    "pk": 92
+  },
+  {
+    "fields": {
+      "keyword": "country_GNB",
+      "translation": 5593
+    },
+    "model": "configuration.value",
+    "pk": 93
+  },
+  {
+    "fields": {
+      "keyword": "country_GUY",
+      "translation": 5594
+    },
+    "model": "configuration.value",
+    "pk": 94
+  },
+  {
+    "fields": {
+      "keyword": "country_HTI",
+      "translation": 5595
+    },
+    "model": "configuration.value",
+    "pk": 95
+  },
+  {
+    "fields": {
+      "keyword": "country_HMD",
+      "translation": 5596
+    },
+    "model": "configuration.value",
+    "pk": 96
+  },
+  {
+    "fields": {
+      "keyword": "country_VAT",
+      "translation": 5597
+    },
+    "model": "configuration.value",
+    "pk": 97
+  },
+  {
+    "fields": {
+      "keyword": "country_HND",
+      "translation": 5598
+    },
+    "model": "configuration.value",
+    "pk": 98
+  },
+  {
+    "fields": {
+      "keyword": "country_HKG",
+      "translation": 5599
+    },
+    "model": "configuration.value",
+    "pk": 99
+  },
+  {
+    "fields": {
+      "keyword": "country_HUN",
+      "translation": 5600
+    },
+    "model": "configuration.value",
+    "pk": 100
+  },
+  {
+    "fields": {
+      "keyword": "country_ISL",
+      "translation": 5601
+    },
+    "model": "configuration.value",
+    "pk": 101
+  },
+  {
+    "fields": {
+      "keyword": "country_IND",
+      "translation": 5602
+    },
+    "model": "configuration.value",
+    "pk": 102
+  },
+  {
+    "fields": {
+      "keyword": "country_IDN",
+      "translation": 5603
+    },
+    "model": "configuration.value",
+    "pk": 103
+  },
+  {
+    "fields": {
+      "keyword": "country_IRN",
+      "translation": 5604
+    },
+    "model": "configuration.value",
+    "pk": 104
+  },
+  {
+    "fields": {
+      "keyword": "country_IRQ",
+      "translation": 5605
+    },
+    "model": "configuration.value",
+    "pk": 105
+  },
+  {
+    "fields": {
+      "keyword": "country_IRL",
+      "translation": 5606
+    },
+    "model": "configuration.value",
+    "pk": 106
+  },
+  {
+    "fields": {
+      "keyword": "country_IMN",
+      "translation": 5607
+    },
+    "model": "configuration.value",
+    "pk": 107
+  },
+  {
+    "fields": {
+      "keyword": "country_ISR",
+      "translation": 5608
+    },
+    "model": "configuration.value",
+    "pk": 108
+  },
+  {
+    "fields": {
+      "keyword": "country_ITA",
+      "translation": 5609
+    },
+    "model": "configuration.value",
+    "pk": 109
+  },
+  {
+    "fields": {
+      "keyword": "country_JAM",
+      "translation": 5610
+    },
+    "model": "configuration.value",
+    "pk": 110
+  },
+  {
+    "fields": {
+      "keyword": "country_JPN",
+      "translation": 5611
+    },
+    "model": "configuration.value",
+    "pk": 111
+  },
+  {
+    "fields": {
+      "keyword": "country_JEY",
+      "translation": 5612
+    },
+    "model": "configuration.value",
+    "pk": 112
+  },
+  {
+    "fields": {
+      "keyword": "country_JOR",
+      "translation": 5613
+    },
+    "model": "configuration.value",
+    "pk": 113
+  },
+  {
+    "fields": {
+      "keyword": "country_KAZ",
+      "translation": 5614
+    },
+    "model": "configuration.value",
+    "pk": 114
+  },
+  {
+    "fields": {
+      "keyword": "country_KEN",
+      "translation": 5615
+    },
+    "model": "configuration.value",
+    "pk": 115
+  },
+  {
+    "fields": {
+      "keyword": "country_KIR",
+      "translation": 5616
+    },
+    "model": "configuration.value",
+    "pk": 116
+  },
+  {
+    "fields": {
+      "keyword": "country_PRK",
+      "translation": 5617
+    },
+    "model": "configuration.value",
+    "pk": 117
+  },
+  {
+    "fields": {
+      "keyword": "country_KOR",
+      "translation": 5618
+    },
+    "model": "configuration.value",
+    "pk": 118
+  },
+  {
+    "fields": {
+      "keyword": "country_KWT",
+      "translation": 5619
+    },
+    "model": "configuration.value",
+    "pk": 119
+  },
+  {
+    "fields": {
+      "keyword": "country_KGZ",
+      "translation": 5620
+    },
+    "model": "configuration.value",
+    "pk": 120
+  },
+  {
+    "fields": {
+      "keyword": "country_LAO",
+      "translation": 5621
+    },
+    "model": "configuration.value",
+    "pk": 121
+  },
+  {
+    "fields": {
+      "keyword": "country_LVA",
+      "translation": 5622
+    },
+    "model": "configuration.value",
+    "pk": 122
+  },
+  {
+    "fields": {
+      "keyword": "country_LBN",
+      "translation": 5623
+    },
+    "model": "configuration.value",
+    "pk": 123
+  },
+  {
+    "fields": {
+      "keyword": "country_LSO",
+      "translation": 5624
+    },
+    "model": "configuration.value",
+    "pk": 124
+  },
+  {
+    "fields": {
+      "keyword": "country_LBR",
+      "translation": 5625
+    },
+    "model": "configuration.value",
+    "pk": 125
+  },
+  {
+    "fields": {
+      "keyword": "country_LBY",
+      "translation": 5626
+    },
+    "model": "configuration.value",
+    "pk": 126
+  },
+  {
+    "fields": {
+      "keyword": "country_LIE",
+      "translation": 5627
+    },
+    "model": "configuration.value",
+    "pk": 127
+  },
+  {
+    "fields": {
+      "keyword": "country_LTU",
+      "translation": 5628
+    },
+    "model": "configuration.value",
+    "pk": 128
+  },
+  {
+    "fields": {
+      "keyword": "country_LUX",
+      "translation": 5629
+    },
+    "model": "configuration.value",
+    "pk": 129
+  },
+  {
+    "fields": {
+      "keyword": "country_MAC",
+      "translation": 5630
+    },
+    "model": "configuration.value",
+    "pk": 130
+  },
+  {
+    "fields": {
+      "keyword": "country_MKD",
+      "translation": 5631
+    },
+    "model": "configuration.value",
+    "pk": 131
+  },
+  {
+    "fields": {
+      "keyword": "country_MDG",
+      "translation": 5632
+    },
+    "model": "configuration.value",
+    "pk": 132
+  },
+  {
+    "fields": {
+      "keyword": "country_MWI",
+      "translation": 5633
+    },
+    "model": "configuration.value",
+    "pk": 133
+  },
+  {
+    "fields": {
+      "keyword": "country_MYS",
+      "translation": 5634
+    },
+    "model": "configuration.value",
+    "pk": 134
+  },
+  {
+    "fields": {
+      "keyword": "country_MDV",
+      "translation": 5635
+    },
+    "model": "configuration.value",
+    "pk": 135
+  },
+  {
+    "fields": {
+      "keyword": "country_MLI",
+      "translation": 5636
+    },
+    "model": "configuration.value",
+    "pk": 136
+  },
+  {
+    "fields": {
+      "keyword": "country_MLT",
+      "translation": 5637
+    },
+    "model": "configuration.value",
+    "pk": 137
+  },
+  {
+    "fields": {
+      "keyword": "country_MHL",
+      "translation": 5638
+    },
+    "model": "configuration.value",
+    "pk": 138
+  },
+  {
+    "fields": {
+      "keyword": "country_MTQ",
+      "translation": 5639
+    },
+    "model": "configuration.value",
+    "pk": 139
+  },
+  {
+    "fields": {
+      "keyword": "country_MRT",
+      "translation": 5640
+    },
+    "model": "configuration.value",
+    "pk": 140
+  },
+  {
+    "fields": {
+      "keyword": "country_MUS",
+      "translation": 5641
+    },
+    "model": "configuration.value",
+    "pk": 141
+  },
+  {
+    "fields": {
+      "keyword": "country_MYT",
+      "translation": 5642
+    },
+    "model": "configuration.value",
+    "pk": 142
+  },
+  {
+    "fields": {
+      "keyword": "country_MEX",
+      "translation": 5643
+    },
+    "model": "configuration.value",
+    "pk": 143
+  },
+  {
+    "fields": {
+      "keyword": "country_FSM",
+      "translation": 5644
+    },
+    "model": "configuration.value",
+    "pk": 144
+  },
+  {
+    "fields": {
+      "keyword": "country_MDA",
+      "translation": 5645
+    },
+    "model": "configuration.value",
+    "pk": 145
+  },
+  {
+    "fields": {
+      "keyword": "country_MCO",
+      "translation": 5646
+    },
+    "model": "configuration.value",
+    "pk": 146
+  },
+  {
+    "fields": {
+      "keyword": "country_MNG",
+      "translation": 5647
+    },
+    "model": "configuration.value",
+    "pk": 147
+  },
+  {
+    "fields": {
+      "keyword": "country_MNE",
+      "translation": 5648
+    },
+    "model": "configuration.value",
+    "pk": 148
+  },
+  {
+    "fields": {
+      "keyword": "country_MSR",
+      "translation": 5649
+    },
+    "model": "configuration.value",
+    "pk": 149
+  },
+  {
+    "fields": {
+      "keyword": "country_MAR",
+      "translation": 5650
+    },
+    "model": "configuration.value",
+    "pk": 150
+  },
+  {
+    "fields": {
+      "keyword": "country_MOZ",
+      "translation": 5651
+    },
+    "model": "configuration.value",
+    "pk": 151
+  },
+  {
+    "fields": {
+      "keyword": "country_MMR",
+      "translation": 5652
+    },
+    "model": "configuration.value",
+    "pk": 152
+  },
+  {
+    "fields": {
+      "keyword": "country_NAM",
+      "translation": 5653
+    },
+    "model": "configuration.value",
+    "pk": 153
+  },
+  {
+    "fields": {
+      "keyword": "country_NRU",
+      "translation": 5654
+    },
+    "model": "configuration.value",
+    "pk": 154
+  },
+  {
+    "fields": {
+      "keyword": "country_NPL",
+      "translation": 5655
+    },
+    "model": "configuration.value",
+    "pk": 155
+  },
+  {
+    "fields": {
+      "keyword": "country_NLD",
+      "translation": 5656
+    },
+    "model": "configuration.value",
+    "pk": 156
+  },
+  {
+    "fields": {
+      "keyword": "country_NCL",
+      "translation": 5657
+    },
+    "model": "configuration.value",
+    "pk": 157
+  },
+  {
+    "fields": {
+      "keyword": "country_NZL",
+      "translation": 5658
+    },
+    "model": "configuration.value",
+    "pk": 158
+  },
+  {
+    "fields": {
+      "keyword": "country_NIC",
+      "translation": 5659
+    },
+    "model": "configuration.value",
+    "pk": 159
+  },
+  {
+    "fields": {
+      "keyword": "country_NER",
+      "translation": 5660
+    },
+    "model": "configuration.value",
+    "pk": 160
+  },
+  {
+    "fields": {
+      "keyword": "country_NGA",
+      "translation": 5661
+    },
+    "model": "configuration.value",
+    "pk": 161
+  },
+  {
+    "fields": {
+      "keyword": "country_NIU",
+      "translation": 5662
+    },
+    "model": "configuration.value",
+    "pk": 162
+  },
+  {
+    "fields": {
+      "keyword": "country_NFK",
+      "translation": 5663
+    },
+    "model": "configuration.value",
+    "pk": 163
+  },
+  {
+    "fields": {
+      "keyword": "country_MNP",
+      "translation": 5664
+    },
+    "model": "configuration.value",
+    "pk": 164
+  },
+  {
+    "fields": {
+      "keyword": "country_NOR",
+      "translation": 5665
+    },
+    "model": "configuration.value",
+    "pk": 165
+  },
+  {
+    "fields": {
+      "keyword": "country_OMN",
+      "translation": 5666
+    },
+    "model": "configuration.value",
+    "pk": 166
+  },
+  {
+    "fields": {
+      "keyword": "country_PAK",
+      "translation": 5667
+    },
+    "model": "configuration.value",
+    "pk": 167
+  },
+  {
+    "fields": {
+      "keyword": "country_PLW",
+      "translation": 5668
+    },
+    "model": "configuration.value",
+    "pk": 168
+  },
+  {
+    "fields": {
+      "keyword": "country_PSE",
+      "translation": 5669
+    },
+    "model": "configuration.value",
+    "pk": 169
+  },
+  {
+    "fields": {
+      "keyword": "country_PAN",
+      "translation": 5670
+    },
+    "model": "configuration.value",
+    "pk": 170
+  },
+  {
+    "fields": {
+      "keyword": "country_PNG",
+      "translation": 5671
+    },
+    "model": "configuration.value",
+    "pk": 171
+  },
+  {
+    "fields": {
+      "keyword": "country_PRY",
+      "translation": 5672
+    },
+    "model": "configuration.value",
+    "pk": 172
+  },
+  {
+    "fields": {
+      "keyword": "country_PER",
+      "translation": 5673
+    },
+    "model": "configuration.value",
+    "pk": 173
+  },
+  {
+    "fields": {
+      "keyword": "country_PHL",
+      "translation": 5674
+    },
+    "model": "configuration.value",
+    "pk": 174
+  },
+  {
+    "fields": {
+      "keyword": "country_PCN",
+      "translation": 5675
+    },
+    "model": "configuration.value",
+    "pk": 175
+  },
+  {
+    "fields": {
+      "keyword": "country_POL",
+      "translation": 5676
+    },
+    "model": "configuration.value",
+    "pk": 176
+  },
+  {
+    "fields": {
+      "keyword": "country_PRT",
+      "translation": 5677
+    },
+    "model": "configuration.value",
+    "pk": 177
+  },
+  {
+    "fields": {
+      "keyword": "country_PRI",
+      "translation": 5678
+    },
+    "model": "configuration.value",
+    "pk": 178
+  },
+  {
+    "fields": {
+      "keyword": "country_QAT",
+      "translation": 5679
+    },
+    "model": "configuration.value",
+    "pk": 179
+  },
+  {
+    "fields": {
+      "keyword": "country_ROU",
+      "translation": 5680
+    },
+    "model": "configuration.value",
+    "pk": 180
+  },
+  {
+    "fields": {
+      "keyword": "country_RUS",
+      "translation": 5681
+    },
+    "model": "configuration.value",
+    "pk": 181
+  },
+  {
+    "fields": {
+      "keyword": "country_RWA",
+      "translation": 5682
+    },
+    "model": "configuration.value",
+    "pk": 182
+  },
+  {
+    "fields": {
+      "keyword": "country_REU",
+      "translation": 5683
+    },
+    "model": "configuration.value",
+    "pk": 183
+  },
+  {
+    "fields": {
+      "keyword": "country_BLM",
+      "translation": 5684
+    },
+    "model": "configuration.value",
+    "pk": 184
+  },
+  {
+    "fields": {
+      "keyword": "country_SHN",
+      "translation": 5685
+    },
+    "model": "configuration.value",
+    "pk": 185
+  },
+  {
+    "fields": {
+      "keyword": "country_KNA",
+      "translation": 5686
+    },
+    "model": "configuration.value",
+    "pk": 186
+  },
+  {
+    "fields": {
+      "keyword": "country_LCA",
+      "translation": 5687
+    },
+    "model": "configuration.value",
+    "pk": 187
+  },
+  {
+    "fields": {
+      "keyword": "country_MAF",
+      "translation": 5688
+    },
+    "model": "configuration.value",
+    "pk": 188
+  },
+  {
+    "fields": {
+      "keyword": "country_SPM",
+      "translation": 5689
+    },
+    "model": "configuration.value",
+    "pk": 189
+  },
+  {
+    "fields": {
+      "keyword": "country_VCT",
+      "translation": 5690
+    },
+    "model": "configuration.value",
+    "pk": 190
+  },
+  {
+    "fields": {
+      "keyword": "country_WSM",
+      "translation": 5691
+    },
+    "model": "configuration.value",
+    "pk": 191
+  },
+  {
+    "fields": {
+      "keyword": "country_SMR",
+      "translation": 5692
+    },
+    "model": "configuration.value",
+    "pk": 192
+  },
+  {
+    "fields": {
+      "keyword": "country_STP",
+      "translation": 5693
+    },
+    "model": "configuration.value",
+    "pk": 193
+  },
+  {
+    "fields": {
+      "keyword": "country_SAU",
+      "translation": 5694
+    },
+    "model": "configuration.value",
+    "pk": 194
+  },
+  {
+    "fields": {
+      "keyword": "country_SEN",
+      "translation": 5695
+    },
+    "model": "configuration.value",
+    "pk": 195
+  },
+  {
+    "fields": {
+      "keyword": "country_SRB",
+      "translation": 5696
+    },
+    "model": "configuration.value",
+    "pk": 196
+  },
+  {
+    "fields": {
+      "keyword": "country_SYC",
+      "translation": 5697
+    },
+    "model": "configuration.value",
+    "pk": 197
+  },
+  {
+    "fields": {
+      "keyword": "country_SLE",
+      "translation": 5698
+    },
+    "model": "configuration.value",
+    "pk": 198
+  },
+  {
+    "fields": {
+      "keyword": "country_SGP",
+      "translation": 5699
+    },
+    "model": "configuration.value",
+    "pk": 199
+  },
+  {
+    "fields": {
+      "keyword": "country_SXM",
+      "translation": 5700
+    },
+    "model": "configuration.value",
+    "pk": 200
+  },
+  {
+    "fields": {
+      "keyword": "country_SVK",
+      "translation": 5701
+    },
+    "model": "configuration.value",
+    "pk": 201
+  },
+  {
+    "fields": {
+      "keyword": "country_SVN",
+      "translation": 5702
+    },
+    "model": "configuration.value",
+    "pk": 202
+  },
+  {
+    "fields": {
+      "keyword": "country_SLB",
+      "translation": 5703
+    },
+    "model": "configuration.value",
+    "pk": 203
+  },
+  {
+    "fields": {
+      "keyword": "country_SOM",
+      "translation": 5704
+    },
+    "model": "configuration.value",
+    "pk": 204
+  },
+  {
+    "fields": {
+      "keyword": "country_ZAF",
+      "translation": 5705
+    },
+    "model": "configuration.value",
+    "pk": 205
+  },
+  {
+    "fields": {
+      "keyword": "country_SGS",
+      "translation": 5706
+    },
+    "model": "configuration.value",
+    "pk": 206
+  },
+  {
+    "fields": {
+      "keyword": "country_SSD",
+      "translation": 5707
+    },
+    "model": "configuration.value",
+    "pk": 207
+  },
+  {
+    "fields": {
+      "keyword": "country_ESP",
+      "translation": 5708
+    },
+    "model": "configuration.value",
+    "pk": 208
+  },
+  {
+    "fields": {
+      "keyword": "country_LKA",
+      "translation": 5709
+    },
+    "model": "configuration.value",
+    "pk": 209
+  },
+  {
+    "fields": {
+      "keyword": "country_SDN",
+      "translation": 5710
+    },
+    "model": "configuration.value",
+    "pk": 210
+  },
+  {
+    "fields": {
+      "keyword": "country_SUR",
+      "translation": 5711
+    },
+    "model": "configuration.value",
+    "pk": 211
+  },
+  {
+    "fields": {
+      "keyword": "country_SJM",
+      "translation": 5712
+    },
+    "model": "configuration.value",
+    "pk": 212
+  },
+  {
+    "fields": {
+      "keyword": "country_SWZ",
+      "translation": 5713
+    },
+    "model": "configuration.value",
+    "pk": 213
+  },
+  {
+    "fields": {
+      "keyword": "country_SWE",
+      "translation": 5714
+    },
+    "model": "configuration.value",
+    "pk": 214
+  },
+  {
+    "fields": {
+      "keyword": "country_CHE",
+      "translation": 5715
+    },
+    "model": "configuration.value",
+    "pk": 215
+  },
+  {
+    "fields": {
+      "keyword": "country_SYR",
+      "translation": 5716
+    },
+    "model": "configuration.value",
+    "pk": 216
+  },
+  {
+    "fields": {
+      "keyword": "country_TWN",
+      "translation": 5717
+    },
+    "model": "configuration.value",
+    "pk": 217
+  },
+  {
+    "fields": {
+      "keyword": "country_TJK",
+      "translation": 5718
+    },
+    "model": "configuration.value",
+    "pk": 218
+  },
+  {
+    "fields": {
+      "keyword": "country_TZA",
+      "translation": 5719
+    },
+    "model": "configuration.value",
+    "pk": 219
+  },
+  {
+    "fields": {
+      "keyword": "country_THA",
+      "translation": 5720
+    },
+    "model": "configuration.value",
+    "pk": 220
+  },
+  {
+    "fields": {
+      "keyword": "country_TLS",
+      "translation": 5721
+    },
+    "model": "configuration.value",
+    "pk": 221
+  },
+  {
+    "fields": {
+      "keyword": "country_TGO",
+      "translation": 5722
+    },
+    "model": "configuration.value",
+    "pk": 222
+  },
+  {
+    "fields": {
+      "keyword": "country_TKL",
+      "translation": 5723
+    },
+    "model": "configuration.value",
+    "pk": 223
+  },
+  {
+    "fields": {
+      "keyword": "country_TON",
+      "translation": 5724
+    },
+    "model": "configuration.value",
+    "pk": 224
+  },
+  {
+    "fields": {
+      "keyword": "country_TTO",
+      "translation": 5725
+    },
+    "model": "configuration.value",
+    "pk": 225
+  },
+  {
+    "fields": {
+      "keyword": "country_TUN",
+      "translation": 5726
+    },
+    "model": "configuration.value",
+    "pk": 226
+  },
+  {
+    "fields": {
+      "keyword": "country_TUR",
+      "translation": 5727
+    },
+    "model": "configuration.value",
+    "pk": 227
+  },
+  {
+    "fields": {
+      "keyword": "country_TKM",
+      "translation": 5728
+    },
+    "model": "configuration.value",
+    "pk": 228
+  },
+  {
+    "fields": {
+      "keyword": "country_TCA",
+      "translation": 5729
+    },
+    "model": "configuration.value",
+    "pk": 229
+  },
+  {
+    "fields": {
+      "keyword": "country_TUV",
+      "translation": 5730
+    },
+    "model": "configuration.value",
+    "pk": 230
+  },
+  {
+    "fields": {
+      "keyword": "country_UGA",
+      "translation": 5731
+    },
+    "model": "configuration.value",
+    "pk": 231
+  },
+  {
+    "fields": {
+      "keyword": "country_UKR",
+      "translation": 5732
+    },
+    "model": "configuration.value",
+    "pk": 232
+  },
+  {
+    "fields": {
+      "keyword": "country_ARE",
+      "translation": 5733
+    },
+    "model": "configuration.value",
+    "pk": 233
+  },
+  {
+    "fields": {
+      "keyword": "country_GBR",
+      "translation": 5734
+    },
+    "model": "configuration.value",
+    "pk": 234
+  },
+  {
+    "fields": {
+      "keyword": "country_USA",
+      "translation": 5735
+    },
+    "model": "configuration.value",
+    "pk": 235
+  },
+  {
+    "fields": {
+      "keyword": "country_UMI",
+      "translation": 5736
+    },
+    "model": "configuration.value",
+    "pk": 236
+  },
+  {
+    "fields": {
+      "keyword": "country_URY",
+      "translation": 5737
+    },
+    "model": "configuration.value",
+    "pk": 237
+  },
+  {
+    "fields": {
+      "keyword": "country_UZB",
+      "translation": 5738
+    },
+    "model": "configuration.value",
+    "pk": 238
+  },
+  {
+    "fields": {
+      "keyword": "country_VUT",
+      "translation": 5739
+    },
+    "model": "configuration.value",
+    "pk": 239
+  },
+  {
+    "fields": {
+      "keyword": "country_VEN",
+      "translation": 5740
+    },
+    "model": "configuration.value",
+    "pk": 240
+  },
+  {
+    "fields": {
+      "keyword": "country_VNM",
+      "translation": 5741
+    },
+    "model": "configuration.value",
+    "pk": 241
+  },
+  {
+    "fields": {
+      "keyword": "country_VGB",
+      "translation": 5742
+    },
+    "model": "configuration.value",
+    "pk": 242
+  },
+  {
+    "fields": {
+      "keyword": "country_VIR",
+      "translation": 5743
+    },
+    "model": "configuration.value",
+    "pk": 243
+  },
+  {
+    "fields": {
+      "keyword": "country_WLF",
+      "translation": 5744
+    },
+    "model": "configuration.value",
+    "pk": 244
+  },
+  {
+    "fields": {
+      "keyword": "country_ESH",
+      "translation": 5745
+    },
+    "model": "configuration.value",
+    "pk": 245
+  },
+  {
+    "fields": {
+      "keyword": "country_YEM",
+      "translation": 5746
+    },
+    "model": "configuration.value",
+    "pk": 246
+  },
+  {
+    "fields": {
+      "keyword": "country_ZMB",
+      "translation": 5747
+    },
+    "model": "configuration.value",
+    "pk": 247
+  },
+  {
+    "fields": {
+      "keyword": "country_ZWE",
+      "translation": 5748
+    },
+    "model": "configuration.value",
+    "pk": 248
+  },
+  {
+    "fields": {
+      "keyword": "country_ALA",
+      "translation": 5749
+    },
+    "model": "configuration.value",
+    "pk": 249
+  },
+  {
+    "fields": {
+      "keyword": "measure_low",
+      "translation": 5750,
+      "order_value": 3
+    },
+    "model": "configuration.value",
+    "pk": 250
+  },
+  {
+    "fields": {
+      "keyword": "measure_medium",
+      "translation": 5751,
+      "order_value": 2
+    },
+    "model": "configuration.value",
+    "pk": 251
+  },
+  {
+    "fields": {
+      "keyword": "measure_high",
+      "translation": 5752,
+      "order_value": 1
+    },
+    "model": "configuration.value",
+    "pk": 252
+  },
+  {
+    "fields": {
+      "keyword": "implemenation_50_plus",
+      "translation": 5759,
+      "order_value": 3
+    },
+    "model": "configuration.value",
+    "pk": 259
+  },
+  {
+    "fields": {
+      "keyword": "implemenation_10_50",
+      "translation": 5760,
+      "order_value": 2
+    },
+    "model": "configuration.value",
+    "pk": 260
+  },
+  {
+    "fields": {
+      "keyword": "implemenation_less_10",
+      "translation": 5761,
+      "order_value": 1
+    },
+    "model": "configuration.value",
+    "pk": 261
+  },
+  {
+    "fields": {
+      "keyword": "gender_female",
+      "translation": 5762,
+      "order_value": 1
+    },
+    "model": "configuration.value",
+    "pk": 262
+  },
+  {
+    "fields": {
+      "keyword": "gender_male",
+      "translation": 5763,
+      "order_value": 2
+    },
+    "model": "configuration.value",
+    "pk": 263
+  },
+  {
+    "fields": {
+      "keyword": "resourceperson_landuser",
+      "translation": 5773,
+      "order_value": 1
+    },
+    "model": "configuration.value",
+    "pk": 264
+  },
+  {
+    "fields": {
+      "keyword": "resourceperson_slmspecialist",
+      "translation": 5772,
+      "order_value": 2
+    },
+    "model": "configuration.value",
+    "pk": 265
+  },
+  {
+    "fields": {
+      "keyword": "increase",
+      "translation": 5766,
+      "order_value": 1
+    },
+    "model": "configuration.value",
+    "pk": 266
+  },
+  {
+    "fields": {
+      "keyword": "decrease",
+      "translation": 5767,
+      "order_value": 2
+    },
+    "model": "configuration.value",
+    "pk": 267
+  },
+  {
+    "fields": {
+      "keyword": "source_field",
+      "translation": 5768,
+      "order_value": 1
+    },
+    "model": "configuration.value",
+    "pk": 268
+  },
+  {
+    "fields": {
+      "keyword": "source_interviews_landusers",
+      "translation": 5769,
+      "order_value": 2
+    },
+    "model": "configuration.value",
+    "pk": 269
+  },
+  {
+    "fields": {
+      "keyword": "source_interviews_experts",
+      "translation": 5770,
+      "order_value": 3
+    },
+    "model": "configuration.value",
+    "pk": 270
+  },
+  {
+    "fields": {
+      "keyword": "source_compilation",
+      "translation": 5771,
+      "order_value": 4
+    },
+    "model": "configuration.value",
+    "pk": 271
+  },
+  {
+    "fields": {
+      "keyword": "qg_name",
+      "translation": null,
+      "configuration": {}
+    },
+    "model": "configuration.questiongroup",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "keyword": "qg_location",
+      "translation": null,
+      "configuration": {}
+    },
+    "model": "configuration.questiongroup",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "keyword": "qg_image",
+      "translation": null,
+      "configuration": {}
+    },
+    "model": "configuration.questiongroup",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "keyword": "qg_image_remarks",
+      "translation": null,
+      "configuration": {}
+    },
+    "model": "configuration.questiongroup",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "keyword": "qg_funding_project",
+      "translation": null,
+      "configuration": {
+        "form_options": {
+          "min_num": 1,
+          "max_num": 5
+        }
+      }
+    },
+    "model": "configuration.questiongroup",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "keyword": "qg_accept_conditions",
+      "translation": 5903,
+      "configuration": {}
+    },
+    "model": "configuration.questiongroup",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "keyword": "qg_photos",
+      "translation": null,
+      "configuration": {}
+    },
+    "model": "configuration.questiongroup",
+    "pk": 7
+  },
+  {
+    "fields": {
+      "keyword": "qg_strengths_landusers",
+      "translation": null,
+      "configuration": {
+        "form_options": {
+          "min_num": 3,
+          "max_num": 10,
+          "template": "table",
+          "numbered": "display"
+        },
+        "view_options": {
+          "template": "table",
+          "with_keys": true
+        }
+      }
+    },
+    "model": "configuration.questiongroup",
+    "pk": 8
+  },
+  {
+    "fields": {
+      "keyword": "qg_strengths_compiler",
+      "translation": null,
+      "configuration": {
+        "form_options": {
+          "min_num": 3,
+          "max_num": 10,
+          "template": "table",
+          "numbered": "display"
+        },
+        "view_options": {
+          "template": "table",
+          "with_keys": true
+        }
+      }
+    },
+    "model": "configuration.questiongroup",
+    "pk": 9
+  },
+  {
+    "fields": {
+      "keyword": "qg_weaknesses_landusers",
+      "translation": null,
+      "configuration": {
+        "form_options": {
+          "min_num": 3,
+          "max_num": 10,
+          "template": "table",
+          "column_widths": ["60%", "40%"],
+          "numbered": "display"
+        },
+        "view_options": {
+          "template": "table",
+          "column_widths": ["60%", "40%"],
+          "with_keys": true
+        }
+      }
+    },
+    "model": "configuration.questiongroup",
+    "pk": 10
+  },
+  {
+    "fields": {
+      "keyword": "qg_weaknesses_compiler",
+      "translation": null,
+      "configuration": {
+        "form_options": {
+          "min_num": 3,
+          "max_num": 10,
+          "template": "table",
+          "column_widths": ["60%", "40%"],
+          "numbered": "display"
+        },
+        "view_options": {
+          "template": "table",
+          "column_widths": ["60%", "40%"],
+          "with_keys": true
+        }
+      }
+    },
+    "model": "configuration.questiongroup",
+    "pk": 11
+  },
+  {
+    "fields": {
+      "keyword": "qg_videos",
+      "translation": null,
+      "configuration": {}
+    },
+    "model": "configuration.questiongroup",
+    "pk": 12
+  },
+  {
+    "fields": {
+      "keyword": "qg_sources",
+      "translation": null,
+      "configuration": {}
+    },
+    "model": "configuration.questiongroup",
+    "pk": 13
+  },
+  {
+    "fields": {
+      "keyword": "qg_sources_field",
+      "translation": null,
+      "configuration": {}
+    },
+    "model": "configuration.questiongroup",
+    "pk": 14
+  },
+  {
+    "fields": {
+      "keyword": "qg_sources_interviews_landusers",
+      "translation": null,
+      "configuration": {}
+    },
+    "model": "configuration.questiongroup",
+    "pk": 15
+  },
+  {
+    "fields": {
+      "keyword": "qg_sources_interviews_experts",
+      "translation": null,
+      "configuration": {}
+    },
+    "model": "configuration.questiongroup",
+    "pk": 16
+  },
+  {
+    "fields": {
+      "keyword": "qg_sources_compilation",
+      "translation": null,
+      "configuration": {}
+    },
+    "model": "configuration.questiongroup",
+    "pk": 17
+  },
+  {
+    "fields": {
+      "keyword": "qg_sources_other",
+      "translation": null,
+      "configuration": {}
+    },
+    "model": "configuration.questiongroup",
+    "pk": 18
+  },
+  {
+    "fields": {
+      "keyword": "qg_import",
+      "translation": null,
+      "configuration": {}
+    },
+    "model": "configuration.questiongroup",
+    "pk": 19
+  },
+  {
+    "fields": {
+      "keyword": "qg_funding_institution",
+      "translation": null,
+      "configuration": {
+        "form_options": {
+          "min_num": 1,
+          "max_num": 5
+        }
+      }
+    },
+    "model": "configuration.questiongroup",
+    "pk": 20
+  },
+  {
+    "fields": {
+      "keyword": "qg_references",
+      "translation": null,
+      "configuration": {
+        "form_options": {
+          "template": "columns_e6_e6",
+          "max_num": 20
+        }
+      }
+    },
+    "model": "configuration.questiongroup",
+    "pk": 21
+  },
+  {
+    "fields": {
+      "keyword": "qg_links",
+      "translation": null,
+      "configuration": {
+        "form_options": {
+          "template": "columns_e6_e6",
+          "max_num": 10
+        }
+      }
+    },
+    "model": "configuration.questiongroup",
+    "pk": 22
+  },
+  {
+    "fields": {
+      "keyword": "qg_location_map",
+      "translation": 5902,
+      "configuration": {
+        "form_options": {
+          "template": "map"
+        }
+      }
+    },
+    "model": "configuration.questiongroup",
+    "pk": 23
+  },
+  {
+    "fields": {
+      "keyword": "section_general_information",
+      "translation": 5981
+    },
+    "model": "configuration.category",
+    "pk": 1901
+  },
+  {
+    "fields": {
+      "keyword": "section_specifications",
+      "translation": 5982
+    },
+    "model": "configuration.category",
+    "pk": 1902
+  },
+  {
+    "fields": {
+      "keyword": "section_analysis",
+      "translation": 5983
+    },
+    "model": "configuration.category",
+    "pk": 1903
+  }
+]

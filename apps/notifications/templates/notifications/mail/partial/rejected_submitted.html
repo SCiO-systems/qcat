@@ -1,0 +1,27 @@
+{% load i18n %}
+
+{% spaceless %}
+  <p>
+    {% trans "The SLM practice" context "The SLM practice [questionnaire] compiled by [user] has been rejected by [user] and needs revision." %}
+    <a href="{{ base_url|add:questionnaire.get_absolute_url }}">{{ questionnaire_name }}</a>
+    {% if compiler %}
+      {% trans "compiled by" context "The SLM practice [questionnaire] compiled by [user] has been rejected by [user] and needs revision." %}
+      <a href="{{ base_url|add:compiler.get_absolute_url }}">{{ compiler }}</a>
+    {% endif %}
+    {% trans "has been rejected by" context "The SLM practice [questionnaire] compiled by [user] has been rejected by [user] and needs revision." %}
+    <a href="{{ base_url|add:catalyst.get_absolute_url }}">{{ catalyst }}</a>
+    {% trans "and needs revision." context "The SLM practice [questionnaire] compiled by [user] has been rejected by [user] and needs revision." %}
+  </p>
+
+  <p>{% trans "Please revise the SLM practice according to the written feedback from the reviewer and resubmit the SLM practice to the Global SLM Database." %}</p>
+
+  {% block additional %}{% endblock %}
+
+  {% if message %}
+    <p>
+      <a href="{{ base_url|add:catalyst.get_absolute_url }}">{{ catalyst }}</a>
+      {% trans "left you a message related to the rejection of this SLM practice:" context "[user] left you a message related to the rejection of this SLM practice: [message]" %}
+      {{ message }}
+    </p>
+  {% endif %}
+{% endspaceless %}

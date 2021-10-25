@@ -1,0 +1,90 @@
+# Shippable CI/CD configuration file.
+# http://docs.shippable.com/en/latest/config.html#configuration
+language:
+  python
+
+python:
+  - 3.6
+
+env:
+  global:
+    - secure: RJk/qBYmGk9ZSGMj80oPIDv0ZxugNtyxPl5b86lMKf5tU0r7fD5iSMlxrIkQhcNrozcMvBCMxc2aYnGTRG40ZFpriPkip6iyftNXOcODrSOqnskT+nh3kkMBpLyaVqrXYuKdk44/sLi/BI8Sdy0dzE4QPPVxi/PN8h4meaGJqAocTGvOg1VWMu/lmrFEHi4vF9z8fwJlj11WXAkUvbEXubsAIiuaIfjkEB3jiw5MJdcefdtaSG8FLtjbkp9DFW07gN/QUOGlarDNkdPs1biA/qa2ZnSk1C9g9eaTKBmm8AEpsXfe+LnnfEBcsvup+FftS3XgCJyhGZGCwK4F2l9FA6canHIGvHNdyCtOExy8rMzxSSZ4Mz1MCEMJvp7jMtCpFzUeI4xOjm/qNjcXkH/4+bLojpCr0emY5LreKpir4xHiQEjrKYfTOJae2GKxpaa9mfHusxT+0YgL21jixFhUi4FukcZQSCGyUHHlshrEhSvEtCHz//sdUzay+1YJr3TNbVIoyOFCdnBd+Q/WgMcAwMCul0NfzdLm8ZozOozyhn0rS195Vc2EL0z00mou2fjAIGXQ4Ow1e2FnrHaknWvqK/dxqMsCAD3gpA5WDu2UVXoc8l9KZ378MEmqBROGUlS0tZIT4xmro45zI2Bm4cPoEMpfjGUenQ8penXgM0hvlpQ=
+
+services:
+  - postgres
+  - redis
+  - selenium
+
+build:
+  pre_ci_boot:
+    image_name: drydock/u16pytall
+    image_tag: v6.6.4
+
+  ci:
+    # Install system (os) dependencies
+    - export LC_ALL=C
+    - wget -qO - https://www.mongodb.org/static/pgp/server-3.6.asc | sudo apt-key add -
+    - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - 
+    - wget -qO - https://deb.opera.com/archive.key | sudo apt-key add -
+    # Failed to fetch 2020-Nov-12; After removal led to other errors on sudo apt-get update;
+    #  -- https://github.com/Shippable/support/issues/5170; solution as suggested on Line #32
+    #- curl -L https://packagecloud.io/basho/riak/gpgkey | apt-key add -
+    - rm /etc/apt/sources.list.d/basho_riak.list
+    - curl -L https://packagecloud.io/github/git-lfs/gpgkey | apt-key add -
+    - sudo add-apt-repository --remove ppa:jonathonf/backports
+    - sudo apt-get update && sudo apt-get -y install python3-pip libjpeg-dev libjpeg8-dev binutils libproj-dev gdal-bin openssl libssl-dev libxrender-dev libx11-dev libxext-dev libfontconfig1-dev libfreetype6-dev fontconfig
+    # Install wkhtmltopdf for pdf generation
+    - wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
+    - tar xvf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
+    - mv wkhtmltox/bin/wkhtmlto* /usr/local/bin
+    # Use fixed version of elasticsearch
+    - wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.2.4.deb
+    - dpkg -i elasticsearch-6.2.4.deb
+    - service elasticsearch start
+    # Setup database with postgis...
+    - psql -c "create role shippable with superuser login password '123456'" -U postgres
+    - psql -c 'create database qcat;' -U postgres
+    - psql -d "qcat" -U postgres -c "create extension postgis"
+    # ...and minimal required env vars
+    - echo "`pwd`/apps" > `python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())"`/_qcat_path.pth
+    - echo "DevDefaultSite" > envs/DJANGO_CONFIGURATION
+    - echo "qcat.settings" > envs/DJANGO_SETTINGS_MODULE
+    - echo "postgis://shippable:123456@localhost:5432/qcat" > envs/DATABASE_URL
+    - echo "123" > envs/DJANGO_SECRET_KEY
+    - echo "True" > envs/DJANGO_DEBUG
+    - echo "" > envs/NEXT_MAINTENANCE
+    # Install python packages.
+    - pip install -r requirements/development.txt
+    - pip install -r requirements/production.txt
+    # Run tests, and put results to folders read by shippable.
+    - export DISPLAY=:99.0
+    - mkdir -p shippable/testresults
+    - mkdir -p shippable/codecoverage
+    - mkdir ../upload
+    - xvfb-run --server-args="-ac" pytest -m unit --junitxml=shippable/testresults/nosetests.xml --cov apps --cov-report xml:shippable/codecoverage/coverage.xml
+    - unset LC_ALL
+
+  on_success:
+    - fab deploy:$BRANCH
+
+  cache: true
+
+branches:
+  only:
+    - develop
+    - master
+
+integrations:
+  notifications:
+    - integrationName: slack-integration
+      type: slack
+      recipients:
+        - "#server-info"
+      on_success: never
+      on_failure: always
+
+    - integrationName: email
+      type: email
+      on_success: never
+      on_failure: never
+      on_pull_request: never

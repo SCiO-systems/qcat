@@ -1,0 +1,7 @@
+{% if errors %}
+  <div data-alert class="alert-box alert">
+    {% for error in errors %}
+      <p>{{ error }}</p>
+    {% endfor %}
+  </div>
+{% endif %}

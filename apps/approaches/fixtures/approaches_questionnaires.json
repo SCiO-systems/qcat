@@ -1,0 +1,114 @@
+[
+  {
+    "pk": 101,
+    "model": "accounts.user",
+    "fields": {
+      "groups": [
+      ],
+      "date_joined": "2015-01-13T08:24:26.031Z",
+      "is_superuser": false,
+      "last_login": "2015-01-13T08:24:26.047Z",
+      "user_permissions": [],
+      "password": "",
+      "email": "foo@bar.com",
+      "firstname": "Foo",
+      "lastname": "Bar"
+    }
+  },
+  {
+    "model": "questionnaire.questionnaire",
+    "pk": 301,
+    "fields": {
+      "uuid": "002eacdb-00a8-4e51-8db3-4b75dcdc6d1c",
+      "data": {
+        "qg_name": [
+          {
+            "name": {
+              "en": "WOCAT Approach 1",
+              "fr": "WOCAT Approach 1 en français"
+            }
+          }
+        ],
+        "app_qg_1": [
+          {
+            "app_definition": {
+              "en": "This is the definition of the first WOCAT Approach.",
+              "fr": "Ceci est la déscription 1 du Approach en français."
+            }
+          }
+        ]
+      },
+      "code": "app_1",
+      "status": 4,
+      "version": 1,
+      "created": "2015-03-10T16:07:20.847Z",
+      "updated": "2015-03-10T16:07:20.847Z",
+      "configuration": 3001
+    }
+  },
+  {
+    "pk": 3011,
+    "fields": {
+      "questionnaire": 301,
+      "original_language": true,
+      "language": "fr"
+    },
+    "model": "questionnaire.questionnairetranslation"
+  },
+  {
+    "pk": 3012,
+    "fields": {
+      "questionnaire": 301,
+      "original_language": false,
+      "language": "en"
+    },
+    "model": "questionnaire.questionnairetranslation"
+  },
+  {
+    "pk": 1301,
+    "fields": {
+      "questionnaire": 301,
+      "user": 101,
+      "role": "compiler"
+    },
+    "model": "questionnaire.questionnairemembership"
+  },
+  {
+    "model": "questionnaire.questionnaire",
+    "pk": 302,
+    "fields": {
+      "uuid": "ed216da2-83fe-4e08-bd48-5f7a74024b05",
+      "data": {
+        "qg_name": [
+          {
+            "name": {
+              "es": "WOCAT Approach 2 en español"
+            }
+          }
+        ],
+        "app_qg_1": [
+          {
+            "app_definition": {
+              "es": "Descripción 2 en español"
+            }
+          }
+        ]
+      },
+      "code": "app_2",
+      "status": 4,
+      "version": 1,
+      "created": "2015-03-10T16:08:20.904Z",
+      "updated": "2015-03-10T16:08:20.904Z",
+      "configuration": 3001
+    }
+  },
+  {
+    "pk": 3021,
+    "fields": {
+      "questionnaire": 302,
+      "original_language": true,
+      "language": "es"
+    },
+    "model": "questionnaire.questionnairetranslation"
+  }
+]

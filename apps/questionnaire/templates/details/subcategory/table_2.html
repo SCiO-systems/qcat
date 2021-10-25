@@ -1,0 +1,46 @@
+{% comment %}
+  Table with one (possibly more?) questiongroup, occupying the entire
+  row, repeated several times and numbered. Further questiongroups
+  rendered at the bottom.
+{% endcomment %}
+
+<h3>{{ numbering|default:'' }} {{ label }}</h3>
+{% if subcategories %}
+  {% for subcategory in subcategories %}
+    {{ subcategory }}
+  {% endfor %}
+{% else %}
+  {% if raw_questiongroups %}
+    <table class="columns small-12 output-table">
+      <thead>
+        <tr>
+          <th style="width: 20%;"></th>
+          {% for header in table_headers %}
+            <th>{{ header }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for questiongroup in raw_questiongroups %}
+          {% if questiongroup.qg_keyword in table_grouping.0 %}
+            {% for qg in questiongroup.data_labelled %}
+              <tr>
+                <td>{{ forloop.counter }}.</td>
+                {% for k, values in qg %}
+                  <td>
+                    {% for v in values %}
+                      {{ v }}
+                    {% endfor %}
+                  </td>
+                {% endfor %}
+              </tr>
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+  {% for qg_config, qg_rendered in questiongroups %}
+    {{ qg_rendered }}
+  {% endfor %}
+{% endif %}

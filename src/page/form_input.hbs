@@ -1,0 +1,44 @@
+---
+section: input
+---
+{{!-- Header --}}
+<header class="page-header inner-wrap" role="banner">
+  {{> header_wocat}}
+</header>
+<section class="hero">
+  <div class="row large-collapse">
+    <div class="small-12 columns">
+      <h1><span class="is-wocat">Hi Hanspeter</span>, welcome on the UNCCD Formular. <br>
+      Thank you for your involvment against desertification!</h1>
+      <p><strong>How does it works?</strong> If you have best practices to report on the theme ‘SLM technologies, including adaptation’ add as many templates as necessary.  Etiam tempus ullamcorper neque, eget mattis ante laoreet sit amet. Donec at turpis hendrerit, gravida nisl vitae, consectetur erat. Sed congue vitae erat quis tincidunt.. </p>
+    </div>
+  </div>
+</section>
+<main class="row is-rhythmed-2" role="main">
+  <div class="dropzone-container is-rhythmed-2">
+    <form id="my-awesome-dropzone" action="/target" class="dropzone"></form>
+  </div>
+  <form role="form" class="is-rhythmed-2">
+    <p>
+      <label for="project-title">Title</label>
+      <input type="text" name="title" placeholder="Name of the SLM Technology" autofocus>
+    </p>
+    <p>
+      <label for="project-title">Country</label>
+      <input type="text" list="countries" name="country" placeholder="Location of the SLM Technology">
+      <datalist id="countries">
+          <option value="France">France</option>
+          <option value="Germany">Germany</option>
+          <option value="India">India</option>
+          <option value="Kenya">Kenya</option>
+          <option value="United States">United States</option>
+          <option value="United Kingdom">United Kingdom</option>
+      </datalist>
+    </p>
+    <p>
+      <label for="project-title">Definition</label>
+      <textarea name="abstract" type="text" placeholder="Definition of Technology in one sentance" class="big"></textarea>
+    </p>
+    <a href="technology_output.html" class="button is-wocat expand">save</a>
+  </form>
+</main>

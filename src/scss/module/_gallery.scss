@@ -1,0 +1,29 @@
+.gallery {
+  margin-top: rem-calc(8);
+
+  ul {
+    background: $color-beige;
+    margin: 0;
+    padding: rem-calc(12) rem-calc(6) 0;
+    border-radius: $global-radius;
+
+    li {
+      padding-bottom: rem-calc(6);
+    }
+  }
+}
+.form-example-legend {
+  margin-top: 0;
+}
+
+.transparent {
+  opacity: 0;
+}
+
+.th-item{
+  height: rem-calc(112);
+  width: 100%;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+}

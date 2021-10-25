@@ -1,0 +1,21 @@
+{% comment %}
+  Render two fields in the same row, this is col 1.
+
+  field: The field.
+  options: The field options.
+{% endcomment %}
+
+{% load floppyforms %}
+
+{% with classes=field.css_classes label=label|default:field.label help_text=help_text|default:field.help_text %}
+  {% block errors %}
+    {% include "form/errors.html" with errors=field.errors %}
+  {% endblock %}
+  <div class="row single-item">
+    <div class="small-6 columns{% if options.field_columns_class %} {{ options.field_columns_class }}{% endif %}">
+      {% if options.helptext and options.helptext_position != 'tooltip' %}
+        {% include "form/helptext.html" with helptext=options.helptext helptext_length=options.helptext_length %}
+      {% endif %}
+      {% widget field %}
+    </div>
+{% endwith %}

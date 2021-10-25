@@ -1,0 +1,21 @@
+{% load floppyforms %}
+
+{% with classes=field.css_classes label=label|default:field.label help_text=help_text|default:field.help_text %}
+  {% block errors %}
+    {% include "form/errors.html" with errors=field.errors %}
+  {% endblock %}
+  <div class="row single-item{% if options.row_class %} {{ options.row_class }}{% endif %}"
+       {% if options.question_condition %}data-question-condition="{{ options.question_condition }}"{% endif %}>
+    {% if options.helptext and options.helptext_position != 'tooltip' %}
+      <div class="small-12 columns">
+        {% include "form/helptext.html" with helptext=options.helptext helptext_length=options.helptext_length %}
+      </div>
+    {% endif %}
+    <div class="small-2 columns{% if options.label_columns_class %} {{ options.label_columns_class }}{% endif %}">
+      {% if field|id %}<label class="right inline" for="{{ field|id }}">{% endif %}{% if options.helptext and options.helptext_position == 'tooltip' %}<span class="has-tip" title="{{ options.helptext }}" aria-hastooltip="true" data-tooltip="">{{ label }}<svg class="icon-information is-inline right"><use xlink:href="#icon-information"></svg></span>{% else %}{{ label }}{% endif %}{% if label|last not in ".:!?" %}:{% endif %}{% if field|id %}</label>{% endif %}
+    </div>
+    <div class="small-10 columns{% if options.field_columns_class %} {{ options.field_columns_class }}{% endif %}">
+      {% widget field %}
+    </div>
+  </div>
+{% endwith %}

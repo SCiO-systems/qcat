@@ -1,0 +1,43 @@
+{% extends 'wocat/base.html' %}
+
+{% load i18n %}
+{% load static %}
+
+
+{% block content %}
+
+  <main class="row large-collapse" role="main">
+    <section class="small-12 columns">
+      <h3 class="is-group help-title">{% trans "Imprint" %}</h3>
+        This website (qcat.wocat.net) was created by:
+        <h2>{% trans "Operation and Hosting" %}</h2>
+        <p>
+          University of Bern<br>
+          Centre for Development and Environment (CDE)<br>
+          Mittelstrasse 43<br>
+          3012 Bern<br>
+          Switzerland<br>
+          <br>
+          Director: Peter Messerli<br>
+          <br>
+          Tel.: +41 31 631 30 60<br>
+          Email: info@cde.unibe.ch<br>
+          Web: www.cde.unibe.ch<br>
+        </p>
+          <h2>{% trans "Content and Design" %}</h2>
+        <p>
+          WOCAT Secretariat<br/>
+          Centre for Development and Environment<br/>
+          Mittelstrasse 43<br/>
+          3012 Bern<br/>
+          Switzerland<br/>
+          <br/>
+          WOCAT Secretariat<br/>
+          Tel.: +41 31 631 54 38<br/>
+          Email: wocat@cde.unibe.ch<br/>
+          Wiki: www.WOCATpedia.net<br/><br/>
+        </p>
+    </section>
+  </main>
+
+{% endblock %}

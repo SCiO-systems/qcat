@@ -1,0 +1,50 @@
+{% comment %}
+  Two columns (4 / 8). The first two questions (assumed to be type of user
+  involvement) are rendered in the first column, all others in the second
+  column.
+{% endcomment %}
+
+{% load list_to_columns %}
+
+{% for questiongroup in questiongroups %}
+  <div class="row tech-output-columns">
+    {% if config.label and forloop.first %}
+      <div class="columns small-12">
+        <{{ config.label_tag|default:"h4" }}>{{ config.label }}</{{ config.label_tag|default:"h4" }}>
+      </div>
+    {% endif %}
+    <div class="columns medium-4">
+      {% for question in questiongroup %}
+        {% if forloop.counter <= 2 %}
+          {{ question }}
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="columns medium-8 user-details">
+      {% with data=raw_questions|get_by_index:forloop.counter0 %}
+        {% if data.user_id %}
+          {# User link (with ID)#}
+          {{ questiongroup.2 }}
+        {% else %}
+          {# Address details of a non-registered user #}
+          <div class="row">
+            <div class="columns medium-6">
+              <p>{{ data.person_lastname|default:'' }} {{ data.person_firstname|default:'' }}</p>
+              {% if data.person_phone_1 or data.person_phone_2 %}
+                <p>{{ data.person_phone_1|default:"" }}{% if data.person_phone_1 and data.person_phone_2 %} / {% endif %}{{ data.person_phone_2|default:"" }}</p>
+              {% endif %}
+              {% if data.person_email_1 or data.person_email_2 %}
+                <p>{{ data.person_email_1|default:"" }}{% if data.person_email_1 and data.person_email_2 %} / {% endif %}{{ data.person_email_2|default:"" }}</p>
+              {% endif %}
+            </div>
+            <div class="columns medium-6">
+              {% if data.person_institution_name %}<p>{{ data.person_institution_name }}</p>{% endif %}
+              {% if data.person_address %}<p>{{ data.person_address }}</p>{% endif %}
+              <p>{{ data.country.0 }}</p>
+            </div>
+          </div>
+        {% endif %}
+      {% endwith %}
+    </div>
+  </div>
+{% endfor %}

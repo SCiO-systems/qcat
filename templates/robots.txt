@@ -1,0 +1,101 @@
+User-agent: *
+Disallow: /*/summary/
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: updown_tester
+Disallow: /
+
+User-agent: spbot
+Disallow: /
+
+User-agent: OpenLinkProfiler
+Disallow: /
+
+User-agent: Squider
+Disallow: /
+
+User-agent: memorybot
+Disallow: /
+
+User-agent: memoryBot
+Disallow: /
+
+User-agent: magpie-crawler
+Disallow: /
+
+User-agent: SiteExplorer
+Disallow: /
+
+User-agent: Spiderlytics
+Disallow: /
+
+User-agent: ProCogSEOBot
+Disallow: /
+
+User-agent: libwww-perl
+Disallow: /
+
+User-agent: TurnitinBot
+Disallow: /
+
+User-agent: meanpathbot
+Disallow: /
+
+User-agent: TurnitinBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: Infohelfer
+Disallow: /
+
+User-agent: CompSpyBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: CareerBot
+Disallow: /
+
+User-agent: Moreover
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: Ezooms
+Disallow: /
+
+User-agent: Abonti
+Disallow: /
+
+User-agent: DCPbot
+Disallow: /
+
+User-agent: oBot
+Disallow: /
+
+User-agent: SearchmetricsBot
+Disallow: /
+
+User-agent: OpenindexSpider
+Disallow: /
+
+User-agent: BacklinkCrawler
+Disallow: /
+
+User-agent: UnisterBot
+Disallow: /
+
+User-agent: 360Spider
+Disallow: /
+
+User-agent: SISTRIX
+Disallow: /
+
+User-agent: seoscanners.net
+Disallow: /

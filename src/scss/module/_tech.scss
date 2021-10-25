@@ -1,0 +1,860 @@
+// List
+// -----------------------------------------------------------------------------
+.tech-list {
+  margin-top: rem-calc(24);
+}
+
+
+// Item
+// -----------------------------------------------------------------------------
+
+.is-technologies .tech-section-header.alert-inactive {
+  background: scale-color($alert-color, $lightness: 75%);
+  padding: rem-calc(12);
+}
+.tech-item {
+  display: flex;
+  align-items: stretch;
+  margin-top: rem-calc(6);
+  background: white;
+
+  @media #{$small-only} {
+    max-height: rem-calc(180);
+  }
+}
+
+.tech-item-content {
+  position: relative;
+  flex-grow: 1;
+  padding: rem-calc(18 12 42 24);
+}
+
+.tech-item-footer {
+  position: absolute;
+  bottom: 0;
+  left: rem-calc(24);
+  right: 0;
+
+  &.tech-item-footer-details {
+    left: rem-calc(48);
+  }
+}
+
+.tech-item-title {
+  line-height: rem-calc(30);
+  padding-right: rem-calc(24);
+
+  @media #{$small-only} {
+
+    $lines-to-show: 1;
+    $font-size: 18px;
+    $line-height: 1.6;
+
+    font-size: $font-size;
+
+    a {
+      display: block; /* Fallback for non-webkit */
+      display: -webkit-box;
+      height: $font-size*$line-height*$lines-to-show; /* Fallback for non-webkit */
+      font-size: $font-size;
+      line-height: $line-height;
+      -webkit-line-clamp: $lines-to-show;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  & > a:hover,
+  & > a:focus {
+    text-decoration: underline;
+  }
+}
+.is-technologies .tech-item-title > a,
+.is-tech .tech-item-title > a {
+  color: $color-tech;
+}
+.is-approaches .tech-item-title > a,
+.is-approach .tech-item-title > a {
+  color: $color-approach;
+}
+
+.no-flexbox {
+  .tech-thumbnail {
+    float: left;
+  }
+  .tech-item-content {
+    margin-left: rem-calc(240);
+  }
+}
+
+.tech-item-description {
+  padding: rem-calc(12 24 0 0);
+
+  @media #{$small-only} {
+    font-size: 80%;
+    padding-top: 0;
+
+    $font-size: 14px;
+    $line-height: 1.6;
+    $lines-to-show: 3;
+
+    p {
+      display: block; /* Fallback for non-webkit */
+      display: -webkit-box;
+      height: $font-size*$line-height*$lines-to-show; /* Fallback for non-webkit */
+      font-size: $font-size;
+      line-height: $line-height;
+      -webkit-line-clamp: $lines-to-show;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    $lines-to-show: 1;
+
+    ul {
+      display: block; /* Fallback for non-webkit */
+      display: -webkit-box;
+      height: $font-size*$line-height*$lines-to-show; /* Fallback for non-webkit */
+      font-size: $font-size;
+      line-height: $line-height;
+      -webkit-line-clamp: $lines-to-show;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    ul li:not(:first-of-type) {
+      display: none;
+    }
+  }
+}
+
+
+
+// Thumbnail
+// -----------------------------------------------------------------------------
+
+.tech-thumbnail {
+  position: relative;
+  margin: 0;
+  background: $color-beige;
+
+  & > a {
+    display: block;
+    overflow: hidden;
+    width: rem-calc(240);
+    height: rem-calc(180);
+    min-height: 100%;
+
+    @media #{$small-only} {
+      width: rem-calc(120);
+    }
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+
+// Type
+// -----------------------------------------------------------------------------
+
+.tech-type {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: rem-calc(24);
+  line-height: 0;
+  padding: 0;
+
+  &.is-technologies,
+  &.is-tech {
+    background-color: rgba($color-tech, 0.8);
+  }
+  &.is-approaches,
+  &.is-approach {
+    background-color: rgba($color-approach, 0.8);
+  }
+  &.is-cca {
+    background-color: rgba($color-cca, 0.8);
+  }
+  &.is-cbp {
+    background-color: rgba($color-cbp, 0.8);
+  }
+  &.is-maps,
+  &.is-map {
+    background-color: rgba($color-approach, 0.8);
+  }
+  &.is-unccd {
+    background-color: rgba($color-unccd, 0.8)
+  }
+  &.is-watershed {
+    background-color: rgba($color-watershed, 0.8);
+  }
+}
+
+.tech-type > span {
+  display: block;
+  position: absolute;
+  width: rem-calc(180);
+
+  top: 50%;
+  left: rem-calc(-90 + 12);
+  margin-top: rem-calc(-12);
+
+  font-weight: 500;
+  font-size: rem-calc(14);
+  line-height: rem-calc(24);
+  color: #FFFFFF;
+  text-align: center;
+  text-shadow: 0px 1px 1px rgba(0,0,0,0.10);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+
+  transform-origin: center center;
+  transform: rotate(-90deg);
+}
+
+
+// Status
+// -----------------------------------------------------------------------------
+.tech-status {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+// Lang
+// -----------------------------------------------------------------------------
+
+.tech-lang-list {
+
+}
+
+// Icons
+// -----------------------------------------------------------------------------
+
+/* .tech-icons {
+  @include reset-list;
+  margin-top: 0;
+  li {
+    float: left;
+  }
+}
+.tech-icon {
+  display: inline-block;
+  width: rem-calc(48);
+  height: rem-calc(48);
+  background: $color-beige;
+  color: $color-beige-dark;
+  text-align: center;
+  padding: rem-calc(6) 0;
+  font-size: rem-calc(11);
+  line-height: 1em;
+  transition: color 300ms ease;
+
+  .icon {
+    max-width: rem-calc(24);
+    max-height: rem-calc(24);
+  }
+}
+a:hover .tech-icon {
+  color: $color-brown-light;
+  background: white;
+}
+*/
+
+
+// Infos
+// -----------------------------------------------------------------------------
+
+.tech-infos {
+  @include reset-list;
+  margin-top: rem-calc(6);
+  & > li {
+    display: inline-block;
+    margin-right: rem-calc(12);
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+
+// Figure
+// -----------------------------------------------------------------------------
+
+.tech-figure {
+  position: relative;
+  margin: 0;
+  background-color: $color-beige;
+  overflow: hidden;
+
+  width: 100%;
+  height: 40vh;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media #{$medium-up} {
+    height: 80vh;
+    margin-bottom: rem-calc(-180);
+  }
+
+  /*
+
+  .row {
+    @media #{$medium-up} {
+      position: absolute;
+      bottom: 0;
+      z-index: 2;
+    }
+    @media #{$large-up} {
+      left: 50%;
+      margin-left: -31.25rem;
+    }
+  }
+
+  figcaption {
+    font-size: rem-calc(13);
+    color: $color-beige;
+    background-color: rgba($color-brown, 0.8);
+    padding: 1rem 1.5rem;
+    p {
+      font-size: 1em;
+    }
+    p:last-child {
+      margin-bottom: 0;
+    }
+  } */
+}
+/* .tech-figure-container {
+  position: relative;
+  max-height: 60vh;
+  overflow: hidden;
+
+  img {
+    min-width: 100%;
+    @media #{$medium-up} {
+      margin-top: -12.5%;
+    }
+  }
+}
+ */
+
+ // Output (Detail view)
+ // -----------------------------------------------------------------------------
+
+.tech-output {
+  font-size: 0.875em;
+  h3, h4, h5, h6 {
+    font-weight: 600;
+  }
+}
+
+.tech-output-header {
+  position: relative;
+  background: white;
+  /* margin-top: rem-calc(-180); */
+  min-height: rem-calc(180);
+  padding: rem-calc(0 48 42);
+
+  .tech-type + .tech-status {
+    margin-left: rem-calc(24);
+  }
+}
+.tech-output-title {
+  font-size: rem-calc(30);
+  line-height: rem-calc(25);
+}
+.is-technologies .tech-output-title {
+  color: $color-tech;
+}
+.is-approaches .tech-output-title {
+  color: $color-approach;
+}
+.is-cca .tech-output-title {
+  color: $color-cca;
+}
+.is-map .tech-output-title {
+  color: $color-map;
+}
+.is-watershed .tech-output-title {
+  color: $color-watershed;
+}
+.tech-output-infos {
+  @include reset-list;
+  margin-top: rem-calc(36);
+
+  li {
+    margin-top: rem-calc(12);
+  }
+}
+.tech-output-map {
+  border: 2px solid $color-beige;
+}
+
+.tech-output-actions {
+  padding: rem-calc(0 12 12);
+
+  & > .icon {
+    margin-top: rem-calc(12);
+    width: rem-calc(36);
+    height: rem-calc(36);
+    color: white;
+  }
+
+  .button > .icon {
+    float: left;
+    margin-right: 0.5em;
+    height: rem-calc(20);
+    width: rem-calc(20);
+  }
+}
+.is-technologies .tech-output-actions {
+  background-color: rgba($color-tech, 0.8);
+
+  .button {
+    background-color: $color-green-dark;
+    box-shadow: 0 0 0 0 $color-green-dark;
+    &:hover,
+    &:focus {
+      box-shadow: 0 0 0 $button-shadow-effect $color-green-dark;
+    }
+  }
+}
+.is-approaches .tech-output-actions {
+  background-color: rgba($color-approach, 0.8);
+  .button {
+    background-color: $color-orange-dark;
+    box-shadow: 0 0 0 0 $color-orange-dark;
+    &:hover,
+    &:focus {
+      box-shadow: 0 0 0 $button-shadow-effect $color-orange-dark;
+    }
+  }
+}
+.is-cca .tech-output-actions {
+  background-color: rgba($color-cca, 0.8);
+  .button {
+    background-color: $color-blue-dark;
+    box-shadow: 0 0 0 0 $color-blue-dark;
+    &:hover,
+    &:focus {
+      box-shadow: 0 0 0 $button-shadow-effect $color-blue-dark;
+    }
+  }
+}
+.is-cbp .tech-output-actions {
+    background-color: rgba($color-cbp, 0.8);
+    .button {
+        background-color: $color-violet-dark;
+        box-shadow: 0 0 0 0 $color-violet-dark;
+        &:hover,
+        &:focus {
+          box-shadow: 0 0 0 $button-shadow-effect $color-violet-dark;
+        }
+  }
+}
+.is-unccd .tech-output-actions {
+  background-color: rgba($color-unccd, 0.8);
+}
+.is-watershed .tech-output-actions {
+  background-color: rgba($color-watershed, 0.8);
+  .button {
+    background-color: $color-watershed-dark;
+    box-shadow: 0 0 0 0 $color-watershed-dark;
+    &:hover,
+    &:focus {
+      box-shadow: 0 0 0 $button-shadow-effect $color-watershed-dark;
+    }
+  }
+}
+
+.is-unccd {
+  .tech-figure {
+    display: none;
+  }
+  .tech-output-header {
+    margin-top: rem-calc(12);
+  }
+}
+
+
+// Section
+// -----------------------------------------------------------------------------
+.tech-section {
+  background: white;
+  border-top: 1px solid white;
+}
+
+.tech-section-group {
+  background: white;
+  padding: rem-calc(36);
+  margin-top: 1rem;
+
+  .link {
+    line-height: rem-calc(33);
+    font-size: rem-calc(14);
+  }
+}
+.is-technologies .tech-section-group-title {
+  color: $color-tech;
+}
+.is-approaches .tech-section-group-title {
+  color: $color-approach;
+}
+.is-cca .tech-section-group-title {
+  color: $color-cca;
+}
+.is-watershed .tech-section-group-title {
+  color: $color-watershed;
+}
+
+.tech-section-header {
+  overflow: hidden;
+  padding: 0 rem-calc(24);
+}
+.is-technologies .tech-section-header {
+  background-color: rgba($color-tech, 0.15);
+}
+.is-approaches .tech-section-header {
+  background-color: rgba($color-approach, 0.1);
+}
+.is-cca .tech-section-header {
+  background-color: rgba($color-cca, 0.1);
+}
+.is-unccd .tech-section-header {
+  background-color: rgba($color-unccd, 0.1);
+}
+.is-watershed .tech-section-header {
+  background-color: rgba($color-watershed, 0.1);
+}
+
+.tech-section-main-title {
+  padding: rem-calc(12);
+}
+
+.tech-section-title {
+  cursor: pointer;
+  padding: rem-calc(12) 0;
+
+  h2 {
+    font-size: rem-calc(18);
+    line-height: rem-calc(24);
+    color: #5F594F;
+  }
+}
+.tech-section-action {
+  display: flex;
+}
+.tech-section-action > .button {
+  margin: 0;
+  padding-top: rem-calc(12);
+  padding-bottom: rem-calc(12);
+  line-height: rem-calc(24);
+  border-radius: 0;
+}
+
+.tech-overall-progress {
+  position: relative;
+  height: rem-calc(32);
+  display: block;
+  text-align: center;
+
+  .steps {
+    display: inline-block;
+    line-height: rem-calc(32);
+  }
+  .meter {
+    position: absolute;
+    display: block;
+    top: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
+.is-technologies .tech-overall-progress .meter {
+  background-color: rgba($color-tech, 0.3);
+}
+.is-technologies .tech-overall-progress .steps {
+  color: $color-tech;
+}
+.is-technologies .tech-overall-progress {
+  background-color: rgba($color-tech, 0.1);
+}
+.is-approaches .tech-overall-progress .meter {
+  background-color: rgba($color-approach, 0.3);
+}
+.is-approaches .tech-overall-progress .steps {
+  color: $color-approach;
+}
+.is-approaches .tech-overall-progress {
+  background-color: rgba($color-approach, 0.1);
+}
+.is-cca .tech-overall-progress .meter {
+  background-color: rgba($color-cca, 0.3);
+}
+.is-cca .tech-overall-progress .steps {
+  color: $color-cca;
+}
+.is-cca .tech-overall-progress {
+  background-color: rgba($color-cca, 0.1);
+}
+.is-watershed .tech-overall-progress .meter {
+  background-color: rgba($color-watershed, 0.3);
+}
+.is-watershed .tech-overall-progress .steps {
+  color: $color-watershed;
+}
+.is-watershed .tech-overall-progress {
+  background-color: rgba($color-watershed, 0.1);
+}
+.is-unccd .tech-overall-progress .meter {
+  background-color: rgba($color-unccd, 0.3);
+}
+.is-unccd .tech-overall-progress .steps {
+  color: $color-unccd;
+}
+.is-unccd .tech-overall-progress {
+  background-color: rgba($color-unccd, 0.1);
+}
+
+.tech-section-progress {
+  position: relative;
+  flex: 1;
+  display: block;
+  height: rem-calc(48);
+  padding: 0;
+  margin-bottom: 0;
+
+  .steps {
+    display: inline-block;
+    position: absolute;
+    text-align: right;
+    top: 50%;
+    bottom: 0;
+    left: 0;
+    right: rem-calc(24);
+    line-height: rem-calc(48);
+    margin-top: rem-calc(-24);
+
+    font-weight: 600;
+    font-size: rem-calc(12);
+    text-shadow: 0px 1px 0px rgba(255,255,255,0.50);
+  }
+  .meter {
+    position: absolute;
+    display: block;
+    top: 0;
+    bottom: 0;
+    right: 0;
+  }
+}
+.is-technologies .tech-section-progress .meter {
+  background-color: rgba($color-tech, 0.3);
+}
+.is-approaches .tech-section-progress .meter {
+  background-color: rgba($color-approach, 0.3);
+}
+.is-cca .tech-section-progress .meter {
+  background-color: rgba($color-cca, 0.3);
+}
+.is-watershed .tech-section-progress .meter {
+  background-color: rgba($color-watershed, 0.3);
+}
+.is-unccd .tech-section-progress .meter {
+  background-color: rgba($color-unccd, 0.3);
+}
+.is-technologies .tech-section-progress .steps {
+  color: $color-tech;
+}
+.is-approaches .tech-section-progress .steps {
+  color: $color-approach;
+}
+.is-cca .tech-section-progress .steps {
+  color: $color-cca;
+}
+.is-watershed .tech-section-progress .steps {
+  color: $color-watershed;
+}
+.is-unccd .tech-section-progress .steps {
+  color: $color-unccd;
+}
+
+
+.tech-section-content, .tech-links-content {
+  padding: rem-calc(36);
+}
+
+/* .row.tech-item-inline.measure-bar, .row.tech-output-columns.measure-bar {
+  margin-top: 1rem;
+}
+ */
+.row:last-child .user-details {
+  margin-bottom: 0;
+}
+
+.user-details {
+  margin-bottom: 1rem;
+
+  p, ul {
+    margin-top: 0;
+  }
+}
+
+.user_container {
+  border: 1px solid $color-beige;
+  padding: 0 rem-calc(12) rem-calc(12);
+
+  + .user_container {
+    margin-top: rem-calc(12);
+  }
+}
+
+.aside-questiongroup {
+  margin-left: 65px;
+  h5, p, ul {
+    margin-top: rem-calc(4);
+  }
+  h5:not(:first-of-type) {
+    margin-top: rem-calc(8);
+  }
+
+  + h3, + h5 {
+    clear: left;
+  }
+
+  table {
+    width: 100%;
+  }
+}
+
+.has-aside-questiongroup {
+  float: left;
+  margin-top: 0;
+}
+
+/* Do not show empty table rows: Hide cells if row contains only 3 td.is-empty elements */
+/* http://stackoverflow.com/a/12198561/841644 */
+td.is-empty:first-child:nth-last-child(3),
+td.is-empty:first-child:nth-last-child(3) ~ td.is-empty {
+    display: none;
+}
+
+.button.q-action-button-top {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.row.toc-row {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+img.tech-image {
+  @media #{$small-only} {
+    max-width: 15rem;
+    max-height: 20rem;
+  }
+}
+
+.video-iframe-container {
+  margin-right: 2rem;
+
+  p {
+    max-width: 500px;
+  }
+}
+
+.file-preview-container {
+  position: relative;
+  cursor: pointer;
+
+  img {
+    @media #{$small-only} {
+      max-width: 15rem;
+      max-height: 20rem;
+    }
+  }
+
+  &:hover span.text-content {
+    opacity: 1;
+    border: 1px solid $color-beige-dark;
+  }
+
+  span.text-content {
+    opacity: 0;
+    background: rgba(0,0,0,0.5);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+
+    @media #{$small-only} {
+      max-width: 15rem;
+      max-height: 20rem;
+    }
+
+    span {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $color-beige;
+
+      svg.icon {
+        height: 5rem;
+        width: 5rem;
+      }
+    }
+  }
+}
+
+table th.table-numbered {
+  width: 0.1rem;
+}
+
+table th span.has-tip {
+  font-weight: $table-head-font-weight;
+}
+
+div.inline-linked-questionnaires article {
+  padding-top: 1rem;
+
+  &:first-child {
+    padding-top: 0.5rem;
+  }
+}
+
+.has-tip svg {
+  pointer-events: none;
+}
+
+
+
+.tech-output-columns .video-additional-info h5:not(:first-of-type) {
+  margin-top: rem-calc(8);
+}
+
+
+ul.details-history-dropdown {
+  &.is-technologies li.active {
+    background-color: rgba($color-tech, 0.3);
+  }
+  &.is-approaches li.active {
+    background-color: rgba($color-approach, 0.3);
+  }
+}

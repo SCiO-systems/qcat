@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block title %}{% trans "QCAT" %}{% endblock %}
+
+{% block bodyclass %}layout-home{% endblock %}
+{% block navclass %}is-home{% endblock %}
+
+{% block hero %}
+  <section class="hero-home">
+    <div class="row">
+      <div class="small-10 small-centered medium-8 columns">
+        <h1>{% trans "global SLM practices database" %}</h1>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block messages %}{% endblock %}
+
+{% block content %}
+
+  <section class="home-search">
+    <div class="row">
+      <div class="small-10 small-centered medium-6 columns">
+        <form action="{% url 'wocat:questionnaire_list' %}" method="GET" role="search">
+          <div class="search-input radius">
+            <input type="search" tabindex="1" name="q" placeholder="{% trans 'Search SLM data ...' %}">
+            <div class="search-btn postfix light">
+              <a href="#" id="submit-search"><svg class="icon"><use xlink:href="#icon-search"></use></svg></a>
+            </div>
+          </div>
+          <div class="search-option text-center">
+            {% comment %}
+            <a href="#" data-toggle="search-advanced">{% trans "Advanced filter" %}</a> | <a href="#">{% trans "Show all practices" %}</a>
+            {% endcomment %}
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  {% if messages %}
+    {% for message in messages %}
+    <div class="notice alert-box{% if message.level_tag %} {{ message.level_tag }}{% endif %}">{% if 'safe' in message.tags %}{{ message|safe }}{% else %}{{ message }}{% endif %}</div>
+    {% endfor %}
+  {% endif %}
+
+  <main class="row" role="main" data-equalizer>
+    <div class="hero-big medium-12 columns">
+      <h2 class="is-wocat">{% trans "WOCAT SLM portal" %}</h2>
+      <p data-equalizer-watch>{% trans "The WOCAT database on SLM practices (Technologies and Approaches) contains a vast range of good practices from all over the world." %}</p>
+      <a href="{% url 'wocat:home' %}" class="button is-wocat">{% trans "WOCAT SLM practices" %}</a>
+    </div>
+  </main>
+
+{% endblock %}

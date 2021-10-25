@@ -1,0 +1,43 @@
+{% comment %}
+
+  This renders a question with image checkboxes where for each checkbox
+  (4 columns), an additional questiongroup is rendered next to it
+  (8 columns). The additional questiongroup corresponds to the list
+  position of the image checkbox list.
+
+{% endcomment %}
+
+{% load static %}
+{% load floppyforms %}
+{% load list_to_columns %}
+
+{% for group_name, choices in optgroups %}
+  {% for choice in choices %}
+    <div class="row">
+      <div class="small-6 columns">
+        <li>
+          <div class="list-gallery-item list-item-no-gallery">
+            <input {% if choice.0 in value %}checked="checked" {% endif %}type="checkbox" id="{{ attrs.id }}_{{ forloop.counter }}" class="cb-long-label" name="{{ name }}" value="{{ choice.0 }}" data-toggle="{{ attrs.id }}_{{ forloop.counter }}_sub"{% if questiongroup_conditions %} data-questiongroup-condition="{{ questiongroup_conditions }}"{% endif %} {% include "floppyforms/attrs.html" %}>
+            {% if options.helptext_choices %}
+              {% with ttip=options.helptext_choices|get_by_index:forloop.counter0 %}
+                {% if ttip %}
+                  <label for="{{ attrs.id }}_{{ forloop.counter }}" class="has-tip" title="{{ ttip }}" data-tooltip="">{{ choice.1 }}<svg class="icon-information is-inline right"><use xlink:href="#icon-information"></svg>
+                {% else %}
+                  <label for="{{ attrs.id }}_{{ forloop.counter }}">{{ choice.1 }}
+                {% endif %}
+              {% endwith %}
+            {% else %}
+              <label for="{{ attrs.id }}_{{ forloop.counter }}">{{ choice.1 }}
+            {% endif %}
+            </label>
+          </div>
+        </li>
+      </div>
+      <div class="small-6 columns image-cb-has-condition">
+          {% with subformset=additional_qg|get_by_index:forloop.counter value=None %}
+            {% form form using subformset.0.template with config=subformset.0 formset=subformset.1 %}
+          {% endwith %}
+      </div>
+    </div>
+  {% endfor %}
+{% endfor %}

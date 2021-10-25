@@ -1,0 +1,29 @@
+{% load i18n %}
+
+<div class="row large-no-gutters is-rhythmed advanced-filter-item js-filter-item"{% if initial_filter %} data-initial-qg="{{ initial_filter.questiongroup }}" data-initial-key="{{ initial_filter.key }}" data-initial-value="{{ initial_filter.value|join:',' }}"{% endif %}>
+  <div class="medium-3 columns">
+    <select class="filter-key-select">
+      <option value="">---</option>
+      {% for section in filter_select %}
+        <optgroup label="{{ section.0 }}">
+          {% for key in section.1 %}
+            <option value="{{ key.0 }}"{% if key.0 == initial_filter.key_path %} selected="selected"{% endif %}>{{ key.1 }}</option>
+          {% endfor %}
+        </optgroup>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="medium-8 columns">
+    <div class="filter-value-column">
+      {% if initial_filter %}
+        {% include 'search/partial/filter_value.html' with choices=initial_filter.choices_counted key_path=initial_filter.key_path selected=initial_filter.value %}
+      {% endif %}
+    </div>
+    <div class="loading-indicator-filter-key hide"><div class="spinner"></div></div>
+  </div>
+  <div class="medium-1 columns">
+    <a href="#" class="js-filter-remove filter-item-button">
+      <svg class="icon is-inline right"><use xlink:href="#icon-cross" xmlns:xlink="http://www.w3.org/1999/xlink"/></svg>
+    </a>
+  </div>
+</div>

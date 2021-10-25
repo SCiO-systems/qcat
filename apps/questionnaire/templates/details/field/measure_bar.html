@@ -1,0 +1,16 @@
+{% if value %}
+<div class="row tech-item-inline measure-bar">
+  <div class="medium-6 columns">
+    {% if label_position != 'none' %}<{{ label_tag|default:"h5" }}>{{ key }}{% if key|last not in ".:!?" %}:{% endif %}</{{ label_tag|default:"h5" }}>{% endif %}
+  </div>
+  <div class="medium-6 columns">
+    <ul class="chart-measure-labelled">
+      {% for value in all_values %}
+        <li class="step is-level-{{ value.0|default:0 }}">
+          {{ value.1 }}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endif %}

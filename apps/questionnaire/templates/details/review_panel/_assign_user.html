@@ -1,0 +1,78 @@
+{% comment %}
+  users: A list of assigned users
+
+  The following strings need to be defined:
+  assign_header
+  assign_assigned
+  assign_empty
+  assign_edit
+{% endcomment %}
+
+{% load i18n %}
+
+<div class="row process-action">
+  <div class="medium-2 columns">
+    <a class="button expand js-toggle-edit-assigned-users">{{ assign_header }}</a>
+  </div>
+  <div class="medium-10 columns">
+    <p>
+      {% if review_status == 1 %}
+        {% blocktrans with questionnaire_type=questionnaire_type %}
+          WOCAT users can be invited to work on a {{ questionnaire_type }} as editors. Editors can edit the {{ questionnaire_type }}, but they cannot submit it for review or invite other editors.
+        {% endblocktrans %}
+      {% elif review_status == 2 %}
+        {% blocktrans with questionnaire_type=questionnaire_type %}
+          Reviewers can be assigned to this {{ questionnaire_type }}. They will have the permission to review (approve or reject) the {{ questionnaire_type }}. A {{ questionnaire_type }} can have more than one reviewer and all reviewers can approve / reject a {{ questionnaire_type }} for publication.
+        {% endblocktrans %}
+      {% elif review_status == 3 %}
+        {% blocktrans with questionnaire_type=questionnaire_type %}
+          Publishers can be assigned to this {{ questionnaire_type }}. They will have the permission to publish or reject the {{ questionnaire_type }}. A {{ questionnaire_type }} can have more than one publisher and all publishers can publish / reject a {{ questionnaire_type }} for publishing.
+        {% endblocktrans %}
+      {% endif %}
+    </p>
+    <div id="review-list-assigned-users">
+      <p>{{ assign_assigned }}</p>
+      <ul>
+        {% for user in users %}
+          <li>{{ user }}</li>
+        {% endfor %}
+      </ul>
+      {% if not users %}<i class="is-muted">{{ assign_empty }}</i>{% endif %}
+    </div>
+  <div class="row">
+    <div class="medium-12 columns hide review-assigned-users" id="review-edit-assigned-users">
+      <a href="#" class="review-assigned-users-toggle js-toggle-edit-assigned-users">
+        <svg class="icon"><use xlink:href="#icon-cross" xmlns:xlink="http://www.w3.org/1999/xlink"></use></svg>
+      </a>
+      <p>{{ assign_edit }}</p>
+      {% if assign_notice %}
+        <p data-alert class="alert-box info review-assign-notice">{{ assign_notice }}</p>
+      {% endif %}
+      <div class="row">
+        <div class="medium-9 columns">
+          <div id="review-new-user" class="user-display">
+            <input type="hidden" name="user-id" value="{% for user in users %}{{ user.id }}{% if not forloop.last %},{% endif %}{% endfor %}">
+            {% for user in users %}
+              <div class="alert-box">
+                {{ user }}<a href="#" class="close" onclick="return reviewRemoveUser(this, {{ user.id }});">&times;</a>
+              </div>
+            {% endfor %}
+          </div>
+          <input type="search"
+                 id="review-search-user"
+                 placeholder="{% trans 'Search user' %}"
+                 data-search-url="{% url 'user_search' %}"
+                 data-display-container="review-new-user"
+                 data-user-input-field="user-id"
+                 data-translation-no-results="{% trans 'No results found' %}"
+                 data-translation-too-many-results="{% trans 'Too many results found, please narrow the search' %}">
+        </div>
+        <div class="medium-2 medium-offset-1 columns">
+          {% trans "Update users" as default_button_text %}
+          <input id="button-assign" name="assign" class="button expand" type="submit" value="{{ assign_button|default:default_button_text }}">
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>

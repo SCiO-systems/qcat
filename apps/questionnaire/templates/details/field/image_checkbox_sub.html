@@ -1,0 +1,17 @@
+{% load static %}
+
+{% if value or values %}
+  <div class="row">
+    <div class="small-12 columns">
+      {% for value in values %}
+        <img class="output-image-cb-sub" src="{% static value.1 %}" alt="{{ value.0 }}">
+        <span>{{ value.0 }}</span>
+      {% endfor %}
+      {% if value %}
+        <img class="output-image-cb-sub" src="{% static 'assets/img/landuse_empty.png' %}" alt="{{ value }}">
+        <span>{{ value }}</span>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
+

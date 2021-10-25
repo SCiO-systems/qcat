@@ -1,0 +1,24 @@
+{% if config.numbered %}<div class="questiongroup-numbered-{{ config.numbered }}">{% endif %}
+  {% for questiongroup in questiongroups %}
+    {% if config.numbered == 'prefix' %}
+        <div class="questiongroup-numbered-left">
+          <p class="questiongroup-numbered-number"></p>
+        </div>
+      <div class="questiongroup-numbered-right">
+    {% endif %}
+    {% for question in questiongroup %}
+      {% if not forloop.counter|divisibleby:"2" %}
+        <div class="row" style="margin-top: 1rem;">
+          <div class="medium-2 columns">
+      {% endif %}
+      {{ question }}
+      {% if forloop.counter|divisibleby:"2" or questiongroup|length == 1 %}
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+    {% if config.numbered == 'prefix' %}
+        </div>
+    {% endif %}
+  {% endfor %}
+{% if config.numbered %}</div>{% endif %}

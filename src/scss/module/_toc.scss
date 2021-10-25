@@ -1,0 +1,32 @@
+.toc-title {
+  display: block;
+  padding: $off-canvas-label-padding;
+  color: $off-canvas-label-color;
+  text-transform: $off-canvas-label-text-transform;
+  font-size: $off-canvas-label-font-size;
+  font-weight: $off-canvas-label-font-weight;
+  background: $off-canvas-label-bg;
+  border-top: $off-canvas-label-border-top;
+  border-bottom: $off-canvas-label-border-bottom;
+  margin: $off-canvas-label-margin;
+}
+
+.toc-list {
+  padding:0;
+  margin:0;
+  list-style-position: inside;
+
+  li {
+    color: darken($off-canvas-link-color, 50%);
+    a {
+      display: block;
+      padding: $off-canvas-link-padding;
+      color: $off-canvas-link-color;
+      border-bottom: $off-canvas-link-border-bottom;
+      transition: background 300ms ease;
+      &:hover {
+        background: $off-canvas-bg-hover;
+      }
+    }
+  }
+}

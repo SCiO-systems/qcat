@@ -1,0 +1,5 @@
+{% extends 'notifications/mail/partial/editor_removed.html' %}
+
+{% load i18n %}
+
+{% block role %}{% trans "a publisher" context "You have been removed as a publisher of [questionnaire] compiled by [user]." %}{% endblock %}

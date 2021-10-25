@@ -1,0 +1,72 @@
+{% comment %}
+
+  A question and then a table.
+
+  A table with 2 columns, each cell containing a question. If there are more
+  than 2 questions, additional rows are created.Table headers are only created
+  for the first 2 questions!
+
+  No buttons to add or remove additional questiongroups!
+
+  config: The configuration of the questiongroup
+
+  formset: The (repeating) forms as formset
+
+{% endcomment %}
+
+{% load i18n %}
+{% load floppyforms %}
+{% load list_to_columns %}
+
+<div{% if config.questiongroup_condition %} id="{{ config.questiongroup_condition }}"{% endif %} class="questiongroup{% if config.numbered %} questiongroup-numbered-{{ config.numbered }}{% endif %}{% if config.numbered == 'prefix' %} sortable{% endif %}">
+{{ formset.management_form }}
+
+{% include "form/errors.html" with errors=formset.non_form_errors %}
+
+{% for qg_form in formset.forms %}
+
+  <div class="list-item row{% if config.row_class %} {{ config.row_class }}{% endif %}">
+    {# First question #}
+    <div class="small-3 columns">
+      {% for field in qg_form.visible_fields %}
+        {% if forloop.first %}
+          {% with template=config.templates|get_by_keyword:field.name options=config.options|get_by_keyword:field.name %}
+            {% if template %}
+              {% formrow field using template %}
+            {% else %}
+              {% formrow field using "form/question/default.html" %}
+            {% endif %}
+          {% endwith %}
+        {% endif %}
+      {% endfor %}
+    </div>
+    {# Other questions: As table #}
+    <div class="small-9 columns"
+          {% if config.table_condition %}data-question-condition="{{ config.table_condition }}"{% endif %}>
+      <table>
+        <thead>
+          <tr>
+            {% for field in qg_form.visible_fields %}
+              {% if forloop.counter > 1 %}
+                <th>{{ field.label }}</th>
+              {% endif %}
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            {% for field in qg_form.visible_fields %}
+              {% if forloop.counter > 1 %}
+                <td>
+                  {% formrow field using "form/question/no_label.html" %}
+                </td>
+              {% endif %}
+              {% for field in qg_form.hidden_fields %}{% formfield field %}{% endfor %}
+            {% endfor %}
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endfor %}
+</div>

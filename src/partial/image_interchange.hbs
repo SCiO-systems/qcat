@@ -1,0 +1,20 @@
+<section class="row">
+  <a name="img"></a>
+
+  <h2 data-magellan-destination="img">Image</h2>
+
+  <h3>REsponsive image with interchange</h3>
+
+  <dl class="tabs" data-tab>
+    <dd class="active"><a href="#panel07-01">Result</a></dd>
+    <dd><a href="#panel07-02">HTML</a></dd>
+  </dl>
+  <div class="tabs-content panel">
+    <div class="content active" id="panel07-01">
+      {{> image_responsive}}
+    </div>
+    <div class="content" id="panel07-02">
+      {{#markdown}}{{ embed 'src/partial/image_responsive.hbs' 'xml' }}{{/markdown}}
+    </div>
+  </div>
+</section>

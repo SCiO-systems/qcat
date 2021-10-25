@@ -1,0 +1,73 @@
+version: '3'
+
+volumes:
+  postgres-data:
+  redisdata:
+  elasticsearch-data:
+
+services:
+
+  postgres:
+    image: camptocamp/postgres:9.5
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=qcat
+      - POSTGRES_PASSWORD=qcat
+      - APP_DB_USER=qcat
+      - APP_DB_PASS=qcat
+      - APP_DB_NAME=qcat
+    networks:
+      default:
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  redis:
+    restart: always
+    image: redis:latest
+    volumes:
+      - redisdata:/data
+  
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.0
+    container_name: elasticsearch
+    environment:
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    cap_add:
+      - IPC_LOCK
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+      - 9300:9300
+
+  web:
+    build:
+      context: .
+      dockerfile: ./docker_compose/web/Dockerfile
+    image: qcat:dev
+    environment:
+      # Environment variables for django are set in the entrypoint.sh script.
+      - PYTHONPATH=/code/apps
+    #entrypoint: ["./docker_compose/web/entrypoint.sh"]
+    # # Uncomment below line to build static and load data
+    # #  - Uncomment entrypoint.sh line no. 31 only the first time, subsequent runs dont need the line
+    entrypoint: ["./docker_compose/web/entrypoint.sh", "build"]
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+    volumes:
+      - .:/code
+    ports:
+      - 8000:8000
+    depends_on:
+      - postgres
+      - elasticsearch
+      - redis

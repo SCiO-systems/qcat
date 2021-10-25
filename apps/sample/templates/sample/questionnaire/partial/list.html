@@ -1,0 +1,16 @@
+{% comment %}
+
+  This partial template can be included to display a list of SAMPLE
+  questionnaires.
+
+  Required attributes:
+
+  - list_values
+
+{% endcomment %}
+
+{% for list_entry in list_values %}
+  {% include "questionnaire/partial/list_item.html" with item=list_entry %}
+{% empty %}
+  <p class="questionnaire-list-empty">No SAMPLE questionnaires found.</p>
+{% endfor %}

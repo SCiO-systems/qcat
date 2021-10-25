@@ -1,0 +1,78 @@
+<article role="article" class="row large-collapse tech-item">
+  <div class="tech-thumbnail medium-4 columns">
+    <figure>
+      <a href="technology_output.html" title="">
+        <img src="assets/img/{{figure}}" alt=""/>
+      </a>
+      <figcaption class="tech-status">
+        <span class="label is-{{type}}">
+          {{#is type "tech"}}Technology{{else}}{{type}}{{/is}}
+        </span>
+        {{#isnt status "completed"}}
+          <span class="label is-{{status}}">{{status}}</span>
+        {{/isnt}}
+      </figcaption>
+    </figure>
+    <ul class="tech-icons">
+      <li>
+        <a href="">
+          <span class="tech-icon">
+            <svg class="icon"><use xlink:href="#icon-pdf"></use></svg>
+            <br>
+            PDF
+          </span>
+        </a>
+      </li>
+      {{#if have_a_video}}
+      <li>
+        <a href="">
+          <span class="tech-icon">
+            <svg class="icon"><use xlink:href="#icon-video"></use></svg>
+            Video
+          </span>
+        </a>
+      </li>
+      {{/if}}
+    </ul>
+  </div>
+  <div class="content medium-8 columns">
+    <header>
+       <h1><a href="technology_output.html" title="" class="link">{{title}}</a> <small>{{location}}</small></h1>
+    </header>
+    <aside class="tech-infos row collapse">
+      <dl class="medium-6 columns">
+        <dt>ID:</dt>
+        <dd>{{id}}</dd>
+      </dl>
+      <dl class="medium-6 columns">
+        <dt>Creation:</dt>
+        <dd><time datetime="{{date_creation}}" pubdate="pubdate">{{date_creation}}</time></dd>
+      </dl>
+      <dl class="medium-6 columns">
+        <dt>Update:</dt>
+        <dd><time datetime="{{date_review}}">{{date_review}}</time></dd>
+      </dl>
+      <dl class="medium-6 columns">
+        <dt>Author:</dt>
+        <dd>{{author}}</dd>
+      </dl>
+    </aside>
+    <main>
+      <p>{{short_description}}</p>
+    </main>
+    <footer>
+      <p class="is-light">
+        {{#if related}}
+          <em>
+            Related approaches: 
+            {{#each related}}
+              <a href="" class="link">{{title}}</a>{{#unless @last}},{{/unless}}
+            {{/each}}
+          </em>
+          <br>
+        {{/if}}
+        <em>This article is also avalable in: <a href="" class="link">deutsch</a>, <a href="" class="link">español</a>, <a href="" class="link">français</a></em>
+      </p>
+    </footer>
+  </div>
+</article>

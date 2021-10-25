@@ -1,0 +1,18 @@
+<ul {% if class %}class="{{ class }}"{% endif %}>
+  {% for list_item in list_items %}
+    <li {% if list_item.highlighted %} class="true"{% endif %}>
+      {% if list_item.title %}<b>{{ list_item.title }}:</b>{% endif %}
+      {% if show_newlines %}
+        {{ list_item.text|safe|linebreaksbr }}
+      {% else %}
+        {{ list_item.text|safe }}
+      {% endif %}
+      {% if list_item.subtext %}
+        <span class="subtext">{% if show_newlines %}{{ list_item.subtext|linebreaksbr }}{% else %}{{ list_item.subtext }}{% endif %}</span>
+      {% endif %}
+      {% if list_item.suffix %}
+        {% if show_newlines %}{{ list_item.suffix|linebreaksbr }}{% else %}{{ list_item.suffix }}{% endif %}
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>

@@ -1,0 +1,38 @@
+{% extends 'unccd/base.html' %}
+
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+
+<section class="hero" data-equalizer>
+  <div class="row large-collapse" data-equalizer-watch>
+    <div class="medium-4 large-5 columns">
+      <h1 class="is-unccd">{% trans "UNCCD SLM portal" %}</h1>
+      <p class="is-large">{% trans "The UNCCD database on SLM practices comprises of SLM best practices from UNCCD Member States that were included in the UNCCD PRAIS system and newly reported SLM practices based on WOCAT." %}</p>
+      <div class="row">
+        <div class="medium-10 columns medium-offset-1 large-8 large-offset-0 button-column">
+          <a href="{% url 'unccd:questionnaire_list' %}" class="button is-unccd">{% trans "View UNCCD SLM practices" %}</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="medium-10 columns medium-offset-1 large-8 large-offset-0 button-column">
+          <a href="{% url 'technologies:questionnaire_new' %}" class="button is-unccd">{% trans "Add new UNCCD SLM practice" %}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-media" id="unccd-hero-image" data-equalizer-watch>
+  </div>
+</section>
+
+<main class="row large-collapse" role="main">
+  <section class="tech-list small-12 columns">
+    <div class="tech-group">
+      <h2 class="is-group">{% trans "Last updates" %}</h2>
+      {% include "unccd/questionnaire/partial/list.html" %}
+    </div>
+  </section>
+</main>
+
+{% endblock %}

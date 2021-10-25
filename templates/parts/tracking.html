@@ -1,0 +1,21 @@
+{% comment %}
+  Piwik; include only if environment variable is set.
+{% endcomment %}
+{% if PIWIK_SITE_ID %}
+    <script type="text/javascript">
+        var _paq = window._paq = window._paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+            var u="{{ PIWIK_URL }}";
+            _paq.push(['setTrackerUrl', u+'matomo.php']);
+            _paq.push(['setSiteId', {{ PIWIK_SITE_ID }}]);
+            // Track only pdf files as 'downloads'. More can be added with a pipe (pdf|doc|foo).
+            _paq.push(['setDownloadExtensions', 'pdf']);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+        })();
+    </script>
+    <noscript><p><img src="{{ PIWIK_URL }}matomo.php?idsite={{ PIWIK_SITE_ID }}&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+{% endif %}

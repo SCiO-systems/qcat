@@ -1,0 +1,248 @@
+// Wizard
+.wizard {
+  padding: 4em 3em 5vh;
+  @media #{$large-up} {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  fieldset {
+    opacity: 1;
+    margin-bottom: 4em;
+    transition: opacity 300ms ease-in-out;
+  }
+  .multiple-choice {
+    input[type="file"],
+    input[type="checkbox"],
+    input[type="radio"],
+    select {
+      margin: 0;
+    }
+  }
+}
+.wizard-header-outer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  color: #fff;
+}
+.wizard-header {
+  background: $color-brown;
+  padding-top: rem-calc(24);
+
+  .button.expand:hover {
+    background-color: $color-orange-dark;
+    box-shadow: 0 0 0 $button-shadow-effect $color-orange-dark;
+  }
+
+  .button-icon {
+    width: 49.5%;
+    margin-left: 1%;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  .panel {
+    margin: 0;
+    background: inherit;
+    border: none;
+    position: relative;
+
+    a {
+      position: absolute;
+      bottom: 0;
+      width: 98%;
+    }
+  }
+
+  .progress {
+    margin-bottom: rem-calc(5);
+  }
+}
+.wizard-header-title {
+  color: #fff;
+  margin-top: 0;
+  position: relative;
+}
+.wizard-header-back {
+  display: inline-block;
+  line-height: rem-calc(24);
+  font-size: rem-calc(12);
+  margin-top: rem-calc(12);
+  color: $color-beige-light;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.layout-wizard {
+  [data-magellan-expedition-clone] {
+    display: none;
+  }
+  [data-magellan-expedition],
+  [data-magellan-expedition-clone] {
+    right: 0;
+    left: auto;
+    width: auto;
+    min-width: 0;
+    background: none;
+    padding: 1em !important;
+  }
+  [data-magellan-expedition] {
+    position: fixed;
+    top: 0;
+    dl {
+      margin: 0;
+    }
+    dd a {
+      display: block;
+      text-indent: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+
+      width: 1em;
+      height: 1em;
+      border-radius: 0.5em;
+
+      background: $color-beige;
+    }
+    dd.active a {
+      background: $primary-color;
+    }
+  }
+}
+
+.sortable-placeholder {
+  border: 1px solid $color-beige-dark;
+  background: $color-beige;
+}
+
+.questiongroup-numbered-number {
+  cursor: pointer;
+}
+
+.top-margin {
+  margin-top: 1rem !important;
+}
+.top-margin-big {
+  margin-top: 2rem !important;
+}
+form .row.top-margin {
+  margin-top: 0.5rem;
+}
+.no-top-margin {
+  margin-top: 0;
+}
+
+.bottom-margin, a.bottom-margin, .row.list-item.bottom-margin {
+  margin-bottom: 1rem;
+}
+
+section.row.section-bottom-margin {
+  margin-bottom: 0.5rem;
+}
+
+input[type=checkbox].cb-long-label {
+  float: left;
+  margin-top: 0.3rem;
+
+  + label {
+    display: table;
+    margin-left: 1.5rem;
+  }
+}
+fieldset.row.fieldset-no-border {
+  border: none;
+}
+fieldset.row.fieldset-no-padding {
+  padding: 0.5rem;
+}
+
+fieldset.row.has-changes {
+  border-color: $primary-color;
+}
+
+span.button-has-changes {
+  color: $color-approach;
+  margin-left: rem-calc(4);
+}
+a.is-approaches span.button-has-changes {
+  color: $color-tech;
+}
+
+fieldset.row table {
+  width: 100%;
+}
+
+form .single-item:not(:first-child) {
+  margin-top: 0.5rem;
+}
+form .single-item.single-item-checkbox-other {
+  margin-top: 0;
+}
+.image-cb-has-condition .list-item {
+  padding-top: 0;
+  padding-bottom: rem-calc(16);
+}
+
+.questiongroup .row.list-item.no-top-margin {
+  margin-top: 0;
+  padding-top: 0;
+}
+.questiongroup .row.list-item.no-bottom-margin {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+select[disabled]+div.chosen-disabled {
+  opacity: 1 !important;
+
+  .chosen-single {
+    background: lighten(#ddd, 5);
+  }
+
+  .chosen-single div {
+    display: none;
+  }
+}
+
+// No border/shadow around chosen search field
+ul.chosen-choices>li.search-field {
+  box-shadow: none;
+}
+.chosen-container .chosen-choices .search-field:only-child,
+.chosen-container .chosen-choices .search-field:only-child input {
+  width: 100% !important;
+}
+
+/* USER SEARCH */
+.form-user-tabs-content {
+  margin-top: 1rem;
+  background-color: $tabs-navigation-active-bg-color;
+  margin-bottom: 0;
+}
+.form-user-tab-search, .form-user-tab-create {
+  padding: 1rem;
+}
+input[type=search].user-search-field {
+  border: 1px solid silver;
+}
+.form-user-tabs .tab-title>a, .form-user-tabs-content span {
+  font-size: 0.875rem;
+}
+.form-user-selected .alert-box {
+  margin-bottom: 0;
+}
+
+.form-currency-exchange-field {
+  float: left;
+  margin-right: 0.5rem;
+}
+.form-currency-exchange-currency {
+  line-height: 2.25rem;
+}

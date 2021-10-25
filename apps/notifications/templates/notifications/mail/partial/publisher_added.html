@@ -1,0 +1,9 @@
+{% extends 'notifications/mail/partial/editor_added.html' %}
+
+{% load i18n %}
+
+{% block role %}{% trans "a publisher" context "You have been added as a publisher of [questionnaire] compiled by [user]." %}{% endblock %}
+
+{% block additional %}
+  <p>{% trans "The SLM practice has been reviewed and approved. Please complete the final review of the SLM practice as soon as possible. If the SLM practice requires further revision please reject the SLM practice and send your written feedback to the compiler, editors, and reviewers of the SLM practice. If the quality of the SLM practice is good, please publish the SLM practice in the Global SLM Database." %}</p>
+{% endblock %}

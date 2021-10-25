@@ -1,0 +1,11 @@
+<div class="row tech-item-inline">
+  <div class="medium-12 columns">
+    <ul class="chart-measure-labelled">
+      {% for value in all_values %}
+        <li class="step is-level-{{ value.0|default:0 }}">
+          {{ value.1 }}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

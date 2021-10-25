@@ -1,0 +1,91 @@
+<section class="row">
+  <a name="text"></a>
+
+  <h2 data-magellan-destination="text">Text inputs</h2>
+  
+  {{!-- Long questions --}}
+  <h3>Long questions</h3>
+  <p>If you have a really long question, use top label.</p>
+
+  <dl class="tabs" data-tab>
+    <dd class="active"><a href="#panel03-01">Result</a></dd>
+    <dd><a href="#panel03-02">HTML</a></dd>
+  </dl>
+  <div class="tabs-content panel">
+    <div class="content active" id="panel03-01">
+      {{> text_long}}
+    </div>
+    <div class="content" id="panel03-02">
+      {{#markdown}}{{ embed 'src/partial/form_element/text_long.hbs' 'xml' }}{{/markdown}}
+    </div>
+  </div>
+
+  {{!-- Short questions --}}
+  <h3>Short questions</h3>
+  <p>If you have a really long question, use top label.</p>
+
+  <dl class="tabs" data-tab>
+    <dd class="active"><a href="#panel03-03">Result</a></dd>
+    <dd><a href="#panel03-04">HTML</a></dd>
+  </dl>
+  <div class="tabs-content panel">
+    <div class="content active" id="panel03-03">
+      {{> text_short}}
+    </div>
+    <div class="content" id="panel03-04">
+      {{#markdown}}{{ embed 'src/partial/form_element/text_short.hbs' 'xml' }}{{/markdown}}
+    </div>
+  </div>
+
+  {{!-- Long answer --}}
+  <h3>Long answer</h3>
+  <p>Long answers need textarea.</p>
+  
+  <dl class="tabs" data-tab>
+    <dd class="active"><a href="#panel03-05">Result</a></dd>
+    <dd><a href="#panel03-06">HTML</a></dd>
+  </dl>
+  <div class="tabs-content panel">
+    <div class="content active" id="panel03-05">
+      {{> text_longanswer}}
+    </div>
+    <div class="content" id="panel03-06">
+      {{#markdown}}{{ embed 'src/partial/form_element/text_longanswer.hbs' 'xml' }}{{/markdown}}
+    </div>
+  </div>
+
+  {{!-- Answer propositions --}}
+  <h3>Answer with propositions</h3>
+  <p>Here, the user can choose a proposition or enter text.</p>
+
+  <dl class="tabs" data-tab>
+    <dd class="active"><a href="#panel03-07">Result</a></dd>
+    <dd><a href="#panel03-08">HTML</a></dd>
+  </dl>
+  <div class="tabs-content panel">
+    <div class="content active" id="panel03-07">
+      {{> text_proposition}}
+    </div>
+    <div class="content" id="panel03-08">
+      {{#markdown}}{{ embed 'src/partial/form_element/text_proposition.hbs' 'xml' }}{{/markdown}}
+    </div>
+  </div>
+
+  {{!-- Labels --}}
+  <h3>Labels</h3>
+  <p>Little upgrade from <a href="http://foundation.zurb.com/docs/components/labels.html">Foundation's labels</a></p>
+
+  <dl class="tabs" data-tab>
+    <dd class="active"><a href="#panel03-09">Result</a></dd>
+    <dd><a href="#panel03-10">HTML</a></dd>
+  </dl>
+  <div class="tabs-content panel">
+    <div class="content active" id="panel03-09">
+      {{> labels}}
+    </div>
+    <div class="content" id="panel03-10">
+      {{#markdown}}{{ embed 'src/partial/form_element/labels.hbs' 'xml' }}{{/markdown}}
+    </div>
+  </div>
+  
+</section>

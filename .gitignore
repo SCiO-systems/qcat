@@ -1,0 +1,32 @@
+# Python cache files
+__pycache__
+*.pyc
+
+# Ignore virtual environments
+qcat_virtualenv
+/qcat
+
+# Ignore local env
+.env
+
+# Ignore documentation builds
+/docs/_build/*
+
+# Ignore testing-related files
+.coverage
+coverage_html
+.pytest_cache/*
+test_output.txt
+.cache
+functional_tests/failed_screenshots
+
+# Ignore bower components, node modules and static files
+bower_components
+node_modules
+/static
+
+# Ignore temporary folder (e.g. for local mail testing)
+tmp
+
+.vscode
+.vscode/*

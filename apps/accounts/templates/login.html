@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load floppyforms %}
+
+{% block content %}
+  <main role="main">
+    <div class="row large-no-gutters">
+      <div class="large-12 columns">
+        <h1 class="is-title">{% trans "Login" %}</h1>
+
+        {% if next_url %}
+          <div class="alert-box info is-rhythmed-2">{% trans "Please log in to access this page." %}</div>
+        {% endif %}
+
+        <form action="{{ login_url }}" method="post" class="user-login js-submit-once">
+            {% csrf_token %}
+            {% formrow form.username %}
+            {% formrow form.password %}
+            {% if form.non_field_errors %}
+              {{ form.non_field_errors }}
+            {% endif %}
+            <input id="button_login" type="submit" name="submit"
+                   class="button" value="{% trans "Login" %}"/>
+        </form>
+
+      </div>
+    </div>
+
+    <div class="row large-no-gutters is-rhythmed-3">
+
+      <div class="large-12 columns">
+        <h2 class="is-group">{% trans "No login?" %}</h2>
+        <p>{% trans "If you do not yet have a login, please visit " %} <a
+                      href="https://www.wocat.net/accounts/signup/"
+                      class="link">{% trans "WOCAT" %}</a> {% trans " and register for a free account." %}
+              </p>
+
+        <h2 class="is-group">{% trans "Forgot your password?" %}</h2>
+        <p>{% trans "Please visit " %} <a href="https://www.wocat.net/accounts/password/reset/"
+                                         class="link">{% trans "WOCAT" %}</a> {% trans " and reset your password." %}
+        </p>
+
+      </div>
+    </div>
+  </main>
+
+{% endblock %}

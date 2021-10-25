@@ -1,0 +1,7 @@
+<div class="columns small-12 inline-linked-questionnaires">
+  {% for configuration, list_values in links.items %}
+    {% for list_entry in list_values %}
+      {% include "questionnaire/partial/list_item.html" with item=list_entry %}
+    {% endfor %}
+  {% endfor %}
+</div>

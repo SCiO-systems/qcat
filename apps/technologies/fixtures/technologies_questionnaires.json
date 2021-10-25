@@ -1,0 +1,131 @@
+[
+  {
+    "pk": 101,
+    "model": "accounts.user",
+    "fields": {
+      "groups": [
+      ],
+      "date_joined": "2015-01-13T08:24:26.031Z",
+      "is_superuser": false,
+      "last_login": "2015-01-13T08:24:26.047Z",
+      "user_permissions": [],
+      "password": "",
+      "email": "foo@bar.com",
+      "firstname": "Foo",
+      "lastname": "Bar"
+    }
+  },
+  {
+    "model": "questionnaire.questionnaire",
+    "pk": 101,
+    "fields": {
+      "uuid": "001eacdb-00a8-4e51-8db3-4b75dcdc6d1c",
+      "data": {
+        "qg_name": [
+          {
+            "name": {
+              "en": "WOCAT Technology 1",
+              "fr": "WOCAT Technology 1 en français"
+            }
+          }
+        ],
+        "tech_qg_1": [
+          {
+            "tech_definition": {
+              "en": "This is the definition of the first WOCAT Technology.",
+              "fr": "Ceci est la déscription 1 en français."
+            }
+          }
+        ],
+        "qg_location": [
+          {
+            "country": "country_CHE"
+          }
+        ],
+        "tech_qg_9": [
+          {
+            "tech_landuse": [
+              "tech_lu_grazingland"
+            ]
+          }
+        ]
+      },
+      "code": "tech_1",
+      "status": 4,
+      "version": 1,
+      "created": "2015-02-10T16:07:20.847Z",
+      "updated": "2015-02-10T16:07:20.847Z",
+      "configuration": 1001
+    }
+  },
+  {
+    "pk": 1011,
+    "fields": {
+      "questionnaire": 101,
+      "original_language": true,
+      "language": "fr"
+    },
+    "model": "questionnaire.questionnairetranslation"
+  },
+  {
+    "pk": 1012,
+    "fields": {
+      "questionnaire": 101,
+      "original_language": false,
+      "language": "en"
+    },
+    "model": "questionnaire.questionnairetranslation"
+  },
+  {
+    "pk": 1101,
+    "fields": {
+      "questionnaire": 101,
+      "user": 101,
+      "role": "compiler"
+    },
+    "model": "questionnaire.questionnairemembership"
+  },
+  {
+    "model": "questionnaire.questionnaire",
+    "pk": 102,
+    "fields": {
+      "uuid": "edb16da2-83fe-4e08-bd48-5f7a74024b05",
+      "data": {
+        "qg_name": [
+          {
+            "name": {
+              "es": "WOCAT Tech 2 en español"
+            }
+          }
+        ],
+        "tech_qg_1": [
+          {
+            "tech_definition": {
+              "es": "Descripción 2 en español"
+            }
+          }
+        ],
+        "qg_location": [
+          {
+            "country": "country_AFG"
+          }
+        ]
+      },
+      "code": "tech_2",
+      "status": 4,
+      "version": 1,
+      "created": "2015-02-10T16:08:20.904Z",
+      "updated": "2015-02-10T16:08:20.904Z",
+      "configuration": 1001
+    }
+  },
+  {
+    "pk": 1021,
+    "fields": {
+      "questionnaire": 102,
+      "original_language": true,
+      "language": "es"
+    },
+    "model": "questionnaire.questionnairetranslation"
+  }
+]

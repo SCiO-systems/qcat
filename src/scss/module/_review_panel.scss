@@ -1,0 +1,19 @@
+.review-panel-content {
+  background-color: white;
+  padding: rem-calc(36);
+  margin-top: 2px;
+}
+
+.review-header {
+  font-size: $h4-font-size;
+  font-weight: $font-weight-bold;
+  margin-right: rem-calc(20);
+}
+
+.reveal-modal {
+  border: rem-calc(5) solid $color-beige;
+
+  h2 {
+    color: $color-beige-dark;
+  }
+}

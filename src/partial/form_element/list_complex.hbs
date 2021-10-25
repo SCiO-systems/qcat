@@ -1,0 +1,137 @@
+<div class="row list-item">
+  <div class="medium-2 columns">
+    <label for="itemCropland" class="list-item-label help-tooltip">
+      <span data-tooltip aria-haspopup="true" class="has-tip" title="Click on small, middle or high to see the magick happen.">
+        Cropland
+        <svg class="icon-information is-inline right"><use xlink:href="#icon-information"></use></svg>
+      </span>
+    </label>
+
+    <label class="help-tooltip">
+    </label>
+  </div>
+  <div class="medium-10 columns">
+    <div class="button-bar">
+      <ul class="button-switch radius" data-toggle="cropland_sub">
+        <li>
+          <input id="itemCroplandnone" type="radio" name="itemCropland" value="none" checked="checked">
+          <label class="button small secondary" for="itemCroplandnone"><span>none</span></label>
+        </li>
+        <li>
+          <input id="itemCroplandsmall" type="radio" name="itemCropland" value="small">
+          <label class="button small secondary" for="itemCroplandsmall"><span>small</span></label>
+        </li>
+        <li>
+          <input id="itemCroplandmiddle" type="radio" name="itemCropland" value="middle">
+          <label class="button small secondary" for="itemCroplandmiddle"><span>middle</span></label>
+        </li>
+        <li>
+          <input id="itemCroplandhigh" type="radio" name="itemCropland" value="high">
+          <label class="button small secondary" for="itemCroplandhigh"><span>high</span></label>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div id="cropland_sub" class="row list-sub">
+  <ul class="list-gallery small-block-grid-1 large-block-grid-2">
+    <li>
+      <div class="list-gallery-item">
+        <input id="checkboxAnnualCroping" type="checkbox">
+        <label for="checkboxAnnualCroping">
+          Annual croping
+          <figure class="list-gallery-icon">
+            <img src="assets/img/landuse_01.png" alt="Annual crops">
+          </figure>
+        </label>
+        <input type="text" placeholder="Details">
+      </div>
+    </li>
+    <li>
+      <div class="list-gallery-item">
+        <input id="checkboxPerennialCroping" type="checkbox">
+        <label for="checkboxPerennialCroping">
+          Perennial cropping
+          <figure class="list-gallery-icon">
+            <img src="assets/img/landuse_02.png" alt="Annual crops">
+          </figure>
+        </label>
+        <input type="text" placeholder="Details">
+      </div>
+    </li>
+    <li>
+      <div class="list-gallery-item">
+        <input id="checkboxTreeCroping" type="checkbox">
+        <label for="checkboxTreeCroping">
+          Tree and shrub cropping
+          <figure class="list-gallery-icon">
+            <img src="assets/img/landuse_03.png" alt="Annual crops">
+          </figure>
+        </label>
+        <input type="text" placeholder="Details">
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="row list-item">
+  <div class="medium-2 columns">
+    <label for="itemGrazing" class="list-item-label">Grazing Land</label>
+  </div>
+  <div class="medium-10 columns">
+    <div class="button-bar">
+      <ul class="button-switch radius">
+        <li>
+          <input id="itemGrazingnone" type="radio" name="itemGrazing" value="none" checked="checked">
+          <label class="button small secondary" for="itemGrazingnone"><span>none</span></label>
+        </li>
+        <li>
+          <input id="itemGrazingsmall" type="radio" name="itemGrazing" value="small">
+          <label class="button small secondary" for="itemGrazingsmall"><span>small</span></label>
+        </li>
+        <li>
+          <input id="itemGrazingmiddle" type="radio" name="itemGrazing" value="middle">
+          <label class="button small secondary" for="itemGrazingmiddle"><span>middle</span></label>
+        </li>
+        <li>
+          <input id="itemGrazinghigh" type="radio" name="itemGrazing" value="high">
+          <label class="button small secondary" for="itemGrazinghigh"><span>high</span></label>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="row list-item">
+  <div class="medium-2 columns">
+    <input type="text" placeholder="Other:">
+  </div>
+  <div class="medium-10 columns">
+    <div class="button-bar">
+      <ul class="button-switch radius">
+        <li>
+          <input id="itemCustomnone" type="radio" name="itemCustom" value="none" checked="checked">
+          <label class="button small secondary" for="itemCustomnone"><span>none</span></label>
+        </li>
+        <li>
+          <input id="itemCustomsmall" type="radio" name="itemCustom" value="small">
+          <label class="button small secondary" for="itemCustomsmall"><span>small</span></label>
+        </li>
+        <li>
+          <input id="itemCustommiddle" type="radio" name="itemCustom" value="middle">
+          <label class="button small secondary" for="itemCustommiddle"><span>middle</span></label>
+        </li>
+        <li>
+          <input id="itemCustomhigh" type="radio" name="itemCustom" value="high">
+          <label class="button small secondary" for="itemCustomhigh"><span>high</span></label>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="row list-action">
+  <div class="small-12 columns">
+    <p><a class="link is-wocat" data-add-item>Add an element</a></p>
+  </div>
+</div>

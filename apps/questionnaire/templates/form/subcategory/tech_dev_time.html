@@ -1,0 +1,97 @@
+{% load floppyforms %}
+{% load list_to_columns %}
+
+<fieldset id="{{ config.keyword }}" class="row{% if config.has_changes %} has-changes{% endif %}">
+    <legend>{{ config.numbering|default:'' }} {{ config.label }}</legend>
+    {% for questiongroup_config, questiongroup_formset in formsets %}
+      <div class="questiongroup">
+        {% include "form/helptext.html" with helptext=questiongroup_config.helptext helptext_length=questiongroup_config.helptext_length %}
+
+        {{ questiongroup_formset.management_form }}
+
+        {% if forloop.counter <= 3 %}
+
+          {% for f in questiongroup_formset.forms %}
+            <div class="row list-item">
+              <div class="row single-item">
+                {% for field in f.visible_fields %}
+                  {% if forloop.counter == 1 %}
+                    <div class="small-12 medium-5 columns">
+                  {% else %}
+                    <div class="small-12 medium-7 columns">
+                  {% endif %}
+                    <div class="row">
+                      {% with template=questiongroup_config.templates|get_by_keyword:field.name %}
+                        {% if template %}
+                          {% formrow field using template %}
+                        {% else %}
+                          {% formrow field using "form/question/default.html" %}
+                        {% endif %}
+                      {% endwith %}
+                    </div>
+                  </div>
+                {% endfor %}
+                {% for field in f.hidden_fields %}{% formfield field %}{% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+
+        {% elif forloop.counter == 4 %}
+
+          {% for f in questiongroup_formset.forms %}
+            <div class="row list-item">
+              <div class="row single-item">
+                {% for field in f.visible_fields %}
+
+                  {% if forloop.counter == 1 %}
+                    <div class="small-12 medium-5 columns">
+                      <div class="row">
+                  {% elif forloop.counter == 3 %}
+                    <div class="small-12 medium-7 columns">
+                      <div class="row">
+                  {% endif %}
+                      {% with template=questiongroup_config.templates|get_by_keyword:field.name options=questiongroup_config.options|get_by_keyword:field.name %}
+                        {% if template %}
+                          {% if forloop.counter == 2 %}
+                            {% formrow field using template with field_css_class="is-rhythmed" %}
+                          {% else %}
+                            {% formrow field using template %}
+                          {% endif %}
+                        {% else %}
+                          {% formrow field using "form/question/default.html" %}
+                        {% endif %}
+                      {% endwith %}
+                  {% if forloop.counter >= 2 %}
+                    </div>
+                  </div>
+                  {% endif %}
+                {% endfor %}
+                {% for field in f.hidden_fields %}{% formfield field %}{% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+
+        {% else %}
+
+          {% for f in questiongroup_formset.forms %}
+            <div class="row list-item">
+              <div class="row single-item">
+                {% for field in f.visible_fields %}
+                  {% with template=questiongroup_config.templates|get_by_keyword:field.name %}
+                    {% if template %}
+                      {% formrow field using template %}
+                    {% else %}
+                      {% formrow field using "form/question/default.html" %}
+                    {% endif %}
+                  {% endwith %}
+                {% endfor %}
+                {% for field in f.hidden_fields %}{% formfield field %}{% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+
+        {% endif %}
+
+      </div>
+    {% endfor %}
+  </fieldset>

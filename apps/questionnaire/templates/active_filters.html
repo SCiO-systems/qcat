@@ -1,0 +1,37 @@
+{% comment %}
+
+  This template renders the part with the active filters in place. For
+  each active filter, it renders a button showing the respective filter
+  and allowing to remove it.
+
+  Required attributes:
+
+  - active_filters: A list of active filters.
+
+{% endcomment %}
+
+{% load i18n %}
+
+<div class="filter{% if not active_filters %} hide{% endif %}">
+  <div class="row large-no-gutters ">
+    <div class="medium-10 columns">
+      <ul class="filter-list">
+        {% for active_filter in active_filters %}
+          <li class="filter-item">
+            <span class="single-filter-item{% if active_filter in active_advanced_filters %} active-advanced-filter-item js-active-advanced-filter{% endif %}">
+              {% if active_filter.key_label %}{{ active_filter.key_label }}: {% endif %}<span class="filter-value">{{ active_filter.value_label }}</span>
+              {% if not advanced_filter_select or active_filter.key != 'type' %}
+                <a class="remove-filter" href="" data-questiongroup="{{ active_filter.questiongroup }}" data-key="{{ active_filter.key }}" data-value="{{ active_filter.value }}"><svg class="icon is-inline right"><use xlink:href="#icon-cross" xmlns:xlink="http://www.w3.org/1999/xlink"/></svg></a>
+              {% endif %}
+            </span>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="medium-2 columns">
+      <div class="filter-action text-right">
+        <a class="filter-reset" href="{% url 'wocat:questionnaire_list' %}">{% trans "New Search" %}</a>
+      </div>
+    </div>
+  </div>
+</div>

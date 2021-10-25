@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans "Changes in the questionnaires structure" %}{% endblock %}
+
+{% block content %}
+  <main class="row large-collapse" role="main">
+    <div class="small-12 columns">
+      <h1 class="is-title">{% trans "Changes in the questionnaires structure" %}</h1>
+
+      <h2>{% trans "Rationale" %}</h2>
+      <p>
+        {% blocktrans %}
+          The structure of the questionnaire is updated periodically.
+          This reflects the continuous process of enhancing the data quality.
+          Questions may be altered (e.g. an open text answer is changed into a structured answer), added or deleted.
+          Existing data can be updated if the compiler of the questionnaire starts editing a published case.
+          The specific changes are listed below.
+        {% endblocktrans %}
+      </p>
+
+      <h2>{% trans "How to update an SLM Technology" %}</h2>
+      <p>
+        {% blocktrans %}
+          Create a new version of the Technology. This creates a new draft version of a submitted Technology. The original data is copied into the new version. You now need to enter or complement data for questions that were added or modified in the new edition of the questionnaire.
+        {% endblocktrans %}
+      </p>
+      <p>
+        <img src="{% static 'assets/img/editions/create-new-version.png' %}" alt="{% trans "How to update an SLM Technology" %}">
+      </p>
+      <p>
+        {% blocktrans %}
+          During this process, you can still open and view the original data in the previous submitted and published version of your Technology. This allows you to cross-check the data and compare the two versions.
+        {% endblocktrans %}
+      <p>
+        <img src="{% static 'assets/img/editions/see-history.png' %}" alt="{% trans "How to update an SLM Technology" %}">
+      </p>
+      <p>
+        {% blocktrans %}
+          When updating your Technology, please focus on the changes made in the new edition of the questionnaire, which are listed below.
+        {% endblocktrans %}
+      </p>
+      <p>
+        {% blocktrans %}
+          After you finish editing the data, your technology will be redirected through the WOCAT review process.
+        {% endblocktrans %}
+      </p>
+      <p>
+        {% blocktrans %}
+          Once this is completed, the new version of the Technology will be published and become visible to the public.
+        {% endblocktrans %}
+      </p>
+
+      {% for edition in editions %}
+        <h2>{{ edition|title }}</h2>
+        {% for note in edition.get_release_notes %}
+          <p>{{ note }}</p>
+        {% endfor %}
+      {% endfor %}
+    </div>
+  </main>
+
+{% endblock %}

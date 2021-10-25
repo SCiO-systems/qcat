@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load i18n %}
+
+{% block title %}SAMPLE{% endblock %}
+
+{% block bodyclass %}layout-tech is-sample{% endblock %}
+{% block navclass %}is-sample{% endblock %}
+
+{% block header %}
+  {% include "wocat/partial/top.html" with current='sample' %}
+{% endblock %}
+
+{% block bottom %}
+{% endblock %}

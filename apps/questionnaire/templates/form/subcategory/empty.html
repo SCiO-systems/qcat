@@ -1,0 +1,13 @@
+{% load floppyforms %}
+
+<a id="{{ config.keyword }}"></a>
+
+{% if config.next_level == 'subcategories' %}
+  {% for sub_config, sub_formsets in formsets %}
+    {% form form using sub_config.form_template with config=sub_config formsets=sub_formsets %}
+  {% endfor %}
+{% else %}
+  {% for questiongroup_config, questiongroup_formset in formsets %}
+    {% form form using questiongroup_config.template with config=questiongroup_config formset=questiongroup_formset %}
+  {% endfor %}
+{% endif %}

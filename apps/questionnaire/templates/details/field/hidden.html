@@ -1,0 +1,1 @@
+<input type="hidden" name="{{ name }}" {% if value %} value="{{ value }}"{% endif %}{% include "floppyforms/attrs.html" %}{% if options.label == 'placeholder' %} placeholder="{{ label }}"{% endif %}{% if css_class %} class="{{ css_class }}"{% endif %}>

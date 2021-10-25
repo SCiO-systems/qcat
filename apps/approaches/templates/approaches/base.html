@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "WOCAT SLM Approaches" %}{% endblock %}
+
+{% block bodyclass %}layout-tech is-approaches{% endblock %}
+{% block navclass %}is-approaches{% endblock %}
+
+{% block header %}
+  {% include "wocat/partial/top.html" with current='approaches' %}
+{% endblock %}
+
+{% block bottom %}
+{% endblock %}

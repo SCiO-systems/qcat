@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load i18n %}
+{% load sekizai_tags %}
+{% load compress %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block bodyclass %}layout-wizard{% endblock %}
+{% block temporary %}{% endblock %}
+{% block banner %}
+  {% addtoblock 'js' %}
+    <script src="{% static 'js/wizard.min.js' %}"></script>
+    <script type="text/javascript">$(document).foundation();</script>
+  {% endaddtoblock %}
+{% endblock %}

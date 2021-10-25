@@ -1,0 +1,18 @@
+{% if helptext %}
+  {% load i18n %}
+  <div class="help-bloc">
+    {% with helptext_length_trigger=helptext_length|default:50 helptext_initial_length=helptext_length|default:30 %}
+      {% if helptext|wordcount > helptext_length_trigger %}
+        <div class="help-content-first">
+          {{ helptext|truncatewords_html:helptext_initial_length|safe }}
+        </div>
+        <div class="help-content-more" style="display: none;">
+          {{ helptext|safe }}
+        </div>
+        <a class="help-toggle-more button small" data-text-more="{% trans 'See More' %}" data-text-first="{% trans 'See Less' %}">{% trans 'See More' %}</a>
+      {% else %}
+        {{ helptext|safe }}
+      {% endif %}
+    {% endwith %}
+  </div>
+{% endif %}

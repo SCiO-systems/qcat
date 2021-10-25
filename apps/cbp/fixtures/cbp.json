@@ -1,0 +1,539 @@
+[
+  {
+    "fields": {
+      "keyword": "cbp__1",
+      "translation": 41000
+    },
+    "model": "configuration.category",
+    "pk": 41000
+  },
+  {
+    "fields": {
+      "translation_type": "category",
+      "data": {
+        "cbp": {
+          "label": {
+            "en": "General information"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 41000
+  },
+  
+  {
+    "fields": {
+      "keyword": "cbp__1__1",
+      "translation": 41100
+    },
+    "model": "configuration.category",
+    "pk": 41100
+  },
+  {
+    "fields": {
+      "translation_type": "category",
+      "data": {
+        "cbp": {
+          "label": {
+            "en": "Name of the SLM Technology (hereafter referred to as the Technology) as per Core Questionnaire on SLM Technologies Question QT Core 1.1"
+          },
+          "label_view": {
+            "en": "Name of the SLM Technology"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 41100
+  },
+
+  {
+    "fields": {
+      "keyword": "cbp_qg_name",
+      "translation": null,
+      "configuration": {
+        "inherited_configuration": "technologies",
+        "inherited_questiongroup": "qg_name"
+      }
+    },
+    "model": "configuration.questiongroup",
+    "pk": 47044
+  },
+  {
+    "fields": {
+      "keyword": "cbp_qg_location",
+      "translation": null,
+      "configuration": {
+        "inherited_configuration": "technologies",
+        "inherited_questiongroup": "qg_location"
+      }
+    },
+    "model": "configuration.questiongroup",
+    "pk": 47045
+  },
+
+  {
+    "fields": {
+      "keyword": "cbp__1__2",
+      "translation": 41200
+    },
+    "model": "configuration.category",
+    "pk": 41200
+  },
+  {
+    "fields": {
+      "translation_type": "category",
+      "data": {
+        "cbp": {
+          "label": {
+            "en": "Contact details of resource persons and institutions involved in the assessment and documentation of the Carbon Benefits Project (CBP) Assessment"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 41200
+  },
+
+  {
+    "fields": {
+      "keyword": "cbp_qg_1",
+      "translation": 47001,
+      "configuration": {}
+    },
+    "model": "configuration.questiongroup",
+    "pk": 47001
+  },
+  {
+    "fields": {
+      "translation_type": "questiongroup",
+      "data": {
+        "cbp": {
+          "label": {
+            "en": "Key resource person(s)"
+          },
+          "helptext": {
+            "en": "Person(s) who provided most of the information documented in this questionnaire. These can be land users, SLM specialists (e.g. technical advisers, researchers), or any other persons."
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 47001
+  },
+
+  {
+    "fields": {
+      "keyword": "cbp__1__3",
+      "translation": 41300
+    },
+    "model": "configuration.category",
+    "pk": 41300
+  },
+  {
+    "fields": {
+      "translation_type": "category",
+      "data": {
+        "cbp": {
+          "label": {
+            "en": "Conditions regarding the use of data documented through WOCAT"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 41300
+  },
+
+  {
+    "fields": {
+      "keyword": "cbp__2",
+      "translation": 42000
+    },
+    "model": "configuration.category",
+    "pk": 42000
+  },
+  {
+    "fields": {
+      "translation_type": "category",
+      "data": {
+        "cbp": {
+          "label": {
+            "en": "Carbon Benefits Project (CBP) Assessment"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 42000
+  },
+
+  {
+    "fields": {
+      "keyword": "cbp__2__1",
+      "translation": 42100
+    },
+    "model": "configuration.category",
+    "pk": 42100
+  },
+  {
+    "fields": {
+      "translation_type": "category",
+      "data": {
+        "cbp": {
+          "label": {
+            "en": "Summary PDF from Carbon Benefits Project (CBP) Assessment"
+          },
+          "helptext": {
+            "en": "<p>Once you have completed the Carbon Benefits Project (CBP) Assessment for your Technology, generate the Summary PDF and add it to this module.</p><p>Supported file type: PDF, maximum file size: 3 MB.</p><p><br><a href=\"https://banr.colostate.edu/CBP/\" target=\"_blank\">Visit the CBP tools page to start a Carbon Benefits Assessment.</a></p>"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 42100
+  },
+
+  {
+    "fields": {
+      "keyword": "cbp_qg_2",
+      "translation": null,
+      "configuration": {}
+    },
+    "model": "configuration.questiongroup",
+    "pk": 42105
+  },
+  {
+    "fields": {
+      "keyword": "cbp_assessment",
+      "translation": 42110,
+      "configuration": {
+        "type": "file",
+        "summary": {
+          "types": ["full"],
+          "default": {
+            "field_name": "cbp_assessment_pdf"
+          }
+        }
+      }
+    },
+    "model": "configuration.key",
+    "pk": 42110
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "cbp": {
+          "label": {
+            "en": "Carbon Benefits Project (CBP) Summary PDF"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 42110
+  },
+
+  {
+    "fields": {
+      "keyword": "cbp_assessment_description",
+      "translation": 42115,
+      "configuration": {
+        "type": "text",
+        "summary": {
+          "types": ["full"],
+          "default": {
+            "field_name": "cbp_assessment_description_text"
+          }
+        }
+      }
+    },
+    "model": "configuration.key",
+    "pk": 42115
+  },
+  {
+    "fields": {
+      "translation_type": "key",
+      "data": {
+        "cbp": {
+          "label": {
+            "en": "Assessment Results Description (related to Carbon Benefits Project (CBP) Summary PDF)"
+          }
+        }
+      }
+    },
+    "model": "configuration.translation",
+    "pk": 42115
+  },
+
+
+  {
+    "fields": {
+      "code": "cbp",
+      "edition": "2015",
+      "data": {
+        "sections": [
+          {
+            "keyword": "section_general_information",
+            "view_options": {
+              "template": "empty"
+            },
+            "categories": [
+              {
+                "keyword": "cbp__1",
+                "form_options": {
+                  "numbering": "1."
+                },
+                "view_options": {
+                  "template": "cbp_header",
+                  "use_raw_data": true,
+                  "with_metadata": true,
+                  "additional_data": {
+                    "qg_location": [
+                      "country"
+                    ]
+                  }
+                },
+                "subcategories": [
+                  {
+                    "keyword": "cbp__1__1",
+                    "form_options": {
+                      "numbering": "1.1"
+                    },
+                    "questiongroups": [
+                      {
+                        "keyword": "cbp_qg_name",
+                        "questions": [
+                          {
+                            "keyword": "name"
+                          },
+                          {
+                            "keyword": "name_local"
+                          }
+                        ]
+                      },
+                      {
+                        "keyword": "cbp_qg_location",
+                        "questions": [
+                          {
+                            "keyword": "country"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "keyword": "cbp__1__2",
+                    "form_options": {
+                      "numbering": "1.2"
+                    },
+                    "questiongroups": [
+                      {
+                        "keyword": "cbp_qg_1",
+                        "form_options": {
+                          "template": "select_user",
+                          "user_role": "resourceperson",
+                          "max_num": 20,
+                          "row_class": "no-top-margin",
+                          "label_class": "bottom-margin"
+                        },
+                        "view_options": {
+                          "template": "select_user",
+                          "raw_questions": true
+                        },
+                        "questions": [
+                          {
+                            "keyword": "user_resourceperson_type",
+                            "form_options": {
+                              "has_other": "user_resourceperson_type"
+                            },
+                            "view_options": {
+                              "template": "values_as_header"
+                            }
+                          },
+                          {
+                            "keyword": "user_resourceperson_other",
+                            "form_options": {
+                              "template": "radio_other",
+                              "label_position": "placeholder",
+                              "other_radio": "user_resourceperson_type"
+                            },
+                            "view_options": {
+                              "template": "as_header"
+                            }
+                          },
+                          {
+                            "keyword": "user_id",
+                            "form_options": {
+                              "template": "no_label"
+                            }
+                          },
+                          {
+                            "keyword": "person_lastname",
+                            "view_options": {
+                              "template": "value_only"
+                            }
+                          },
+                          {
+                            "keyword": "person_firstname",
+                            "view_options": {
+                              "template": "value_only"
+                            }
+                          },
+                          {
+                            "keyword": "person_gender",
+                            "view_options": {
+                              "template": "value_only"
+                            }
+                          },
+                          {
+                            "keyword": "person_institution_name",
+                            "view_options": {
+                              "template": "value_only"
+                            }
+                          },
+                          {
+                            "keyword": "person_address",
+                            "view_options": {
+                              "template": "value_only"
+                            }
+                          },
+                          {
+                            "keyword": "country",
+                            "view_options": {
+                              "template": "value_only"
+                            }
+                          },
+                          {
+                            "keyword": "person_phone_1",
+                            "view_options": {
+                              "template": "value_only"
+                            }
+                          },
+                          {
+                            "keyword": "person_phone_2",
+                            "view_options": {
+                              "template": "value_only"
+                            }
+                          },
+                          {
+                            "keyword": "person_email_1",
+                            "view_options": {
+                              "template": "value_only"
+                            }
+                          },
+                          {
+                            "keyword": "person_email_2",
+                            "view_options": {
+                              "template": "value_only"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "keyword": "qg_funding_institution",
+                        "questions": [
+                          {
+                            "keyword": "funding_institution"
+                          }
+                        ]
+                      },
+                      {
+                        "keyword": "qg_funding_project",
+                        "questions": [
+                          {
+                            "keyword": "funding_project"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "keyword": "cbp__1__3",
+                    "form_options": {
+                      "numbering": "1.3"
+                    },
+                    "questiongroups": [
+                      {
+                        "keyword": "qg_accept_conditions",
+                        "form_options": {
+                          "helptext_position": "bottom"
+                        },
+                        "questions": [
+                          {
+                            "keyword": "date_documentation"
+                          },
+                          {
+                            "keyword": "accept_conditions"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "keyword": "section_specifications",
+            "view_options": {
+              "template": "empty"
+            },
+            "categories": [
+              {
+                "keyword": "cbp__2",
+                "form_options": {
+                  "numbering": "2."
+                },
+                "subcategories": [
+                  {
+                    "keyword": "cbp__2__1",
+                    "form_options": {
+                      "numbering": "2.1"
+                    },
+                    "questiongroups": [
+                      {
+                        "keyword": "cbp_qg_2",
+                        "questions": [
+                          {
+                            "keyword": "cbp_assessment"
+                          },
+                          {
+                            "keyword": "cbp_assessment_description",
+                            "form_options": {
+                              "label_position": "placeholder"
+                            }
+                          }
+                        ],
+                        "form_options": {
+                          "max_num": 1,
+                          "template": "columns_custom",
+                          "columns_custom": [
+                            [
+                              "12"
+                            ],
+                            [
+                              "12"
+                            ]
+                          ]
+                        },
+                        "view_options": {
+                          "template": "columns_o4_r8"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "created": "2020-10-14T22:42:54.337Z"
+    },
+    "model": "configuration.configuration",
+    "pk": 40001
+  }
+]

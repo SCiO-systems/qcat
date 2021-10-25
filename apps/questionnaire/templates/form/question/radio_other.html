@@ -1,0 +1,37 @@
+{% load floppyforms %}
+{% load static %}
+
+{% with classes=field.css_classes label=label|default:field.label help_text=help_text|default:field.help_text %}
+  {% block errors %}
+    {% include "form/errors.html" with errors=field.errors %}
+  {% endblock %}
+  {% if options.label_position != 'placeholder' %}
+    <div class="row single-item">
+      <div class="small-12 columns{% if options.label_columns_class %} {{ options.label_columns_class }}{% endif %}">
+        {% if options.helptext and options.helptext_position == 'tooltip' %}
+          <label for="{{ field|id }}" class="has-tip left" title="{{ options.helptext }}" data-tooltip="" aria-haspopup="true">{{ label }}{% if label|last not in ".:!?" %}:{% endif %}<svg class="icon-information is-inline right"><use xlink:href="#icon-information"></svg></label>
+        {% else %}
+          <label for="{{ field|id }}">{{ label }}{% if label|last not in ".:!?" %}:{% endif %}</label>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+  <div class="row single-item single-item-checkbox-other">
+    {% if options.helptext and options.helptext_position != 'tooltip' %}
+      {% include "form/helptext.html" with helptext=options.helptext helptext_length=options.helptext_length %}
+    {% endif %}
+    <div class="small-12 columns">
+      <label class="input-multiline" for="{{ field|id }}">
+        <input class="radio-other"
+               data-other-radio="{{ options.other_radio }}"
+               type="radio"
+                {% if field.value %} checked="checked"{% endif %}>
+        <span class="radio-other-field">
+          {% with other_textfield=True %}
+            {% widget field %}
+          {% endwith %}
+        </span>
+      </label>
+    </div>
+  </div>
+{% endwith %}

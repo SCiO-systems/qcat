@@ -1,0 +1,143 @@
+.process {
+  @include reset-list;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin: 0;
+  border-radius: $global-radius;
+}
+
+.process > * {
+  position: relative;
+  flex: 1;
+  padding: rem-calc(12) rem-calc(12) rem-calc(12) rem-calc(24);
+  background: $color-beige-dark;
+  color: $color-beige-light;
+  font-size: rem-calc(16);
+  font-weight: 600;
+  line-height: rem-calc(24);
+  letter-spacing: -0.2px;
+  text-align: center;
+  text-shadow: 0px 1px 1px rgba(0,0,0,0.20);
+  transition: background 300ms ease-in-out, color 300ms ease-in-out;
+  cursor: pointer;
+  & + * {
+    margin-left: 2px;
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: rem-calc(-11);
+    border-top: rem-calc(24) solid transparent;
+    border-bottom: rem-calc(24) solid transparent;
+    border-left: rem-calc(12) solid $color-beige-dark;
+    transition: border-color 300ms ease-in-out;
+    z-index: 2;
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-top: rem-calc(24) solid transparent;
+    border-bottom: rem-calc(24) solid transparent;
+    border-left: rem-calc(12) solid $color-beige-light;
+    z-index: 1;
+  }
+  &:first-child:before {
+    border: none;
+  }
+  &:last-child:after {
+    border: none;
+  }
+  &.is-current {
+    background-color: $color-brown;
+    color: white;
+    &:after {
+      border-left-color: $color-brown;
+    }
+  }
+}
+
+#review-list-assigned-users {
+  margin-top: 1rem;
+}
+
+.review-assigned-users {
+
+  margin-top: 1rem;
+
+  input[type="search"] {
+    border: 1px solid $color-brown;
+  }
+
+  .user-display div.alert-box {
+    &:first-of-type {
+      margin-top: rem-calc(6);
+    }
+    margin-top: rem-calc(8);
+    margin-bottom: 0;
+    border: 1px solid $color-brown;
+    background-color: $color-beige;
+    color: inherit;
+    padding: rem-calc(6);
+
+    a.close {
+      opacity: inherit;
+    }
+  }
+
+  .review-assign-notice {
+    margin-bottom: rem-calc(6);
+  }
+
+  .review-assigned-users-toggle {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: rem-calc(8);
+
+    svg {
+      height: rem-calc(16);
+      width: rem-calc(16);
+      color: $color-brown;
+
+      &:hover {
+        color: inherit;
+      }
+    }
+  }
+
+  #button-assign, #button-change-compiler {
+    margin-top: rem-calc(6);
+  }
+}
+
+.process-action{
+  overflow: hidden;
+  padding-top: rem-calc(12);
+  min-height: rem-calc(60);
+}
+
+.process-roles {
+  border: 1px solid $color-beige-dark;
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+  padding: 1rem;
+}
+
+.process-single-role {
+  &:not(:last-of-type) {
+    border-bottom: 1px solid $color-beige;
+    padding-bottom: 1rem;
+  }
+
+  &:not(:first-of-type) {
+    padding-top: 1rem;
+  }
+
+  p:first-child {
+    margin-top: 0;
+  }
+}

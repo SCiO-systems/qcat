@@ -1,0 +1,65 @@
+{% comment %}
+  This table needs to have form_config "table_columns" specified, it defines the
+  number of columns used for the table.
+
+  A table with [table_columns] columns, each cell containing a question. If
+  there are more than [table_columns] questions, additional rows are created.
+  Table headers are only created for the first [table_columns] questions!
+
+  No buttons to add or remove additional questiongroups!
+
+  config: The configuration of the questiongroup
+
+  formset: The (repeating) forms as formset
+
+{% endcomment %}
+
+{% load i18n %}
+{% load floppyforms %}
+{% load list_to_columns %}
+
+{% with table_columns=config.table_columns %}
+  <div{% if config.questiongroup_condition %} id="{{ config.questiongroup_condition }}"{% endif %} class="questiongroup{% if config.numbered %} questiongroup-numbered-{{ config.numbered }}{% endif %}{% if config.numbered == 'prefix' %} sortable{% endif %}">
+  {{ formset.management_form }}
+  {% include "form/errors.html" with errors=formset.non_form_errors %}
+    <table>
+      {% for qg_form in formset.forms %}
+        <thead>
+          {% for field in qg_form.visible_fields %}
+
+            {% if forloop.counter == 1 %}
+              <tr>
+            {% endif %}
+
+            {% if forloop.counter <= table_columns %}
+              <th>{{ field.label }}</th>
+            {% endif %}
+
+            {% if forloop.counter == table_columns %}
+              </tr>
+            {% endif %}
+
+          {% endfor %}
+        </thead>
+        <tbody>
+          {% for field in qg_form.visible_fields %}
+            {% if forloop.first %}
+              <tr>
+            {% elif forloop.counter0|divisibleby:table_columns and not forloop.last %}
+              </tr><tr>
+            {% endif %}
+
+            <td>
+              {% formrow field using "form/question/no_label.html" %}
+            </td>
+
+            {% if forloop.last %}
+              </tr>
+            {% endif %}
+          {% endfor %}
+          {% for field in qg_form.hidden_fields %}{% formfield field %}{% endfor %}
+        </tbody>
+      {% endfor %}
+    </table>
+  </div>
+{% endwith %}

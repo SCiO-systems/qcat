@@ -1,0 +1,74 @@
+[
+{
+    "pk": 101,
+    "model": "accounts.user",
+    "fields": {
+        "groups": [
+        ],
+        "date_joined": "2015-01-13T08:24:26.031Z",
+        "is_superuser": false,
+        "last_login": "2015-01-13T08:24:26.047Z",
+        "user_permissions": [],
+        "password": "",
+        "email": "foo@bar.com",
+        "firstname": "Foo",
+        "lastname": "Bar"
+    }
+},
+{
+    "pk": 102,
+    "model": "accounts.user",
+    "fields": {
+        "groups": [
+        ],
+        "date_joined": "2015-01-13T08:24:26.031Z",
+        "is_superuser": false,
+        "last_login": "2015-01-13T08:24:26.047Z",
+        "user_permissions": [],
+        "password": "",
+        "email": "faz@taz.com",
+        "firstname": "Faz",
+        "lastname": "Taz"
+    }
+},
+{
+    "model": "questionnaire.questionnaire",
+    "pk": 1,
+    "fields": {
+        "uuid": "001eacdb-00a8-4e51-8db3-4b75dcdc6d1c",
+        "data": {"qg_19":[{"key_5":{"en":"Faz 1"}}],"qg_3":[{}],"qg_1":[{"key_3":{"en":"Bar"},"key_1":{"en":"Foo 1"}}],"qg_2":[{}],"qg_11":[{"key_14":["value_14_1"]}],"qg_country":[{"country":"country_CHE"}],"qg_31":[{"key_39":"102","key_40":"Faz Taz"},{"key_41":{"en":"Some other person"}}]},
+        "code": "sample_1",
+        "status": 4,
+        "version": 1,
+        "blocked": false,
+        "created": "2011-02-10T16:07:20.847Z",
+        "updated": "2011-02-10T16:07:20.847Z"
+    }
+},
+{
+    "model": "questionnaire.questionnaireconfiguration",
+    "fields": {
+        "configuration": 11002,
+        "questionnaire": 1,
+        "original_configuration": true
+    }
+},
+{
+    "pk": 1011,
+    "fields": {
+        "questionnaire": 1,
+        "user": 101,
+        "role": "compiler"
+    },
+    "model": "questionnaire.questionnairemembership"
+},
+{
+    "pk": 1012,
+    "fields": {
+        "questionnaire": 1,
+        "user": 102,
+        "role": "landuser"
+    },
+    "model": "questionnaire.questionnairemembership"
+}
+]

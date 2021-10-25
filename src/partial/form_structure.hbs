@@ -1,0 +1,40 @@
+<section class="row">
+  <a name="structure"></a>
+
+  <h2 data-magellan-destination="structure">Structure</h2>
+
+  <h3>Grid</h3>
+  <p>
+    The grid is made with the Foundation Framework.
+    <br>
+    Please find the <a href="http://foundation.zurb.com/docs/components/grid.html">related documentation here.</a>
+  </p>
+  <dl class="tabs" data-tab>
+    <dd class="active"><a href="#panel00-01">Result</a></dd>
+    <dd><a href="#panel00-02">HTML</a></dd>
+  </dl>
+  <div class="tabs-content panel">
+    <div class="content active" id="panel00-01">
+      {{> structure_grid}}
+    </div>
+    <div class="content" id="panel00-02">
+      {{#markdown}}{{ embed 'src/partial/form_element/structure_grid.hbs' 'xml' }}{{/markdown}}
+    </div>
+  </div>
+
+  <h3>Questions group</h3>
+  <p>All questions should be grouped in fieldset.</p>
+
+  <dl class="tabs" data-tab>
+    <dd class="active"><a href="#panel01-01">Result</a></dd>
+    <dd><a href="#panel01-02">HTML</a></dd>
+  </dl>
+  <div class="tabs-content panel">
+    <div class="content active" id="panel01-01">
+      {{> structure_group}}
+    </div>
+    <div class="content" id="panel01-02">
+      {{#markdown}}{{ embed 'src/partial/form_element/structure_group.hbs' 'xml' }}{{/markdown}}
+    </div>
+  </div>
+</section>

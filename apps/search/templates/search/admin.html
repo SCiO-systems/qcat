@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block title %}QCAT - Search Index Administration{% endblock %}
+
+{% block content %}
+
+<section>
+  <div class="row is-rhythmed-2">
+    <h1>Search Index Administration</h1>
+  </div>
+
+  <div class="row">
+    {% if configurations %}
+      <table class="small-12 columns">
+        <thead>
+          <tr>
+            <th>Configuration</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for config in configurations %}
+            <tr>
+              <td>{{ config.object }}</td>
+              <td>
+                  {% if config.index_count == None %}
+                    <span data-tooltip aria-haspopup="true" class="has-tip" title="<p><strong>No index for this configuration.</strong></p><p>There is no index yet for this configuration. Please create one and update it to index the questionnaires.</p>">
+                      <strong class="text-warning">No Index!</strong>
+                    </span>
+                  {% else %}
+                    <span data-tooltip aria-haspopup="true" class="has-tip" title="<p>There are {{ config.index_count }} questionnaires in the index of the configuration.</p><p>There are {{ config.db_count }} questionnaires with this configuration in the database.</p><p><i>Please note that these do not necessarily have to be the same questionnaires!</i></p>">
+                      <strong class="text-{% if config.index_count != config.db_count %}warning{% else %}ok{% endif %}">
+                        {{ config.index_count }} / {{ config.db_count }}
+                      </strong>
+                    </span>
+                  {% endif %}
+              </td>
+              <td>
+                <span data-tooltip aria-haspopup="true" class="has-tip" title="
+                <p><strong>Create or update the index.</strong></p><p>Use this if you made changes to the configuration (eg. after adding or modifying a field of the questionnaire).</p><p><i>This does not scan or index the questionnaires, this has to be done separately.</i></p>">
+                  <a href="{% url 'search:index' config.object.code config.object.edition %}" class="small button" style="margin-top: 0;">Create</a>
+                </span>
+                <span data-tooltip aria-haspopup="true" class="has-tip" title="<p><strong>Update the index.</strong></p><p>Scan all the questionnaires of the configuration in the database and add them to the index.</p>">
+                  <a href="{% url 'search:update' config.object.code config.object.edition %}" class="small button" style="margin-top: 0;">Update</a>
+                </span>
+                <span data-tooltip aria-haspopup="true" class="has-tip" title="<p><strong>Delete the index.</strong></p><p>Delete the given index.</p>">
+                  <a href="{% url 'search:delete_one' config.object.code config.object.edition %}" class="small button" style="margin-top: 0;">Delete</a>
+                </span>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <p>
+        <span data-tooltip aria-haspopup="true" class="has-tip" title="<p><strong>Delete all indices.</strong></p><p>Delete all the indices.</p><p><strong>HANDLE WITH CARE!</strong></p>">
+          <a href="{% url 'search:delete_all' %}" class="small button alert" style="margin-top: 0;">Delete all</a>
+        </span>
+      </p>
+    {% else %}
+      <p>No active configurations found</p>
+    {% endif %}
+  </div>
+
+  <div class="row is-rhythmed-2">
+    <h1>Cache Administration</h1>
+  </div>
+  <div class="row">
+    <p>
+      <span data-tooltip aria-haspopup="true" class="has-tip" title="<p><strong>Delete the caches.</strong></p><p>Delete all the cached configurations as they never expire.</p>">
+        <a href="{% url 'search:delete_caches' %}" class="small button alert" style="margin-top: 0;">Delete caches</a>
+      </span>
+      Hint: to force rebuilding of the python-cache for all instances, restart uwsgi.
+    </p>
+      <p>
+        <span data-tooltip aria-haspopup="true" class="has-tip" title="<p><strong>Build cache for all configurations.</strong></p><p>This will take a while.</p>">
+          <a href="{% url 'search:build_caches' %}" class="small button alert" style="margin-top: 0;">Build cache for all configurations</a>
+        </span>
+      </p>
+  </div>
+
+</section>
+
+{% endblock %}

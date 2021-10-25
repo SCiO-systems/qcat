@@ -1,0 +1,60 @@
+.orbit-container {
+  max-height:576px;
+}
+
+.orbit-caption {
+  text-align:center;
+
+  @media #{$large-up} {
+    min-height:192px;
+  }
+}
+
+.orbit-caption-title {
+  color:#fff;
+  font-weight: 600;
+
+  @media #{$small} {
+    font-size: rem-calc(20);
+  }
+
+  @media #{$medium-up} {
+    font-size: rem-calc(28);
+  }
+
+  @media #{$large-up} {
+    font-size: inherit;
+  }
+}
+.orbit-caption-text {
+  font-weight: 300;
+
+  @media #{$small} {
+    font-size: rem-calc(14);
+    line-height: lineHeight(1.5);
+  }
+
+  @media #{$medium-up} {
+    font-size: rem-calc(20);
+    line-height: lineHeight(3);
+  }
+
+  @media #{$large-up} {
+    font-size: rem-calc(28);
+  }
+}
+.orbit-container .orbit-slides-container img {
+  width:100%;
+}
+.orbit-container .orbit-slides-container>* .orbit-caption {
+  background-color: #dc7d35;
+  opacity: 0.8;
+
+  @media #{$small-only} {
+    padding: rem-calc(16);
+  }
+
+  @media #{$large-up} {
+    bottom:63px;
+  }
+}

@@ -1,0 +1,76 @@
+{% comment %}
+  filter_configuration
+  request
+  is_type_disabled
+{% endcomment %}
+
+<div class="row large-no-gutters">
+  <div class="medium-9 columns">
+    <div class="search-field">
+      <input type="search" tabindex="1" placeholder="Search" name="q" value="{{ request.GET.q|default:'' }}">
+    </div>
+  </div>
+  <div class="medium-3 columns">
+    <div class="search-category">
+      {% with request.GET.type|default:'sample' as selected_type %}
+        <a href="#" id="search-type-display" data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="button no-radius dropdown secondary light{% if is_type_disabled %} disabled{% endif %}">
+          {% if selected_type == 'sample' %}
+            SAMPLE
+          {% else %}
+            All SLM Data
+          {% endif %}
+        </a>
+        <ul id="drop1" data-dropdown-content class="f-dropdown search-type-select" aria-hidden="true">
+          <li><a href="#" data-type="sample">SAMPLE</a></li>
+        </ul>
+        <input type="hidden" name="type" id="search-type" value="{{ selected_type }}">
+      {% endwith %}
+    </div>
+  </div>
+</div>
+<div class="row large-no-gutters is-rhythmed">
+  <div class="medium-3 columns">
+    <label for="filter-country">Country</label>
+    <select name="filter-country" class="chosen-select" data-questiongroup="qg_location" data-key="country" data-placeholder="Select or type a country name">
+      <option value=""></option>
+      {% with request.GET.filter__qg_location__country|default:None as selected_country %}
+        {% for country in filter_configuration.countries %}
+          <option value="{{ country.0 }}" {% if selected_country == country.0 %}selected="selected"{% endif %}>{{ country.1 }}</option>
+        {% endfor %}
+    {% endwith %}
+    </select>
+  </div>
+  <div class="medium-3 columns">
+    <label for="filter-project">Project</label>
+    <select name="filter-project" class="chosen-select" data-questiongroup="qg_funding_project" data-key="funding_project" data-placeholder="Select or type a project name">
+      <option value=""></option>
+      {% with request.GET.filter__qg_funding_project__funding_project|default:None as selected_project %}
+        {% for project in filter_configuration.projects %}
+          <option value="{{ project.0 }}" {% if selected_project == project.0|stringformat:"i" %}selected="selected"{% endif %}>{{ project.1 }}</option>
+        {% endfor %}
+      {% endwith %}
+    </select>
+  </div>
+  <div class="medium-3 columns">
+    <label for="filter-institution">Institution</label>
+    <select name="filter-institution" class="chosen-select" data-questiongroup="qg_funding_institution" data-key="funding_institution" data-placeholder="Select or type a name">
+      <option value=""></option>
+      {% with request.GET.filter__qg_funding_institution__funding_institution|default:None as selected_institution %}
+        {% for institution in filter_configuration.institutions %}
+          <option value="{{ institution.0 }}" {% if selected_institution == institution.0|stringformat:"i" %}selected="selected"{% endif %}>{{ institution.1 }}</option>
+        {% endfor %}
+      {% endwith %}
+    </select>
+  </div>
+  <div class="medium-3 columns">
+    <label for="language">Language</label>
+    <select name="filter-language" id="search-language" class="chosen-select" data-placeholder="Select or type a language name">
+      <option value=""></option>
+      {% with request.GET.lang|default:None as selected_lang %}
+        {% for lang in filter_configuration.languages %}
+          <option value="{{ lang.0 }}"{% if selected_lang == lang.0 %} selected="selected"{% endif %}>{{ lang.1 }}</option>
+        {% endfor %}
+      {% endwith %}
+    </select>
+  </div>
+</div>

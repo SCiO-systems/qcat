@@ -1,0 +1,17 @@
+{% if review_config %}
+  {% include 'details/review_panel.html' %}
+{% endif %}
+
+{% if media_content %}
+  {% include 'details/media_gallery.html' %}
+{% endif %}
+
+<section id="{{ keyword }}" class="tech-section row is-rhythmed-4" data-magellan-destination="{{ keyword }}">
+  <a name="{{ keyword }}"></a>
+  <div class="small-12 columns output">
+    <h2 class="tech-section-main-title">{{ label }}</h2>
+    {% for category in categories %}
+      {{ category }}
+    {% endfor %}
+  </div>
+</section>

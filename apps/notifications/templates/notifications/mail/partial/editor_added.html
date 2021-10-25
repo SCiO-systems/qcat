@@ -1,0 +1,26 @@
+{% comment %}
+  The base template for all "[role] added" templates where role can also be
+  reviewer, publisher, compiler. Overwrite blocks
+  - role
+  - additional
+  in the child templates.
+{% endcomment %}
+
+{% load i18n %}
+
+{% spaceless %}
+  <p>
+    {% trans "You have been added as" context "You have been added as [role] of [questionnaire] compiled by [user]." %}
+    {% block role %}{% trans "an editor" context "You have been added as an editor of [questionnaire] compiled by [user]." %}{% endblock %}
+    {% trans "of" context "You have been added as [role] of [questionnaire] compiled by [user]." %}
+    <a href="{{ base_url|add:questionnaire.get_absolute_url }}">{{ questionnaire_name }}</a>
+    {% if compiler %}
+      {% trans "compiled by" context "You have been added as [role] of [questionnaire] compiled by [user]." %}
+      <a href="{{ base_url|add:compiler.get_absolute_url }}">{{ compiler }}</a>.
+    {% endif %}
+  </p>
+
+  {% block additional %}
+    <p>{% trans "As an editor, you can edit the SLM practice in coordination with the compiler of the SLM practice. However, as an editor you cannot submit the SLM practice for review or invite other editors." %}</p>
+  {% endblock %}
+{% endspaceless %}

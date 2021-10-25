@@ -1,0 +1,36 @@
+{% load i18n %}
+{% load sekizai_tags %}
+
+{% if subcategories or 'edit_questionnaire' in permissions and 'edit' in view_mode %}
+  <section id="{{ keyword }}" class="row tech-section {% if not subcategories %} is-empty-section{% endif %}" data-magellan-destination="{{ keyword }}">
+    <a name="{{ keyword }}"></a>
+
+    <div class="tech-section-header">
+      {% if 'edit_questionnaire' in permissions and edit_step_route and view_mode == 'edit' %}
+        <div class="medium-9 columns tech-section-title" data-toggle="{{ keyword }}-content">
+          <h2>{{ numbering|default:'' }} {{ label }}</h2>
+        </div>
+        <div class="medium-3 columns tech-section-action">
+          <div class="tech-section-progress">
+            <span class="steps">{{ complete }}/{{ total }}</span>
+            <span class="meter" style="width:{{ progress }}%"></span>
+          </div>
+          <a class="button is-{{ configuration_name }} right" href="{% url edit_step_route questionnaire_identifier keyword %}">
+            {% trans "Edit this section" %} <strong>{% if has_changes %}<span class="button-has-changes">*</span>{% endif %}</strong>
+          </a>
+        </div>
+      {% elif subcategories %}
+        <div class="medium-12 columns tech-section-title" data-toggle="{{ keyword }}-content">
+          <h2>{{ numbering|default:'' }} {{ label }}</h2>
+        </div>
+      {% endif %}
+    </div>
+    <div class="output hide tech-section-content" id="{{ keyword }}-content">
+      {% for subcategory, subcategory_config in subcategories %}
+        {{ subcategory }}
+      {% empty %}
+        <p>{% trans "Empty section" %}</p>
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}

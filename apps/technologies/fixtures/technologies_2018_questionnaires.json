@@ -1,0 +1,81 @@
+[
+  {
+    "pk": 201,
+    "model": "accounts.user",
+    "fields": {
+      "groups": [
+      ],
+      "date_joined": "2015-01-13T08:24:26.031Z",
+      "is_superuser": false,
+      "last_login": "2015-01-13T08:24:26.047Z",
+      "user_permissions": [],
+      "password": "",
+      "email": "ham@spam.com",
+      "firstname": "Ham",
+      "lastname": "Spam"
+    }
+  },
+  {
+    "model": "questionnaire.questionnaire",
+    "pk": 3001,
+    "fields": {
+      "uuid": "001eacdb-00a8-4e51-8db3-4b75dcdc6d1d",
+      "data": {
+        "qg_name": [
+          {
+            "name": {
+              "en": "WOCAT Technology 2018",
+              "fr": "WOCAT Technology 2018 en français"
+            }
+          }
+        ],
+        "tech_qg_1": [
+          {
+            "tech_definition": {
+              "en": "This is the definition of the first WOCAT Technology.",
+              "fr": "Ceci est la déscription 1 en français."
+            }
+          }
+        ],
+        "qg_location": [
+          {
+            "country": "country_CHE"
+          }
+        ]
+      },
+      "code": "tech_2018",
+      "status": 4,
+      "version": 1,
+      "created": "2015-02-10T16:07:20.847Z",
+      "updated": "2015-02-10T16:07:20.847Z",
+      "configuration": 1002
+    }
+  },
+  {
+    "pk": 20011,
+    "fields": {
+      "questionnaire": 3001,
+      "original_language": true,
+      "language": "fr"
+    },
+    "model": "questionnaire.questionnairetranslation"
+  },
+  {
+    "pk": 20012,
+    "fields": {
+      "questionnaire": 3001,
+      "original_language": false,
+      "language": "en"
+    },
+    "model": "questionnaire.questionnairetranslation"
+  },
+  {
+    "pk": 20101,
+    "fields": {
+      "questionnaire": 3001,
+      "user": 201,
+      "role": "compiler"
+    },
+    "model": "questionnaire.questionnairemembership"
+  }
+]

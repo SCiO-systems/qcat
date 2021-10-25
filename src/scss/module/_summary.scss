@@ -1,0 +1,12 @@
+.summary {
+  margin-left: 0;
+
+  li {
+    margin-top: rem-calc(12);
+    list-style: none;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}

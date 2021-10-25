@@ -1,0 +1,71 @@
+{% extends 'wocat/base.html' %}
+
+{% load i18n %}
+{% load sekizai_tags %}
+{% load compress %}
+{% load static %}
+
+
+{% block bodyclass %}layout-technologies{% endblock %}
+
+{% block content %}
+  <!-- Top Bar Search -->
+  {% addtoblock 'css' %}
+    <link rel="stylesheet" href="{% static 'css/chosen.min.css' %}">
+  {% endaddtoblock %}
+  {% addtoblock 'js' %}
+    {% compress js %}
+      <script src="{% static 'js/chosen.jquery.min.js' %}"></script>
+      <script src="{% static 'js/filter.min.js' %}"></script>
+    {% endcompress %}
+  {% endaddtoblock %}
+
+  <form action="" data-url="{% url 'wocat:questionnaire_list_partial' %}" data-list-url="{% url 'wocat:questionnaire_list' %}" id="search-advanced">
+    {{ rendered_filter }}
+  </form>
+
+  <div class="filter-wrapper">
+    <main class="row large-collapse is-padded-2" role="main">
+      <div class="small-12 columns">
+        {% include 'search/help_text.html' %}
+      </div>
+      <section class="tech-list small-12 columns">
+        <div class="tech-group">
+          <h2 class="is-group">{% trans "Your search results" %} (<span id="questionnaire-count">{{ count }}</span>)</h2>
+          <div id="questionnaire-list">
+            {{ rendered_list }}
+          </div>
+        </div>
+        <div id="pagination" class="is-rhythmed-2">
+          {{ pagination }}
+        </div>
+      </section>
+    </main>
+    <div class="loading-indicator hide"><div class="spinner"></div></div>
+  </div>
+
+{% endblock %}
+
+{% block help_tour %}
+  {# TODO: Remove this if not needed anymore #}
+  {% comment %}
+  {% addtoblock 'css' %}
+    <link rel="stylesheet" href="{% static 'css/introjs.min.css' %}" />
+  {% endaddtoblock %}
+  <script src="{% static 'js/intro.min.js' %}"></script>
+  <script>
+    function forceFilterType() {
+        introJs().setOptions({
+            doneLabel: '{% trans 'Done'|escapejs %}',
+            showStepNumbers: false,
+            steps: [
+                {
+                    intro: '{% trans 'Advanced filters are only available for a single type of SLM data. Please select one first.'|escapejs %}',
+                    element: document.querySelector('#search-type-display')
+                }
+            ]
+        }).start();
+    }
+  </script>
+  {% endcomment %}
+{% endblock %}

@@ -1,0 +1,16 @@
+<ol class="list-ordered">
+  <li class="list-item is-removable">
+    <input id="relatedListInput01" type="text" name="approach" list="approachesList" aria-label="approach" placeholder="search an approach to attach">
+    <datalist id="approachesList">
+      {{#each technology}}
+        <option value="{{title}}">{{title}}</option>
+      {{/each}}
+    </datalist>
+    <a class="right list-item-action link is-wocat" data-remove-this>detach</a>
+  </li>
+</ol>
+<div class="row list-action">
+  <div class="small-12 columns">
+    <p><a class="link is-wocat" data-add-item>Attach a new approach</a></p>
+  </div>
+</div>

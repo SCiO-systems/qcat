@@ -1,0 +1,33 @@
+{% load i18n %}
+
+<div class="sticky-content">
+  <div class="row">
+    <div class="sticky-entry js-sticky-entry-help-toc">
+      <div id="sticky-toc" class="sticky-menu sticky-toc-content hide">
+        <span class="sticky-toc-title">{% trans "Table of Content" %}</span>
+        <ul>
+          {% for keyword, label, numbering in toc_content %}
+            <li>
+              <a href="#{{ keyword }}" class="link">
+                {% if numbering %}{{ numbering }} {% endif %}{{ label }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <a href="#" class="sticky-entry-link js-sticky-entry-link-toggle" data-toggle="sticky-toc">
+        <svg class="icon-lines is-inline"><use xlink:href="#icon-list"></use></svg>{% trans "Table of Content" %}
+      </a>
+    </div>{% if view_mode == 'edit' %}<div class="sticky-entry">
+      <div id="sticky-help" class="sticky-menu sticky-help-content hide">
+        <span class="sticky-help-title">{% trans "Help" %}</span>
+        <ul>
+          <li><a href="#" id="show_help" class="link" onclick="return startIntro();">{% trans "Take a tour explaining the functions on this page." %}</a></li>
+        </ul>
+      </div>
+      <a href="#" class="sticky-entry-link js-sticky-entry-link-toggle" data-toggle="sticky-help">
+        <svg class="icon-lines is-inline"><use xlink:href="#icon-information"></use></svg>{% trans "Help" %}
+      </a>
+    </div>{% endif %}
+  </div>
+</div>

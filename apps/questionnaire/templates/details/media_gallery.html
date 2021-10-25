@@ -1,0 +1,28 @@
+{% load i18n %}
+
+<div class="row is-rhythmed">
+  <div class="small-12 columns gallery">
+    <h2 class="is-unvisible">{% trans "Media Gallery" %}</h2>
+    <ul class="small-block-grid-3 medium-block-grid-6 clearing-thumbs" data-clearing="">
+      {% for data in media_content %}
+        {% if data.image %}
+          <li>
+            <a class="th th-item" href="{{ data.image }}" style="background-image: url('{{ data.interchange_list.1.0 }}')">
+              <img class="transparent"
+                   src="{{ data.interchange_list.1.0 }}"
+                   data-caption="{{ data.caption }}<br><i>{{ data.location|default:'' }}</i><br><i>{{ data.date|default:'' }}</i><br><strong>Photo: {{ data.photographer|default:'-' }}</strong>">
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+  {% if media_additional %}
+    <div class="small-12 columns output">
+      {% if media_additional.image_remarks %}
+        <h5>{{ media_additional.label_image_remarks }}{% if media_additional.label_image_remarks|last not in ".:!?" %}: {% endif %}</h5>
+        <p>{{ media_additional.image_remarks }}</p>
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
