@@ -226,6 +226,7 @@ class QuestionnaireModelTest(TestCase):
 
     def test_create_new_adds_language(self):
         language = 'en'
+        activate(language)
         ret = Questionnaire.create_new(
             configuration_code='sample', data={}, user=self.user)
         ret_languages = ret.questionnairetranslation_set.all()
@@ -234,7 +235,7 @@ class QuestionnaireModelTest(TestCase):
 
     def test_create_new_adds_language2(self):
         language = 'es'
-        activate('es')
+        activate(language)
         ret = Questionnaire.create_new(
             configuration_code='sample', data={}, user=self.user)
         ret_languages = ret.questionnairetranslation_set.all()

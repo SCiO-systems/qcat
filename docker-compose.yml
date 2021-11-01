@@ -6,6 +6,11 @@ volumes:
   elasticsearch-data:
 
 services:
+  selenium:
+    image: selenium/hub:3.11.0-dysprosium
+    ports:
+      - 4444:4444
+      - 5900:5900
 
   postgres:
     image: camptocamp/postgres:9.5
@@ -58,10 +63,10 @@ services:
     environment:
       # Environment variables for django are set in the entrypoint.sh script.
       - PYTHONPATH=/code/apps
-    #entrypoint: ["./docker_compose/web/entrypoint.sh"]
+    entrypoint: ["./docker_compose/web/entrypoint.sh"]
     # # Uncomment below line to build static and load data
     # #  - Uncomment entrypoint.sh line no. 31 only the first time, subsequent runs dont need the line
-    entrypoint: ["./docker_compose/web/entrypoint.sh", "build"]
+    #entrypoint: ["./docker_compose/web/entrypoint.sh", "build"]
     command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
     volumes:
       - .:/code
@@ -71,3 +76,4 @@ services:
       - postgres
       - elasticsearch
       - redis
+      - selenium

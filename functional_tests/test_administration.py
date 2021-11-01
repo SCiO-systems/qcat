@@ -5,9 +5,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 from apps.accounts.tests.test_models import create_new_user
 
-from selenium import webdriver
-driver = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver")
-
 
 class AdminTest(FunctionalTest):
 
