@@ -1,5 +1,6 @@
 from unittest.mock import patch, MagicMock, sentinel
 
+from django.utils.translation import activate
 from apps.configuration.cache import get_configuration
 from apps.configuration.configuration import QuestionnaireQuestion
 from apps.qcat.tests import TestCase
@@ -285,6 +286,8 @@ class ApproachParserTest(ParserTestMixin, TestCase):
         )
 
     def test_get_aims_enabling(self):
+        language = 'en'
+        activate(language)
         child = self.get_child('app_qg_15', 'app_condition_enabling_specify')
         enabling = list(self.parser.get_aims_enabling(child, 'enabling'))
         self.assertEqual(

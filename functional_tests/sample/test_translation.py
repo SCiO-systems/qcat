@@ -25,8 +25,17 @@ class TranslationTest(FunctionalTest):
         self.doLogin()
 
         # She goes to the form to enter a new Questionnaire
+        print(self.live_server_url + reverse(
+            route_questionnaire_new))
         self.browser.get(self.live_server_url + reverse(
             route_questionnaire_new))
+
+        print('############')
+        print(self.browser.requests)
+        for request in self.browser.requests:
+            print(request.url)  # <--------------- Request url
+            print(request.headers)  # <----------- Request headers
+            print(request.response.headers)  # <-- Response headers
 
         # She changes the language to Spanish
         self.changeLanguage('es')

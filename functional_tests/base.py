@@ -31,8 +31,12 @@ from apps.accounts.tests.test_models import create_new_user
 from apps.sample.tests.test_views import route_questionnaire_details as \
     route_questionnaire_details_sample
 
-from selenium import webdriver
-driver = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver")
+from seleniumwire import webdriver
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--disable-gpu')
+driver = webdriver.Chrome(chrome_options=chrome_options)
 
 
 loginRouteName = 'accounts:login'
@@ -55,8 +59,7 @@ def check_firefox_path():
         pass
     return False
 
-
-@skipUnless(check_firefox_path(), "Firefox path not specified")
+# @skipUnless(check_firefox_path(), "Firefox path not specified")
 @override_settings(
     CACHES=TEST_CACHES,
     DEBUG=True,
@@ -70,18 +73,17 @@ class FunctionalTest(StaticLiveServerTestCase):
         Use FF as browser for functional tests.
         Create a virtual display, so the browser doesn't keep popping up.
         """
-        if '-pop' not in sys.argv[1:] and settings.TESTING_POP_BROWSER is False:
-            self.display = Display(visible=0, size=(1600, 900))
-            self.display.start()
-        self.browser = webdriver.Chrome(
-            executable_path=settings.TESTING_CHROMEDRIVER_PATH)
+        # if '-pop' not in sys.argv[1:] and settings.TESTING_POP_BROWSER is False:
+        #     self.display = Display(visible=0, size=(1600, 900))
+        #     self.display.start()
+        self.browser = driver
         self.browser.implicitly_wait(3)
 
     def tearDown(self):
         # self.save_failed_screenshots()
         self.browser.quit()
-        if '-pop' not in sys.argv[1:] and settings.TESTING_POP_BROWSER is False:
-            self.display.stop()
+        # if '-pop' not in sys.argv[1:] and settings.TESTING_POP_BROWSER is False:
+        #     self.display.stop()
 
     def save_failed_screenshots(self):
         if self._outcome.errors:
@@ -191,6 +193,7 @@ class FunctionalTest(StaticLiveServerTestCase):
             condition = EC.visibility_of_element_located((locator, el))
         else:
             condition = EC.invisibility_of_element_located((locator, el))
+
         WebDriverWait(self.browser, 10).until(condition)
 
     def changeHiddenInput(self, el, val):
@@ -315,6 +318,7 @@ class FunctionalTest(StaticLiveServerTestCase):
         if exists_not is True:
             self.findByNot('xpath', btn_xpath)
             return
+
         self.wait_for('xpath', btn_xpath)
         btn = self.findBy('xpath', btn_xpath)
         if return_button is True:
@@ -526,10 +530,14 @@ class FunctionalTest(StaticLiveServerTestCase):
                      ' "{}")]'.format(user)).click()
 
     def changeLanguage(self, locale):
-        self.findBy(
+
+        elm = self.findBy(
             'xpath', '//li[contains(@class, "has-dropdown") and contains('
-                     '@class, "top-bar-lang")]/a').click()
-        self.findBy('xpath', '//a[@data-language="{}"]'.format(locale)).click()
+                     '@class, "top-bar-lang")]/a')
+
+        driver.execute_script("arguments[0].click();", elm)
+        lang_elm = self.findBy('xpath', '//a[@data-language="{}"]'.format(locale))
+        driver.execute_script("arguments[0].click();", lang_elm)
 
     def doLogin(self, user=None):
         """
@@ -563,6 +571,7 @@ class FunctionalTest(StaticLiveServerTestCase):
             'name': 'sessionid',
             'value': self.client.cookies['sessionid'].value
         })
+
         self.browser.get(self.live_server_url + reverse(loginRouteName))
 
     def doLogout(self):

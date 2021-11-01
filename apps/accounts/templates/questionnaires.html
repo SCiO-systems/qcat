@@ -90,7 +90,7 @@
           // helper to execute the ajax call and replace the container with the response.
           var loadQuestionnaires = function(status, page) {
             $.ajax({
-              url: '{% url 'questionnaires_status_list' %}?status=' + status + '&page=' + page,
+              url: '{% url 'accounts:questionnaires_status_list' %}?status=' + status + '&page=' + page,
               method: 'GET'
             }).done(function(data) {
               $('#status-' + status).html(data);

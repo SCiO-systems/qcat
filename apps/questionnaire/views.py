@@ -1185,7 +1185,7 @@ class ESQuestionnaireQueryMixin:
         self.page_size = getattr(
             self, 'page_size', get_limit_parameter(self.request))
         self.offset = self.current_page * self.page_size - self.page_size
-        self.template_configuration_code = self.configuration_code
+        self.template_configuration_code = self.configuration_code.replace('apps.', '')
         self.configuration_code = self.request.GET.get(
             'type', self.configuration_code
         ).lower()
@@ -1251,7 +1251,7 @@ class ESQuestionnaireQueryMixin:
 
     def get_es_pagination(self, es_pagination):
         return get_paginator(
-            es_pagination, self.current_page, self.page_size
+            es_pagination.data, self.current_page, self.page_size
         )
 
     def get_filter_params(self):
@@ -1313,7 +1313,6 @@ class QuestionnaireListView(TemplateView, ESQuestionnaireQueryMixin):
 
     def get_context_data(self, **kwargs):
         es_results = self.get_es_results(call_from=self.call_from)
-
         es_pagination = self.get_es_paginated_results(es_results)
         questionnaires, self.pagination = self.get_es_pagination(es_pagination)
 
