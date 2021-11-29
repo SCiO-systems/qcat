@@ -3,14 +3,10 @@ from django.contrib.auth.models import Group
 from django.urls import reverse
 from elasticmock import elasticmock
 
-from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
 from apps.accounts.tests.test_models import create_new_user
 from functional_tests.base import FunctionalTest
 from apps.questionnaire.models import Questionnaire
 from apps.sample.tests.test_views import route_questionnaire_new
-
-driver = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver")
 
 
 @elasticmock

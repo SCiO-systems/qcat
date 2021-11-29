@@ -19,6 +19,11 @@ def unccd_data_import(request):
     if request.user.is_superuser is not True:
         raise PermissionDenied()
 
+    print('$$$$$$$$$$$$$$$$$$$$$$$$$$')
+    print('$$$$$$$$$$$$$$$$$$$$$$$$$$')
+    print('$$$$$$$$$$$$$$$$$$$$$$$$$$')
+    print('$$$$$$$$$$$$$$$$$$$$$$$$$$')
+    print('$$$$$$$$$$$$$$$$$$$$$$$$$$')
     redirect_route = 'search:admin'
 
     try:

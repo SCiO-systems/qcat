@@ -31,9 +31,9 @@
         <section class="tech-list small-12 columns">
           <div class="tech-group">
             <h2 class="is-group">{% trans "Search" %}</h2>
-              <form action="{% url "staff_questionnaires_search" %}" method="get" class="questionnaire-search-form">
+              <form action="{% url "accounts:staff_questionnaires_search" %}" method="get" class="questionnaire-search-form">
                 <input type="search" id="search-questionnaires" name="term"
-                  data-url="{% url "staff_questionnaires_search" %}"
+                  data-url="{% url "accounts:staff_questionnaires_search" %}"
                   placeholder="{% trans "Search questionnaires by name, compilers name or country ISO code (alpha-3, caps: https://www.iso.org/obp/ui/#search)" %}"
                   class="questionnaire-search">
                 <input type="submit" class="search-submit button " value="Search">

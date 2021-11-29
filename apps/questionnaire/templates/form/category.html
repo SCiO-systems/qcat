@@ -180,13 +180,13 @@
         // Return early.
         return;
       }
-      
       // Enable all disabled form elements before submitting.
       var form = document.getElementById('wizard-form');
       var elements = form.elements;
       for (var i = 0, len = elements.length; i < len; ++i) {
           elements[i].disabled = false;
       }
+
       form.submit();
     }
 

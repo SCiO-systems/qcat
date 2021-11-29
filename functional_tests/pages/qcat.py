@@ -48,9 +48,10 @@ class MyDataPage(PaginationMixin, ListMixin, QcatPage):
         return logs
 
     def mark_read(self, index: int):
-        self.get_el(
+        elm = self.get_el(
             self.format_locator(self.LOC_LOG_ENTRY_CHECKBOX_READ, index=index+1)
-        ).click()
+        )
+        self.browser.execute_script("arguments[0].click();", elm)
 
     def wait_marked_read(self, index: int, is_read: bool):
         if is_read is True:

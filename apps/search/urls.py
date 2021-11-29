@@ -1,4 +1,5 @@
 from django.conf.urls import url
+from django.urls import include, path
 
 from apps.configuration import views as configuration_views
 from . import views

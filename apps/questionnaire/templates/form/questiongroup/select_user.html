@@ -81,7 +81,7 @@
                 <div class="form-user-search-loading">{% trans "Loading ..." %}</div>
                 <div class="form-user-search">
                   <label>{% trans "Search a registered WOCAT user" %}</label>
-                  <input type="search" class="user-search-field" placeholder="{% trans 'Search' %}" data-translation-no-results="{% trans 'No results found' %}" data-translation-too-many-results="{% trans 'Too many results found, please narrow the search' %}" data-search-url="{% url 'user_search' %}" data-update-url="{% url 'user_update' %}">
+                  <input type="search" class="user-search-field" placeholder="{% trans 'Search' %}" data-translation-no-results="{% trans 'No results found' %}" data-translation-too-many-results="{% trans 'Too many results found, please narrow the search' %}" data-search-url="{% url 'accounts:user_search' %}" data-update-url="{% url 'accounts:user_update' %}">
                 </div>
                 <div class="form-user-selected"></div>
                 <p class="form-user-search-error text-warning hide"></p>

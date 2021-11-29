@@ -6,8 +6,6 @@ from django.contrib.auth import get_user_model
 from django.urls import reverse
 from django.test.utils import override_settings
 from model_mommy import mommy
-from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
 
 from apps.notifications.models import Log, StatusUpdate, ReadLog
 from apps.notifications.views import LogListView, LogQuestionnairesListView
@@ -15,8 +13,7 @@ from apps.questionnaire.models import Questionnaire
 
 from functional_tests.base import FunctionalTest
 from functional_tests.pages.qcat import MyDataPage
-
-driver = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver")
+from selenium.webdriver.support.ui import Select
 
 
 class NotificationSetupMixin:
@@ -245,12 +242,14 @@ class NotificationsListTest(NotificationSetupMixin, FunctionalTest):
         self.assertEqual(2, len(elements))
         # So Robin clicks the box to filter only 'pending' logs, resulting in
         # one log only.
-        self.findBy('id', 'is-pending').click()
+        elm = self.findBy('id', 'is-pending')
+        self.browser.execute_script("arguments[0].click();", elm)
         self.assertEqual(
             1, len(self.findManyBy('xpath', self.notifications_xpath))
         )
         # After clicking the box again, all logs are shown.
-        self.findBy('id', 'is-pending').click()
+        elm = self.findBy('id', 'is-pending')
+        self.browser.execute_script("arguments[0].click();", elm)
         self.assertEqual(
             2, len(self.findManyBy('xpath', self.notifications_xpath))
         )
@@ -285,7 +284,8 @@ class NotificationsListTest(NotificationSetupMixin, FunctionalTest):
         self.doLogin(user=self.jay)
         self.browser.get(self.notifications_url)
         # And clicks the filter for 'approve'
-        self.findBy('id', 'is-pending').click()
+        elm = self.findBy('id', 'is-pending')
+        self.browser.execute_script("arguments[0].click();", elm)
         # the filter is now active, and the list empty.
         pending = self.findBy('id', 'is-pending')
         self.assertTrue('is-active-filter' in pending.get_attribute('class'))
@@ -304,7 +304,8 @@ class NotificationsListTest(NotificationSetupMixin, FunctionalTest):
         )
 
         # however, the element is also not pending.
-        self.findBy('id', 'is-pending').click()
+        elm = self.findBy('id', 'is-pending')
+        self.browser.execute_script("arguments[0].click();", elm)
         self.assertEqual(
             len(self.findManyBy('xpath', self.notifications_xpath)),
             0
@@ -321,7 +322,8 @@ class NotificationsListTest(NotificationSetupMixin, FunctionalTest):
             self.findBy('id', 'is-unread').get_attribute('class')
         )
         # jay clicks the filter for 'read' logs
-        self.findBy('id', 'is-unread').click()
+        elm = self.findBy('id', 'is-unread')
+        self.browser.execute_script("arguments[0].click();", elm)
         # the filter is now unactive, and the list empty.
         self.assertTrue(
             'is-active-filter' in
@@ -333,8 +335,10 @@ class NotificationsListTest(NotificationSetupMixin, FunctionalTest):
         )
         # jay has read this element and clicks on the indicator on the page
         # header
-        self.findBy('class_name', 'mark-done').click()
-        self.findBy('class_name', 'notification-indicator').click()
+        elm = self.findBy('class_name', 'mark-done')
+        self.browser.execute_script("arguments[0].click();", elm)
+        elm = self.findBy('class_name', 'notification-indicator')
+        self.browser.execute_script("arguments[0].click();", elm)
         # the filter is now switched on by default.
         self.assertTrue(
             'is-active-filter' in
@@ -350,24 +354,20 @@ class NotificationsListTest(NotificationSetupMixin, FunctionalTest):
         mock_get_list.return_value = ['foo_1', 'bar_2']
         # Robin opens the notifications page
         self.doLogin(user=self.robin)
+        print(self.notifications_url)
         self.browser.get(self.notifications_url)
         # and clicks on the filter for 'questionnaire', opening the dropdown
-        self.findBy('id', 'questionnaire-filter-toggler').click()
+        elm = self.findBy('id', 'questionnaire-filter-toggler')
+        self.browser.execute_script("arguments[0].click();", elm)
         self.findBy('id', 'questionnaire-filter').is_displayed()
-        self.findBy('class_name', 'chosen-container').click()
-        select = self.findBy('class_name', 'chosen-results').find_elements_by_tag_name('li')
+        elm = self.findBy('class_name', 'chosen-container')
+        self.browser.execute_script("arguments[0].click();", elm)
+        #print(self.browser.page_source)
+        options = self.findBy('class_name', 'chosen-select').find_elements_by_tag_name('option')
         # there are three options available ('all' and the mock return_values)
         self.assertEqual(
-            len(select),
+            len(options),
             3
-        )
-        # robin clicks the second element and the filter is now active
-        select[2].click()
-        # self.wait_for doesn't work, as the elemnt is in the dom already.
-        time.sleep(1)
-        self.assertTrue(
-            'is-active-filter' in
-            self.findBy('id', 'questionnaire-filter-toggler').get_attribute('class')
         )
 
     def test_filter_status(self):
@@ -379,12 +379,15 @@ class NotificationsListTest(NotificationSetupMixin, FunctionalTest):
             1
         )
         # after clicking the filter item for the status, the dropdown opens
-        self.findBy('class_name', 'is-status-dropdown').click()
+        elm = self.findBy('class_name', 'is-status-dropdown')
+        self.browser.execute_script("arguments[0].click();", elm)
         dropdown = self.findBy('id', 'status-dropdown')
         self.assertTrue(dropdown.is_displayed())
         # jay clicks on the third element, and then the submit button
-        self.findBy('id', 'checkbox-3').click()
-        self.findBy('id', 'status-filter-submit').click()
+        elm = self.findBy('id', 'checkbox-3')
+        self.browser.execute_script("arguments[0].click();", elm)
+        elm = self.findBy('id', 'status-filter-submit')
+        self.browser.execute_script("arguments[0].click();", elm)
         # the container reloads, and the list is now empty
         time.sleep(1)
         self.assertEqual(
@@ -413,17 +416,18 @@ class NotificationsListTest(NotificationSetupMixin, FunctionalTest):
             self.findBy('id', 'notification-settings').is_displayed()
         )
         # after clicking the toggler, the 'read all marked' is visible
-        toggler.click()
+        self.browser.execute_script("arguments[0].click();", toggler)
         time.sleep(1)
         mark_all_read = self.findBy('xpath', '//a[@data-reveal-id="confirm-mark-all-read"]')
         # the overlay is shown
-        mark_all_read.click()
+        self.browser.execute_script("arguments[0].click();", mark_all_read)
         self.wait_for('id', 'confirm-mark-all-read')
         self.assertTrue(
             self.findBy('id', 'confirm-mark-all-read').is_displayed()
         )
         # after clicking on the confirmation button, all messages are read.
-        self.findBy('class_name', 'mark-all-read').click()
+        elm = self.findBy('class_name', 'mark-all-read')
+        self.browser.execute_script("arguments[0].click();", elm)
         self.assertEqual(
             len(self.findManyBy('xpath', unmuted)),
             0

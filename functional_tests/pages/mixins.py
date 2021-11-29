@@ -41,16 +41,19 @@ class ListMixin:
         el.send_keys(search_term)
 
     def filter_by_type(self, type_keyword: str):
-        self.get_el(self.LOC_FILTER_TYPE_SWITCHER).click()
+        elm = self.get_el(self.LOC_FILTER_TYPE_SWITCHER)
+        self.browser.execute_script("arguments[0].click();", elm)
         locator = self.format_locator(
             self.LOC_FILTER_TYPE_ENTRY, type=type_keyword)
-        self.get_el(locator).click()
+        elm = self.get_el(locator)
+        self.browser.execute_script("arguments[0].click();", elm)
 
     def filter_by_country(self, country_name: str):
         self.select_chosen(self.LOC_FILTER_COUNTRY_CHOSEN, country_name)
 
     def apply_filter(self):
-        self.get_el(self.LOC_BUTTON_FILTER_SUBMIT).click()
+        elm = self.get_el(self.LOC_BUTTON_FILTER_SUBMIT)
+        self.browser.execute_script("arguments[0].click();", elm)
         self.wait_for(self.LOC_LOADING_INDICATOR, visibility=False)
 
     def get_active_filters(self) -> list:
@@ -101,9 +104,10 @@ class ListMixin:
                 self.get_el(locator)
 
     def click_list_entry(self, index: int):
-        self.get_el(
+        elm = self.get_el(
             self.format_locator(self.LOC_LIST_ENTRY_TITLE, i=index+1, title='')
-        ).click()
+        )
+        self.browser.execute_script("arguments[0].click();", elm)
 
 
 class ReviewMixin:
@@ -179,7 +183,8 @@ class ReviewMixin:
             message_locator: tuple=None):
         btn_locator = self.format_locator(
             self.LOC_BUTTON_REVIEW_ACTION, action=action)
-        self.get_el(btn_locator).click()
+        elm = self.get_el(btn_locator)
+        self.browser.execute_script("arguments[0].click();", elm)
         self.wait_for_modal()
         confirm_locator = self.format_locator(
             self.LOC_BUTTON_REVIEW_CONFIRM, action=action)
@@ -188,7 +193,8 @@ class ReviewMixin:
             if not message_locator:
                 message_locator = self.LOC_INPUT_REVIEW_COMMENT
             self.get_el(message_locator).send_keys(message)
-        self.get_el(confirm_locator).click()
+        elm = self.get_el(confirm_locator)
+        self.browser.execute_script("arguments[0].click();", elm)
         if check_success is True:
             assert self.has_success_message()
 
@@ -213,12 +219,14 @@ class ReviewMixin:
             message_locator=self.LOC_INPUT_REJECT_COMMENT)
 
     def finish_editing(self, check_success: bool=True, message: str=''):
-        self.get_el(self.LOC_BUTTON_FINISH_EDITING).click()
+        elm = self.get_el(self.LOC_BUTTON_FINISH_EDITING)
+        self.browser.execute_script("arguments[0].click();", elm)
         self.wait_for_modal()
         self.wait_for(self.LOC_BUTTON_FINISH_EDITING_CONFIRM)
         if message:
             self.get_el(self.LOC_INPUT_COMPILER_MESSAGE).send_keys(message)
-        self.get_el(self.LOC_BUTTON_FINISH_EDITING_CONFIRM).click()
+        elm = self.get_el(self.LOC_BUTTON_FINISH_EDITING_CONFIRM)
+        self.browser.execute_script("arguments[0].click();", elm)
         if check_success is True:
             assert self.has_success_message()
             # Important: Wait for the modal to be hidden again, otherwise async
@@ -229,31 +237,36 @@ class ReviewMixin:
         return [el.text for el in self.get_els(self.LOC_BUTTONS_REVIEW_ACTIONS)]
 
     def open_change_compiler_panel(self):
-        self.get_el(self.LOC_BUTTON_CHANGE_COMPILER_PANEL).click()
+        elm = self.get_el(self.LOC_BUTTON_CHANGE_COMPILER_PANEL)
+        self.browser.execute_script("arguments[0].click();", elm)
 
     def open_assign_user_panel(self):
-        self.get_el(self.LOC_BUTTON_ASSIGN_USER_PANEL).click()
+        elm = self.get_el(self.LOC_BUTTON_ASSIGN_USER_PANEL)
+        self.browser.execute_script("arguments[0].click();", elm)
 
     def click_change_compiler(self):
         self.wait_for(self.LOC_BUTTON_CHANGE_COMPILER)
-        self.get_el(self.LOC_BUTTON_CHANGE_COMPILER).click()
+        elm = self.get_el(self.LOC_BUTTON_CHANGE_COMPILER)
+        self.browser.execute_script("arguments[0].click();", elm)
 
     def click_update_users(self):
         self.wait_for(self.LOC_BUTTON_CHANGE_USER)
-        self.get_el(self.LOC_BUTTON_CHANGE_USER).click()
+        elm = self.get_el(self.LOC_BUTTON_CHANGE_USER)
+        self.browser.execute_script("arguments[0].click();", elm)
 
     def assign_user(self, user: str):
         self.open_assign_user_panel()
         self.get_el(self.LOC_INPUT_NEW_USER).send_keys(
             user.split(' ')[0])
-        self.select_autocomplete(user)
+        self.select_autocomplete(self.browser, user)
         self.click_update_users()
 
     def remove_user(self, editor: str):
         self.hide_notifications()
         self.open_assign_user_panel()
-        self.get_el(self.format_locator(
-            self.LOC_BUTTON_REMOVE_USER, user=editor)).click()
+        elm = self.get_el(self.format_locator(
+            self.LOC_BUTTON_REMOVE_USER, user=editor))
+        self.browser.execute_script("arguments[0].click();", elm)
         self.click_update_users()
 
     def change_compiler(
@@ -262,14 +275,15 @@ class ReviewMixin:
         self.open_change_compiler_panel()
         self.get_el(self.LOC_INPUT_NEW_COMPILER).send_keys(
             compiler.split(' ')[0])
-        self.select_autocomplete(compiler)
+        self.select_autocomplete(self.browser, compiler)
         if keep_as_editor is True:
             self.select_keep_compiler_as_editor()
         if submit is True:
             self.click_change_compiler()
 
     def select_keep_compiler_as_editor(self):
-        self.get_el(self.LOC_INPUT_KEEP_COMPILER_AS_EDITOR).click()
+        elm = self.get_el(self.LOC_INPUT_KEEP_COMPILER_AS_EDITOR)
+        self.browser.execute_script("arguments[0].click();", elm)
 
     def can_enter_new_compiler(self) -> bool:
         return not self.get_el(
@@ -344,7 +358,8 @@ class ReviewMixin:
             self.show_element(el)
 
     def close_edition_modal(self):
-        self.get_el(self.LOC_BUTTON_CLOSE_EDITION_MODAL).click()
+        elm = self.get_el(self.LOC_BUTTON_CLOSE_EDITION_MODAL)
+        self.browser.execute_script("arguments[0].click();", elm)
         self.wait_for_modal(visibility=False)
 
     def has_new_edition(self) -> bool:
@@ -402,14 +417,16 @@ class EditMixin(ReviewMixin):
         locator = self.format_locator(self.LOC_CATEGORY_TITLE, category=name)
         return self.get_el(locator)
 
-    def click_edit_category(self, keyword: str):
+    def click_edit_category(self, driver, keyword: str):
         self.hide_notifications()
         locator = self.format_locator(
             self.LOC_BUTTON_EDIT_CATEGORY, keyword=keyword)
-        self.get_el(locator).click()
+        elm = self.get_el(locator)
+        driver.execute_script("arguments[0].click();", elm)
 
-    def view_questionnaire(self):
-        self.get_el(self.LOC_BUTTON_VIEW_QUESTIONNAIRE).click()
+    def view_questionnaire(self, driver):
+        elm = self.get_el(self.LOC_BUTTON_VIEW_QUESTIONNAIRE)
+        driver.execute_script("arguments[0].click();", elm)
         assert self.has_success_message()
 
 
@@ -425,15 +442,18 @@ class DetailMixin(ReviewMixin):
     def create_new_version(self):
         btn_locator = self.format_locator(
             EditMixin.LOC_BUTTON_REVIEW_ACTION, action='edit')
-        self.get_el(btn_locator).click()
+        elm = self.get_el(btn_locator)
+        self.browser.execute_script("arguments[0].click();", elm)
         self.wait_for_modal()
         confirm_locator = self.LOC_BUTTON_CREATE_NEW_VERSION
         self.wait_for(confirm_locator)
-        self.get_el(confirm_locator).click()
+        elm = self.get_el(confirm_locator)
+        self.browser.execute_script("arguments[0].click();", elm)
         assert self.has_success_message()
 
     def edit_questionnaire(self):
-        self.get_el(self.LOC_BUTTON_EDIT_QUESTIONNAIRE).click()
+        elm = self.get_el(self.LOC_BUTTON_EDIT_QUESTIONNAIRE)
+        self.browser.execute_script("arguments[0].click();", elm)
         assert self.has_success_message()
 
     def can_create_new_version(self):
@@ -470,8 +490,9 @@ class PaginationMixin:
         return int(self.get_el(self.LOC_PAGINATION_CURRENT).text)
 
     def click_page(self, page: int):
-        self.get_el(
+        elm = self.get_el(
             self.format_locator(self.LOC_PAGINATION_PAGE_LINK, page=page)
-        ).click()
+        )
+        self.browser.execute_script("arguments[0].click();", elm)
         self.wait_for(
             self.format_locator(self.LOC_PAGINATION_CURRENT_PAGE, page=page))

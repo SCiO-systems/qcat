@@ -3,8 +3,6 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.core.management import call_command
 from django.test import override_settings
-from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
 
 from model_mommy import mommy
 from unittest.mock import patch, Mock
@@ -14,7 +12,6 @@ from apps.questionnaire.models import Questionnaire
 from functional_tests.base import FunctionalTest
 from functional_tests.pages.sample import SampleDetailPage
 
-driver = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver")
 WOCAT_MAILBOX_USER_ID = 999
 
 
@@ -23,7 +20,7 @@ WOCAT_MAILBOX_USER_ID = 999
     DO_SEND_STAFF_ONLY=False,
     WOCAT_MAILBOX_USER_ID=WOCAT_MAILBOX_USER_ID
 )
-@patch('notifications.models.EmailMultiAlternatives')
+@patch('apps.notifications.models.EmailMultiAlternatives')
 class MailsTest(FunctionalTest):
     fixtures = [
         'groups_permissions',
