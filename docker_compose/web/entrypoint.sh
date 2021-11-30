@@ -32,18 +32,26 @@ if [ "$1" = 'build' ]; then
     # # Update technologies 2018 edition
     # python manage.py runscript technologies_2018
 
-    # create static assets
-    echo '###########################'
-    echo "npm install"
+    # Generating static files
+
+    mkdir /root/.nvm
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+    nvm install 8
+    nvm use 8
+    apt-get install python2.7 -y
+    npm config set python python2.7
+
+    npm rebuild jpegtran-bin
+
+    npm install bower
+    npm install grunt-cli
     npm install
 
-    echo '###########################'
-    echo "bower install"
-    bower install
-
-    echo '###########################'
-    echo "grunt build:deploy --force"
-    grunt build:deploy --force
+    npm run bower
+    npm run grunt
 
     echo '###########################'
     echo "python3 manage.py compress --force"
