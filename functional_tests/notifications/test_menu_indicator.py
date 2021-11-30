@@ -14,7 +14,6 @@ class MenuIndicatorTest(FunctionalTest):
 
         start_site_url = self.live_server_url + reverse(route_home)
         # Alice goes to the qcat start site
-        print(start_site_url)
         self.browser.get(start_site_url)
 
         # Alice is not logged in, so no indicator is loaded.

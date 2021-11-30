@@ -29,7 +29,6 @@ class AdminTest(FunctionalTest):
         navbar = self.findBy('class_name', 'top-bar')
         elm = navbar.find_element_by_link_text('Search Index Administration')
         self.browser.execute_script("arguments[0].click();", elm)
-        print(self.browser.page_source)
 
         column_1 = self.findBy('id', 'column_1')
 

@@ -2684,9 +2684,6 @@ class QuestionnaireLinkTest(FunctionalTest):
         self.doLogin()
 
         # She goes to a part of the questionnaire and enters some data
-        print(self.live_server_url + reverse(
-            route_questionnaire_new_step,
-            kwargs={'identifier': 'new', 'step': 'cat_1'}))
         self.browser.get(self.live_server_url + reverse(
             route_questionnaire_new_step,
             kwargs={'identifier': 'new', 'step': 'cat_1'}))

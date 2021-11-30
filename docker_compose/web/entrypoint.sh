@@ -46,8 +46,11 @@ if [ "$1" = 'build' ]; then
     grunt build:deploy --force
 
     echo '###########################'
-    echo "lpython manage.py collectstatic --noinput"
-    python manage.py collectstatic --noinput
+    echo "python3 manage.py compress --force"
+    python3 manage.py compress --force
+
+    echo '###########################'
+    echo "END RUN python3 manage.py compress --force"
 
     # refresh elasticsearch
     #echo "Create and populate Elasticsearch indexes"

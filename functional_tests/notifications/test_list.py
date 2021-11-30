@@ -354,7 +354,6 @@ class NotificationsListTest(NotificationSetupMixin, FunctionalTest):
         mock_get_list.return_value = ['foo_1', 'bar_2']
         # Robin opens the notifications page
         self.doLogin(user=self.robin)
-        print(self.notifications_url)
         self.browser.get(self.notifications_url)
         # and clicks on the filter for 'questionnaire', opening the dropdown
         elm = self.findBy('id', 'questionnaire-filter-toggler')
@@ -362,7 +361,6 @@ class NotificationsListTest(NotificationSetupMixin, FunctionalTest):
         self.findBy('id', 'questionnaire-filter').is_displayed()
         elm = self.findBy('class_name', 'chosen-container')
         self.browser.execute_script("arguments[0].click();", elm)
-        #print(self.browser.page_source)
         options = self.findBy('class_name', 'chosen-select').find_elements_by_tag_name('option')
         # there are three options available ('all' and the mock return_values)
         self.assertEqual(
