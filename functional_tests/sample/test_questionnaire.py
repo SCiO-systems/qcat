@@ -7,8 +7,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from unittest.mock import patch
 from elasticmock import elasticmock
-from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
 
 from apps.accounts.models import User
 from functional_tests.base import FunctionalTest
@@ -25,8 +23,6 @@ from functional_tests.pages.sample import SampleDetailPage, SampleEditPage, \
     SampleStepPage
 from functional_tests.pages.samplemulti import SampleMultiDetailPage, \
     SampleMultiEditPage, SampleMultiStepPage
-
-driver = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver")
 
 
 @elasticmock

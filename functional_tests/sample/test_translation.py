@@ -1,4 +1,6 @@
 import pytest
+import requests
+
 from django.contrib.auth.models import Group
 from django.urls import reverse
 
@@ -24,18 +26,8 @@ class TranslationTest(FunctionalTest):
         # Alice logs in
         self.doLogin()
 
-        # She goes to the form to enter a new Questionnaire
-        print(self.live_server_url + reverse(
-            route_questionnaire_new))
         self.browser.get(self.live_server_url + reverse(
             route_questionnaire_new))
-
-        print('############')
-        print(self.browser.requests)
-        for request in self.browser.requests:
-            print(request.url)  # <--------------- Request url
-            print(request.headers)  # <----------- Request headers
-            print(request.response.headers)  # <-- Response headers
 
         # She changes the language to Spanish
         self.changeLanguage('es')
@@ -61,7 +53,7 @@ class TranslationTest(FunctionalTest):
         # She sees a warning that she is about to create a new translation
         step_page = SampleStepPage(self)
         assert step_page.has_translation_warning()
-        step_page.translation_warning_click_continue()
+        step_page.translation_warning_click_continue(self.browser)
 
         # She sees that the field already contains the original value
         text_field = self.findBy('name', 'qg_1-0-translation_key_1')
@@ -73,7 +65,7 @@ class TranslationTest(FunctionalTest):
         text_field.send_keys('Foo content in English')
 
         # She submits the step
-        step_page.submit_step(confirm_add_translation=True)
+        step_page.submit_step(self.browser, confirm_add_translation=True)
         self.findBy(
             'xpath', '//*[text()[contains(.,"Foo content in English")]]')
 
@@ -95,7 +87,7 @@ class TranslationTest(FunctionalTest):
     def test_enter_translation_in_review_process(self):
         # Alice logs in
         user_alice = create_new_user()
-        user_alice.groups = [Group.objects.get(pk=3), Group.objects.get(pk=4)]
+        user_alice.groups.set([Group.objects.get(pk=3), Group.objects.get(pk=4)])
         self.doLogin(user=user_alice)
 
         # She goes to the form to enter a new Questionnaire
@@ -118,7 +110,8 @@ class TranslationTest(FunctionalTest):
             'xpath', '//*[text()[contains(.,"Foo content in English")]]')
 
         # She is also moderator and edits the questionnaire again
-        self.findBy('xpath', '//a[text()="Edit" and @type="submit"]').click()
+        elm = self.findBy('xpath', '//a[text()="Edit" and @type="submit"]')
+        self.browser.execute_script("arguments[0].click();", elm)
 
         # She changes the language to Spanish
         self.changeLanguage('es')
@@ -129,7 +122,7 @@ class TranslationTest(FunctionalTest):
         # She sees a warning that she is about to create a new translation
         step_page = SampleStepPage(self)
         assert step_page.has_translation_warning()
-        step_page.translation_warning_click_continue()
+        step_page.translation_warning_click_continue(self.browser)
 
         # She sees that the field already contains the original value
         text_field = self.findBy('name', 'qg_1-0-translation_key_1')
@@ -141,7 +134,7 @@ class TranslationTest(FunctionalTest):
         text_field.send_keys('Foo content in Spanish')
 
         # She submits the step and sees the values were transmitted correctly.
-        step_page.submit_step(confirm_add_translation=True)
+        step_page.submit_step(self.browser, confirm_add_translation=True)
         self.findBy(
             'xpath', '//*[text()[contains(.,"Foo content in Spanish")]]')
 
@@ -158,8 +151,8 @@ class TranslationTest(FunctionalTest):
         new_page.open(login=True, user=user)
 
         # User sets the language to English and starts editing.
-        new_page.change_language('en')
-        new_page.click_edit_category('cat_1')
+        new_page.change_language('en', self.browser)
+        new_page.click_edit_category(self.browser, 'cat_1')
 
         # User does not see a translation warning (no object yet)
         step_page = SampleStepPage(self)
@@ -167,33 +160,33 @@ class TranslationTest(FunctionalTest):
 
         # User fills out a key and submits the step.
         step_page.get_el(step_page.LOC_FORM_INPUT_KEY_1).send_keys('Foo')
-        step_page.submit_step()
+        step_page.submit_step(self.browser)
 
         # User opens another step and does not see a translation warning
-        new_page.click_edit_category('cat_1')
+        new_page.click_edit_category(self.browser, 'cat_1')
         assert not step_page.has_translation_warning()
-        step_page.back_without_saving()
+        step_page.back_without_saving(self.browser)
 
         # User now changes the language to French and wants to edit again.
-        new_page.change_language('fr')
-        new_page.click_edit_category('cat_1')
+        new_page.change_language('fr', self.browser)
+        new_page.click_edit_category(self.browser, 'cat_1')
 
         # User sees a warning, telling him that he is about to add a new
         # translation.
         assert step_page.has_translation_warning()
 
         # User decides to go back to the overview.
-        step_page.translation_warning_click_go_back()
+        step_page.translation_warning_click_go_back(self.browser)
 
         # User again wants to edit in French
-        new_page.click_edit_category('cat_1')
+        new_page.click_edit_category(self.browser, 'cat_1')
         assert step_page.has_translation_warning()
 
         # This time, user continues and submits the step.
-        step_page.translation_warning_click_continue()
-        step_page.submit_step(confirm_add_translation=True)
+        step_page.translation_warning_click_continue(self.browser)
+        step_page.submit_step(self.browser, confirm_add_translation=True)
 
         # When he opens the step again (in French), no warning is displayed
         # anymore.
-        new_page.click_edit_category('cat_1')
+        new_page.click_edit_category(self.browser, 'cat_1')
         assert not step_page.has_translation_warning()

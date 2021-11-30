@@ -47,7 +47,9 @@ class LoginView(FormView):
     def dispatch(self, *args, **kwargs):
         if hasattr(self.request, 'user') and self.request.user.is_authenticated:
             return redirect(self.get_success_url())
-        return super(LoginView, self).dispatch(*args, **kwargs)
+
+        res = super(LoginView, self).dispatch(*args, **kwargs)
+        return res
 
     def get_context_data(self, **kwargs):
         # Add next_url to context to show notification in login form.

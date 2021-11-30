@@ -121,13 +121,14 @@ class Page:
         )
         self.get_el(value_locator).click()
 
-    def select_autocomplete(self, value: str):
+    def select_autocomplete(self, driver, value: str):
         # Jquery UI Autocomplete
         self.wait_for((By.CLASS_NAME, 'ui-menu-item'))
         value_locator = (
             By.XPATH,
             f'//li[@class="ui-menu-item"]//*[contains(text(), "{value}")]')
-        self.get_el(value_locator).click()
+        elm = self.get_el(value_locator)
+        driver.execute_script("arguments[0].click();", elm)
 
 
 class QcatPage(Page):
@@ -153,14 +154,17 @@ class QcatPage(Page):
         By.XPATH, '//div[contains(@class, "reveal-modal") and contains(@class, '
                   '"open") and contains(@style, "opacity: 1")]')
 
-    def change_language(self, locale):
-        self.get_el(self.LOC_MENU_LANGUAGE_SWITCHER).click()
+    def change_language(self, locale, driver):
+        elm = self.get_el(self.LOC_MENU_LANGUAGE_SWITCHER)
+        driver.execute_script("arguments[0].click();", elm)
         locator = self.format_locator(
             self.LOC_MENU_LANGUAGE_ENTRY, locale=locale)
-        self.get_el(locator).click()
+        elm = self.get_el(locator)
+        driver.execute_script("arguments[0].click();", elm)
 
-    def click_add_slm_data(self):
-        self.get_el(self.LOC_MENU_ADD_SLM_DATA).click()
+    def click_add_slm_data(self, driver):
+        elm = self.get_el(self.LOC_MENU_ADD_SLM_DATA)
+        driver.execute_script("arguments[0].click();", elm)
 
     def has_success_message(self, msg: str='') -> bool:
         if msg:

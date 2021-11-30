@@ -4,13 +4,9 @@ from django.conf import settings
 from django.core.management import call_command
 from django.test import override_settings
 from rest_framework.reverse import reverse
-from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
 
 from apps.accounts.tests.test_commands import create_new_user
 from functional_tests.base import FunctionalTest
-
-driver = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver")
 
 TEST_MAINTENANCE_FILE = os.path.join(
     settings.BASE_DIR, 'envs/TEST_NEXT_MAINTENANCE')

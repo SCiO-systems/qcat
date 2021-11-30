@@ -59,9 +59,9 @@ urlpatterns += i18n_patterns(
 
 if settings.DEBUG:
     urlpatterns += i18n_patterns(
-        url(r'^sample/', include(('apps.sample.urls','sample'), namespace='sample')),
-        url(r'^samplemulti/', include(('apps.samplemulti.urls','samplemulti'),
-            namespace='samplemulti')),
+        # url(r'^sample/', include(('apps.sample.urls','sample'), namespace='sample')),
+        # url(r'^samplemulti/', include(('apps.samplemulti.urls','samplemulti'),
+        #     namespace='samplemulti')),
         url(r'^samplemodule/',
             include(('apps.samplemodule.urls','samplemodule'), namespace='samplemodule')),
         url(r'^404/', TemplateView.as_view(template_name='404.html')),

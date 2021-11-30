@@ -31,13 +31,9 @@ from apps.accounts.tests.test_models import create_new_user
 from apps.sample.tests.test_views import route_questionnaire_details as \
     route_questionnaire_details_sample
 
-from seleniumwire import webdriver
-chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument('--no-sandbox')
-chrome_options.add_argument('--headless')
-chrome_options.add_argument('--disable-gpu')
-driver = webdriver.Chrome(chrome_options=chrome_options)
-
+from django.contrib.sessions.backends.db import SessionStore
+from django.contrib.auth import BACKEND_SESSION_KEY, SESSION_KEY, HASH_SESSION_KEY, get_user_model
+from selenium.webdriver.support.ui import Select
 
 loginRouteName = 'accounts:login'
 
@@ -76,6 +72,11 @@ class FunctionalTest(StaticLiveServerTestCase):
         # if '-pop' not in sys.argv[1:] and settings.TESTING_POP_BROWSER is False:
         #     self.display = Display(visible=0, size=(1600, 900))
         #     self.display.start()
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.add_argument('--no-sandbox')
+        chrome_options.add_argument('--headless')
+
+        driver = webdriver.Chrome(chrome_options=chrome_options)
         self.browser = driver
         self.browser.implicitly_wait(3)
 
@@ -209,10 +210,13 @@ class FunctionalTest(StaticLiveServerTestCase):
         blocking certain elements, namely when using headless browser for
         testing. Sets the header to "position: relative".
         """
-        form_header = self.findBy(
-            'xpath', '//header[contains(@class, "wizard-header")]')
-        self.browser.execute_script(
-            'arguments[0].style.position = "relative";', form_header)
+        try:
+            form_header = self.findBy(
+                'xpath', '//header[contains(@class, "wizard-header")]')
+            self.browser.execute_script(
+                'arguments[0].style.position = "relative";', form_header)
+        except:
+            pass
 
     def rearrangeStickyMenu(self):
         """
@@ -273,8 +277,9 @@ class FunctionalTest(StaticLiveServerTestCase):
             self.findByNot(
                 'xpath', '//a[@data-reveal-id="confirm-{}"]'.format(action))
             return
-        self.findBy(
-            'xpath', '//a[@data-reveal-id="confirm-{}"]'.format(action)).click()
+        elm = self.findBy(
+            'xpath', '//a[@data-reveal-id="confirm-{}"]'.format(action))
+        self.browser.execute_script("arguments[0].click();", elm)
         btn_xpath = '//button[@name="{}"]'.format(action)
         if action == 'edit':
             # No button for "edit"
@@ -307,7 +312,9 @@ class FunctionalTest(StaticLiveServerTestCase):
             self.toggle_all_sections()
 
     def submit_form_step(self):
-        self.findBy('id', 'button-submit').click()
+        elm = self.findBy('id', 'button-submit')
+        self.browser.execute_script("arguments[0].click();", elm)
+
         self.findBy('xpath', '//div[contains(@class, "success")]')
         self.toggle_all_sections()
 
@@ -334,7 +341,7 @@ class FunctionalTest(StaticLiveServerTestCase):
         self.hide_notifications()
         links = self.findManyBy('class_name', 'js-expand-all-sections')
         for link in reversed(links):
-            link.click()
+            self.browser.execute_script("arguments[0].click();", link)
 
     def open_questionnaire_details(self, configuration, identifier=None):
         route = route_questionnaire_details_sample
@@ -519,15 +526,16 @@ class FunctionalTest(StaticLiveServerTestCase):
     def select_chosen_element(self, chosen_id: str, chosen_value: str):
         chosen_el = self.findBy('xpath', '//div[@id="{}"]'.format(chosen_id))
         self.scroll_to_element(chosen_el)
-        chosen_el.click()
+        self.browser.execute_script("arguments[0].click();", chosen_el)
         self.findBy(
             'xpath', '//div[@id="{}"]//ul[@class="chosen-results"]/li[text()='
                      '"{}"]'.format(chosen_id, chosen_value)).click()
 
     def clickUserMenu(self, user):
-        self.findBy(
+        elm = self.findBy(
             'xpath', '//li[contains(@class, "has-dropdown")]/a[contains(text(),'
-                     ' "{}")]'.format(user)).click()
+                     ' "{}")]'.format(user))
+        self.browser.execute_script("arguments[0].click();", elm)
 
     def changeLanguage(self, locale):
 
@@ -535,9 +543,9 @@ class FunctionalTest(StaticLiveServerTestCase):
             'xpath', '//li[contains(@class, "has-dropdown") and contains('
                      '@class, "top-bar-lang")]/a')
 
-        driver.execute_script("arguments[0].click();", elm)
+        self.browser.execute_script("arguments[0].click();", elm)
         lang_elm = self.findBy('xpath', '//a[@data-language="{}"]'.format(locale))
-        driver.execute_script("arguments[0].click();", lang_elm)
+        self.browser.execute_script("arguments[0].click();", lang_elm)
 
     def doLogin(self, user=None):
         """
@@ -558,28 +566,32 @@ class FunctionalTest(StaticLiveServerTestCase):
         Set the cookie so the custom middleware doesn't force-validate the login
         against the login API.
         """
-        auth_user = user
-        auth_user.backend = 'accounts.authentication.WocatCMSAuthenticationBackend'
-        mock_authenticate.return_value = user
-        mock_authenticate.__name__ = ''
-        mock_cms_authenticate.return_value = user
-        mock_cms_get_and_update_django_user.return_value = user
 
-        self.client.login(username='spam', password='eggs')
-        # note the difference: self.client != self.browser, copy the cookie.
-        self.browser.add_cookie({
-            'name': 'sessionid',
-            'value': self.client.cookies['sessionid'].value
-        })
+        session = SessionStore()
+        session[SESSION_KEY] = user.pk
+        session[BACKEND_SESSION_KEY] = settings.AUTHENTICATION_BACKENDS[0]
+        session[HASH_SESSION_KEY] = user.get_session_auth_hash()
+        session.save()
+
+        self.browser.get(self.live_server_url + "/404_no_such_url/")
+        self.browser.add_cookie(dict(
+            name=settings.SESSION_COOKIE_NAME,
+            value=session.session_key,
+            path='/',
+            secure=False,
+            httpOnly=True
+        ))
 
         self.browser.get(self.live_server_url + reverse(loginRouteName))
 
     def doLogout(self):
         try:
-            self.browser.find_element_by_xpath(
-                '//li[contains(@class, "user-menu")]/a').click()
-            self.browser.find_element_by_xpath(
-                '//ul[@class="dropdown"]/li/a[contains(@href, "/accounts/logout/")]').click()
+            elm = self.browser.find_element_by_xpath(
+                '//li[contains(@class, "user-menu")]/a')
+            self.browser.execute_script("arguments[0].click();", elm)
+            elm = self.browser.find_element_by_xpath(
+                '//ul[@class="dropdown"]/li/a[contains(@href, "/accounts/logout/")]')
+            self.browser.execute_script("arguments[0].click();", elm)
         except NoSuchElementException:
             pass
         self.browser.delete_cookie('fe_typo_user')

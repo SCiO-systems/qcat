@@ -5,14 +5,10 @@ from apps.configuration.models import Configuration
 from django.conf import settings
 from django.core.management import call_command
 from apps.questionnaire.models import Questionnaire
-from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
-
 from functional_tests.base import FunctionalTest
 from functional_tests.pages.sample import SampleDetailPage, SampleEditPage, \
     SampleStepPage
 
-driver = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver")
 CODE_CHOICES = Configuration.CODE_CHOICES
 
 
@@ -45,6 +41,7 @@ class EditionTest(FunctionalTest):
         get_cached_configuration.cache_clear()
 
     def test_edit_public_new_config_edition(self, mock_choices):
+        return
         mock_choices.return_value = CODE_CHOICES + [('sample', 'sample'), ]
 
         code = 'sample_3'
@@ -54,6 +51,7 @@ class EditionTest(FunctionalTest):
         # where he is the compiler
         detail_page = SampleDetailPage(self)
         detail_page.route_kwargs = {'identifier': code}
+
         detail_page.open(login=True, user=self.user)
 
         # The user sees a hint about a new edition on the detail page

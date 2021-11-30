@@ -8,7 +8,7 @@
 
   <div class="top-bar-search">
     <div class="row large-no-gutters">
-      <form action="{% url "staff_questionnaires_search" %}" method="get" class="questionnaire-search-form">
+      <form action="{% url "accounts:staff_questionnaires_search" %}" method="get" class="questionnaire-search-form">
         <input type="text" value="{{ request.GET.term }}" name="term" class="questionnaire-search">
         <input type="submit" class="search-submit button" value="Search">
       </form>

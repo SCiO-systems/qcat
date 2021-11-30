@@ -245,6 +245,7 @@ class QuestionnaireRetrieveMixin(TemplateResponseMixin):
         """
         if self.has_object:
             obj = query_questionnaire(self.request, self.identifier).first()
+
             if not obj:
                 raise Http404()
             return obj
@@ -271,7 +272,7 @@ class QuestionnaireRetrieveMixin(TemplateResponseMixin):
         if self.view_mode == 'view' or self.has_object:
             url = self.object.get_absolute_url()
         else:
-            url = reverse('{}:questionnaire_new'.format(self.url_namespace))
+            url = reverse('{}:questionnaire_new'.format(self.url_namespace.replace('apps.', '')))
 
         return '{url}#{step}'.format(url=url, step=step)
 
@@ -282,10 +283,10 @@ class QuestionnaireRetrieveMixin(TemplateResponseMixin):
         Returns: string
         """
         if self.has_object:
-            url = reverse('{}:questionnaire_edit'.format(self.url_namespace),
+            url = reverse('{}:questionnaire_edit'.format(self.url_namespace.replace('apps.', '')),
                           args=[self.object.code])
         else:
-            url = reverse('{}:questionnaire_new'.format(self.url_namespace))
+            url = reverse('{}:questionnaire_new'.format(self.url_namespace.replace('apps.', '')))
 
         return '{url}#{step}'.format(url=url, step=step)
 
@@ -354,7 +355,7 @@ class QuestionnaireSaveMixin(StepsMixin):
         return super().dispatch(request, *args, **kwargs)
 
     def get_success_url(self):
-        return reverse('{}:questionnaire_edit'.format(self.url_namespace),
+        return reverse('{}:questionnaire_edit'.format(self.url_namespace.replace('apps.', '')),
                        kwargs={'identifier': self.object.code})
 
     def validate(self, subcategories, original_locale):
@@ -702,7 +703,6 @@ class QuestionnaireView(QuestionnaireRetrieveMixin, StepsMixin, InheritedDataMix
                 blocked_by=blocked_by if not can_edit else False,
                 other_version_status=other_version_status
             )
-
         csrf_token = get_token(
             self.request) if 'edit_questionnaire' in permissions else None
 
@@ -826,14 +826,15 @@ class QuestionnaireView(QuestionnaireRetrieveMixin, StepsMixin, InheritedDataMix
         welcome_info = {}
         if not self.has_object:
             welcome_info = {
-                'data_type': self.url_namespace,
+                'data_type': self.url_namespace.replace('apps.', ''),
                 'first_section_url': reverse(
-                    '{}:questionnaire_new_step'.format(self.url_namespace),
+                    '{}:questionnaire_new_step'.format(self.url_namespace).replace('apps.', ''),
                     kwargs={
                         'identifier': self.identifier,
                         'step': self.get_steps()[0]
                     })
             }
+
         url = ''
         if self.has_object:
             if self.view_mode == 'edit':
@@ -1144,7 +1145,7 @@ class QuestionnaireStepView(LoginRequiredMixin, QuestionnaireRetrieveMixin,
 
         view_url = ''
         if self.has_object:
-            view_url = reverse('{}:questionnaire_view_step'.format(self.url_namespace),
+            view_url = reverse('{}:questionnaire_view_step'.format(self.url_namespace.replace('apps.', '')),
                                args=[self.identifier, self.kwargs['step']])
 
         show_translation_warning = False

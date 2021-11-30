@@ -57,15 +57,18 @@ class QuestionnaireStepPage(QcatPage):
             el.clear()
         el.send_keys(text)
 
-    def submit_step(self, confirm_add_translation: bool=False):
-        self.get_el(self.LOC_BUTTON_SUBMIT).click()
+    def submit_step(self, driver, confirm_add_translation: bool=False):
+        elm = self.get_el(self.LOC_BUTTON_SUBMIT)
+        driver.execute_script("arguments[0].click();", elm)
         if confirm_add_translation:
             self.wait_for_modal()
-            self.get_el(self.LOC_MODAL_TRANSLATION_CONFIRM_CREATE).click()
+            elm = self.get_el(self.LOC_MODAL_TRANSLATION_CONFIRM_CREATE)
+            driver.execute_script("arguments[0].click();", elm)
         assert self.has_success_message()
 
-    def back_without_saving(self):
-        self.get_el(self.LOC_BUTTON_BACK_WITHOUT_SAVING).click()
+    def back_without_saving(self, driver):
+        elm = self.get_el(self.LOC_BUTTON_BACK_WITHOUT_SAVING)
+        driver.execute_script("arguments[0].click();", elm)
 
     def check_links(self, link_list: list, count: bool=True) -> bool:
         found_links = []
@@ -115,9 +118,11 @@ class QuestionnaireStepPage(QcatPage):
     def has_translation_warning(self):
         return self.exists_el(self.LOC_MODAL_TRANSLATION_WARNING)
 
-    def translation_warning_click_go_back(self):
-        self.get_el(self.LOC_BUTTON_TRANSLATION_WARNING_BACK).click()
+    def translation_warning_click_go_back(self, driver):
+        elm = self.get_el(self.LOC_BUTTON_TRANSLATION_WARNING_BACK)
+        driver.execute_script("arguments[0].click();", elm)
 
-    def translation_warning_click_continue(self):
-        self.get_el(self.LOC_BUTTON_TRANSLATION_WARNING_CONTINUE).click()
-        self.wait_for_modal(visibility=False)
+    def translation_warning_click_continue(self, driver):
+        elm = self.get_el(self.LOC_BUTTON_TRANSLATION_WARNING_CONTINUE)
+        driver.execute_script("arguments[0].click();", elm)
+        #self.wait_for_modal(visibility=False)

@@ -4,12 +4,9 @@ from django.urls import reverse
 from model_mommy import mommy
 from selenium.webdriver.support.select import Select
 from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
 
 from functional_tests.base import FunctionalTest
 from apps.notifications.models import MailPreferences
-
-driver = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver")
 
 
 class MailPreferencesTest(FunctionalTest):
@@ -27,7 +24,8 @@ class MailPreferencesTest(FunctionalTest):
         select = Select(self.findBy('id', 'id_subscription'))
         select.select_by_value('none')
         # submit the form
-        self.findBy('xpath', '//input[@type="submit"]').click()
+        elm = self.findBy('xpath', '//input[@type="submit"]')
+        self.browser.execute_script("arguments[0].click();", elm)
         # the success message is shown
         self.wait_for('class_name', 'notification')
         self.assertEqual(
@@ -50,7 +48,8 @@ class MailPreferencesTest(FunctionalTest):
         # after the login, the preferences are shown
         self.browser.get(unsigned_url)
         # without changing anything, the form is submitted
-        self.findBy('xpath', '//input[@type="submit"]').click()
+        elm = self.findBy('xpath', '//input[@type="submit"]')
+        self.browser.execute_script("arguments[0].click();", elm)
         # and still, the url without signed id is used.
         self.assertEqual(
             self.browser.current_url,
@@ -59,7 +58,8 @@ class MailPreferencesTest(FunctionalTest):
         # jay now changes the language and saves again.
         select = Select(self.findBy('id', 'id_language'))
         select.select_by_value('es')
-        self.findBy('xpath', '//input[@type="submit"]').click()
+        elm = self.findBy('xpath', '//input[@type="submit"]')
+        self.browser.execute_script("arguments[0].click();", elm)
         # after the success message is shown, the flag is set that the language
         # is not overridden anymore.
         self.wait_for('class_name', 'notification')
