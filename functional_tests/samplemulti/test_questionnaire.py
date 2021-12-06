@@ -31,11 +31,11 @@ class QuestionnaireTest(FunctionalTest):
             edit_page.get_category_by_name(category)
 
         # User edits the first category.
-        edit_page.click_edit_category(categories[0][0])
+        edit_page.click_edit_category(self.browser. categories[0][0])
 
         # User saves the first category.
         step_page = QuestionnaireStepPage(self)
-        step_page.submit_step()
+        step_page.submit_step(self.browser)
 
         # All the categories are still there.
         progress_indicators = edit_page.get_progress_indicators()
@@ -51,12 +51,12 @@ class QuestionnaireTest(FunctionalTest):
         edit_page.open(login=True)
 
         # User edits first category and enters some data.
-        edit_page.click_edit_category('mcat_1')
+        edit_page.click_edit_category(self.browser, 'mcat_1')
         step_page = SampleMultiStepPage(self)
         step_page.enter_text(step_page.LOC_QUESTION_MQG01_MKEY01, 'Foo')
 
         # User saves step.
-        step_page.submit_step()
+        step_page.submit_step(self.browser)
 
         # User sees the entered data is there.
         edit_page.has_text('MKey 1')

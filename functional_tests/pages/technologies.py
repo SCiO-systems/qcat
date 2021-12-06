@@ -44,7 +44,8 @@ class Technologies2018NewPage(Technologies2018Mixin, EditMixin, QcatPage):
         return self.exists_el(self.LOC_MODAL_EDITION_2018_WARNING)
 
     def close_updated_edition_warning(self):
-        self.get_el(self.LOC_BUTTON_CLOSE_MODAL_EDITION_2018_WARNING).click()
+        elm = self.get_el(self.LOC_BUTTON_CLOSE_MODAL_EDITION_2018_WARNING)
+        self.browser.execute_script("arguments[0].click();", elm)
 
 
 class TechnologiesEditPage(Technologies2018Mixin, EditMixin, QcatPage):

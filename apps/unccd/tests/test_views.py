@@ -1,12 +1,9 @@
 from django.urls import reverse
 from django.test.client import RequestFactory
-from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
 
 from apps.accounts.tests.test_models import create_new_user
 from apps.qcat.tests import TestCase
 
-driver = webdriver.Chrome()
 
 route_home = 'unccd:home'
 route_questionnaire_details = 'unccd:questionnaire_details'

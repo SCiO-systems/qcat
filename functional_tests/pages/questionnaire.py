@@ -80,19 +80,21 @@ class QuestionnaireStepPage(QcatPage):
             return len(self.get_els(self.LOC_LINK_ENTRIES)) == len(found_links)
         return True
 
-    def delete_link(self, index: int):
-        self.get_el(
+    def delete_link(self, driver, index: int):
+        elm = self.get_el(
             self.format_locator(self.LOC_LINK_ENTRY_REMOVE, index=index+1)
-        ).click()
+        )
+        driver.execute_script("arguments[0].click();", elm)
 
-    def add_link(self, qg_keyword: str, link_name: str, add_more: bool=False):
+    def add_link(self, driver, qg_keyword: str, link_name: str, add_more: bool=False):
         if add_more is True:
-            self.get_el(
+            elm = self.get_el(
                 self.format_locator(
                     self.LOC_LINK_ADD_MORE, questiongroup=qg_keyword)
-            ).click()
+            )
+            driver.execute_script("arguments[0].click();", elm)
         self.get_el(self.LOC_INPUT_SEARCH_LINK).send_keys(link_name)
-        self.select_autocomplete(link_name)
+        self.select_autocomplete(driver, link_name)
 
     def get_user_search_field(self, index: int=1):
         return self.get_el(
@@ -106,7 +108,7 @@ class QuestionnaireStepPage(QcatPage):
     def select_user(self, user: User, index: int=1):
         search_field = self.get_user_search_field(index=index)
         search_field.send_keys(user.firstname)
-        self.select_autocomplete(user.get_display_name())
+        self.select_autocomplete(driver, user.get_display_name())
         self.wait_for(self.LOC_LOADING_SEARCH_USER, visibility=False)
 
     def remove_selected_user(self, user: User):

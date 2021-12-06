@@ -83,9 +83,6 @@ class Edition:
         Get configuration data from the 'previous' version, which is the base for this edition.
 
         """
-        print('code = ', self.code)
-        print('edition = ', self.edition)
-
         objects = self.configuration.objects.all()
         for o in objects:
             print(o, o.code, o.edition)

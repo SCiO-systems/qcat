@@ -8,7 +8,7 @@ qcat_virtualenv
 
 # Ignore local env
 .env
-
+/envs_old
 # Ignore documentation builds
 /docs/_build/*
 

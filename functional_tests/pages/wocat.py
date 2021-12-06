@@ -15,5 +15,7 @@ class AddDataPage(QcatPage):
         By.XPATH, '//div[contains(@class, "card")]//a['
                   'contains(@href, "/technologies/edit/new")]')
 
-    def click_add_technology(self):
-        self.get_el(self.LOC_BUTTON_ADD_SLM_DATA).click()
+    def click_add_technology(self, driver):
+        elm = self.get_el(self.LOC_BUTTON_ADD_SLM_DATA)
+        driver.execute_script("arguments[0].click();", elm)
+

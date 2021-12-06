@@ -391,11 +391,12 @@ class ReviewMixin:
                     i=i_xpath, configuration=e['configuration'])
                 self.get_el(locator)
 
-    def click_linked_questionnaire(self, index: int):
-        self.get_el(
+    def click_linked_questionnaire(self, driver, index: int):
+        elm = self.get_el(
             self.format_locator(
                 self.LOC_LINKED_QUESTIONNAIRE_LINK, index=index + 1)
-        ).click()
+        )
+        driver.execute_script("arguments[0].click();", elm)
 
 
 class EditMixin(ReviewMixin):

@@ -28,7 +28,7 @@ from apps.questionnaire.view_utils import get_paginator, get_pagination_paramete
 from .client import remote_user_client
 from .conf import settings
 from .forms import WocatAuthenticationForm
-from .models import User
+from apps.accounts.models import User
 
 
 logger = logging.getLogger(__name__)
