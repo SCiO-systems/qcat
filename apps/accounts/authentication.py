@@ -7,7 +7,7 @@ class WocatCMSAuthenticationBackend(ModelBackend):
     Authentication against new (2017) wocat website.
     """
 
-    def authenticate(self, username=None, password=None, **kwargs):
+    def authenticate(self, request, username=None, password=None, **kwargs):
         """
         Custom authentication. Returns a user if authentication
         successful.

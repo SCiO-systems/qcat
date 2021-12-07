@@ -257,7 +257,7 @@ class BaseSettings(Configuration):
     GRAPPELLI_INDEX_DASHBOARD = 'apps.qcat.dashboard.CustomIndexDashboard'
 
     # Elasticsearch settings
-    ES_HOST = values.Value(default='localhost', environ_prefix='')
+    ES_HOST = values.Value(default='elasticsearch', environ_prefix='')
     ES_PORT = values.IntegerValue(default=9200, environ_prefix='')
     ES_INDEX_PREFIX = values.Value(default='qcat_', environ_prefix='')
     # For Elasticsearch >= 2.3: https://www.elastic.co/guide/en/elasticsearch/reference/current/breaking-changes-2.3.html  # noqa
