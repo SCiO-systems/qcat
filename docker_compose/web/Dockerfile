@@ -1,13 +1,8 @@
 FROM python:3.6
 
 ENV PYTHONUNBUFFERED 1
-RUN mkdir /app
-COPY . /app
-WORKDIR /app
-ENV PYTHONPATH "${PYTHONPATH}:/app/apps"
-
-RUN useradd -ms /bin/bash qcat
-RUN chown -R qcat:qcat /app
+RUN mkdir /code
+WORKDIR /code
 
 # Django-gis packages
 RUN apt-get update && apt-get install -y \
@@ -15,67 +10,39 @@ RUN apt-get update && apt-get install -y \
     binutils \
     libproj-dev \
     gdal-bin \
-    libmemcached-dev \
-    netcat \
-    nano \
-    telnet
+    libmemcached-dev
+
+# Dependencies for static assets
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN apt-get install -y nodejs \
+    build-essential
 
 # Install wkhtmltopdf binary for summary pdf
 RUN wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
 RUN tar xvf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
 RUN mv wkhtmltox/bin/wkhtmlto* /usr/bin
 
-ADD requirements/* /app/
-RUN pip3 install -r development.txt
-#RUN pip3 install -r production.txt
-RUN pip3 install gunicorn
+ADD requirements/* /code/
+RUN pip install -r development.txt
 
-ADD . /app/
+ADD . /code/
 
 # Make 'wait' script available for the entrypoint-script.
 ADD https://raw.githubusercontent.com/eficode/wait-for/master/wait-for /usr/local/bin/waitfor
 RUN chmod +x /usr/local/bin/waitfor
 
-### Dependencies for static assets - Under development ###
+# install google chrome
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+RUN apt-get -y update
+RUN apt-get install -y google-chrome-stable
 
-# Install nvm to install npm and node.js
-ENV NVM_DIR /root/.nvm
-ENV NODE_VERSION 8
-RUN mkdir ${NVM_DIR}
-RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash && \
-    chmod +x ${NVM_DIR}/nvm.sh && \
-    . ${NVM_DIR}/nvm.sh && \
-    nvm alias default "${NODE_VERSION}" && \
-    nvm use default && \
-    DEFAULT_NODE_VERSION=$(nvm version default) && \
-    ln -sf ${NVM_DIR}/versions/node/${DEFAULT_NODE_VERSION}/bin/node /usr/bin/nodejs && \
-    ln -sf ${NVM_DIR}/versions/node/${DEFAULT_NODE_VERSION}/bin/node /usr/bin/node && \
-    ln -sf ${NVM_DIR}/versions/node/${DEFAULT_NODE_VERSION}/bin/npm /usr/bin/npm
+# install chromedriver
+RUN apt-get install -yqq unzip
+RUN wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE`/chromedriver_linux64.zip
+RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
 
+# set display port to avoid crash
+ENV DISPLAY=:99
 
-RUN apt-get install python2.7 -y
-RUN npm config set python python2.7
-
-RUN npm install bower
-RUN npm install grunt-cli
-RUN npm install
-
-RUN npm rebuild jpegtran-bin
-
-RUN npm run bower
-RUN npm run grunt
-
-RUN python3 manage.py collectstatic --noinput
-RUN python3 manage.py compress --force
-
-# Add Tini
-ENV TINI_VERSION v0.19.0
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
-RUN chmod +x /tini
-ENTRYPOINT ["/tini", "--"]
-
-# Run your program under Tini
-CMD ["gunicorn", "-c", "conf/gunicorn_config.py", "qcat.wsgi"]
-# or docker run your-image /your/program ...
-
-#USER qcat
+ENTRYPOINT ["/docker/django/entrypoint.sh"]

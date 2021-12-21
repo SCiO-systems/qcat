@@ -22,7 +22,7 @@ class TranslationTest(FunctionalTest):
         en_url = self.browser.current_url
 
         # User changes the language
-        page.change_language('es')
+        page.change_language('es', self.browser)
 
         # The language has changed.
         assert page.has_text('Inicio')
