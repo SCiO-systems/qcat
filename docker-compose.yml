@@ -67,9 +67,9 @@ services:
     #entrypoint: ["./docker_compose/web/entrypoint.sh"]
     # # Uncomment below line to build static and load data
     # #  - Uncomment entrypoint.sh line no. 31 only the first time, subsequent runs dont need the line
-    #entrypoint: ["./docker_compose/web/entrypoint.sh", "build"]
+    entrypoint: ["./docker_compose/web/entrypoint.sh", "build"]
     #command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
-    command: ["gunicorn", "-c", "conf/gunicorn_config.py", "qcat.wsgi"]
+    #command: ["gunicorn", "-c", "conf/gunicorn_config.py", "qcat.wsgi"]
     volumes:
       - .:/code
       - qcat_static_files:/code/static

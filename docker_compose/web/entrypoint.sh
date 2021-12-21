@@ -55,7 +55,8 @@ if [ "$1" = 'build' ]; then
 
     echo '###########################'
     echo "python3 manage.py compress --force"
-    python3 manage.py compress --force
+    python3 manage.py collectstatic
+    python3 manage.py compress
 
     echo '###########################'
     echo "END RUN python3 manage.py compress --force"

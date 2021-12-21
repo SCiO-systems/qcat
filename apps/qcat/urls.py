@@ -22,7 +22,7 @@ urlpatterns = [
         TemplateView.as_view(template_name='qcat/privacy-policy.html'),
         name='privacy-policy'),
     url(r'^grappelli/', include('grappelli.urls')),
-    url(r'^admin/login/', RedirectView.as_view(url=reverse_lazy('login'), permanent=False)),
+    url(r'^admin/login/?$', views.AdminLoginView.as_view(), name='admin:login'),
     url(r'^admin/', admin.site.urls),
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': views.static_sitemap},
         name='django.contrib.sitemaps.views.sitemap'),
