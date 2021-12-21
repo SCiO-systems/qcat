@@ -96,7 +96,6 @@ def index(request, configuration, edition):
         code=configuration, edition=edition
     )
 
-    print(questionnaire_configuration.get_configuration_errors())
     if questionnaire_configuration.get_configuration_errors() is not None:
         return HttpResponseBadRequest(
             questionnaire_configuration.configuration_error)

@@ -6,7 +6,8 @@ import requests
 from django.conf import settings
 from django.contrib import sitemaps
 from django.contrib.auth import get_user_model
-from django.urls import reverse_lazy
+from django.http import HttpResponseRedirect
+from django.urls import reverse, reverse_lazy
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.utils import timezone
@@ -180,3 +181,11 @@ class FactsTeaserView(TemplateView):
         context.update(**self.get_user_facts())
         context.update(**self.get_piwik_facts())
         return context
+
+
+class AdminLoginView(TemplateView):
+    def get(self, request, *args, **kwargs):
+        """
+        Assuming the name of the external system's login url is "login"
+        """
+        return HttpResponseRedirect(reverse('accounts:login'))
