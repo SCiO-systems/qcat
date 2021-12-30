@@ -28,8 +28,8 @@ class BaseSettings(Configuration):
     INSTALLED_APPS = (
         'django.contrib.gis',
         'django.contrib.contenttypes',
-        'grappelli.dashboard',
-        'grappelli',
+        # 'grappelli.dashboard',
+        # 'grappelli',
         'django.contrib.admin',
         'django.contrib.auth',
         'django.contrib.sessions',
