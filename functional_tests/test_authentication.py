@@ -1,14 +1,10 @@
 from django.urls import reverse
 from django.contrib.auth.models import Group
-from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
 
 from functional_tests.base import FunctionalTest
 from apps.accounts.models import User
 from apps.accounts.tests.test_models import create_new_user
 from apps.accounts.tests.test_views import accounts_route_questionnaires
-
-driver = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver")
 
 
 # @patch('wocat.views.generic_questionnaire_list')
