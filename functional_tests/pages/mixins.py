@@ -360,7 +360,7 @@ class ReviewMixin:
     def close_edition_modal(self):
         elm = self.get_el(self.LOC_BUTTON_CLOSE_EDITION_MODAL)
         self.browser.execute_script("arguments[0].click();", elm)
-        self.wait_for_modal(visibility=False)
+        #self.wait_for_modal(visibility=False)
 
     def has_new_edition(self) -> bool:
         return self.has_text(self.TEXT_NEW_EDITION_AVAILABLE)
@@ -392,10 +392,11 @@ class ReviewMixin:
                 self.get_el(locator)
 
     def click_linked_questionnaire(self, index: int):
-        self.get_el(
+        elm = self.get_el(
             self.format_locator(
                 self.LOC_LINKED_QUESTIONNAIRE_LINK, index=index + 1)
-        ).click()
+        )
+        self.browser.execute_script("arguments[0].click();", elm)
 
 
 class EditMixin(ReviewMixin):

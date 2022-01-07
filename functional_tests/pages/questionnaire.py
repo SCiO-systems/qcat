@@ -81,18 +81,20 @@ class QuestionnaireStepPage(QcatPage):
         return True
 
     def delete_link(self, index: int):
-        self.get_el(
+        elm = self.get_el(
             self.format_locator(self.LOC_LINK_ENTRY_REMOVE, index=index+1)
-        ).click()
+        )
+        self.browser.execute_script("arguments[0].click();", elm)
 
     def add_link(self, qg_keyword: str, link_name: str, add_more: bool=False):
         if add_more is True:
-            self.get_el(
+            elm = self.get_el(
                 self.format_locator(
                     self.LOC_LINK_ADD_MORE, questiongroup=qg_keyword)
-            ).click()
+            )
+            self.browser.execute_script("arguments[0].click();", elm)
         self.get_el(self.LOC_INPUT_SEARCH_LINK).send_keys(link_name)
-        self.select_autocomplete(link_name)
+        self.select_autocomplete(self.browser, link_name)
 
     def get_user_search_field(self, index: int=1):
         return self.get_el(

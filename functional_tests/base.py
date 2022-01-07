@@ -238,10 +238,11 @@ class FunctionalTest(StaticLiveServerTestCase):
         self.browser.save_screenshot(filename)
 
     def form_click_add_more(self, questiongroup_keyword):
-        self.findBy(
+        elm = self.findBy(
             'xpath',
             '//a[@data-add-item and @data-questiongroup-keyword="{}"]'.format(
-                questiongroup_keyword)).click()
+                questiongroup_keyword))
+        self.browser.execute_script("arguments[0].click();", elm)
 
     def review_action(
             self, action, exists_only=False, exists_not=False,
@@ -525,11 +526,13 @@ class FunctionalTest(StaticLiveServerTestCase):
 
     def select_chosen_element(self, chosen_id: str, chosen_value: str):
         chosen_el = self.findBy('xpath', '//div[@id="{}"]'.format(chosen_id))
-        self.scroll_to_element(chosen_el)
         self.browser.execute_script("arguments[0].click();", chosen_el)
-        self.findBy(
+        chosen_el = self.findBy('xpath', '//div[@id="{}"]'.format(chosen_id), wait=True)
+        print(chosen_el.get_attribute('innerHTML'))
+        elm = self.findBy(
             'xpath', '//div[@id="{}"]//ul[@class="chosen-results"]/li[text()='
-                     '"{}"]'.format(chosen_id, chosen_value)).click()
+                     '"{}"]'.format(chosen_id, chosen_value))
+        self.browser.execute_script("arguments[0].click();", elm)
 
     def clickUserMenu(self, user):
         elm = self.findBy(
