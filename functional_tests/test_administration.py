@@ -41,10 +41,9 @@ class AdminTest(FunctionalTest):
             column_1.find_element_by_id('module_7')
 
     def test_admin_page_translators(self):
-        return
-
         user = create_new_user(id=2, email='foo@bar.com')
         user.groups.add(Group.objects.filter(name='Translators').first())
+        user.is_superuser = True
         user.save()
 
         # Alice logs in
@@ -53,8 +52,10 @@ class AdminTest(FunctionalTest):
         # She sees the admin button in the top navigation bar and clicks on it
         self.clickUserMenu(user)
         navbar = self.findBy('class_name', 'top-bar')
-        navbar.find_element_by_link_text('Administration').click()
+        elm = navbar.find_element_by_link_text('Administration')
+        self.browser.execute_script("arguments[0].click();", elm)
 
+        print(self.browser.page_source)
         column_1 = self.findBy('id', 'column_1')
         with self.assertRaises(NoSuchElementException):
             column_1.find_element_by_id('module_2')

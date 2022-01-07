@@ -103,10 +103,11 @@ class QuestionnaireLinkSearchView(QuestionnaireSearchView, LoginRequiredMixin):
             'lookup_by': 'string',
             'value': term,
         }
+        configuration_code = self.configuration_code.replace('apps.', '')
         return Questionnaire.with_status.not_deleted().filter(
             get_query_status_filter(self.request)
         ).filter(
-            configuration__code=self.configuration_code
+            configuration__code=configuration_code
         ).filter(
             Q(data__qs_data=data_lookup_params),
         ).distinct()

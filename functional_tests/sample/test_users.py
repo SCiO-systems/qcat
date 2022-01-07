@@ -6,8 +6,6 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.urls import reverse
 from elasticmock import elasticmock
-from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
 
 from model_mommy import mommy
 from selenium.webdriver.common.by import By
@@ -23,8 +21,6 @@ from functional_tests.sample.test_search import LIST_EMPTY_RESULTS_TEXT
 from apps.questionnaire.tests.test_models import get_valid_questionnaire
 from apps.questionnaire.models import Questionnaire
 from apps.sample.tests.test_views import route_questionnaire_new_step
-
-driver = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver")
 
 
 class UserTest(FunctionalTest):
@@ -954,7 +950,7 @@ class UserDetailTest(FunctionalTest):
             id=2, email='c@d.com', firstname='abc', lastname='cde'
         )
         self.url = self.live_server_url + reverse(
-            'user_details', kwargs={'pk': self.detail_view_user.id}
+            'accounts:user_details', kwargs={'pk': self.detail_view_user.id}
         )
 
     @patch('accounts.views.remote_user_client')

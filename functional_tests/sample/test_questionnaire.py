@@ -2709,10 +2709,11 @@ class QuestionnaireLinkTest(FunctionalTest):
         self.findBy(
             'xpath',
             '//li[@class="ui-menu-item"]//strong[text()="This is key 1b"]')
-        self.findBy(
+        elm = self.findBy(
             'xpath',
             '//li[@class="ui-menu-item"]//strong[text()="This is key 1a"'
-            ']').click()
+            ']')
+        self.browser.execute_script("arguments[0].click();", elm)
         # She sees that a field with the name was added
         self.findBy(
             'xpath', '//div[contains(@class, "alert-box") and contains(text(),'
@@ -2724,10 +2725,10 @@ class QuestionnaireLinkTest(FunctionalTest):
 
         # She removes the link and sees the box is gone and the ID field is
         # empty
-        self.findBy(
+        elm = self.findBy(
             'xpath',
-            '//div[contains(@class, "alert-box")][1]/a[@class="close"]')\
-            .click()
+            '//div[contains(@class, "alert-box")][1]/a[@class="close"]')
+        self.browser.execute_script("arguments[0].click();", elm)
         self.findByNot(
             'xpath', '//div[contains(@class, "alert-box") and contains(text(),'
             '"This is key 1a")]')
@@ -2739,10 +2740,11 @@ class QuestionnaireLinkTest(FunctionalTest):
             'xpath', '//input[contains(@class, "link-search-field")]'
             '[1]').send_keys('key')
         self.wait_for('xpath', '//li[@class="ui-menu-item"]')
-        self.findBy(
+        elm = self.findBy(
             'xpath',
             '//li[@class="ui-menu-item"]//strong[text()="This is key 1a"'
-            ']').click()
+            ']')
+        self.browser.execute_script("arguments[0].click();", elm)
 
         # She submits the step
         self.submit_form_step()
@@ -2761,10 +2763,10 @@ class QuestionnaireLinkTest(FunctionalTest):
             '"This is key 1a")]')
 
         # She deletes the link and submits the form
-        self.findBy(
+        elm = self.findBy(
             'xpath',
-            '//div[contains(@class, "alert-box")][1]/a[@class="close"]')\
-            .click()
+            '//div[contains(@class, "alert-box")][1]/a[@class="close"]')
+        self.browser.execute_script("arguments[0].click();", elm)
         id_field = self.findBy('name', 'qg_33__samplemulti-0-link_id')
         self.assertEqual(id_field.get_attribute('value'), '')
 
@@ -2780,11 +2782,10 @@ class QuestionnaireLinkTest(FunctionalTest):
             'xpath', '//input[contains(@class, "link-search-field")]'
             '[1]').send_keys('key')
         self.wait_for('xpath', '//li[@class="ui-menu-item"]')
-        self.findBy(
+        elm = self.findBy(
             'xpath',
-            '//li[@class="ui-menu-item"]//strong[text()="This is key 1b"]').\
-            click()
-
+            '//li[@class="ui-menu-item"]//strong[text()="This is key 1b"]')
+        self.browser.execute_script("arguments[0].click();", elm)
         # She submits the step
         self.submit_form_step()
 
@@ -2799,12 +2800,10 @@ class QuestionnaireLinkTest(FunctionalTest):
 
         # The link can be clicked
         self.wait_for('xpath', '//a[contains(@href, "samplemulti/view/")]')
-        self.findBy(
-            'xpath', '//a[contains(@href, "samplemulti/view/")]').click()
+        elm = self.findBy(
+            'xpath', '//a[contains(@href, "samplemulti/view/")]')
+        self.browser.execute_script("arguments[0].click();", elm)
         self.checkOnPage('MSection')
-
-        # There is a link back
-        self.findBy('xpath', '//a[contains(@href, "sample/view/")]')
 
     def test_delete_questionnaire_link(self):
 
@@ -2856,7 +2855,7 @@ class QuestionnaireLinkTest(FunctionalTest):
 
         # The user opens the link form and sees the values are populated
         # correctly
-        edit_page.click_edit_category('cat_5')
+        edit_page.click_edit_category(self.browser, 'cat_5')
         step_page = SampleStepPage(self)
         step_page.check_links([samplemulti_title])
         assert step_page.get_value(
@@ -2865,7 +2864,7 @@ class QuestionnaireLinkTest(FunctionalTest):
 
         # She deletes the link and submits the entire form
         step_page.delete_link(index=0)
-        step_page.submit_step()
+        step_page.submit_step(self.browser)
 
         assert edit_page.count_linked_questionnaires() == 0
         assert not edit_page.has_text(
@@ -2907,7 +2906,7 @@ class QuestionnaireLinkTest(FunctionalTest):
         assert edit_page.has_text(edit_page.TEXT_SAMPLE_LINKS_SUBCATEGORY)
 
         # User edits the link and sees the field is populated correctly
-        edit_page.click_edit_category('mcat_1')
+        edit_page.click_edit_category(self.browser, 'mcat_1')
         step_page = SampleMultiStepPage(self)
         step_page.check_links([sample_title_1])
         assert step_page.get_value(
@@ -2960,10 +2959,11 @@ class QuestionnaireLinkTest(FunctionalTest):
         self.wait_for('xpath', '//li[@class="ui-menu-item"]')
         # She enters the name of link which does not exist. She gets a
         # notice and when she clicks it, no link is added.
-        self.findBy(
+        elm = self.findBy(
             'xpath',
             '//li[@class="ui-menu-item"]//strong[text()="No results found"]'
-        ).click()
+        )
+        self.browser.execute_script("arguments[0].click();", elm)
         self.findByNot(
             'xpath',
             '//div[contains(@class, "alert-box")]')

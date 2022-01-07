@@ -10,6 +10,7 @@ from django.views.generic import TemplateView, RedirectView
 from . import views
 
 
+# The following urls are created with the locale as prefix, eg.
 urlpatterns = [
     url(r'^about/$', views.about, name='about'),
     url(r'^about/imprint/$',
@@ -21,15 +22,13 @@ urlpatterns = [
     url(r'^about/privacy-policy/$',
         TemplateView.as_view(template_name='qcat/privacy-policy.html'),
         name='privacy-policy'),
-    #url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/login/?$', views.AdminLoginView.as_view(), name='admin:login'),
+    # url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': views.static_sitemap},
         name='django.contrib.sitemaps.views.sitemap'),
     url(r'^robots\.txt', TemplateView.as_view(template_name='robots.txt'))
 ]
-
-# The following urls are created with the locale as prefix, eg.
 # en/questionnaire
 urlpatterns += i18n_patterns(
     url(r'^$', RedirectView.as_view(

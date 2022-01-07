@@ -54,10 +54,13 @@ if [ "$1" = 'build' ]; then
     npm run grunt
 
     echo '###########################'
-    echo "python3 manage.py compress --force"
+    echo "python3 manage.py collectstatic"
     python3 manage.py collectstatic
     python3 manage.py compress
 
+    echo "LOAD TEST DATA"
+    python3 manage.py loaddata apps/sample/fixtures/sample_global_key_values.json
+    python3 manage.py loaddata apps/sample/fixtures/sample.json
     echo '###########################'
     echo "END RUN python3 manage.py compress --force"
 
