@@ -60,14 +60,15 @@ services:
     build:
       context: .
       dockerfile: ./docker_compose/web/Dockerfile.production
-    image: qcat:dev
+    image: qcat:staging
     environment:
       # Environment variables for django are set in the entrypoint.sh script.
       - PYTHONPATH=/code/apps
-    command: ["gunicorn", "-c", "conf/gunicorn_config.py", "qcat.wsgi"]
+ #   command: ["gunicorn", "-c", "conf/gunicorn_config.py", "qcat.wsgi"]
+    entrypoint: ["./docker_compose/web/entrypoint.sh", "build"]
     volumes:
-      - .:/code
-      - qcat_static_files:/code/static
+      - .:/app
+      - qcat_static_files:/static
       - /qcat_data/upload/:/upload
     ports:
       - 8000:8000
