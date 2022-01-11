@@ -36,8 +36,11 @@ services:
     image: redis:latest
     container_name: redis
     restart: unless-stopped
-    volumes:
-      - redisdata:/data
+    ports:
+      - 6379:6379
+    command: /bin/sh -c "redis-server --requirepass $$REDIS_PASSWORD"
+    env_file: ./envs/REDIS_HOST
+    
   
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.5.2
