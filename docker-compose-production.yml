@@ -2,9 +2,9 @@ version: '3'
 
 volumes:
   postgres-data:
-  redisdata:
   elasticsearch-data:
-  qcat_static_files:
+  static_files:
+  nginx-data:
 
 services:
   selenium:
@@ -77,7 +77,7 @@ services:
 #    entrypoint: ["./docker_compose/web/entrypoint.sh", "build"]
     volumes:
       - .:/app
-      - qcat_static_files:/static
+      - static_files:/static
       - /qcat_data/upload/:/upload
     ports:
       - 8000:8000
@@ -92,10 +92,16 @@ services:
     container_name: nginx
     restart: unless-stopped
     ports:
-      - 1080:80
+      - 80:80
+      - 443:443
     volumes:
-      - qcat_static_files:/static
+      - static_files:/static
       - /qcat_data/upload/:/upload
+      - /etc/letsencrypt/live/qcat-dev.wocat.net/fullchain.pem:/etc/letsencrypt/live/qcat-dev.wocat.net/fullchain.pem
+      - /etc/letsencrypt/live/qcat-dev.wocat.net/privkey.pem:/etc/letsencrypt/live/qcat-dev.wocat.net/privkey.pem
+      - nginx-data:/etc/nginx/
+      - /var/log/nginx/reverse-access.log:/var/log/nginx/reverse-access.log
+      - /var/log/nginx/reverse-error.log:/var/log/nginx/reverse-error.log
     depends_on:
       - qcat
 
