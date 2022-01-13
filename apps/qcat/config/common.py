@@ -28,8 +28,6 @@ class BaseSettings(Configuration):
     INSTALLED_APPS = (
         'django.contrib.gis',
         'django.contrib.contenttypes',
-        # 'grappelli.dashboard',
-        # 'grappelli',
         'django.contrib.admin',
         'django.contrib.auth',
         'django.contrib.sessions',
@@ -252,9 +250,6 @@ class BaseSettings(Configuration):
         environ_prefix='', default='https://wocat.net/accounts/reactivate/'
     )
     LOGIN_URL = 'accounts:login'
-
-    GRAPPELLI_ADMIN_TITLE = 'QCAT Administration'
-    GRAPPELLI_INDEX_DASHBOARD = 'apps.qcat.dashboard.CustomIndexDashboard'
 
     # Elasticsearch settings
     ES_HOST = values.Value(default='elasticsearch', environ_prefix='')

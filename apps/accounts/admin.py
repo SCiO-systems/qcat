@@ -33,8 +33,6 @@ class UserAdmin(auth_admin.UserAdmin):
     search_fields = ('email',)
     ordering = ('email',)
     filter_horizontal = ('groups',)
-    change_list_template = 'admin/change_list_filter_sidebar.html'
-    change_list_filter_template = 'admin/filter_listing.html'
 
     fieldsets = (
         (None, {'fields': ('email', 'lastname', 'firstname')}),
@@ -45,6 +43,7 @@ class UserAdmin(auth_admin.UserAdmin):
     # No new users can be added.
     def has_add_permission(self, request):
         return False
+
 
 admin.site.register(User, UserAdmin)
 

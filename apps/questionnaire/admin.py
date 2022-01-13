@@ -10,7 +10,7 @@ from .models import Lock, Questionnaire
 class LockAdmin(admin.ModelAdmin):
 
     def questionnaire_code(self):
-        return self.questionnaire.code
+        return self.questionnaire_code
 
     list_display = ['id', questionnaire_code, 'user', 'start', 'is_finished']
 

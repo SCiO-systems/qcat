@@ -7,7 +7,7 @@ django-configurations==2.2
 psycopg2-binary==2.8.4
 django-cookie-law==2.0.1
 django-pgjson==0.3.1  # legacy
-django-grappelli==2.15.1
+#django-grappelli==2.15.1
 django-floppyforms==1.9.0
 django-extensions==2.0.7
 django-imagekit==4.0.2
