@@ -2,13 +2,10 @@ import logging
 from unittest.mock import patch
 
 from django.urls import reverse
-from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
 
 from functional_tests.base import FunctionalTest
 from apps.summary.views import SummaryPDFCreateView
 
-driver = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver")
 logging.disable(logging.CRITICAL)
 
 

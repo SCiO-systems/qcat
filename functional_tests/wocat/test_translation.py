@@ -1,9 +1,5 @@
 from functional_tests.base import FunctionalTest
 from functional_tests.pages.qcat import HomePage
-from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
-
-driver = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver")
 
 
 class TranslationTest(FunctionalTest):

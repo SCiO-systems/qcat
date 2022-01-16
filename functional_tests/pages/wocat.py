@@ -16,4 +16,5 @@ class AddDataPage(QcatPage):
                   'contains(@href, "/technologies/edit/new")]')
 
     def click_add_technology(self):
-        self.get_el(self.LOC_BUTTON_ADD_SLM_DATA).click()
+        elm = self.get_el(self.LOC_BUTTON_ADD_SLM_DATA)
+        self.browser.execute_script("arguments[0].click();", elm)

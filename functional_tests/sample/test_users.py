@@ -91,9 +91,10 @@ class UserTest(FunctionalTest):
         # She sees and clicks the link in the user menu to view her
         # Questionnaires
         self.clickUserMenu(user_alice)
-        self.findBy(
+        elm = self.findBy(
             'xpath', '//li[contains(@class, "has-dropdown")]/ul/li/a['
-            'contains(@href, "accounts/questionnaires")]').click()
+            'contains(@href, "accounts/questionnaires")]')
+        self.browser.execute_script("arguments[0].click();", elm)
 
         # She sees here Questionnaires are listed, even those with
         # status draft or submitted
@@ -178,12 +179,13 @@ class UserTest(FunctionalTest):
         # versions of his Questionnaires.
         self.doLogin(user=user_bob)
         self.clickUserMenu(user_bob)
-        self.findBy(
+        elm = self.findBy(
             'xpath', '//li[contains(@class, "has-dropdown")]/ul/li/a['
-                     'contains(@href, "accounts/questionnaires")]').click()
+                     'contains(@href, "accounts/questionnaires")]')
+        self.browser.execute_script("arguments[0].click();", elm)
         list_entries = self.findManyBy(
             'xpath', '//article[contains(@class, "tech-item")]')
-        self.assertEqual(len(list_entries), 2)
+        self.assertEqual(len(list_entries), 3)
 
         # The questionnaires are grouped by status
 
@@ -254,10 +256,10 @@ class UserTest(FunctionalTest):
             results[0].text, 'Foo 1 (Draft)\nCompiler: Foo Bar | Country:'
         )
         # clicking on the element takes alice to the detail page.
-        results[0].click()
+        self.browser.execute_script("arguments[0].click();", results[0])
         self.assertEqual(
             self.browser.current_url,
-            '{}/en/sample/view/sample_1/'.format(self.live_server_url)
+            '{}/en/questionnaire/view/sample_1/'.format(self.live_server_url)
         )
 
         # she realises it's a premature click and heads back, searching again
@@ -269,12 +271,12 @@ class UserTest(FunctionalTest):
             'class_name', 'ui-autocomplete'
         ).find_elements_by_tag_name('li')
         # she clicks on the 'see all results' link
-        results[1].click()
+        self.browser.execute_script("arguments[0].click();", results[1])
         self.assertEqual(
             self.browser.current_url,
             '{base_url}{search_results_view}?term=terra'.format(
                 base_url=self.live_server_url,
-                search_results_view=reverse('staff_questionnaires_search')
+                search_results_view=reverse('accounts:staff_questionnaires_search')
             )
         )
 
@@ -953,7 +955,7 @@ class UserDetailTest(FunctionalTest):
             'accounts:user_details', kwargs={'pk': self.detail_view_user.id}
         )
 
-    @patch('accounts.views.remote_user_client')
+    @patch('apps.accounts.views.remote_user_client')
     def test_user_detail_basic(self, mock_remote_client):
         # Jay opens the users detail page
         self.browser.get(self.url)
@@ -986,7 +988,7 @@ class UserDetailTest(FunctionalTest):
             self.detail_view_user.email)
         )
 
-    @patch('accounts.views.remote_user_client')
+    @patch('apps.accounts.views.remote_user_client')
     def test_user_details_full(self, mock_remote_client):
         # The detail user is now a unccd focal point and hast two public
         # questionnaires

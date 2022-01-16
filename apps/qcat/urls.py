@@ -56,15 +56,14 @@ urlpatterns += i18n_patterns(
         ('apps.watershed.urls','watershed'), namespace='watershed')),
 )
 
-if settings.DEBUG:
-    urlpatterns += i18n_patterns(
-        # url(r'^sample/', include(('apps.sample.urls','sample'), namespace='sample')),
-        # url(r'^samplemulti/', include(('apps.samplemulti.urls','samplemulti'),
-        #     namespace='samplemulti')),
-        url(r'^samplemodule/',
-            include(('apps.samplemodule.urls','samplemodule'), namespace='samplemodule')),
-        url(r'^404/', TemplateView.as_view(template_name='404.html')),
-        url(r'^500/', TemplateView.as_view(template_name='500.html')),
-        url(r'^503/', TemplateView.as_view(template_name='503.html')),
-    ) + static(
-        settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += i18n_patterns(
+    # url(r'^sample/', include(('apps.sample.urls','sample'), namespace='sample')),
+    # url(r'^samplemulti/', include(('apps.samplemulti.urls','samplemulti'),
+    #     namespace='samplemulti')),
+    url(r'^samplemodule/',
+        include(('apps.samplemodule.urls','samplemodule'), namespace='samplemodule')),
+    url(r'^404/', TemplateView.as_view(template_name='404.html')),
+    url(r'^500/', TemplateView.as_view(template_name='500.html')),
+    url(r'^503/', TemplateView.as_view(template_name='503.html')),
+) + static(
+    settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
