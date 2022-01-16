@@ -89,13 +89,14 @@ class QuestionnaireLinkSearchView(QuestionnaireSearchView, LoginRequiredMixin):
         """
         term = self.request.GET.get('term', '')
         name_questiongroup = 'qg_name'
-        if self.configuration_code in ['sample', 'samplemulti']:
+        configuration_code = self.configuration_code.replace('apps.', '')
+        if configuration_code in ['sample', 'samplemulti']:
             # This is mainly for historic reasons. "sample" and "samplemulti"
             # (these are exclusively used for testing) do not have a
             # questiongroup "qg_name". Get their name questiongroups from the
             # configuration. Use the base edition (2015), no further editions
             # are expected.
-            configuration = get_configuration(self.configuration_code, '2015')
+            configuration = get_configuration(configuration_code, '2015')
             __, name_questiongroup = configuration.get_name_keywords()
 
         data_lookup_params = {
@@ -103,7 +104,7 @@ class QuestionnaireLinkSearchView(QuestionnaireSearchView, LoginRequiredMixin):
             'lookup_by': 'string',
             'value': term,
         }
-        configuration_code = self.configuration_code.replace('apps.', '')
+
         return Questionnaire.with_status.not_deleted().filter(
             get_query_status_filter(self.request)
         ).filter(

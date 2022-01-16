@@ -60,7 +60,7 @@
       <div class="tech-group">
         <h2 class="is-group">{% trans "Public questionnaires" %}</h2>
         <div class="row">
-          <div class="small-12 columns" id="public-questionnaires" data-url="{% url 'questionnaires_public_list' user_id=detail_user.id %}">
+          <div class="small-12 columns" id="public-questionnaires" data-url="{% url 'accounts:questionnaires_public_list' user_id=detail_user.id %}">
           </div>
         </div>
       </div>

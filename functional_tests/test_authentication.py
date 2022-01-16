@@ -66,7 +66,6 @@ class UserTest(FunctionalTest):
     ]
 
     def test_superusers(self):
-
         user = create_new_user()
         user.is_superuser = True
         user.save()
@@ -101,7 +100,8 @@ class UserTest(FunctionalTest):
     def test_moderators(self):
 
         user = create_new_user()
-        user.groups = [Group.objects.get(pk=3)]
+        group = Group.objects.get(pk=3)
+        group.user = user
 
         self.doLogin(user)
 

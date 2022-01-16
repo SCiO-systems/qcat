@@ -33,4 +33,5 @@ urlpatterns = [
     path('', include(('apps.sample.urls', 'sample'), namespace='sample')),
     path('', include(('apps.api.urls.v1', 'v1'), namespace='v1')),
     path('', include(('apps.samplemulti.urls', 'samplemulti'), namespace='samplemulti')),
+    path('', include(('apps.samplemodule.urls', 'samplemodule'), namespace='samplemodule')),
 ]

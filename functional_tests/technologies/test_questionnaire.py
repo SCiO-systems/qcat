@@ -1,7 +1,5 @@
 from django.contrib.auth import get_user_model
 from apps.questionnaire.models import Questionnaire
-from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
 
 from functional_tests.base import FunctionalTest
 from functional_tests.pages.qcat import HomePage
@@ -10,8 +8,6 @@ from functional_tests.pages.technologies import TechnologiesNewPage, \
     Technologies2018NewPage, TechnologiesDetailPage, TechnologiesEditPage, \
     TechnologiesStepPage
 from functional_tests.pages.wocat import AddDataPage
-
-driver = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver")
 
 
 class QuestionnaireTest(FunctionalTest):
@@ -28,7 +24,7 @@ class QuestionnaireTest(FunctionalTest):
         home_page.open(login=True)
 
         # User clicks a link to add data in the top menu.
-        home_page.click_add_slm_data()
+        home_page.click_add_slm_data(self.browser)
 
         # User clicks a link to add a new Technology.
         add_page = AddDataPage(self)
@@ -46,14 +42,14 @@ class QuestionnaireTest(FunctionalTest):
             edit_page.get_category_by_name(category)
 
         # User edits the first category.
-        edit_page.click_edit_category(categories[0][0])
+        edit_page.click_edit_category(self.browser, categories[0][0])
 
         # The focal point is available
         step_page = QuestionnaireStepPage(self)
         step_page.is_focal_point_available()
 
         # User saves the first category.
-        step_page.submit_step()
+        step_page.submit_step(self.browser)
 
         # All the categories are still there.
         progress_indicators = edit_page.get_progress_indicators()
@@ -74,7 +70,7 @@ class QuestionnaireTest(FunctionalTest):
             page.get_category_by_name(category)
 
         # User changes the language.
-        page.change_language('es')
+        page.change_language('es', self.browser)
         page.close_updated_edition_warning()
 
         # User sees the category names in Spanish.
@@ -100,9 +96,9 @@ class QuestionnaireFixturesTest(FunctionalTest):
         page.close_updated_edition_warning()
 
         # After creating a draft version, the warning is not there anymore.
-        page.click_edit_category('tech__1')
+        page.click_edit_category(self.browser, 'tech__1')
         step_page = QuestionnaireStepPage(self)
-        step_page.submit_step()
+        step_page.submit_step(self.browser)
         assert not page.has_updated_edition_warning()
 
     def test_redirect_edit_public_version(self):
@@ -139,9 +135,9 @@ class QuestionnaireFixturesTest(FunctionalTest):
         new_page = Technologies2018NewPage(self)
         new_page.open()
         new_page.close_updated_edition_warning()
-        new_page.click_edit_category('tech__1')
+        new_page.click_edit_category(self.browser, 'tech__1')
         step_page = TechnologiesStepPage(self)
-        step_page.submit_step()
+        step_page.submit_step(self.browser)
 
         # For draft versions, the edit URLs can be accessed
         draft_identifier = Questionnaire.objects.get(status=1)
