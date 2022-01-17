@@ -78,4 +78,4 @@ ENTRYPOINT ["/tini", "--"]
 CMD ["gunicorn", "-c", "conf/gunicorn_config.py", "qcat.wsgi"]
 # or docker run your-image /your/program ...
 
-#USER qcat
+USER qcat
