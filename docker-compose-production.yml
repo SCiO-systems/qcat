@@ -78,7 +78,7 @@ services:
     volumes:
       - .:/app
       - static_files:/static
-      - /qcat_data/upload/:/upload
+#      - /qcat_data/upload/:/upload
     ports:
       - 8000:8000
     depends_on:
@@ -96,7 +96,7 @@ services:
       - 443:443
     volumes:
       - static_files:/static
-      - /qcat_data/upload/:/upload
+      - /qcat_data/wocat_bucket:/upload
       - /etc/letsencrypt/live/qcat-dev.wocat.net/fullchain.pem:/etc/letsencrypt/live/qcat-dev.wocat.net/fullchain.pem
       - /etc/letsencrypt/live/qcat-dev.wocat.net/privkey.pem:/etc/letsencrypt/live/qcat-dev.wocat.net/privkey.pem
       - nginx-data:/etc/nginx/

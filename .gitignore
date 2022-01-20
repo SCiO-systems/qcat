@@ -25,6 +25,7 @@ functional_tests/failed_screenshots
 bower_components
 node_modules
 /static
+nginx/google_bucket
 
 # Ignore temporary folder (e.g. for local mail testing)
 tmp
