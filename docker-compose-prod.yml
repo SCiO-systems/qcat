@@ -23,12 +23,6 @@ services:
       - 5432:5432
     env_file:
       - ./envs/POSTGRES_HOST
-#    environment:
-#      - POSTGRES_USER=qcat
-#      - POSTGRES_PASSWORD=qcat
-#      - APP_DB_USER=qcat
-#      - APP_DB_PASS=qcat
-#      - APP_DB_NAME=qcat
     networks:
       default:
     volumes:
