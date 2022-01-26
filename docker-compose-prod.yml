@@ -21,12 +21,14 @@ services:
     restart: unless-stopped
     ports:
       - 5432:5432
-    environment:
-      - POSTGRES_USER=qcat
-      - POSTGRES_PASSWORD=qcat
-      - APP_DB_USER=qcat
-      - APP_DB_PASS=qcat
-      - APP_DB_NAME=qcat
+    env_file:
+      - ./envs/POSTGRES_HOST
+#    environment:
+#      - POSTGRES_USER=qcat
+#      - POSTGRES_PASSWORD=qcat
+#      - APP_DB_USER=qcat
+#      - APP_DB_PASS=qcat
+#      - APP_DB_NAME=qcat
     networks:
       default:
     volumes:
@@ -67,20 +69,12 @@ services:
   qcat:
     build:
       context: .
-      dockerfile: ./docker_compose/web/Dockerfile.production
+      dockerfile: ./Dockerfile.prod
     image: qcat:dev
     container_name: qcat
-#    environment:
-      # Environment variables for django are set in the entrypoint.sh script.
-#      - PYTHONPATH=/code/apps
- #   command: ["gunicorn", "-c", "conf/gunicorn_config.py", "qcat.wsgi"]
-#    entrypoint: ["./docker_compose/web/entrypoint.sh", "build"]
     volumes:
-      - .:/app
       - static_files:/static
-#      - /qcat_data/upload/:/upload
-    ports:
-      - 8000:8000
+      - /qcat_data/wocat_bucket:/upload
     depends_on:
       - postgres
       - elasticsearch
