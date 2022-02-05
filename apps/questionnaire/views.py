@@ -1223,7 +1223,7 @@ class ESQuestionnaireQueryMixin:
         try:
             # Blank search returns all items within all indexes.
             es_search_results = advanced_search(
-                limit=self.page_size, offset=self.offset,
+                limit=10*self.page_size, offset=self.offset,
                 **self.get_filter_params()
             )
         except TransportError:
