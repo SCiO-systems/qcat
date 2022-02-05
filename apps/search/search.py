@@ -189,6 +189,7 @@ def advanced_search(
         configuration_codes = []
 
     alias = get_alias(*ElasticsearchAlias.from_code_list(*configuration_codes))
+
     return es.search(index=alias, body=query, size=limit, from_=offset)
 
 

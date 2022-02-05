@@ -64,8 +64,8 @@ services:
     environment:
       # Environment variables for django are set in the entrypoint.sh script.
       - PYTHONPATH=/code/apps
-    entrypoint: ["./docker_compose/web/entrypoint.sh"]
-    # entrypoint: ["./docker_compose/web/entrypoint.sh", "build"]
+    entrypoint: ["./entrypoint.sh"]
+    # entrypoint: [".entrypoint.sh", "build"]
     command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
     volumes:
       - .:/code
