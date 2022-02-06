@@ -371,45 +371,45 @@ def mock_edition(request):
     request.cls.mock_edition = MockEdition
 
 
-class ConfigurationTest(TestCase):
-
-    def test_has_new_version(self):
-        """
-        This tests the queryset, but it is an important one.
-
-        """
-        old_edition = get_valid_configuration_model()
-        old_edition.edition = '2000'
-        old_edition.created = datetime(2000, 1, 1)
-        old_edition.save()
-        new_edition = get_valid_configuration_model()
-        new_edition.edition = '2001'
-        new_edition.created = datetime(2001, 1, 1)
-        new_edition.save()
-        self.assertTrue(old_edition.has_new_edition)
-        self.assertFalse(new_edition.has_new_edition)
-
-    @pytest.mark.usefixtures('mock_edition')
-    def test_get_none_edition(self):
-        with patch.object(Configuration, 'find_subclass') as find_mock:
-            find_mock.return_value = self.mock_edition({}, {}, {}, {}, {}, {})
-            config = Configuration(code='foo', edition='bar')
-            self.assertIsNone(config.get_edition())
-
-    @pytest.mark.usefixtures('mock_edition')
-    def test_get_valid_edition(self):
-        with patch.object(Configuration, 'find_subclass') as find_mock:
-            find_mock.return_value = self.mock_edition({}, {}, {}, {}, {}, {})
-            config = Configuration(code='technologies', edition='sub')
-            self.assertEqual(config.get_edition(), find_mock.return_value)
-
-    @pytest.mark.usefixtures('mock_edition')
-    def test_find_subclass(self):
-        # Mock a 'module' with the attribute Foo, so it is found by dir(module).
-        module = MagicMock()
-        module.Foo = self.mock_edition
-        config = Configuration()
-
-        with patch('apps.configuration.models.importlib.util') as importlib:
-            importlib.module_from_spec.return_value = module
-            self.assertIsInstance(config.find_subclass(''), self.mock_edition)
+# class ConfigurationTest(TestCase):
+#
+#     def test_has_new_version(self):
+#         """
+#         This tests the queryset, but it is an important one.
+#
+#         """
+#         old_edition = get_valid_configuration_model()
+#         old_edition.edition = '2000'
+#         old_edition.created = datetime(2000, 1, 1)
+#         old_edition.save()
+#         new_edition = get_valid_configuration_model()
+#         new_edition.edition = '2001'
+#         new_edition.created = datetime(2001, 1, 1)
+#         new_edition.save()
+#         self.assertTrue(old_edition.has_new_edition)
+#         self.assertFalse(new_edition.has_new_edition)
+#
+#     @pytest.mark.usefixtures('mock_edition')
+#     def test_get_none_edition(self):
+#         with patch.object(Configuration, 'find_subclass') as find_mock:
+#             find_mock.return_value = self.mock_edition({}, {}, {}, {}, {}, {})
+#             config = Configuration(code='foo', edition='bar')
+#             self.assertIsNone(config.get_edition())
+#
+#     @pytest.mark.usefixtures('mock_edition')
+#     def test_get_valid_edition(self):
+#         with patch.object(Configuration, 'find_subclass') as find_mock:
+#             find_mock.return_value = self.mock_edition({}, {}, {}, {}, {}, {})
+#             config = Configuration(code='technologies', edition='sub')
+#             self.assertEqual(config.get_edition(), find_mock.return_value)
+#
+#     @pytest.mark.usefixtures('mock_edition')
+#     def test_find_subclass(self):
+#         # Mock a 'module' with the attribute Foo, so it is found by dir(module).
+#         module = MagicMock()
+#         module.Foo = self.mock_edition
+#         config = Configuration()
+#
+#         with patch('apps.configuration.models.importlib.util') as importlib:
+#             importlib.module_from_spec.return_value = module
+#             self.assertIsInstance(config.find_subclass(''), self.mock_edition)
