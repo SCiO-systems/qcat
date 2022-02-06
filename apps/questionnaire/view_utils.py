@@ -25,10 +25,17 @@ class ESPagination(Sequence):
         return self.data
 
 
-def get_paginator(objects, page, limit):
+def get_paginator(objects, page, limit, offset=None):
     """
     Create and return a Paginator filled with the objects and paginated
     at the given page.
+
+    The paginator works in the following way. It takes the number of the objects and the current page and serves
+    accordingly the pagination. EG 100 items and page 8 serves items 70-80
+    However if we have objects queried with on offset meaning that if we are at page 8 with offset 70 it should
+    show results 0-10. So we did add offset parameter and if offset is set, we do inject so many objects as the count
+    in order to trick the paginator. That will result in us requesting page 8, the paginator to return objects 70-80,
+    but the first 70 objects to be dummy objects and the actual results displayed to be 0-10
 
     Args:
         ``objects`` (list): A list of objects to be paginated.
@@ -45,6 +52,9 @@ def get_paginator(objects, page, limit):
 
         ``django.core.paginator.Paginator``. The Paginator object.
     """
+
+    dummy_objects = [{} for item in range(offset)] if offset and offset > 5 else None
+    objects = dummy_objects + objects if dummy_objects else objects
     paginator = Paginator(objects, limit)
     try:
         paginated = paginator.page(page)
