@@ -1254,7 +1254,7 @@ class ESQuestionnaireQueryMixin:
 
     def get_es_pagination(self, es_pagination):
         return get_paginator(
-            es_pagination.data, self.current_page, self.page_size, offset=self.offset
+            es_pagination.data, self.current_page, self.page_size, offset=self.offset, total=es_pagination.total
         )
 
     def get_filter_params(self):
