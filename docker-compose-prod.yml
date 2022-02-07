@@ -5,6 +5,8 @@ volumes:
   elasticsearch-data:
   static_files:
   nginx-data:
+  kibana-data:
+  code:
 
 services:
   selenium:
@@ -60,15 +62,33 @@ services:
       - 9200:9200
       - 9300:9300
 
+  kibana:
+    image: docker.elastic.co/kibana/kibana:6.5.2
+    container_name: kibana
+    restart: unless-stopped
+    ports:
+      - 5601:5601
+    depends_on:
+      - elasticsearch
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+      #- SERVER_SSL_ENABLED=true
+      #- SERVER_SSL_CERTIFICATE=/usr/share/kibana/config/ssl_certs/cert1.pem
+      #- SERVER_SSL_KEY=/usr/share/kibana/config/ssl_certs/privkey1.pem
+      #- ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES=/usr/share/kibana/config/ssl_certs/fullchain1.pem
+    volumes:
+      - kibana-data:/var/lib/kibana
+
   qcat:
     build:
       context: .
       dockerfile: ./Dockerfile.prod
+    ports:
+      - 8000:8000
     image: qcat:dev
     container_name: qcat
     volumes:
       - static_files:/static
-      - /qcat_data/wocat_bucket:/upload
     depends_on:
       - postgres
       - elasticsearch
