@@ -89,6 +89,7 @@ services:
     container_name: qcat
     volumes:
       - static_files:/static
+      - /qcat_data/wocat_bucket:/upload
     depends_on:
       - postgres
       - elasticsearch
@@ -112,4 +113,3 @@ services:
       - /var/log/nginx/reverse-error.log:/var/log/nginx/reverse-error.log
     depends_on:
       - qcat
-

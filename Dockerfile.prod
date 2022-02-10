@@ -7,7 +7,9 @@ WORKDIR /app
 ENV PYTHONPATH "${PYTHONPATH}:/app/apps"
 
 RUN useradd -ms /bin/bash qcat
+RUN mkdir /upload
 RUN chown -R qcat:qcat /app
+RUN chown -R qcat:qcat /upload
 
 # Django-gis packages
 RUN apt-get update && apt-get install -y \
