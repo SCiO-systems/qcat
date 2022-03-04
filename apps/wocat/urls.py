@@ -30,6 +30,7 @@ urlpatterns = [
         QuestionnaireFilterView.as_view(configuration_code=__package__),
         name='questionnaire_filter_partial'),
     path('', include(('apps.accounts.urls', 'accounts'), namespace='accounts')),
+    path('', include(('apps.approaches.urls', 'approaches'), namespace='approaches')),
     path('', include(('apps.sample.urls', 'sample'), namespace='sample')),
     path('', include(('apps.api.urls.v1', 'v1'), namespace='v1')),
     path('', include(('apps.samplemulti.urls', 'samplemulti'), namespace='samplemulti')),
