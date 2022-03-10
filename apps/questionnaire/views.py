@@ -586,7 +586,7 @@ class QuestionnaireSaveMixin(StepsMixin):
         steps = self.get_steps()
         with contextlib.suppress(ValueError, IndexError):
             current_step = steps.index(current)
-            url = reverse('{}:questionnaire_new_step'.format(self.url_namespace), kwargs={
+            url = reverse('{}:questionnaire_new_step'.format(self.url_namespace.replace('apps.', '')), kwargs={
                 'identifier': identifier,
                 'step': steps[current_step + 1]
             })

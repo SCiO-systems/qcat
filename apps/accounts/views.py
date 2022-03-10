@@ -72,7 +72,7 @@ class LoginView(FormView):
         when relaunching the wocat website. If so, return a redirect to the
         reactivation view on the new wocat website.
         """
-        has_user = User.objects.filter(email=form.cleaned_data.get('username'))
+        has_user = User.objects.filter(email=form.cleaned_data.get('username'))z
         if has_user.exists() and has_user.count() == 1:
             user_info = remote_user_client.get_user_information(has_user[0].pk)
             if user_info and not user_info.get('is_active', True):
