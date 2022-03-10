@@ -11,7 +11,7 @@ django-pgjson==0.3.1  # legacy
 django-floppyforms==1.9.0
 django-extensions==2.0.7
 django-imagekit==4.0.2
-easy-thumbnails==2.7.1
+easy-thumbnails==2.7.0
 Pillow==5.1.0
 python-magic==0.4.15
 requests==2.20.0
