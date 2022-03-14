@@ -73,6 +73,8 @@ services:
       - /qcat_data/upload/:/upload
     ports:
       - 8000:8000
+    stdin_open: true
+    tty: true
     depends_on:
       - postgres
       - elasticsearch
