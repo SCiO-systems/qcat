@@ -344,46 +344,62 @@ class QuestionnaireQuestion(BaseConfigurationObject):
         translation_kwargs = dict(configuration=self.configuration_keyword, edition=self.edition)
 
         if self.field_type in ['bool']:
+            print(1)
             self.choices = ((1, _('Yes')), (0, _('No')))
         elif self.field_type in ['cb_bool']:
+            print(2)
             self.choices = ((1, self.label),)
         elif self.field_type in [
                 'measure', 'checkbox', 'image_checkbox', 'select_type',
                 'select', 'radio', 'select_conditional_custom', 'multi_select']:
+            print(3)
+            print('self.configuration_object', self.configuration_object)
+            print('self.configuration_object', self.configuration_object.values)
+            print('self.configuration_object', self.configuration_object.values.all())
             self.value_objects = self.configuration_object.values.all()
             if len(self.value_objects) == 0:
                 raise ConfigurationErrorNotInDatabase(
                     self, '[values of key {}]'.format(self.keyword))
             if self.field_type in [
                     'select_type', 'select', 'select_conditional_custom']:
+                print(4)
                 choices = [('', '-', '')]
             else:
+                print(5)
                 choices = []
             ordered_values = False
             for i, v in enumerate(self.value_objects):
+                print(6)
+                print(i, v)
                 if v.order_value:
+                    print(7)
                     ordered_values = True
                 if self.field_type in ['measure']:
+                    print(8)
                     choices.append((
                         i + 1,
                         v.get_translation(keyword='label', **translation_kwargs),
                         v.get_translation(keyword='helptext', **translation_kwargs)
                     ))
                 else:
+                    print(9)
                     choices.append((
                         v.keyword,
                         v.get_translation(keyword='label', **translation_kwargs),
                         v.get_translation(keyword='helptext', **translation_kwargs)
                     ))
                 if self.field_type in ['image_checkbox']:
+                    print(' 10 ')
                     self.images.append('{}{}'.format(
                         self.value_image_path,
                         v.configuration.get('image_name')))
             if ordered_values is False:
+                print(' 11 ')
                 try:
                     choices = sorted(choices, key=lambda tup: tup[1])
                 except TypeError:
                     pass
+            print(' 12 ')
             self.choices = tuple([c[:2] for c in choices])
             self.choices_helptexts = [c[2] for c in choices]
 
@@ -2292,6 +2308,7 @@ class QuestionnaireConfiguration(BaseConfigurationObject):
     def get_question_by_keyword(self, questiongroup_keyword, keyword):
         questiongroup = self.get_questiongroup_by_keyword(
             questiongroup_keyword)
+
         if questiongroup is not None:
             return questiongroup.get_question_by_key_keyword(keyword)
         return None
