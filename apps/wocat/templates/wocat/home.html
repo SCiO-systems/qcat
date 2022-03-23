@@ -4,6 +4,8 @@
 {% load i18n %}
 {% load sekizai_tags %}
 {% load static %}
+{% load leaflet_tags %}
+
 
 {% block content %}
 
@@ -69,6 +71,7 @@
 </section>
 
 <section class="row large-no-gutters home-main">
+
 <div class="small-12 columns">
   <ul class="accordion" data-accordion>
     <li class="accordion-navigation accordion-about-wocat">
@@ -117,6 +120,12 @@
   <div class="link-unccd-learning-material">
     <a href="https://www.wocat.net/library/media/60/" target="_blank">{% trans "Information for UNCCD Parties" %}</a>
   </div>
+</div>
+</section>
+
+<section class="row large-no-gutters home-main">
+<div class="small-12 columns">
+  {% leaflet_map "slmmap" %}
 </div>
 </section>
 

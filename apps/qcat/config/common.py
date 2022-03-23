@@ -50,6 +50,8 @@ class BaseSettings(Configuration):
         'rest_framework_swagger',
         'sekizai',
         'wkhtmltopdf',
+        # Leaflet
+        'leaflet',
         # Custom apps
         'apps.accounts',
         'apps.api',
