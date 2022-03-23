@@ -125,6 +125,20 @@ class BaseSettings(Configuration):
         'th',
     ]
 
+    # Leaflet configuration
+    LEAFLET_CONFIG = {
+        'DEFAULT_CENTER': (6.0, 45.0),
+        'DEFAULT_ZOOM': 2,
+        'MIN_ZOOM': 2,
+        'MAX_ZOOM': 16,
+        'DEFAULT_PRECISION': 6,
+        'TILES': [
+            ('Esri World Imagery', 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {'attribution': 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012', 'maxZoom': 16}),
+            ('Esri WorldStreet Map', 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {'attribution': 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012', 'maxZoom': 16}),
+            ('Esri WorldTopo Map', 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {'attribution': 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012', 'maxZoom': 16})
+        ]
+    }
+
     TIME_ZONE = 'Europe/Zurich'
     USE_I18N = True
     USE_L10N = True
