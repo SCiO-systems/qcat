@@ -1,5 +1,6 @@
 import collections
 import contextlib
+import json
 import logging
 from itertools import chain, groupby
 
@@ -187,6 +188,7 @@ class StepsMixin:
     """
     Get a list with all steps for current questionnaire.
     """
+
     def get_steps(self):
         # Flattened list with all categories.
         categories = list(chain.from_iterable(
@@ -309,6 +311,7 @@ class InheritedDataMixin:
     Get the inherited data of linked questionnaires. Used to add read-only data
     of (parent) questionnaires to modules.
     """
+
     def get_inherited_data(self, original_locale=None):
         """
         Args:
@@ -648,7 +651,6 @@ class QuestionnaireMapView(TemplateResponseMixin, View):
 
 
 class QuestionnaireView(QuestionnaireRetrieveMixin, StepsMixin, InheritedDataMixin, View):
-
     http_method_names = ['get', 'post']
     view_mode = 'view'
 
@@ -886,7 +888,7 @@ class QuestionnaireView(QuestionnaireRetrieveMixin, StepsMixin, InheritedDataMix
             configuration_code = linked.configuration.code
             linked_questionnaire_code = linked.code
             if linked_questionnaire_code not in links_by_configuration_codes[
-                    configuration_code]:
+                configuration_code]:
                 links_by_configuration[configuration_code].append(linked)
                 links_by_configuration_codes[configuration_code].append(
                     linked_questionnaire_code)
@@ -1017,7 +1019,7 @@ class QuestionnaireEditView(LoginRequiredMixin, QuestionnaireView):
             edition = next_configuration.get_edition()
             if edition:
                 questionnaire_data = edition.update_questionnaire_data(
-                   **questionnaire_data
+                    **questionnaire_data
                 )
         return questionnaire_data
 
@@ -1223,7 +1225,7 @@ class ESQuestionnaireQueryMixin:
         try:
             # Blank search returns all items within all indexes.
             es_search_results = advanced_search(
-                limit=10*self.page_size, offset=self.offset,
+                limit=10 * self.page_size, offset=self.offset,
                 **self.get_filter_params()
             )
         except TransportError:
@@ -1234,7 +1236,7 @@ class ESQuestionnaireQueryMixin:
             if total < self.offset:
                 if call_from == 'api':
                     logger.warning('Potential issue from skbp: Invalid API '
-                                'request with offset {}.'.format(self.offset))
+                                   'request with offset {}.'.format(self.offset))
                 es_search_results = {}
             else:
                 # There really are more results than ES pagination is originally
@@ -1301,7 +1303,6 @@ class ESQuestionnaireQueryMixin:
 
 
 class QuestionnaireListView(TemplateView, ESQuestionnaireQueryMixin):
-
     configuration_code = None
     configuration = None
     es_hits = {}
@@ -1489,7 +1490,7 @@ class QuestionnaireFilterView(QuestionnaireListView):
     def get_template_values(self, list_values, questionnaires):
         filter_values = super(
             QuestionnaireFilterView, self).get_basic_filter_values(
-                list_values, questionnaires)
+            list_values, questionnaires)
 
         filter_values.update(self.get_advanced_filter_values(
             filter_values.get('active_filters', [])))
@@ -1650,7 +1651,6 @@ class QuestionnaireModuleMixin(LoginRequiredMixin):
 
 
 class QuestionnaireAddModule(QuestionnaireModuleMixin, View):
-
     http_method_names = ['post']
     url_namespace = None
 
@@ -1694,12 +1694,10 @@ class QuestionnaireAddModule(QuestionnaireModuleMixin, View):
 
 class QuestionnaireCheckModulesView(
     QuestionnaireModuleMixin, TemplateResponseMixin, View):
-
     http_method_names = ['post']
     template_name = 'questionnaire/partial/select_modules.html'
 
     def post(self, request, *args, **kwargs):
-
         self.questionnaire_object = self.get_questionnaire_object()
         if self.questionnaire_object is None:
             return self.render_to_response(
@@ -1731,3 +1729,28 @@ class QuestionnaireLockView(LoginRequiredMixin, View):
             user=self.request.user
         )
         return HttpResponse(status=200)
+
+
+def get_places(request):
+    place = Questionnaire.objects.filter(geom__isvalid=True).filter(is_deleted=False)
+    response_records = []
+    records = {}
+    for record in place.iterator():
+        records['code'] = record.code
+        records['geojson'] = record.geom.geojson
+        response_records.append(records)
+        records = {}
+
+    return HttpResponse(json.dumps(response_records), content_type='application/json')
+
+
+def update_places(request):
+    place = Questionnaire.objects.filter(geom__isvalid=True).filter(is_deleted=False)[:5]
+    response_data = {}
+    response_records = []
+    for record in place.iterator():
+        record = {"data": record.data, "code": record.code, "geojson": record.geom.geojson}
+        response_records.append(record)
+
+    response_data["places"] = response_records
+    return HttpResponse(response_records, content_type='json')

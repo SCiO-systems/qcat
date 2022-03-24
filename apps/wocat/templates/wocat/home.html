@@ -5,6 +5,7 @@
 {% load sekizai_tags %}
 {% load static %}
 {% load leaflet_tags %}
+{% load questionnaire_tags %}
 
 
 {% block content %}
@@ -125,7 +126,63 @@
 
 <section class="row large-no-gutters home-main">
 <div class="small-12 columns">
-  {% leaflet_map "slmmap" %}
+  {% leaflet_map "slmmap" callback="main_map_init" %}
+
+   <script type="text/javascript">
+        function main_map_init (map, options) {
+            var dataurl = '{% url 'slm_places' %}';
+            console.log("START");
+
+            $.ajax({
+              url: dataurl,
+              dataType: 'json',
+              beforeSend: function(xhr){
+                if(xhr.overrideMimeType){
+                   xhr.overrideMimeType("application/json");
+                 }
+               },
+              success: function(data){
+                data.forEach(function(item){
+                  if(item.code.includes('technologies')){
+                    var myIcon = L.icon({
+		                  iconUrl: '{% static 'assets/img/approach.png' %}',
+		                  iconSize: [32, 37],
+		                  iconAnchor: [16, 37],
+		                  popupAnchor: [0, -28]
+		                  });
+
+		                  L.geoJson(JSON.parse(item.geojson),
+		                  {
+		                    pointToLayer: function (feature, latlng) {
+			                    return L.marker(latlng, {icon: myIcon});
+	                        },
+		                  }
+		                  ).addTo(map);
+                  }else{
+                        var myIcon = L.icon({
+		                  iconUrl: '{% static 'assets/img/technology.png' %}',
+		                  iconSize: [32, 37],
+		                  iconAnchor: [16, 37],
+		                  popupAnchor: [0, -28]
+		                  });
+                        L.geoJson(JSON.parse(item.geojson),
+                         {
+		                    pointToLayer: function (feature, latlng) {
+			                    return L.marker(latlng, {icon: myIcon});
+	                        },
+		                  }
+                        ).addTo(map);
+                  }
+
+                })
+              },
+              error: function(data,status,error){
+                console.log(error)
+              }
+            });
+        }
+    </script>
+
 </div>
 </section>
 
