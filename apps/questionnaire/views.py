@@ -1309,7 +1309,6 @@ class QuestionnaireListView(TemplateView, ESQuestionnaireQueryMixin):
     call_from = 'list'
 
     def get(self, request, *args, **kwargs):
-        print('get')
         self.set_attributes()
         if self.request.is_ajax():
             return JsonResponse(self.get_context_data(**kwargs))
@@ -1317,7 +1316,6 @@ class QuestionnaireListView(TemplateView, ESQuestionnaireQueryMixin):
             return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
-        print('get_context_data')
         es_results = self.get_es_results(call_from=self.call_from)
         es_pagination = self.get_es_paginated_results(es_results)
         questionnaires, self.pagination = self.get_es_pagination(es_pagination)
@@ -1326,23 +1324,17 @@ class QuestionnaireListView(TemplateView, ESQuestionnaireQueryMixin):
         return self.get_template_values(list_values, questionnaires)
 
     def get_template_names(self):
-        print('get_template_names')
-        print('{}/questionnaire/list.html'.format(
-            self.template_configuration_code))
         return '{}/questionnaire/list.html'.format(
             self.template_configuration_code)
 
     def get_filter_template_names(self):
-        print('get_filter_template_names')
         return '{}/questionnaire/partial/basic_filter.html'.format(
             self.template_configuration_code)
 
     def get_partial_list_template_names(self):
-        print('get_partial_list_template_names')
         return 'questionnaire/partial/list.html'
 
     def get_global_filter_configuration(self):
-        print('get_global_filter_configuration')
         """
         Get the configuration for the global filter which is available for all
         types of questionnaires.
@@ -1354,8 +1346,7 @@ class QuestionnaireListView(TemplateView, ESQuestionnaireQueryMixin):
                 (f.flag, f.get_flag_display()) for f in Flag.objects.all()],
             'languages': settings.LANGUAGES,
         }
-        import ipdb
-        ipdb.set_trace()
+
         # Global keys
         # Always use the latest configuration for the filter.
         for questiongroup, question, filter_keyword in settings.QUESTIONNAIRE_GLOBAL_FILTERS:
@@ -1368,7 +1359,6 @@ class QuestionnaireListView(TemplateView, ESQuestionnaireQueryMixin):
         return filter_configuration
 
     def get_basic_filter_values(self, list_values, questionnaires):
-        print('get_basic_filter_values')
         """
         Get the template values required for the basic filter.
         """
@@ -1388,7 +1378,6 @@ class QuestionnaireListView(TemplateView, ESQuestionnaireQueryMixin):
         return basic_filter_values
 
     def get_rendered_list_parts(self, filter_values):
-        print('get_rendered_list_parts')
         """
         Get the rendered list parts (the bottom of the filter page)
         """
@@ -1400,14 +1389,11 @@ class QuestionnaireListView(TemplateView, ESQuestionnaireQueryMixin):
         }
 
     def get_template_values(self, list_values, questionnaires):
-        print('get_template_values')
         """
         Paginate the queryset and return a dict of template values.
         """
         filter_values = self.get_basic_filter_values(
             list_values, questionnaires)
-
-        print(filter_values.get('filter_configuration').get('countries'))
 
         basic_filter = render_to_string(
             self.get_filter_template_names(), filter_values)
