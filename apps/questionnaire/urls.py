@@ -14,5 +14,11 @@ urlpatterns = [
     url(r'^edit/(?P<identifier>[^/]+)/lock/$',
         views.QuestionnaireLockView.as_view(),
         name='lock_questionnaire'),
+    url(r'^geo/',
+        views.get_places,
+        name='slm_places'),
+    url(r'^update/',
+        views.get_places,
+        name='update_slm_places'),
     path('', include(('apps.sample.urls', 'sample'), namespace='sample')),
 ]

@@ -4,6 +4,9 @@
 {% load i18n %}
 {% load sekizai_tags %}
 {% load static %}
+{% load leaflet_tags %}
+{% load questionnaire_tags %}
+
 
 {% block content %}
 
@@ -69,6 +72,7 @@
 </section>
 
 <section class="row large-no-gutters home-main">
+
 <div class="small-12 columns">
   <ul class="accordion" data-accordion>
     <li class="accordion-navigation accordion-about-wocat">
@@ -117,6 +121,68 @@
   <div class="link-unccd-learning-material">
     <a href="https://www.wocat.net/library/media/60/" target="_blank">{% trans "Information for UNCCD Parties" %}</a>
   </div>
+</div>
+</section>
+
+<section class="row large-no-gutters home-main">
+<div class="small-12 columns">
+  {% leaflet_map "slmmap" callback="main_map_init" %}
+
+   <script type="text/javascript">
+        function main_map_init (map, options) {
+            var dataurl = '{% url 'slm_places' %}';
+            console.log("START");
+
+            $.ajax({
+              url: dataurl,
+              dataType: 'json',
+              beforeSend: function(xhr){
+                if(xhr.overrideMimeType){
+                   xhr.overrideMimeType("application/json");
+                 }
+               },
+              success: function(data){
+                data.forEach(function(item){
+                  if(item.code.includes('technologies')){
+                    var myIcon = L.icon({
+		                  iconUrl: '{% static 'assets/img/approach.png' %}',
+		                  iconSize: [32, 37],
+		                  iconAnchor: [16, 37],
+		                  popupAnchor: [0, -28]
+		                  });
+
+		                  L.geoJson(JSON.parse(item.geojson),
+		                  {
+		                    pointToLayer: function (feature, latlng) {
+			                    return L.marker(latlng, {icon: myIcon});
+	                        },
+		                  }
+		                  ).addTo(map);
+                  }else{
+                        var myIcon = L.icon({
+		                  iconUrl: '{% static 'assets/img/technology.png' %}',
+		                  iconSize: [32, 37],
+		                  iconAnchor: [16, 37],
+		                  popupAnchor: [0, -28]
+		                  });
+                        L.geoJson(JSON.parse(item.geojson),
+                         {
+		                    pointToLayer: function (feature, latlng) {
+			                    return L.marker(latlng, {icon: myIcon});
+	                        },
+		                  }
+                        ).addTo(map);
+                  }
+
+                })
+              },
+              error: function(data,status,error){
+                console.log(error)
+              }
+            });
+        }
+    </script>
+
 </div>
 </section>
 
