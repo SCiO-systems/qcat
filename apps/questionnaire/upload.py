@@ -115,7 +115,7 @@ def get_upload_folder_path(uid, subfolder=''):
     Returns:
         str. The path of the file in its upload folder.
     """
-    upload_folder = settings.MEDIA_ROOT
+    upload_folder = settings.MEDIA_URL
     return os.path.join(
         upload_folder, subfolder, *get_upload_folder_structure(uid))
 

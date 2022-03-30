@@ -142,7 +142,7 @@ class BaseSettings(Configuration):
         'compressor.finders.CompressorFinder',
     )
 
-    MEDIA_URL = '/upload/'
+    MEDIA_URL = 'upload/'
     MEDIA_ROOT = join(BASE_DIR, '..', 'upload')
 
     UPLOAD_VALID_FILES = {
