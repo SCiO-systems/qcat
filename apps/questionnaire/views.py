@@ -2,6 +2,7 @@ import collections
 import contextlib
 import json
 import logging
+import sys
 from itertools import chain, groupby
 
 import operator
@@ -1721,11 +1722,50 @@ def get_places(request):
     place = Questionnaire.objects.filter(geom__isvalid=True).filter(is_deleted=False)
     response_records = []
     records = {}
+
     for record in place.iterator():
-        records['code'] = record.code
-        records['geojson'] = record.geom.geojson
-        response_records.append(records)
-        records = {}
+        if "technologies" in record.code:
+            try:
+                records['code'] = record.code
+                records['geojson'] = record.geom.geojson
+
+                name_structure = record.data['qg_name'][0]['name']
+                name = name_structure[list(name_structure.keys())[0]]
+                records["name"] = name
+
+                tech_1_structure = record.data['tech_qg_1'][0]['tech_definition']
+                tech_definition = tech_1_structure[list(tech_1_structure.keys())[0]]
+                records["definition"] = tech_definition
+
+                qg_location = record.data['qg_location'][0]['country']
+                records["qg_location"] = qg_location
+
+                response_records.append(records)
+                records = {}
+            except:
+                print("Error!", sys.exc_info()[0])
+                print("Next Record")
+        elif "approaches" in record.code:
+            try:
+                records['code'] = record.code
+                records['geojson'] = record.geom.geojson
+
+                name_structure = record.data['qg_name'][0]['name']
+                name = name_structure[list(name_structure.keys())[0]]
+                records["name"] = name
+
+                tech_1_structure = record.data['app_qg_1'][0]['app_definition']
+                tech_definition = tech_1_structure[list(tech_1_structure.keys())[0]]
+                records["definition"] = tech_definition
+
+                qg_location = record.data['qg_location'][0]['country']
+                records["qg_location"] = qg_location
+
+                response_records.append(records)
+                records = {}
+            except:
+                print("Error!", sys.exc_info()[0])
+                print("Next Record")
 
     return HttpResponse(json.dumps(response_records), content_type='application/json')
 

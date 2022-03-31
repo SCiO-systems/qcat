@@ -131,7 +131,6 @@
    <script type="text/javascript">
         function main_map_init (map, options) {
             var dataurl = '{% url 'slm_places' %}';
-            console.log("START");
 
             $.ajax({
               url: dataurl,
@@ -153,6 +152,9 @@
 
 		                  L.geoJson(JSON.parse(item.geojson),
 		                  {
+		                    onEachFeature: function (feature, layer) {
+                              layer.bindPopup('<h4><a target="_blank" href="approaches/view/'+item.code+'">'+item.name+'</a></h4><p>'+item.definition+'</p><p>'+item.qg_location+'</p>');
+                            },
 		                    pointToLayer: function (feature, latlng) {
 			                    return L.marker(latlng, {icon: myIcon});
 	                        },
@@ -167,6 +169,9 @@
 		                  });
                         L.geoJson(JSON.parse(item.geojson),
                          {
+                            onEachFeature: function (feature, layer) {
+                              layer.bindPopup('<h4><a target="_blank" href="technologies/view/'+item.code+'">'+item.name+'</a></h4><p>'+item.definition+'</p><p>'+item.qg_location+'</p>');
+                            },
 		                    pointToLayer: function (feature, latlng) {
 			                    return L.marker(latlng, {icon: myIcon});
 	                        },
