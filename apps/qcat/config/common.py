@@ -419,6 +419,11 @@ class BaseSettings(Configuration):
         environ_prefix='',
         default='https://www.wocat.net/about/wocat-secretariat'
     )
+    WOCAT_TRANSLATION_PAGE = values.Value(
+        environ_prefix='',
+        default='https://www.wocat.net/en/translation-wocat-questionnaires-and-database'
+    )
+
     WOCAT_MAILBOX_USER_ID = values.IntegerValue(environ_prefix='')
 
     # TODO: Temporary test of UNCCD flagging.
