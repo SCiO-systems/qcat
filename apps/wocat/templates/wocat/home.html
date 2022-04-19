@@ -38,7 +38,7 @@
             <img src="{% static 'assets/img/landingpage/slide_2.jpg' %}" alt="slide 2" />
             <div class="orbit-caption">
               <h1 class="orbit-caption-title">{% trans "the Global Database on Sustainable Land Management" %}</h1>
-              <p class="orbit-caption-text">{% trans "is open access and contains over 800 SLM practices" %}</p>
+              <p class="orbit-caption-text">{% trans "is open access and contains over 2000 SLM practices" %}</p>
             </div>
           </li>
           {# Orbit 3 #}
@@ -81,31 +81,18 @@
       </a>
       <div id="about-wocat" class="content">
         <p class="is-rhythmed-2">
-          {% trans "The Global Database on Sustainable Land Management (SLM) of WOCAT (the World Overview of Conservation Approaches and Technologies) provides free access to the documentation of field-tested SLM data including SLM practices and maps from different places in the world and offers practitioners the opportunity to share their own SLM practice or map." %}
+          {% trans "The Global Database on Sustainable Land Management (SLM) of WOCAT (the World Overview of Conservation Approaches and Technologies) provides free access to the documentation of field-tested SLM practices from different places in the world and offers practitioners the opportunity to share their own SLM practices. Due to its long-term presence and wealth of knowledge, WOCAT’s Database has been officially recognized by the" %}
+          <a href="https://www.unccd.int/land-and-life/sustainable-land-management-and-restoration/get-involved/unccd-wocat-partnership-slm" target="_blank">UNCCD</a>{% trans " as the primary recommended Global Database for SLM best practices." %}
         </p>
         <p class="is-rhythmed-2">
-          {% trans "SLM in the context of WOCAT is defined as the use of land resources - including soil, water, vegetation and animals - to produce goods and provide services to meet human needs, while ensuring the long-term productive potential of these resources and sustaining their environmental functions." %}
+          <a href="https://www.wocat.net/en/slm" target="_blank">SLM in the context of WOCAT</a>
+          is defined as the use of land resources - including soil, water, vegetation and animals -
+          to produce goods and provide services to meet human needs, while ensuring the long-term productive potential of these resources and
+          sustaining their environmental functions. A SLM practice can be either an
+          <a href="https://www.wocat.net/en/global-slm-database/slm-practices-technologies-and-approaches" target="_blank">SLM Technology or an SLM Approach.</a>
         </p>
         <p class="is-rhythmed-2">
           {% trans "The objective of documenting and assessing SLM practices is to share and spread valuable knowledge in land management, support evidence-based decision-making and scale up identified good practices, thereby contributing to preventing and reducing land degradation and to restoring degraded land." %}
-        </p>
-        <p class="is-rhythmed-2">
-          {% trans "A SLM practice can be either an SLM Technology (a physical practice that controls land degradation and/or enhances productivity, consisting of one or several measures) or an SLM Approach (ways and means used to implement one or several SLM Technologies, including technical and material support, stakeholder engagement, and other)." %}
-        </p>
-        <div class="is-rhythmed-2">
-          <p>{% trans "Credits for the translation of the WOCAT Questionnaires and Database go to:" %}</p>
-          <ul>
-            <li>{% trans "<strong>Russian</strong>: Olga Andreeva (Associate Professor Moscow Lomonosov State University), Julia Johnson (Translator)" %}</li>
-            <li>{% trans "<strong>Spanish</strong>: Pedro Charles Alborno (Translator)" %}</li>
-            <li>{% trans "<strong>French</strong>: Barbara de Choudens (Translator)" %}</li>
-            <li>{% trans "<strong>Lao</strong>: National Agriculture and Forestry Institute (NAFRI) Lao PDR" %}</li>
-            <li>{% trans "<strong>Khmer</strong>: Royal University of Agriculture (RUA) Cambodia" %}</li>
-            <li>{% trans "<strong>Chinese</strong>: Mr. Sun Guoji, Director General of Department of Combating Desertification, National Forestry and Grassland Administration, China" %}</li>
-            <li>{% trans "<strong>Thai</strong>: Dr. Bunjirtluk Jintaridth and Mr. Kamchai Kanjanatanaseth, Land Development Department (LDD), Ministry of Agriculture and Cooperatives, Thailand; Dr. Pitayakon Limtong, Soil and Fertilizer Society of Thailand" %}</li>
-          </ul>
-        </div>
-        <p class="is-rhythmed-2">
-          {% trans 'Please contact the WOCAT Secretariat (<a href="mailto:wocat@cde.unibe.ch" class="link">wocat@cde.unibe.ch</a>) if you are interested in translating the Questionnaires or the Global SLM Database into another language or further information about WOCAT.' %}
         </p>
         <p class="is-rhythmed-2">
           <a href="{% url 'wocat:help_questionnaire_introduction' %}" class="link">{% trans 'Read more about the WOCAT documentation of SLM practices.' %}</a>
@@ -125,78 +112,101 @@
 </section>
 
 <section class="row large-no-gutters home-main">
-<div class="small-12 columns">
-  {% leaflet_map "slmmap" callback="main_map_init" %}
+  <div style=" display: -webkit-flex;
+    display: flex;">
+    <div style="
+    margin: 10px;
+    padding: 10px" class="medium-9 columns">
+    {% leaflet_map "slmmap" callback="main_map_init" %}
 
-   <script type="text/javascript">
-        function main_map_init (map, options) {
-            var dataurl = '{% url 'slm_places' %}';
+     <script type="text/javascript">
+          function main_map_init (map, options) {
 
-            $.ajax({
-              url: dataurl,
-              dataType: 'json',
-              beforeSend: function(xhr){
-                if(xhr.overrideMimeType){
-                   xhr.overrideMimeType("application/json");
-                 }
-               },
-              success: function(data){
-                data.forEach(function(item){
-                  if(item.code.includes('technologies')){
-                    var myIcon = L.icon({
-		                  iconUrl: '{% static 'assets/img/approach.png' %}',
-		                  iconSize: [32, 37],
-		                  iconAnchor: [16, 37],
-		                  popupAnchor: [0, -28]
-		                  });
+              var techMarkers = L.markerClusterGroup({ chunkedLoading: true });
+              var appMarkers = L.markerClusterGroup({ chunkedLoading: true });
 
-		                  L.geoJson(JSON.parse(item.geojson),
-		                  {
-		                    onEachFeature: function (feature, layer) {
-                              layer.bindPopup('<h4><a target="_blank" href="approaches/view/'+item.code+'">'+item.name+'</a></h4><p>'+item.definition+'</p><p>'+item.qg_location+'</p>');
-                            },
-		                    pointToLayer: function (feature, latlng) {
-			                    return L.marker(latlng, {icon: myIcon});
-	                        },
-		                  }
-		                  ).addTo(map);
-                  }else{
-                        var myIcon = L.icon({
-		                  iconUrl: '{% static 'assets/img/technology.png' %}',
-		                  iconSize: [32, 37],
-		                  iconAnchor: [16, 37],
-		                  popupAnchor: [0, -28]
-		                  });
-                        L.geoJson(JSON.parse(item.geojson),
-                         {
-                            onEachFeature: function (feature, layer) {
-                              layer.bindPopup('<h4><a target="_blank" href="technologies/view/'+item.code+'">'+item.name+'</a></h4><p>'+item.definition+'</p><p>'+item.qg_location+'</p>');
-                            },
-		                    pointToLayer: function (feature, latlng) {
-			                    return L.marker(latlng, {icon: myIcon});
-	                        },
-		                  }
-                        ).addTo(map);
-                  }
+              var dataurl = '{% url 'slm_places' %}';
 
-                })
-              },
-              error: function(data,status,error){
-                console.log(error)
-              }
-            });
-        }
-    </script>
+              $.ajax({
+                url: dataurl,
+                dataType: 'json',
+                beforeSend: function(xhr){
+                  if(xhr.overrideMimeType){
+                     xhr.overrideMimeType("application/json");
+                   }
+                 },
+                success: function(data){
+                  data.forEach(function(item){
+                    console.log(item);
+                    if(item.code.includes('technologies')){
+                      var myIcon = L.icon({
+                            iconUrl: '{% static 'assets/img/approach.png' %}',
+                            iconSize: [32, 37],
+                            iconAnchor: [16, 37],
+                            popupAnchor: [0, -28]
+                            });
 
-</div>
+                            // techMarkers.addLayer(L.marker(item.geojson.geometries[0].coordinates, {icon: myIcon}))
+
+
+                            L.geoJson(JSON.parse(item.geojson),
+                            {
+                              pointToLayer: function (feature, latlng) {
+                                  var localMarker = L.marker(latlng, {icon: myIcon});
+                                  localMarker.bindPopup('<h4><a target="_blank" href="approaches/view/'+item.code+'">'+item.name+'</a></h4><p>'+item.definition+'</p><p>'+item.qg_location+'</p>');
+                                  return localMarker;
+                              },
+                            }
+                            ).addTo(map);
+                    }else{
+                          var myIcon = L.icon({
+                            iconUrl: '{% static 'assets/img/technology.png' %}',
+                            iconSize: [32, 37],
+                            iconAnchor: [16, 37],
+                            popupAnchor: [0, -28]
+                            });
+
+                            // appMarkers.addLayer(L.marker(item.geojson.geometries[0].coordinates, {icon: myIcon}))
+
+                           L.geoJson(JSON.parse(item.geojson),
+                           {
+                              pointToLayer: function (feature, latlng) {
+                                  var localMarker = L.marker(latlng, {icon: myIcon});
+                                  localMarker.bindPopup('<h4><a target="_blank" href="technologies/view/'+item.code+'">'+item.name+'</a></h4><p>'+item.definition+'</p><p>'+item.qg_location+'</p>');
+                                  return localMarker;
+                              },
+                            }
+                          ).addTo(map);
+                    }
+
+                  })
+                },
+                error: function(data,status,error){
+                  console.log(error)
+                }
+              });
+
+              map.addLayer(techMarkers);
+              map.addLayer(appMarkers);
+          }
+      </script>
+  </div>
+    <div style="
+
+    margin: 10px;
+    padding: 10px" class="small-12 medium-3 columns">
+    <div class="home-keynumbers-container">
+      <h3 class="keynumbers-heading">{% trans "Key Numbers" %}</h3>
+      <div class="home-keynumbers-content">
+        <img src="{% static 'assets/img/ajax-loader.gif' %}">
+      </div>
+    </div>
+  </div>
+  </div>
 </section>
 
 <main class="home-main row large-no-gutters" role="main">
-  <div class="small-12 medium-9 columns">
-    <ul class="tabs" data-tab role="tablist">
-      <li class="tab-title active" role="presentation"><a href="#panel2-1" role="tab" tabindex="0" aria-selected="true" aria-controls="panel2-1">{% trans "Search SLM data" %}</a></li>
-      <li class="tab-title" role="presentation"><a href="#panel2-2" role="tab" tabindex="0" aria-selected="false" aria-controls="panel2-2">{% trans "Add SLM data" %}</a></li>
-    </ul>
+  <div class="small-12 medium-12 columns">
     <div class="tabs-content">
       <section role="tabpanel" aria-hidden="false" class="content active" id="panel2-1">
         <div class="home-search">
@@ -223,7 +233,8 @@
               <div class="card-well">
                 <h2 class="card-title">{% trans "SLM Technologies" %}</h2>
                 <p class="card-desc">{% trans "An <strong>SLM Technology</strong> is a land management practice that controls land degradation and enhances productivity and/ or other ecosystem services." %}</p>
-                <a href="{% url 'wocat:questionnaire_list' %}?type=technologies" class="button large expand">{% trans "View all" %}</a>
+                <a href="{% url 'wocat:questionnaire_list' %}?type=technologies" class="button large expand">{% trans "View" %}</a>
+                <a href="{% url 'wocat:add' %}" class="button large expand">{% trans "Add" %}</a>
               </div>
             </div>
           </div>
@@ -243,7 +254,8 @@
               <div class="card-well">
                 <h2 class="card-title">{% trans "SLM Approaches" %}</h2>
                 <p class="card-desc">{% trans "An <strong>SLM Approach</strong> defines the ways and means used to implement an SLM Technology, including the stakeholders involved and their roles." %}</p>
-                <a href="{% url 'wocat:questionnaire_list' %}?type=approaches" class="button large expand">{% trans "View all" %}</a>
+                <a href="{% url 'wocat:questionnaire_list' %}?type=approaches" class="button large expand">{% trans "View" %}</a>
+                <a href="{% url 'wocat:add' %}" class="button large expand">{% trans "Add" %}</a>
               </div>
             </div>
           </div>
@@ -258,14 +270,14 @@
               <div class="card-well">
                 <h2 class="card-title">{% trans "UNCCD Prais Practices" %}</h2>
                 <p class="card-desc">{% trans "A UNCCD PRAIS Practice is a best practice in SLM, as previously shared through the UNCCD PRAIS system in the UNCCD reporting process." %}</p>
-                <a href="{% url 'wocat:questionnaire_list' %}?type=unccd" class="button large expand">
-                  {% trans "View all" %}
+                <a href="{% url 'wocat:questionnaire_list' %}?type=unccd" class="button large ">
+                  {% trans "View" %}
                 </a>
+                <a href="{% url 'wocat:add' %}" class="button large expand">{% trans "Add" %}</a>
               </div>
             </div>
           </div>
-        </div>
-        <div class="row is-flex card-row">
+
           {# Carbon Benefits Project / CBP #}
           <div class="small-12 medium-4 columns">
             <div class="card">
@@ -284,86 +296,76 @@
                 <p class="card-desc">{% trans "Tools for assessing the carbon benefits and greenhouse gas emissions of an SLM Technology." %}</p>
 <!--                <a href="https://banr.nrel.colostate.edu/CBP/" class="button large expand">{% trans "Visit CBP Tools Page" %}</a>-->
                 <a href="{% url 'wocat:questionnaire_list' %}?type=cbp" class="button large expand">
-                  {% trans "View all" %}
+                  {% trans "View" %}
                 </a>
               </div>
             </div>
           </div>
-          {# Maps / Land Degradation/Conservation #}
+
+          {# Gender #}
           <div class="small-12 medium-4 columns">
             <div class="card">
-              <a href="http://qm.wocat.net/" target="_blank">
+              <a href="{% url 'wocat:questionnaire_list' %}?type=unccd">
                 <div class="card-image-holder">
-                  <img class="card-image" src="{% static 'assets/img/card_slm_maps.jpg' %}">
-                  <span class="card-image-overlay-container">
-                    <div class="card-image-overlay is-map">
-                      <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-map"></use></svg>
-                    </div>
-                  </span>
+                  <img class="card-image" src="{% static 'assets/img/card_unccd.jpg' %}">
                 </div>
               </a>
               <div class="card-well">
-                <h2 class="card-title">{% trans "Land Degradation / Conservation" %}</h2>
-                <p class="card-desc">{% trans "Mapping land management, degradation and conservation including driver, state and impacts." %}</p>
-                <a href="http://qm.wocat.net/" target="_blank" class="button large expand" title="{% trans "Maps are currently not yet available in the new database. Maps can be viewed or added in the old database (QM)." %}" aria-haspopup="true" data-tooltip="">
-                  {% trans "View all" %}<svg class="icon-information is-inline right no-pointer-events"><use xlink:href="#icon-information"></svg>
+                <h2 class="card-title">{% trans "Gender" %}</h2>
+                <a href="{% url 'wocat:questionnaire_list' %}?type=unccd" class="button large ">{% trans "View" %}</a>
+              </div>
+            </div>
+          </div>
+          {# Economics #}
+          <div class="small-12 medium-4 columns">
+            <div class="card">
+              <a href="{% url 'wocat:questionnaire_list' %}?type=unccd">
+                <div class="card-image-holder">
+                  <img class="card-image" src="{% static 'assets/img/card_unccd.jpg' %}">
+                </div>
+              </a>
+              <div class="card-well">
+                <h2 class="card-title">{% trans "Economics" %}</h2>
+                <a href="{% url 'wocat:questionnaire_list' %}?type=unccd" class="button large ">
+                  {% trans "View" %}
                 </a>
               </div>
             </div>
           </div>
-          {# CCA #}
+          {# Sand, Dust, Storm and Drought #}
           <div class="small-12 medium-4 columns">
             <div class="card">
-              {% if IS_ACTIVE_FEATURE_MODULE %}
-              <a href="{% url 'wocat:questionnaire_list' %}?type=cca">
+              <a href="{% url 'wocat:questionnaire_list' %}?type=unccd">
                 <div class="card-image-holder">
-                  <img class="card-image" src="{% static 'assets/img/card_modules.jpg' %}">
-                  <span class="card-image-overlay-container">
-                    <div class="card-image-overlay is-climate">
-                      <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-climate"></use></svg>
-                    </div>
-                  </span>
+                  <img class="card-image" src="{% static 'assets/img/card_unccd.jpg' %}">
                 </div>
               </a>
               <div class="card-well">
-                <h2 class="card-title">{% trans "CCA Module" %}</h2>
-                <p class="card-desc">{% trans "The climate change adaptation tool assesses whether a specific SLM Technology is adapted to gradual climate changes and climate-related extremes (natural disasters)." %}</p>
-                <a href="{% url 'wocat:questionnaire_list' %}?type=cca" class="button large expand">
-                  {% trans "View all" %}
+                <h2 class="card-title">{% trans "Sand, Dust, Storm and Drought" %}</h2>
+                <a href="{% url 'wocat:questionnaire_list' %}?type=unccd" class="button large ">
+                  {% trans "View" %}
                 </a>
               </div>
-              {% else %}
+            </div>
+          </div>
+          {# Land Degradation Neutrality Tools #}
+          <div class="small-12 medium-4 columns">
+            <div class="card">
+              <a href="{% url 'wocat:questionnaire_list' %}?type=unccd">
                 <div class="card-image-holder">
-                  <img class="card-image" src="{% static 'assets/img/card_modules.jpg' %}">
-                  <span class="card-image-overlay-container">manger
-                    <div class="card-image-overlay is-climate">
-                      <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-climate"></use></svg>
-                    </div>
-                  </span>
+                  <img class="card-image" src="{% static 'assets/img/card_unccd.jpg' %}">
                 </div>
-                <div class="card-well">
-                  <h2 class="card-title">{% trans "CCA Module" %}</h2>
-                  <p class="card-desc">{% trans "The climate change adaptation tool assesses whether a specific SLM Technology is adapted to gradual climate changes and climate-related extremes (natural disasters)." %}</p>
-                  <a href="#" class="button large expand disabled" title="{% trans "Modules will be added soon to the new database." %}" aria-haspopup="true" data-tooltip="">
-                    {% trans "View all" %}<svg class="icon-information is-inline right no-pointer-events"><use xlink:href="#icon-information"></svg>
-                  </a>
-                </div>
-              {% endif %}
+              </a>
+              <div class="card-well">
+                <h2 class="card-title">{% trans "Land Degradation Neutrality Tools" %}</h2>
+                <a href="{% url 'wocat:questionnaire_list' %}?type=unccd" class="button large ">
+                  {% trans "View" %}
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </section>
-      <section role="tabpanel" aria-hidden="true" class="content" id="panel2-2">
-        {% include 'wocat/partial/add.html' %}
-      </section>
-    </div>
-  </div>
-  <div class="small-12 medium-3 columns">
-    <div class="home-keynumbers-container">
-      <h3 class="keynumbers-heading">{% trans "Key Numbers" %}</h3>
-      <div class="home-keynumbers-content">
-        <img src="{% static 'assets/img/ajax-loader.gif' %}">
-      </div>
     </div>
   </div>
 </main>
