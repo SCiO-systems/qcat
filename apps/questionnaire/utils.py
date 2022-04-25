@@ -397,6 +397,9 @@ def clean_questionnaire_data(data, configuration, no_limit_check=False):
         "CONDITION_NAME": ("QG_KEYWORD", "Q_KEYWORD", ["COND_1", "COND_2"])
     }
     """
+    old_configuration_object = configuration.configuration_object.get_previous_edition()
+    old_configuration = QuestionnaireConfiguration(old_configuration_object.code, configuration_object=old_configuration_object)
+
     questiongroup_conditions = {}
     for questiongroup in configuration.get_questiongroups():
         for question in questiongroup.questions:
@@ -438,11 +441,21 @@ def clean_questionnaire_data(data, configuration, no_limit_check=False):
                     continue
                 question = questiongroup.get_question_by_key_keyword(key)
                 if question is None:
-                    errors.append(
-                        'Question with keyword "{}" is not valid for '
-                        'Questiongroup with keyword "{}"'.format(
-                            key, qg_keyword))
-                    continue
+                    old_questiongroup = old_configuration.get_questiongroup_by_keyword(qg_keyword)
+                    if not old_questiongroup:
+                        errors.append(
+                            'Question with keyword "{}" is not valid for '
+                            'Questiongroup with keyword "{}"'.format(
+                                key, qg_keyword))
+                        continue
+                    else:
+                        question = old_questiongroup.get_question_by_key_keyword(key)
+                        if not question:
+                            errors.append(
+                                'Question with keyword "{}" is not valid for '
+                                'Questiongroup with keyword "{}"'.format(
+                                    key, qg_keyword))
+                            continue
                 if question.conditional:
                     for q in question.questiongroup.questions:
                         for c in q.conditions:
