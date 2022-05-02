@@ -411,8 +411,22 @@ def clean_questionnaire_data(data, configuration, no_limit_check=False):
                 else:
                     questiongroup_conditions[condition_name] = \
                         questiongroup.keyword, question.keyword, [condition]
+
+    if old_configuration:
+        old_questiongroup_conditions = {}
+        for questiongroup in old_configuration.get_questiongroups():
+            for question in questiongroup.questions:
+                for conditions in question.questiongroup_conditions:
+                    condition, condition_name = conditions.split('|')
+                    if condition_name in old_questiongroup_conditions:
+                        old_questiongroup_conditions[condition_name][2].append(
+                            condition)
+                    else:
+                        old_questiongroup_conditions[condition_name] = \
+                            questiongroup.keyword, question.keyword, [condition]
     for qg_keyword, qg_data_list in data.items():
         questiongroup = configuration.get_questiongroup_by_keyword(qg_keyword)
+        old_questiongroup = old_configuration.get_questiongroup_by_keyword(qg_keyword)
         if questiongroup is None:
             # If the questiongroup is not part of the current configuration
             # (because the data is based on an old configuration or the
@@ -441,7 +455,6 @@ def clean_questionnaire_data(data, configuration, no_limit_check=False):
                     continue
                 question = questiongroup.get_question_by_key_keyword(key)
                 if question is None:
-                    old_questiongroup = old_configuration.get_questiongroup_by_keyword(qg_keyword)
                     if not old_questiongroup:
                         errors.append(
                             'Question with keyword "{}" is not valid for '
@@ -646,13 +659,56 @@ def clean_questionnaire_data(data, configuration, no_limit_check=False):
                                 evaluated = False
                                 continue
                         condition_fulfilled = evaluated or condition_fulfilled
-            if condition_fulfilled is False:
+            if condition_fulfilled is False and not old_questiongroup:
                 errors.append(
                     'Questiongroup with keyword "{}" requires condition "{}".'.
                     format(
                         questiongroup.keyword,
                         questiongroup.questiongroup_condition))
-
+            elif condition_fulfilled is False and old_questiongroup:
+                for condition_name, condition_data in old_questiongroup_conditions. \
+                        items():
+                    if condition_name != old_questiongroup.questiongroup_condition:
+                        continue
+                    for qg_data in data.get(condition_data[0], []):
+                        condition_value = qg_data.get(condition_data[1])
+                        if isinstance(condition_value, list):
+                            all_values_evaluated = False
+                            for cond_value in condition_value:
+                                evaluated = True
+                                for c in condition_data[2]:
+                                    try:
+                                        evaluated = evaluated and eval(
+                                            '{}{}'.format(cond_value, c))
+                                    except NameError:
+                                        evaluated = evaluated and eval(
+                                            '"{}"{}'.format(cond_value, c))
+                                    except:
+                                        evaluated = False
+                                        continue
+                                all_values_evaluated = (
+                                        all_values_evaluated or evaluated)
+                            condition_fulfilled = (
+                                    condition_fulfilled or all_values_evaluated)
+                        else:
+                            evaluated = True
+                            for c in condition_data[2]:
+                                try:
+                                    evaluated = evaluated and eval('{}{}'.format(
+                                        condition_value, c))
+                                except NameError:
+                                    evaluated = evaluated and eval(
+                                        '"{}"{}'.format(condition_value, c))
+                                except:
+                                    evaluated = False
+                                    continue
+                            condition_fulfilled = evaluated or condition_fulfilled
+                    if condition_fulfilled is False:
+                        errors.append(
+                            'Questiongroup with keyword "{}" requires condition "{}".'.
+                                format(
+                                questiongroup.keyword,
+                                questiongroup.questiongroup_condition))
     # Check for select_conditional_questiongroup questions. This needs to be
     # done after cleaning the data JSON as these questions depend on other
     # questiongroups. Empty questiongroups (eg. {'qg_42': [{'key_57': ''}], ...}
