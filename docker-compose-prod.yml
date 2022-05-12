@@ -89,7 +89,7 @@ services:
     container_name: qcat
     volumes:
       - static_files:/static
-      - /qcat_data/wocat_bucket:/upload
+      - /var/lib/qcat/static_data:/upload
     depends_on:
       - postgres
       - elasticsearch
@@ -104,12 +104,11 @@ services:
       - 80:80
       - 443:443
     volumes:
+      - nginx-data:/etc/nginx
       - static_files:/static
-      - /qcat_data/wocat_bucket:/upload
+      - /var/lib/qcat/static_data:/upload
       - /etc/letsencrypt/live/qcat-dev.wocat.net/fullchain.pem:/etc/letsencrypt/live/qcat-dev.wocat.net/fullchain.pem
       - /etc/letsencrypt/live/qcat-dev.wocat.net/privkey.pem:/etc/letsencrypt/live/qcat-dev.wocat.net/privkey.pem
-      - nginx-data:/etc/nginx/
-      - /var/log/nginx/reverse-access.log:/var/log/nginx/reverse-access.log
-      - /var/log/nginx/reverse-error.log:/var/log/nginx/reverse-error.log
+      - /etc/nginx/.htpasswd:/etc/nginx/.htpasswd
     depends_on:
       - qcat
