@@ -209,7 +209,7 @@
             <li{% if request.resolver_match.view_name == 'wocat:questionnaire_list' %} class="active"{% endif %}><a href="{% url 'wocat:questionnaire_list' %}">{% trans "Search SLM Data" %}</a></li>
             <li{% if request.resolver_match.view_name == 'wocat:add' or request.resolver_match.view_name == 'technologies:add_module' or request.resolver_match.view_name == 'technologies:questionnaire_new' or request.resolver_match.view_name == 'approaches:questionnaire_new' %} class="active"{% endif %}><a href="{% url 'wocat:add' %}">{% trans "Add SLM data" %}</a></li>
             <li{% if request.resolver_match.view_name == 'accounts:account_questionnaires' %} class="active"{% endif %}><a href="{% if user.is_authenticated %}{% url 'accounts:account_questionnaires' %}{% else %}{% url 'accounts:login' %}{% endif %}">{% trans "My SLM Data" %}</a></li>
-            <li{% if request.resolver_match.view_name == 'wocat:home' %} class="active"{% endif %}><a href="https://explorer.wocat.net" target="_blank">{% trans "Visualize SLM Data" %}</a></li>
+            <li{% if request.resolver_match.view_name == 'wocat:home' %} {% endif %}><a href="https://explorer.wocat.net" target="_blank">{% trans "Visualize SLM Data" %}</a></li>
           </ul>
 
           {% comment %}

@@ -248,7 +248,7 @@
                 <h2 class="card-title">{% trans "SLM Technologies" %}</h2>
                 <p class="card-desc">{% trans "An <strong>SLM Technology</strong> is a land management practice that controls land degradation and enhances productivity and/ or other ecosystem services." %}</p>
                 <a href="{% url 'wocat:questionnaire_list' %}?type=technologies" class="button large expand">{% trans "View" %}</a>
-                <a href="{% url 'wocat:add' %}" class="button large expand">{% trans "Add" %}</a>
+                <a href="./technologies/edit/new/" class="button large expand">{% trans "Add" %}</a>
               </div>
             </div>
           </div>
@@ -269,7 +269,7 @@
                 <h2 class="card-title">{% trans "SLM Approaches" %}</h2>
                 <p class="card-desc">{% trans "An <strong>SLM Approach</strong> defines the ways and means used to implement an SLM Technology, including the stakeholders involved and their roles." %}</p>
                 <a href="{% url 'wocat:questionnaire_list' %}?type=approaches" class="button large expand">{% trans "View" %}</a>
-                <a href="{% url 'wocat:add' %}" class="button large expand">{% trans "Add" %}</a>
+                <a href="./approaches/edit/new/" class="button large expand">{% trans "Add" %}</a>
               </div>
             </div>
           </div>
@@ -282,12 +282,11 @@
                 </div>
               </a>
               <div class="card-well">
-                <h2 class="card-title">{% trans "UNCCD Prais Practices" %}</h2>
-                <p class="card-desc">{% trans "A UNCCD PRAIS Practice is a best practice in SLM, as previously shared through the UNCCD PRAIS system in the UNCCD reporting process." %}</p>
+                <h2 class="card-title">{% trans "UNCCD PRAIS Practices" %}</h2>
+                <p class="card-desc">{% trans "Archived PRAIS SLM best practices, as previously shared through the UNCCD PRAIS system in the UNCCD reporting process." %}</p>
                 <a href="{% url 'wocat:questionnaire_list' %}?type=unccd" class="button large expand">
                   {% trans "View" %}
                 </a>
-                <a href="{% url 'wocat:add' %}" class="button large expand">{% trans "Add" %}</a>
               </div>
             </div>
           </div>
@@ -312,6 +311,7 @@
                 <a href="{% url 'wocat:questionnaire_list' %}?type=cbp" class="button large expand">
                   {% trans "View" %}
                 </a>
+                <a href="./technologies/add_module/" class="button large expand">{% trans "Add" %}</a>
               </div>
             </div>
           </div>
@@ -319,28 +319,30 @@
           {# Gender #}
           <div class="small-12 medium-4 columns">
             <div class="card">
-              <a href="{% url 'wocat:questionnaire_list' %}?type=unccd">
+              <a href="https://www.wocat.net/en/projects-and-countries/projects/gender">
                 <div class="card-image-holder">
-                  <img class="card-image" src="{% static 'assets/img/card_unccd.jpg' %}">
+                  <img class="card-image" src="{% static 'assets/img/Gender.jpg' %}">
                 </div>
               </a>
               <div class="card-well">
                 <h2 class="card-title">{% trans "Gender" %}</h2>
-                <a href="{% url 'wocat:questionnaire_list' %}?type=unccd" class="button large expand">{% trans "View" %}</a>
+                <p class="card-desc">{% trans "Tool for assessing gender-responsiveness of SLM Technologies and Approaches." %}</p>
+                <a href="https://www.wocat.net/en/projects-and-countries/projects/gender" class="button large expand">{% trans "View" %}</a>
               </div>
             </div>
           </div>
           {# Economics #}
           <div class="small-12 medium-4 columns">
             <div class="card">
-              <a href="{% url 'wocat:questionnaire_list' %}?type=unccd">
+              <a href="https://www.wocat.net/en/projects-and-countries/projects/costs-and-benefits-slm-technologies">
                 <div class="card-image-holder">
-                  <img class="card-image" src="{% static 'assets/img/card_unccd.jpg' %}">
+                  <img class="card-image" src="{% static 'assets/img/Economics_small.jpg' %}">
                 </div>
               </a>
               <div class="card-well">
                 <h2 class="card-title">{% trans "Economics" %}</h2>
-                <a href="{% url 'wocat:questionnaire_list' %}?type=unccd" class="button large expand">
+                <p class="card-desc">{% trans "Analysing the Costs and Benefits of Sustainable Land Management Technologies." %}</p>
+                <a href="https://www.wocat.net/en/projects-and-countries/projects/costs-and-benefits-slm-technologies" class="button large expand">
                   {% trans "View" %}
                 </a>
               </div>
@@ -349,14 +351,32 @@
           {# Sand, Dust, Storm and Drought #}
           <div class="small-12 medium-4 columns">
             <div class="card">
-              <a href="{% url 'wocat:questionnaire_list' %}?type=unccd">
+              <a href="https://www.wocat.net/en/projects-and-countries/projects/wocat-slm-database-alignment-unccd-sds-and-drought-toolboxes">
                 <div class="card-image-holder">
-                  <img class="card-image" src="{% static 'assets/img/card_unccd.jpg' %}">
+                  <img class="card-image" src="{% static 'assets/img/Sand_and_Dust_Storm_small.jpg' %}">
                 </div>
               </a>
               <div class="card-well">
-                <h2 class="card-title">{% trans "Sand, Dust, Storm and Drought" %}</h2>
-                <a href="{% url 'wocat:questionnaire_list' %}?type=unccd" class="button large expand">
+                <h2 class="card-title">{% trans "Sand and Dust Storm" %}</h2>
+                <p class="card-desc">{% trans "Sand and Dust Storm (SDS) relevant SLM Technologies" %}</p>
+                <a href="https://www.wocat.net/en/projects-and-countries/projects/wocat-slm-database-alignment-unccd-sds-and-drought-toolboxes" class="button large expand">
+                  {% trans "View" %}
+                </a>
+              </div>
+            </div>
+          </div>
+          {# Drought #}
+          <div class="small-12 medium-4 columns">
+            <div class="card">
+              <a href="https://www.wocat.net/en/projects-and-countries/projects/wocat-slm-database-alignment-unccd-sds-and-drought-toolboxes">
+                <div class="card-image-holder">
+                  <img class="card-image" src="{% static 'assets/img/Drought_small.jpg' %}">
+                </div>
+              </a>
+              <div class="card-well">
+                <h2 class="card-title">{% trans "Drought" %}</h2>
+                <p class="card-desc">{% trans "Drought relevant SLM Technologies" %}</p>
+                <a href="https://www.wocat.net/en/projects-and-countries/projects/wocat-slm-database-alignment-unccd-sds-and-drought-toolboxes" class="button large expand">
                   {% trans "View" %}
                 </a>
               </div>
@@ -364,15 +384,16 @@
           </div>
           {# Land Degradation Neutrality Tools #}
           <div class="small-12 medium-4 columns">
-            <div class="card">
-              <a href="{% url 'wocat:questionnaire_list' %}?type=unccd">
+           <div class="card">
+              <a href="https://www.wocat.net/en/ldn">
                 <div class="card-image-holder">
-                  <img class="card-image" src="{% static 'assets/img/card_unccd.jpg' %}">
+                  <img class="card-image" src="{% static 'assets/img/LDN_training.original.jpg' %}">
                 </div>
               </a>
               <div class="card-well">
-                <h2 class="card-title">{% trans "Land Degradation Neutrality Tools" %}</h2>
-                <a href="{% url 'wocat:questionnaire_list' %}?type=unccd" class="button large expand">
+                <h2 class="card-title">{% trans "LDN" %}</h2>
+                <p class="card-desc">{% trans "Tools and methods for monitoring, validating and implementing land degradation neutrality" %}</p>
+                <a href="https://www.wocat.net/en/ldn" class="button large expand">
                   {% trans "View" %}
                 </a>
               </div>
