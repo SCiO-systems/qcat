@@ -66,6 +66,8 @@ from .view_utils import (
     get_page_parameter)
 from .conf import settings
 
+from django_countries.fields import CountryField, Country
+
 logger = logging.getLogger(__name__)
 
 
@@ -1719,7 +1721,7 @@ class QuestionnaireLockView(LoginRequiredMixin, View):
 
 
 def get_places(request):
-    place = Questionnaire.objects.filter(geom__isvalid=True).filter(is_deleted=False)
+    place = Questionnaire.objects.filter(geom__isvalid=True).filter(is_deleted=False).filter(status=6)
     response_records = []
     records = {}
 
@@ -1737,8 +1739,8 @@ def get_places(request):
                 tech_definition = tech_1_structure[list(tech_1_structure.keys())[0]]
                 records["definition"] = tech_definition
 
-                qg_location = record.data['qg_location'][0]['country']
-                records["qg_location"] = qg_location
+                qg_location = record.data['qg_location'][0]['country'].split("_")[1]
+                records["qg_location"] = Country(code=qg_location).name
 
                 response_records.append(records)
                 records = {}
@@ -1758,8 +1760,8 @@ def get_places(request):
                 tech_definition = tech_1_structure[list(tech_1_structure.keys())[0]]
                 records["definition"] = tech_definition
 
-                qg_location = record.data['qg_location'][0]['country']
-                records["qg_location"] = qg_location
+                qg_location = record.data['qg_location'][0]['country'].split("_")[1]
+                records["qg_location"] = Country(code=qg_location).name
 
                 response_records.append(records)
                 records = {}
