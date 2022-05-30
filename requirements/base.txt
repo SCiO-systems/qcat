@@ -43,3 +43,4 @@ psutil==5.4.5
 django-utils-six==2.0
 ipdb==0.13.9
 django-leaflet==0.28.2
+django-countries==7.3.2
