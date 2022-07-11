@@ -80,12 +80,17 @@ class Configuration(models.Model):
         """
         Get the Edition class of the current configuration
         """
+        from .editions.technologies_2018 import Technologies
+        from .editions.sample_2018 import Sample
         # See glob pattern: https://pymotw.com/3/glob/
-        for module in self.EDITION_ROOT.glob('*[!base][!__init__].py'):
-            subclass = self.find_subclass(module)
+        for subclass in [Technologies, Sample]:
             if subclass and subclass.code == self.code and str(subclass.edition) == self.edition:
-                return subclass
+                return subclass(
+                    key={}, value={}, questiongroup={}, category={},
+                    configuration={}, translation={}
+                )
         return None
+
 
     @staticmethod
     def find_subclass(module: Path):
