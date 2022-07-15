@@ -16,6 +16,7 @@ from django.utils.translation import ugettext as _, get_language
 from apps.accounts.client import remote_user_client
 from apps.accounts.models import User
 from apps.configuration.cache import get_configuration
+from apps.configuration.models import Configuration
 from apps.configuration.configuration import QuestionnaireQuestion, \
     QuestionnaireConfiguration
 from apps.configuration.utils import get_configuration_query_filter, \
@@ -397,8 +398,13 @@ def clean_questionnaire_data(data, configuration, no_limit_check=False):
         "CONDITION_NAME": ("QG_KEYWORD", "Q_KEYWORD", ["COND_1", "COND_2"])
     }
     """
-    old_configuration_object = configuration.configuration_object.get_previous_edition()
-    old_configuration = QuestionnaireConfiguration(old_configuration_object.code, configuration_object=old_configuration_object)
+    try:
+        old_configuration_object = configuration.configuration_object.get_previous_edition()
+        old_configuration = QuestionnaireConfiguration(
+            old_configuration_object.code, configuration_object=old_configuration_object
+        )
+    except Configuration.DoesNotExist:
+        old_configuration = None
 
     questiongroup_conditions = {}
     for questiongroup in configuration.get_questiongroups():
@@ -426,7 +432,8 @@ def clean_questionnaire_data(data, configuration, no_limit_check=False):
                             questiongroup.keyword, question.keyword, [condition]
     for qg_keyword, qg_data_list in data.items():
         questiongroup = configuration.get_questiongroup_by_keyword(qg_keyword)
-        old_questiongroup = old_configuration.get_questiongroup_by_keyword(qg_keyword)
+        if old_configuration:
+            old_questiongroup = old_configuration.get_questiongroup_by_keyword(qg_keyword)
         if questiongroup is None:
             # If the questiongroup is not part of the current configuration
             # (because the data is based on an old configuration or the
