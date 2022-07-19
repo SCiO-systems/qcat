@@ -58,7 +58,10 @@ def get_paginator(objects, page, limit, offset=None, total=None):
     dummy_objects_suffix = [
         {} for item in range(total - (len(dummy_objects_prefix) + len(objects)))
     ] if total else []
-    objects = dummy_objects_prefix + objects + dummy_objects_suffix
+
+    if isinstance(objects, list):
+        objects = dummy_objects_prefix + objects + dummy_objects_suffix
+        
     paginator = Paginator(objects, limit)
     try:
         paginated = paginator.page(page)
