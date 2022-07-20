@@ -158,7 +158,7 @@ class BaseSettings(Configuration):
         'compressor.finders.CompressorFinder',
     )
 
-    MEDIA_URL = 'upload/'
+    MEDIA_URL = 'upload'
     MEDIA_ROOT = join(BASE_DIR, '..', 'upload')
 
     UPLOAD_VALID_FILES = {
@@ -434,3 +434,8 @@ class BaseSettings(Configuration):
     # Prevent error when submitting very large forms. Default is 1000.
     # (https://docs.djangoproject.com/en/2.0/ref/settings/#data-upload-max-number-fields)
     DATA_UPLOAD_MAX_NUMBER_FIELDS = 2000
+
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    USE_X_FORWARDED_HOST = True
+
+    CSRF_TRUSTED_ORIGINS = ['qcat-prod.wocat.net', 'qcat-dev.wocat.net', 'qcat.wocat.net']

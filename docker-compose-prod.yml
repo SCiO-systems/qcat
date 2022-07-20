@@ -85,7 +85,7 @@ services:
       dockerfile: ./Dockerfile.prod
     ports:
       - 8000:8000
-    image: qcat:dev
+    image: qcat
     container_name: qcat
     volumes:
       - static_files:/static
